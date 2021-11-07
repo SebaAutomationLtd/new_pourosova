@@ -37,7 +37,7 @@ class ServiceController extends Controller
 	        $data['created_by']=1;
 
 	        $store = DB::table('services')->insert($data);
-            return redirect(route('admin.web.right.service'));
+            return redirect(route('admin.web.right.service'))->with('message','Service Added');
         }
     }
 
@@ -50,7 +50,7 @@ class ServiceController extends Controller
             }
 
     	$delete = DB::table('services')->where('id',$id)->delete();
-    	return redirect(route('admin.web.right.service'));
+    	return redirect(route('admin.web.right.service'))->with('message','Service Deleted');
     }
 
     public function edit($id){
@@ -84,7 +84,7 @@ class ServiceController extends Controller
         }
 
         $update = DB::table('services')->where('id',$id)->update($data);
-        return redirect(route('admin.web.right.service'));
+        return redirect(route('admin.web.right.service'))->with('message','Service Updated');
     }
 
     
