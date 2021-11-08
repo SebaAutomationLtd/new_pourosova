@@ -14,9 +14,15 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            @if (Session::has('message'))
+            @if (Session::has('success'))
                 <div class="alert alert-success alert-dismissible fade show">
-                    <center>{{Session::get('message')}}</center>
+                    <center>{{Session::get('success')}}</center>
+                </div>
+            @endif
+
+             @if (Session::has('error'))
+                <div class="alert alert-danger alert-dismissible fade show">
+                    <center>{{Session::get('error')}}</center>
                 </div>
             @endif
 
@@ -40,6 +46,7 @@
                         <div class="col-sm-4">
                             <label for="name" class="col-form-label">নাম <span style="color: red">*</span></label>
                             <input type="text" name="name" value="{{ old('name') }}" oninput="fullName(this.id);" maxlength="100" class="form-control" id="name" placeholder="নাম" required="">
+
                         </div>
                         <div class="col-sm-4" id="father_name">
                             <label for="father_name" class="col-form-label">
@@ -71,6 +78,7 @@
                             <label for="mobile" class="col-form-label">মোবাইল  নম্বর <span style="color: red">*</span><span style="color: red">*</span></label>
                             <input type="text" oninput="contactNumber(this.id);" maxlength="11" class="form-control mobilenumber" id="mobile"
                                    placeholder="মোবাইল" name="mobilenumber" value="{{ old('mobilenumber') }}" required="">
+                                   <span id="dupmobile" style="color: red;"></span>
                         </div>
 
 
@@ -90,13 +98,22 @@
                         <div class="col-sm-4">
                             <label for="village_id" class="col-form-label">গ্রাম <span style="color: red">*</span></label>
                             <select name="village_id" id="setvillageid" class="form-control"required="">
+                                @if (old('village_id'))
+                                 @foreach ($villages as $vill)
+                                    <option value="{{ $vill->id }}" @if (old('village_id') == $vill->id) selected="selected" @endif >{{ $vill->name }}</option>
+                                @endforeach
+
+                                @else
                                 <option value="" selected="" disabled="">নির্বাচন করুন</option>
+                                @endif
+
                             </select>
+                            <span id="dupgram" style="color: red;"></span>
                         </div>
                         <div class="col-sm-4">
                             <label for="holding_no" class="col-form-label">হোল্ডিং নং <span
                                     style="color: red">*</span> </label>
-                            <input type="text" name="holding_no" value="" class="form-control"
+                            <input type="text" name="holding_no"  class="form-control holding_no"
                                    id="holding_no" value="{{old('holding_no')}}" placeholder="হোল্ডিং নং" required="">
                         </div>
                     </div><br>
@@ -193,27 +210,34 @@
             });
         });
         //Mobile No Validation
-        $(document).on('blur', '.mobilenumber', function () {
+        $(document).on('keyup', '.mobilenumber', function () {
             var mobile = $(this).val();
             $.get('{{URL::to("getduplicatenumber")}}' + '/' + mobile, function (data) {
                 if (data !== 'No') {
-                    alert(data);
+                    // alert(data);
+                    $("#dupmobile").text(data);
                     $("#showSubmitButton").hide();
                 } else {
+                     $("#dupmobile").text('');
                     $("#showSubmitButton").show();
                 }
             });
         });
+        // Holding
+
         $(document).on('change', '#ward_id', function () {
             var id = $(this).val();
             $.get('{{URL::to("getvillageinfo")}}' + '/' + +id, function (data) {
                 if (data === 'no_data') {
-                    alert("Sorry, No Data Found");
+                    $("#dupgram").text("উক্ত ওয়ার্ড এ কোনও গ্রাম আমাদের ডাটাবেসে নেই");
                     $("#setvillageid").html(
                         '<option value="" selected="" disabled="">নির্বাচন করুন</option>'
                     );
                 } else {
                     $("#setvillageid").html(data);
+                     $("#dupgram").text("");
+
+                   
                 }
             });
         });

@@ -323,14 +323,15 @@ class FrontController extends Controller
         $title = "বসতবাড়ি নিবন্ধন";
         $wards = Ward::all();
         $house_types = DB::table('house_types')->get();
+        $villages = DB::table('villages')->where('status',1)->get();
           $right_top_banner = DB::table('right_top_banners')->first();
-        return view('frontend.registration.bosot-bari-create', compact('title', 'wards', 'house_types','right_top_banner'));
+        return view('frontend.registration.bosot-bari-create', compact('title', 'wards', 'house_types','right_top_banner','villages'));
     }
 
     public function business_create() {
         $title = "ব্যাবসা প্রতিষ্ঠান নিবন্ধন";
         $wards = Ward::all();
-        $business_types = DB::table('business_types')->get();
+        $business_types = DB::table('business_types')->where('status',1)->get();
 $right_top_banner = DB::table('right_top_banners')->first();
         return view('frontend.registration.business-create', compact('title', 'wards', 'business_types','right_top_banner'));
     }
