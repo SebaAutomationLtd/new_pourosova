@@ -53,7 +53,7 @@ class ContactController extends Controller
             'blood_group'   =>$request->blood_group,
             'created_by'    =>1, 
         ]);
-        return redirect()->back()->with('success','মেয়রের তথ্য অ্যাড করা হয়েছে');
+        return redirect()->back()->with('message','মেয়রের তথ্য অ্যাড করা হয়েছে');
     }
     public function professional_mayor_store(Request $request){
         $request->validate([
@@ -66,6 +66,11 @@ class ContactController extends Controller
             'created_by'     =>1 
         ]);
         return redirect()->back();
+    }
+    public function professional_mayor_delete($id){
+        ProfessionalMayor::where('id', $id)->delete();
+        return redirect()->back()->with('error','মেয়রের তথ্য ডিলেট করা হয়েছে');
+
     }
     public function uno(){
         $uno = Uno::first();
@@ -94,7 +99,7 @@ class ContactController extends Controller
                 'photo'         => $imageName,
                 'created_by'    => 1
             ]);  
-            return redirect()->back()->with(['success'=>'উপজেলা নির্বাহী কর্মকর্তা অ্যাড করা হয়েছে']);
+            return redirect()->back()->with(['message'=>'উপজেলা নির্বাহী কর্মকর্তা অ্যাড করা হয়েছে']);
         }
       
     }
@@ -144,6 +149,21 @@ class ContactController extends Controller
             ]);
            return redirect()->back();
     }
+    public function admin_other_employee_delete($id){
+        $old = AdminOther::where('id',$id)->first();
+            if (file_exists(public_path('admin/img/'.$old->photo))) {
+                unlink(public_path('admin/img/'.$old->photo));
+            }
+
+        $delete = AdminOther::where('id',$id)->delete();
+        return redirect()->back()->with(['error'=>'অন্যান্য কর্মকর্তা ডিলেট করা হয়েছে']);
+    }
+    public function admin_other_employee_edit(){
+
+    }
+    public function admin_other_employee_update(){
+
+    }
     public function engineer(){
         $engineer = Engineer::first();
         $engineer_other_employees = OtherEmployee::get();
@@ -192,10 +212,11 @@ class ContactController extends Controller
 
     }
     public function info(){
-        return view('admin.contact.info');
+        $infos = Info::all();
+        return view('admin.contact.info',compact('infos'));
     }
     public function info_store(Request $request){
-           $request->validate([
+        $request->validate([
             'title'          => 'required',
             'info_type'      => 'required',
             'description'    => 'required',
@@ -213,7 +234,41 @@ class ContactController extends Controller
                 'photo'         => $imageName,
                 'created_by'    => 1
             ]);  
-            return redirect()->back();
+            return redirect()->back()->with(['message'=>'তথ্য ও পরিষেবা অ্যাড করা হয়েছে']);
         }      
+    }
+    public function info_edit($id){
+        $info_edit = Info::find($id);
+        return view('admin.contact.info_edit',compact('info_edit'));
+    }
+    public function info_update(Request $request,$id){
+        $info = Info::find($id);
+        if(!$request->hasFile('photo')) {
+                $info->update([
+                'title'         => $request->title,
+                'info_type'     => $request->info_type,
+                'description'   => $request->description,
+                ]); 
+            }else{
+                $image = $request->file('photo');
+                $imageName = time().'_'.$image->getClientOriginalName();
+                $image->move(public_path('info/img'), $imageName);
+                $info->update([
+                'title'         => $request->title,
+                'info_type'     => $request->info_type,
+                'description'   => $request->description,
+                'photo'         => $imageName
+                ]); 
+                return redirect()->back()->with(['message'=>'তথ্য ও পরিষেবা আপডেট করা হয়েছে']);
+            }
+    }
+    public function info_delete($id){
+        $old = Info::where('id',$id)->first();
+            if (file_exists(public_path('info/img/'.$old->photo))) {
+                unlink(public_path('info/img/'.$old->photo));
+            }
+
+        $delete = Info::where('id',$id)->delete();
+        return redirect()->back()->with(['error'=>'তথ্য ও পরিষেবা ডিলেট করা হয়েছে']);
     }
 }

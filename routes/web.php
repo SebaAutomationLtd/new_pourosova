@@ -185,19 +185,27 @@ Route::name('admin.web.info.')->prefix('admin/web/info')->namespace('App\Http\Co
 Route::name('admin.web.contact.')->prefix('admin/web/contact')->namespace('App\Http\Controllers\Admin')->group(function () {
     Route::get('/mayor', 'ContactController@mayor')->name('mayor');
     Route::post('mayor/store','ContactController@mayor_store')->name('mayor.store');
+    
     Route::post('professional_mayor/store','ContactController@professional_mayor_store')->name('mayor.professional_mayor');
+    Route::post('professional_mayor/delete/{id}','ContactController@professional_mayor_delete')->name('professional_mayor.delete');
     Route::get('/uno', 'ContactController@uno')->name('uno');
     Route::post('/uno/store', 'ContactController@uno_store')->name('uno.store');
 
     Route::get('/admin', 'ContactController@admin')->name('admin');
     Route::post('/admin_store', 'ContactController@admin_store')->name('admin.store');
     Route::post('/admin_other_employee', 'ContactController@admin_other_employee')->name('admin.other_employee.store');
+    Route::get('/admin_other_employee_edit/{id}', 'ContactController@admin_other_employee_edit')->name('admin.other_employee.edit');
+    Route::post('/admin_other_employee_update/{id}', 'ContactController@admin_other_employee_update')->name('admin.other_employee.update');
+    Route::post('/admin_other_employee_delete', 'ContactController@admin_other_employee_delete')->name('admin.admin_other_employee_delete.delete');
     Route::get('/engineer', 'ContactController@engineer')->name('engineer');
     Route::post('/engineer_store', 'ContactController@engineer_store')->name('engineer.store');
     Route::post('/others_employee', 'ContactController@others_employee')->name('other_employee.store');
 
     Route::get('/info', 'ContactController@info')->name('info');
     Route::post('/info_store', 'ContactController@info_store')->name('info.store');
+    Route::get('/info_edit/{id}', 'ContactController@info_edit')->name('info.edit');
+    Route::post('/info_update/{id}', 'ContactController@info_update')->name('info.update');
+    Route::post('/info_delete/{id}', 'ContactController@info_delete')->name('info.delete');
 });
 
 
