@@ -321,12 +321,17 @@ class FrontController extends Controller
             'female_councilors','left_apps','right_links', 'mayor', 'left_banners', 'right_banners','right_top_banner','marquees'));
     }
 
+    public function getVillageInfo($id){
+        echo $id;
+    }
+
 
 
     public function bosot_bari_create() {
         $title = "বসতবাড়ি নিবন্ধন";
         $wards = Ward::all();
         $house_types = DB::table('house_types')->get();
+          $right_top_banner = DB::table('right_top_banners')->first();
         return view('frontend.registration.bosot-bari-create', compact('title', 'wards', 'house_types','right_top_banner'));
     }
 
@@ -334,13 +339,14 @@ class FrontController extends Controller
         $title = "ব্যাবসা প্রতিষ্ঠান নিবন্ধন";
         $wards = Ward::all();
         $business_types = DB::table('business_types')->get();
-
+$right_top_banner = DB::table('right_top_banners')->first();
         return view('frontend.registration.business-create', compact('title', 'wards', 'business_types','right_top_banner'));
     }
     public function business_hold_create() {
         $title = "বানিজ্যিক হোল্ডিং নিবন্ধন";
         $wards = Ward::all();
         $house_types = DB::table('house_types')->get();
+        $right_top_banner = DB::table('right_top_banners')->first();
         return view('frontend.registration.business-hold-create', compact('title', 'wards', 'house_types','right_top_banner'));
     }
 
