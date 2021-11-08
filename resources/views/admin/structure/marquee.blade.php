@@ -27,11 +27,11 @@
                         @csrf
                         <div class="form-group">
                             <label for="">নিউজ টাইটেল</label>
-                            <input type="text" name="title" class="form-control" required placeholder="">
+                            <input type="text" name="title" value="{{ old('title') }}" class="form-control" required placeholder="">
                         </div>
                         <div class="form-group">
                             <label for="">নিউজ লিংক (যদি থাকে)</label>
-                            <input type="text" name="link" class="form-control" placeholder="">
+                            <input type="text" name="link" value="{{ old('link') }}" class="form-control" placeholder="">
                         </div>
                         <button class="btn btn-primary">সাবমিট</button>
                     </form>

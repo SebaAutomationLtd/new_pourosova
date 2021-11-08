@@ -28,7 +28,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="">নাম</label>
-                                <input name="title" type="text" class="form-control" placeholder="">
+                                <input name="title" type="text" value="{{ old('title') }}" required class="form-control" placeholder="">
                                 @error('title')
                                     <span class=text-danger>{{$message}}</span>
                                 @enderror
@@ -36,7 +36,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="">সেবাসমূহ লিংক</label>
-                                <input name="link" type="text" class="form-control" placeholder="">
+                                <input name="link" type="text" value="{{ old('link') }}" required class="form-control" placeholder="">
                                 @error('link')
                                     <span class=text-danger>{{$message}}</span>
                                 @enderror

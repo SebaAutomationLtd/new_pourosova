@@ -30,7 +30,7 @@ class CouncilorController extends Controller
             'place'       => 'required',
             'ward_no'     => 'required',
             'contact'     => 'required',
-            'photo'       => 'required',
+            'photo'       => 'mimes:jpeg,jpg,png|required|max:10000',
             'description' => 'required'
         ]);
 
@@ -109,7 +109,7 @@ class CouncilorController extends Controller
             'place'       => 'required',
             'ward_no'     => 'required',
             'contact'     => 'required',
-            'photo'       => 'required',
+            'photo'       => 'mimes:jpeg,jpg,png|required|max:10000',
             'description' => 'required'
         ]);
         // $validator = Validator::make($request->all(), $rules);
