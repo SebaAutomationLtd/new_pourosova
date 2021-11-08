@@ -3,6 +3,7 @@
 use App\Http\Controllers;
 use App\Http\Controllers\Frontend\FrontController;
 use App\Http\Controllers\Frontend\RegistrationController;
+use App\Http\Controllers\Frontend\AjaxController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,11 +41,21 @@ Route::get('pourosova_info',[FrontController::class, 'pourosova_info'])->name('p
 Route::get('role_of_honour',[FrontController::class, 'role_of_honour'])->name('role.honour');
 Route::get('uno',[FrontController::class, 'uno'])->name('uno');
 
+
+
 Route::get('bosot-bari-registration', [FrontController::class, 'bosot_bari_create'])->name('reg.bosot-bari');
+Route::post('bosot-bari-store', [RegistrationController::class, 'bosot_bari_store'])->name('bosot-bari-store');
 Route::get('business-hold-registration', [FrontController::class, 'business_hold_create'])->name('reg.business-hold');
+Route::post('business-store', [RegistrationController::class, 'business_store'])->name('reg.business-store');
 Route::get('business-registration', [FrontController::class, 'business_create'])->name('reg.business');
 
 });
+
+// Ajax
+
+Route::get('/getvillageinfo/{id}', [AjaxController::class, 'getvillageinfo']);
+Route::get('/getduplicatebirthnid/{value}/{value2}', [AjaxController::class, 'getduplicatebirthnid']);
+Route::get('/getduplicatenumber/{value}/', [AjaxController::class, 'getduplicatenumber']);
 
 //FRONTEND ROUTES END
 
