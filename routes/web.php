@@ -48,6 +48,7 @@ Route::post('bosot-bari-store', [RegistrationController::class, 'bosot_bari_stor
 Route::get('business-hold-registration', [FrontController::class, 'business_hold_create'])->name('reg.business-hold');
 Route::post('business-store', [RegistrationController::class, 'business_store'])->name('reg.business-store');
 Route::get('business-registration', [FrontController::class, 'business_create'])->name('reg.business');
+Route::post('business-ind-store', [RegistrationController::class, 'business_ind_store'])->name('business-ind-store');
 
 });
 

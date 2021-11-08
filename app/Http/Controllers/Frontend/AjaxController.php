@@ -45,7 +45,7 @@ class AjaxController extends Controller
         if (strlen($number) != 11) {
             $message = 'মোবাইল নম্বর কমপক্ষে ১১  সংখ্যার হতে হবে !';
         } else {
-            $result = DB::table('bosot_bari')->where(['mobile' => $number])->count();
+            $result = DB::table('users')->where(['contact' => $number])->count();
             if ($result > 0) {
                 $message = 'এই মোবাইল নম্বরটি ইতিমধ্যে নিবন্ধন করা হয়েছে !';
             } else {

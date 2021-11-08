@@ -15,7 +15,7 @@ class CreateBusinessTable extends Migration
     {
         Schema::create('business', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->nullable();
+            $table->foreignId('user_id')->nullable();
             $table->string('father')->nullable();
             $table->string('mother')->nullable();
             $table->string('spouse')->nullable();
@@ -23,13 +23,15 @@ class CreateBusinessTable extends Migration
             $table->string('birth_certificate')->nullable();
             $table->string('photo')->nullable();
             $table->string('road_moholla')->nullable();
+            $table->string('holding_no')->nullable();
+            $table->string('shopno')->nullable();
             $table->string('business_name')->nullable();
             $table->text('business_address')->nullable();
             $table->text('current_address')->nullable();
             $table->text('permanent_address')->nullable();
-            $table->foreignId('ward_id')->constrained()->nullable();
-            $table->foreignId('business_type_id')->constrained()->nullable();
-            $table->foreignId('payment_method_id')->constrained()->nullable();
+            $table->foreignId('ward_id')->nullable();
+            $table->foreignId('business_type_id')->nullable();
+            $table->foreignId('payment_method_id')->nullable();
             $table->unsignedFloat('trade_fee')->nullable();
             $table->unsignedFloat('vat')->nullable();
             $table->unsignedFloat('signboard_tax')->nullable();
