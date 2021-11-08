@@ -63,9 +63,12 @@ Route::get('/getduplicatenumber/{value}/', [AjaxController::class, 'getduplicate
 
 //Admin Daynamic Start
 
-Route::get('/admin', function () {
-    return view('Admin.dashboard');
-});
+Route::get('/admin/login', [Controllers\Admin\AdminController::class, 'admin_login_form'])->name('admin.login');
+Route::post('/admin/login', [Controllers\Admin\AdminController::class, 'admin_login'])->name('admin.login');
+
+Route::middleware('auth')->group(function () {
+
+Route::get('/admin', [Controllers\Admin\AdminController::class, 'admin_dashboard'])->name('admin.dashboard');
 
 Route::name('admin.header.')->prefix('admin/header')->namespace('App\Http\Controllers\Admin')->group(function () {
     Route::get('/logo', 'HeaderController@logo')->name('logo');
@@ -196,7 +199,7 @@ Route::name('admin.web.info.')->prefix('admin/web/info')->namespace('App\Http\Co
 Route::name('admin.web.contact.')->prefix('admin/web/contact')->namespace('App\Http\Controllers\Admin')->group(function () {
     Route::get('/mayor', 'ContactController@mayor')->name('mayor');
     Route::post('mayor/store','ContactController@mayor_store')->name('mayor.store');
-    
+
     Route::post('professional_mayor/store','ContactController@professional_mayor_store')->name('mayor.professional_mayor');
     Route::post('professional_mayor/delete/{id}','ContactController@professional_mayor_delete')->name('professional_mayor.delete');
     Route::get('/uno', 'ContactController@uno')->name('uno');
@@ -229,6 +232,8 @@ Route::name('admin.web.notice.')->prefix('admin/web/notice')->namespace('App\Htt
     Route::get('/download', 'NoticeController@download')->name('download');
     Route::post('/download_store', 'NoticeController@download_store')->name('download.store');
     Route::get('/download/delete/{id}', 'NoticeController@download_delete')->name('download.delete');
+});
+
 });
 
 //Admin Daynamic End

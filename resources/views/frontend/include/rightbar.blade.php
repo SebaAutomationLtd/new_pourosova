@@ -5,7 +5,7 @@
                         <div>
 
                             <div class="add">
-                                <img src="{{ asset('rightside/img/'.$right_top_banner->photo) }}" alt="">
+                                <img src="{{ asset('rightside/img/'. ($right_top_banner ? $right_top_banner->photo : '')) }}" alt="">
                             </div>
 
 
