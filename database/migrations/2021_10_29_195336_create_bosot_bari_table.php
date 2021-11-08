@@ -15,7 +15,7 @@ class CreateBosotBariTable extends Migration
     {
         Schema::create('bosot_bari', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->nullable();
+            $table->foreignId('user_id')->nullable();
             $table->string('father')->nullable();
             $table->string('mother')->nullable();
             $table->string('spouse')->nullable();
@@ -26,14 +26,14 @@ class CreateBosotBariTable extends Migration
             $table->string('birth_certificate')->nullable();
             $table->string('religion')->nullable();
             $table->string('photo')->nullable();
-            $table->foreignId('family_class_id')->constrained()->nullable();
-            $table->foreignId('ward_id')->constrained()->nullable();
-            $table->foreignId('village_id')->constrained()->nullable();
-            $table->foreignId('post_office_id')->constrained()->nullable();
-            $table->foreignId('house_type_id')->constrained()->nullable();
-            $table->foreignId('occupation_id')->constrained()->nullable();
-            $table->foreignId('payment_method_id')->constrained()->nullable();
-            $table->foreignId('sanitation_id')->constrained()->nullable();
+            $table->foreignId('family_class_id')->nullable();
+            $table->foreignId('ward_id')->nullable();
+            $table->foreignId('village_id')->nullable();
+            $table->foreignId('post_office_id')->nullable();
+            $table->foreignId('house_type_id')->nullable();
+            $table->foreignId('occupation_id')->nullable();
+            $table->foreignId('payment_method_id')->nullable();
+            $table->foreignId('sanitation_id')->nullable();
             $table->string('holding_no')->nullable();
             $table->unsignedInteger('total_room')->nullable();
             $table->unsignedFloat('height')->nullable();
