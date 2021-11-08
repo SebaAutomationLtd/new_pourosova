@@ -21,11 +21,11 @@ class MayorController extends Controller
     public function store(Request $request) {
 
     	$request->validate([
-            'name'=> 'required',
-            'place'=> 'required',
+            'name'=> 'required|max:255',
+            'place'=> 'required|max:100',
             'serial'=> 'required',
-            'mobile'=> 'required',
-            'image'=> 'required',
+            'mobile'=> 'required|max:11',
+            'image'=> 'mimes:jpeg,jpg,png|required|max:10000',
         ]);
 
     	if($request->hasFile('image')) {
@@ -40,7 +40,7 @@ class MayorController extends Controller
                 'image' => $imageName,
                 'created_by' => 1
             ]);
-            return redirect(route('admin.web.mayor'));
+            return redirect(route('admin.web.mayor'))->with('message','Mayor Added');
         }
 
     }
@@ -53,7 +53,7 @@ class MayorController extends Controller
             }
 
     	$delete = Mayor::find($id)->delete();
-    	return redirect(route('admin.web.mayor'));
+    	return redirect(route('admin.web.mayor'))->with('message','Mayor Deleted');
     }
 
     public function edit($id){
@@ -90,7 +90,7 @@ class MayorController extends Controller
 
         }
 
-        $update = DB::table('mayors')->where('id',$id)->update($data);
+        $update = DB::table('mayors')->where('id',$id)->update($data)->with('message','Mayor Updated');
         return redirect(route('admin.web.mayor'));
     }
 

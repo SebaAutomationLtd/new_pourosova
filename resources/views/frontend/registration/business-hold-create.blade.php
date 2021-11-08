@@ -19,30 +19,39 @@
                     <center>{{Session::get('message')}}</center>
                 </div>
             @endif
+             @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
             <div class="website-form form-group">
                 <!--                <div class="card-header">
                                     <h3 class="card-title"> বসতবাড়ী হোল্ডিং নিবন্ধন করুন</h3>
                                 </div>-->
-                <form role="form" action="" method="post">
+                <form role="form" action="{{route('reg.business-store')}}" method="post">
                     @csrf
                     <h5 style="padding-top: 15px"><u>খানা প্রধানের তথ্য</u></h5>
                     <div class="row">
                         <div class="col-sm-4">
                             <label for="name" class="col-form-label">নাম <span style="color: red">*</span></label>
-                            <input type="text" name="name" oninput="fullName(this.id);" maxlength="30" class="form-control" id="name" placeholder="নাম" required="">
+                            <input type="text" name="name" oninput="fullName(this.id);" maxlength="100" value="{{ old('name') }}" class="form-control" id="name" placeholder="নাম" required="">
                         </div>
                         <div class="col-sm-4" id="father_name">
                             <label for="father_name" class="col-form-label">
                                 <select id="gurdian_status" name="gurdian_status" required="">
-                                    <option value="father">পিতার নাম </option>
-                                    <option value="husband">স্বামীর নাম</option>
+                                   <option  value="father" @if (old('gurdian_status') == 'father') selected="selected" @endif>পিতার নাম </option>
+                                    <option  value="husband" @if (old('gurdian_status') == 'husband') selected="selected" @endif>স্বামীর নাম</option>
                                 </select>
                                 <span style="color: red">*</span></label>
-                            <input type="text" name="father_name" value="" class="form-control gurdian_status" id="father_name" placeholder="পিতার নাম " required="">
+                            <input type="text" name="father_name" value="{{ old('father_name') }}" class="form-control gurdian_status" id="father_name" placeholder="পিতার নাম " required="">
                         </div>
                         <div class="col-sm-4">
                             <label for="Birthdatepicker" class="col-form-label">জন্ম তারিখ <span style="color: red">*</span></label>
-                            <input class="form-control" type="date" name="dob">
+                            <input class="form-control" type="date" value="{{ old('dob') }}" name="dob">
                         </div>
                     </div><br>
 
@@ -50,17 +59,17 @@
                         <div class="col-sm-4">
                             <label for="nid_birth" class="col-form-label">
                                 <select id="birth_nid" name="birth_nid" class="getbirthnid">
-                                    <option value="nid">এনআইডি নম্বর</option>
-                                    <option value="birth_id_no">জন্ম নিবন্ধন নম্বর</option>
+                                  <option value="nid" @if(old('birth_nid') == 'nid') selected="selected" @endif>এনআইডি নম্বর</option>
+                                    <option value="birth_id_no" @if (old('birth_nid') == 'birth_id_no') selected="selected" @endif>জন্ম নিবন্ধন নম্বর</option>
                                 </select>
                                 <span style="color: red">*</span><span style="color: red">*</span></label>
-                            <input type="number" min="1" name="nid" value="" class="form-control birth_nid" id="nid_birth"
+                            <input type="text" pattern="[0-9]+" min="1" name="nid" value="{{ old('nid') }}" class="form-control birth_nid" id="nid_birth"
                                    placeholder="এনআইডি নম্বর" required="">
                         </div>
                         <div class="col-sm-4">
                             <label for="mobile" class="col-form-label">মোবাইল  নম্বর <span style="color: red">*</span><span style="color: red">*</span></label>
-                            <input type="text" oninput="contactNumber(this.id);" maxlength="11" class="form-control mobilenumber" id="mobile"
-                                   placeholder="মোবাইল" required="">
+                            <input type="text" oninput="contactNumber(this.id);" maxlength="11" class="form-control mobilenumber" name="mobilenumber" id="mobile"
+                                   placeholder="মোবাইল" value="{{ old('mobilenumber') }}" required="">
                         </div>
 
 
@@ -73,19 +82,19 @@
                             <select name="ward_id" id="ward_id" class="form-control" required="">
                                 <option value="" selected="" disabled="">নির্বাচন করুন</option>
                                 @foreach ($wards as $ward)
-                                    <option value="{{ $ward->id }}">{{ $ward->ward_no }}</option>
+                                    <option value="{{ $ward->id }}" @if (old('ward_id') == $ward->id) selected="selected" @endif>{{ $ward->ward_no }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-sm-4">
                             <label for="holding_no" class="col-form-label">হোল্ডিং নং <span
                                     style="color: red">*</span> </label>
-                            <input type="text" name="holding_no" value="" class="form-control"
-                                   id="holding_no" placeholder="হোল্ডিং নং" required="">
+                            <input type="text" name="holding_no"  class="form-control"
+                                   id="holding_no" value="{{old('holding_no')}}" placeholder="হোল্ডিং নং" required="">
                         </div>
                         <div class="col-sm-4-">
                             <label for="number_room" class="col-form-label">রুম পরিমাণ <span style="color: red">*</span></label>
-                            <input type="number" min="1" name="total_room" value="" class="form-control"
+                            <input type="number" min="1" name="total_room" value="{{old('total_room')}}" class="form-control"
                                    id="total_room" placeholder="রুম পরিমাণ"
                                    required="">
                         </div>
@@ -93,6 +102,7 @@
 
                     <h5><u>স্টল তথ্য</u> </h5>
                     <div class="row">
+                        <div class="table-responsive">
                         <table class="table table-bordered table-striped ml-3" id="stallSection">
                             <thead>
                                 <tr>
@@ -107,6 +117,7 @@
                             </thead>
                             <tbody></tbody>
                         </table>
+                        </div>
 
                     </div><br>
 
@@ -142,20 +153,20 @@
         $(document).on('change', "#gurdian_status", function () {
             var gurdian_status = $("#gurdian_status").val();
             if (gurdian_status === 'father') {
-                $(".gurdian_status").attr("name", "father_name");
+                // $(".gurdian_status").attr("name", "father_name");
                 $(".gurdian_status").attr("placeholder", "পিতার নাম");
             } else {
-                $(".gurdian_status").attr("name", "husband_name");
+                // $(".gurdian_status").attr("name", "husband_name");
                 $(".gurdian_status").attr("placeholder", "স্বামীর নাম");
             }
         });
         $(document).on('change', "#birth_nid", function () {
             var birth_nid = $("#birth_nid").val();
             if (birth_nid === 'nid') {
-                $(".birth_nid").attr("name", "nid");
+                // $(".birth_nid").attr("name", "nid");
                 $(".birth_nid").attr("placeholder", "এনআইডি");
             } else {
-                $(".birth_nid").attr("name", "birth_certificate");
+                // $(".birth_nid").attr("name", "birth_certificate");
                 $(".birth_nid").attr("placeholder", "জন্ম নিবন্ধন নম্বর");
             }
         });
@@ -216,19 +227,37 @@
             var stallInfo = "";
             for (let i = 1; i <= totalRoom; i++) {
                 stallInfo += '<tr id="stall_'+i+'">' +
-                    '<td width="10%"><input class="form-control" type="text" readonly value="'+holdingNo+'/'+i+'"></td>' +
-                    '<td width="12%"><select class="form-control"><option value="self">নিজের</option><option value="rent">ভাড়া</option></select></td>' +
-                    '<td width="20%"><input class="form-control" type="number" maxlength="20"></td>' +
-                    '<td width="20%"><input class="form-control" type="date"></td>' +
-                    '<td width="20%%"><input class="form-control" type="number" maxlength="11"></td>' +
-                    '<td width="10%"><input class="form-control" type="number"></td>' +
-                    '<td width="10%"><input class="form-control" readonly type="number"></td>' +
+                    '<td width="10%"><input class="form-control" type="text" name="stall_no[]" readonly value="'+holdingNo+'/'+i+'"></td>' +
+                    '<td width="12%"><select id="ownership_'+i+'" name="ownership[]" class="form-control"><option value="self">নিজের</option><option value="rent">ভাড়া</option></select></td>' +
+                    '<td width="20%"><input class="form-control" name="stall_nid[]" type="number" maxlength="20"></td>' +
+                    '<td width="20%"><input class="form-control" name="stall_date[]" type="date"></td>' +
+                    '<td width="20%%"><input class="form-control" name="stall_phone[]" type="number" maxlength="11"></td>' +
+                    '<td width="10%"><input class="form-control" id="rent_'+i+'" onkeyup="calculateRent('+i+')" name="stall_rent[]" type="number"></td>' +
+                    '<td width="10%"><input class="form-control" id="tax_'+i+'" name="stall_tax[]" readonly type="number"></td>' +
                     '</tr>'
             }
             $('#stallSection tbody').empty();
             $('#stallSection tbody').append(stallInfo);
         }
     });
+function calculateRent(id){
+    var ownership = $("#ownership_"+id).val();
+    if(ownership == 'self')
+    {
+        var rent = parseFloat($("#rent_"+id).val() * 10 * .10);
+        $("#tax_"+id).val(rent);
+
+
+    }else if(ownership == 'rent')
+    {
+        var rent = parseFloat($("#rent_"+id).val() * 12 * .10);
+        $("#tax_"+id).val(rent);
+    }
+
+}
+
+
+
 </script>
 
 

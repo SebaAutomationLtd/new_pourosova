@@ -24,7 +24,7 @@ class AboutController extends Controller
 	        $data['description']= $request->description;
 
 	        $update = DB::table('about_paurosovas')->where('id',$id)->update($data);
-            return redirect(route('admin.web.right.about_paurosova'));
+            return redirect(route('admin.web.right.about_paurosova'))->with('message','About Updated');
         
     }
 }

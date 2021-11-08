@@ -29,7 +29,7 @@
                             <div class="form-group col-md-6">
                                 <label for="">শিরোনাম</label>
                                 <input name="title" type="text" class="form-control" placeholder="">
-                                <input type="hidden" value="notice" name="type">
+                                <input type="hidden" value="{{ old('title') }}" value="notice" name="type">
                                 @error('title')
                                     <span class=text-danger>{{$message}}</span>
                                 @enderror

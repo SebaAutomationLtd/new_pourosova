@@ -35,7 +35,7 @@
                                     <option value="4">4</option>
                                 </select>
 
-                                @error('title')
+                                @error('serial')
                                     <span class=text-danger>{{$message}}</span>
                                 @enderror
                             </div>
@@ -47,7 +47,7 @@
                                     <label class="custom-file-label" for="customFileLang">ছবি (JPG Format) (500px *
                                         300px)</label>
                                 </div>
-                                @error('title')
+                                @error('image')
                                     <span class=text-danger>{{$message}}</span>
                                 @enderror
                             </div>

@@ -27,7 +27,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="">শিরোনাম</label>
-                            <input type="text" name="title" class="form-control">
+                            <input type="text" name="title" value="{{ old('title') }}" class="form-control">
                             @error('title')
                                 <span class=text-danger>{{$message}}</span>
                             @enderror
