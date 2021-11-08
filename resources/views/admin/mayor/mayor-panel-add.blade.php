@@ -28,7 +28,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="">নাম</label>
-                                <input name="name" type="text" class="form-control" placeholder="">
+                                <input name="name" type="text" value="{{ old('name') }}" class="form-control" placeholder="">
                                 @error('name')
                                     <span class=text-danger>{{$message}}</span>
                                 @enderror
@@ -36,7 +36,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="">স্থান</label>
-                                <input name="place" type="text" class="form-control" placeholder="">
+                                <input name="place" type="text" value="{{ old('place') }}" class="form-control" placeholder="">
                                 @error('place')
                                     <span class=text-danger>{{$message}}</span>
                                 @enderror
@@ -47,7 +47,7 @@
 
                             <div class="form-group col-md-3">
                                 <label for="">মোবাইল নং</label>
-                                <input name="mobile" type="tel" class="form-control" placeholder="">
+                                <input name="mobile" type="tel" value="{{ old('mobile') }}" class="form-control" placeholder="">
                                 @error('mobile')
                                     <span class=text-danger>{{$message}}</span>
                                 @enderror

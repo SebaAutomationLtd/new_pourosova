@@ -20,9 +20,9 @@ class ServiceController extends Controller
 
     public function store(Request $request){
     	$request->validate([
-            'title'=> 'required',
-            'link'=> 'required',
-            'image'=> 'required',
+            'title'=> 'required|max:255',
+            'link'=> 'required|max:255',
+            'image'=> 'mimes:jpeg,jpg,png|required|max:10000',
         ]);
 
     	if($request->hasFile('image')) {

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBosotBariTable extends Migration
+class CreateBusinessHoldingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateBosotBariTable extends Migration
      */
     public function up()
     {
-        Schema::create('bosot_bari', function (Blueprint $table) {
+        Schema::create('business_holdings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable();
+           $table->foreignId('user_id')->nullable();
             $table->string('father')->nullable();
             $table->string('mother')->nullable();
             $table->string('spouse')->nullable();
@@ -63,6 +63,6 @@ class CreateBosotBariTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bosot_bari');
+        Schema::dropIfExists('business_holdings');
     }
 }

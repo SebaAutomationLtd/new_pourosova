@@ -71,9 +71,9 @@
                         <div class="form-group">
                             <label for="">ফাইল আপলোড করুন </label>
                             <div class="custom-file">
-                                <input name="photo" type="file" class="custom-file-input @error('photo') is-invalid @enderror" id="customFileLang" lang="es">
+                                <input name="file" type="file" class="custom-file-input @error('file') is-invalid @enderror" id="customFileLang" lang="es">
                                 <label class="custom-file-label" for="customFileLang">ফাইল আপলোড </label>
-                                @error('photo')
+                                @error('file')
                                     <small class="text-danger">
                                         <strong>{{ $message }}</strong>
                                     </small>

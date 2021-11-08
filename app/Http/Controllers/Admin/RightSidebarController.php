@@ -18,7 +18,7 @@ class RightSidebarController extends Controller
     }
     public function top_store(Request $request){
         $request->validate([
-            'photo'      => 'required'
+            'photo'      => 'mimes:jpeg,jpg,png|required|max:10000'
         ]);
         if($request->hasFile('photo')) {
             $image = $request->file('photo');
@@ -43,7 +43,7 @@ class RightSidebarController extends Controller
     public function top_update(Request $request, $id){
 
         $request->validate([
-            'image'      => 'required'
+            'image'      => 'mimes:jpeg,jpg,png|required|max:10000'
         ]);
 
         if($request->hasFile('image')) {
@@ -120,7 +120,7 @@ class RightSidebarController extends Controller
             'title'             => 'required',
             'information_type'  => 'required',
             'description'       => 'required',
-            'photo'             => 'required'
+            'photo'             => 'mimes:jpeg,jpg,png|required|max:10000'
         ]);
     	if($request->hasFile('photo')) {
             $image = $request->file('photo');
