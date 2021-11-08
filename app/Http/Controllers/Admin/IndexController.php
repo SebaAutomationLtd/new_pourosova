@@ -17,12 +17,15 @@ class IndexController extends Controller
     public function slider_store(Request $request){
 
         $request->validate([
-            'title'=> 'required',
             'serial'=> 'required',
             'image'=> 'required',
         ]);
 
-        if($request->hasFile('image')) {
+        $serial_check =DB::table('sliders')->where('serial',$request->serial)->first();
+
+        if (!$serial_check) {
+
+            if($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time().'_'.$image->getClientOriginalName();
             $image->move(public_path('img'), $imageName);
@@ -32,10 +35,33 @@ class IndexController extends Controller
                 'image' => $imageName,
                 'created_by' => 1
             ]);
-            return redirect(route('admin.index.slider'));
+            return redirect(route('admin.index.slider'))->with('message','Slider Added');
+        }
+        }else{
+            $data =array();
+            $data['title']= $request->title;
+            $data['serial']= $request->serial;
+
+            if($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time().'_'.$image->getClientOriginalName();
+            $image->move(public_path('img'), $imageName);
+            
+            $data['image']=$imageName;
+
+            $old = DB::table('sliders')->where('serial',$request->serial)->first();
+            if (file_exists(public_path('img/'.$old->image))) {
+                unlink(public_path('img/'.$old->image));
+            }
+
+        }
+
+        $update = DB::table('sliders')->where('serial',$request->serial)->update($data);
+        return redirect(route('admin.index.slider'))->with('message','Slider Updated');
         }
 
     }
+
 
 
     public function delete($id){
@@ -46,8 +72,9 @@ class IndexController extends Controller
             }
 
         $delete = Slider::find($id)->delete();
-        return redirect(route('admin.index.slider'));
+        return redirect(route('admin.index.slider'))->with('message','Slider Deleted');
     }
+
 
 
     public function about(){

@@ -20,8 +20,8 @@ class ServiceController extends Controller
 
     public function store(Request $request){
     	$request->validate([
-            'title'=> 'required',
-            'link'=> 'required',
+            'title'=> 'required|max:255',
+            'link'=> 'required|max:255',
             'image'=> 'required',
         ]);
 

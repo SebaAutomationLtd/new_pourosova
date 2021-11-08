@@ -16,7 +16,7 @@ class NoticeController extends Controller
 
         public function notice_store(Request $request){
         $request->validate([
-            'title'=> 'required',
+            'title'=> 'required|max:255',
             'type'=> 'required',
             'publish'=> 'required',
             'file'=> 'required',
@@ -35,7 +35,7 @@ class NoticeController extends Controller
             $data['created_by']=1;
 
             $store = DB::table('notices')->insert($data);
-            return redirect(route('admin.web.notice.notice'));
+            return redirect(route('admin.web.notice.notice'))->with('message','Service Added');
         }
 
     }
@@ -49,7 +49,7 @@ class NoticeController extends Controller
             }
 
         $delete = DB::table('notices')->where('id',$id)->delete();
-        return redirect(route('admin.web.notice.notice'));
+        return redirect(route('admin.web.notice.notice'))->with('message','Service Deleted');
     }
 
 
@@ -61,7 +61,7 @@ class NoticeController extends Controller
 
     public function download_store(Request $request){
         $request->validate([
-            'title'            => 'required',
+            'title'            => 'required|max:255',
             'notice_type'      => 'required',
             'publication'      => 'required',
             'photo'            => 'required',
@@ -78,7 +78,7 @@ class NoticeController extends Controller
                 'file'         => $imageName,
                 'created_by'    => 1
             ]);  
-            return redirect()->back()->with(['success'=>'ডাউনলোড তথ্য অ্যাড করা হয়েছে']);
+            return redirect(route('admin.web.notice.download'))->with('message','Download Added');
         }
     }
 
@@ -91,7 +91,7 @@ class NoticeController extends Controller
             }
 
         $delete = DB::table('downloads')->where('id',$id)->delete();
-        return redirect(route('admin.web.notice.download'));
+        return redirect(route('admin.web.notice.download'))->with('message','Download Deleted');
     }
 
 

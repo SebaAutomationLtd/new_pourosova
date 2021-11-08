@@ -21,10 +21,10 @@ class MayorController extends Controller
     public function store(Request $request) {
 
     	$request->validate([
-            'name'=> 'required',
+            'name'=> 'required|max:255',
             'place'=> 'required',
             'serial'=> 'required',
-            'mobile'=> 'required',
+            'mobile'=> 'required|max:11',
             'image'=> 'required',
         ]);
 
