@@ -22,7 +22,7 @@ class ServiceController extends Controller
     	$request->validate([
             'title'=> 'required|max:255',
             'link'=> 'required|max:255',
-            'image'=> 'required',
+            'image'=> 'mimes:jpeg,jpg,png|required|max:10000',
         ]);
 
     	if($request->hasFile('image')) {

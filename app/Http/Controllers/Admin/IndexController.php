@@ -18,7 +18,7 @@ class IndexController extends Controller
 
         $request->validate([
             'serial'=> 'required',
-            'image'=> 'required',
+            'image'=> 'mimes:jpeg,jpg,png|required|max:10000',
         ]);
 
         $serial_check =DB::table('sliders')->where('serial',$request->serial)->first();

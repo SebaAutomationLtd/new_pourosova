@@ -19,7 +19,7 @@ class NoticeController extends Controller
             'title'=> 'required|max:255',
             'type'=> 'required',
             'publish'=> 'required',
-            'file'=> 'required',
+            'file'=> 'required|mimes:application/pdf, application/x-pdf,application/acrobat, applications/vnd.pdf, text/pdf, text/x-pdf|max:10000',
         ]);
 
         if($request->hasFile('file')) {
@@ -64,10 +64,10 @@ class NoticeController extends Controller
             'title'            => 'required|max:255',
             'notice_type'      => 'required',
             'publication'      => 'required',
-            'photo'            => 'required',
+            'file'            => 'required|mimes:application/pdf, application/x-pdf,application/acrobat, applications/vnd.pdf, text/pdf, text/x-pdf|max:10000',
         ]);
-         if($request->hasFile('photo')) {
-            $image = $request->file('photo');
+         if($request->hasFile('file')) {
+            $image = $request->file('file');
             $imageName = time().'_'.$image->getClientOriginalName();
             $image->move(public_path('pdf'), $imageName);
 

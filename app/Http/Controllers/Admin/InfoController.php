@@ -68,7 +68,7 @@ class InfoController extends Controller
     public function organogram_store(Request $request){
         $request->validate([
             'title'=> 'required|max:255',
-            'image'=> 'required',
+            'image'=> 'mimes:jpeg,jpg,png|required|max:10000',
         ]);
 
         if($request->hasFile('image')) {
@@ -143,7 +143,7 @@ class InfoController extends Controller
     public function map_store(Request $request){
         $request->validate([
             'title'=> 'required|max:255',
-            'image'=> 'required',
+            'image'=> 'mimes:jpeg,jpg,png|required|max:10000',
         ]);
 
         if($request->hasFile('image')) {
@@ -218,7 +218,7 @@ class InfoController extends Controller
     public function employee_store(Request $request){
         $request->validate([
             'title'=> 'required|max:255',
-            'image'=> 'required',
+            'image'=> 'mimes:jpeg,jpg,png|required|max:10000',
         ]);
 
         if($request->hasFile('image')) {

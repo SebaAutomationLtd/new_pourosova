@@ -17,8 +17,8 @@ class LeftSidebarController extends Controller
 
     public function app_store(Request $request){
         $request->validate([
-            'title'      => 'required',
-            'link'       => 'required',
+            'title'      => 'required|max:255',
+            'link'       => 'required|max:255',
         ]);
     	LeftSideApplication::create([
             'title' 		=> $request->title,
@@ -66,7 +66,7 @@ class LeftSidebarController extends Controller
             'title'             => 'required',
             'information_type'  => 'required',
             'description'       => 'required',
-            'photo'             => 'required'
+            'photo'             => 'mimes:jpeg,jpg,png|required|max:10000'
         ]);
     	if($request->hasFile('photo')){
             $image = $request->file('photo');
