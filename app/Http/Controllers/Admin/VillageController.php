@@ -33,7 +33,7 @@ class VillageController extends Controller
 
     public function village_delete($name){
         $delete = DB::table('villages')->where('name',$name)->delete();
-        return redirect(route('admin.web.village.village'))->with('message','Village Deleted');
+        return redirect(route('admin.web.village.village'))->with('error','Village Deleted');
     }
 
 
@@ -86,7 +86,7 @@ class VillageController extends Controller
 
     public function post_office_delete($id){
         $delete = DB::table('post_offices')->where('id',$id)->delete();
-        return redirect(route('admin.web.village.post_office'))->with('message','Post Office Deleted');
+        return redirect(route('admin.web.village.post_office'))->with('error','Post Office Deleted');
     }
 
 

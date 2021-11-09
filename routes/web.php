@@ -236,7 +236,6 @@ Route::name('admin.web.notice.')->prefix('admin/web/notice')->namespace('App\Htt
     Route::get('/download/delete/{id}', 'NoticeController@download_delete')->name('download.delete');
 });
 
-<<<<<<< HEAD
 
 Route::name('admin.web.village.')->prefix('admin/web/village')->namespace('App\Http\Controllers\Admin')->group(function () {
 
@@ -273,7 +272,6 @@ Route::name('admin.web.religion.')->prefix('admin/web/village')->namespace('App\
 });
 
 
-=======
 // assesment nibondhon
 
 Route::get('take_action_users', [ActiveController::class, 'search'])->name('action.search');
@@ -284,6 +282,6 @@ Route::get('take_action_active_show/{id}/{type}', [ActiveController::class, 'act
 Route::post('take_action_users_active', [ActiveController::class, 'active'])->name('action.active');
 Route::get('take_action_edit/{id}/{type}', [ActiveController::class, 'edit'])->name('action.edit');
 Route::post('/update-bosot-bari/{id}', [ActiveController::class, 'UpdateBosotBari'])->name('update.bosot-bari');
->>>>>>> 5a80bed73beb5e578aa61d8990a69a7f8c095194
+
 //Admin Daynamic End
 

@@ -72,7 +72,7 @@ class IndexController extends Controller
             }
 
         $delete = Slider::find($id)->delete();
-        return redirect(route('admin.index.slider'))->with('message','Slider Deleted');
+        return redirect(route('admin.index.slider'))->with('error','Slider Deleted');
     }
 
 

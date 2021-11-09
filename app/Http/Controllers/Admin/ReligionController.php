@@ -29,7 +29,7 @@ class ReligionController extends Controller
 
     public function religion_delete($id){
         $delete = DB::table('religions')->where('id',$id)->delete();
-        return redirect(route('admin.web.religion.religion'))->with('message','Religion Deleted');
+        return redirect(route('admin.web.religion.religion'))->with('error','Religion Deleted');
     }
 
     public function religion_edit($id){
@@ -74,7 +74,7 @@ class ReligionController extends Controller
 
     public function gender_delete($id){
         $delete = DB::table('genders')->where('id',$id)->delete();
-        return redirect(route('admin.web.religion.gender'))->with('message','Gender Deleted');
+        return redirect(route('admin.web.religion.gender'))->with('error','Gender Deleted');
     }
 
     public function gender_edit($id){
