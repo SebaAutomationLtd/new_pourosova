@@ -14,9 +14,15 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            @if (Session::has('message'))
+             @if (Session::has('success'))
                 <div class="alert alert-success alert-dismissible fade show">
-                    <center>{{Session::get('message')}}</center>
+                    <center>{{Session::get('success')}}</center>
+                </div>
+            @endif
+
+             @if (Session::has('error'))
+                <div class="alert alert-danger alert-dismissible fade show">
+                    <center>{{Session::get('error')}}</center>
                 </div>
             @endif
              @if ($errors->any())
@@ -70,6 +76,7 @@
                             <label for="mobile" class="col-form-label">মোবাইল  নম্বর <span style="color: red">*</span><span style="color: red">*</span></label>
                             <input type="text" oninput="contactNumber(this.id);" maxlength="11" class="form-control mobilenumber" name="mobilenumber" id="mobile"
                                    placeholder="মোবাইল" value="{{ old('mobilenumber') }}" required="">
+                                   <span id="dupmobile" style="color: red;"></span>
                         </div>
 
 
@@ -189,27 +196,34 @@
             });
         });
         //Mobile No Validation
-        $(document).on('blur', '.mobilenumber', function () {
+         $(document).on('keyup', '.mobilenumber', function () {
             var mobile = $(this).val();
             $.get('{{URL::to("getduplicatenumber")}}' + '/' + mobile, function (data) {
                 if (data !== 'No') {
-                    alert(data);
+                    // alert(data);
+                    $("#dupmobile").text(data);
                     $("#showSubmitButton").hide();
                 } else {
+                     $("#dupmobile").text('');
                     $("#showSubmitButton").show();
                 }
             });
         });
+        // Holding
+
         $(document).on('change', '#ward_id', function () {
             var id = $(this).val();
             $.get('{{URL::to("getvillageinfo")}}' + '/' + +id, function (data) {
                 if (data === 'no_data') {
-                    alert("Sorry, No Data Found");
+                    $("#dupgram").text("উক্ত ওয়ার্ড এ কোনও গ্রাম আমাদের ডাটাবেসে নেই");
                     $("#setvillageid").html(
                         '<option value="" selected="" disabled="">নির্বাচন করুন</option>'
                     );
                 } else {
                     $("#setvillageid").html(data);
+                     $("#dupgram").text("");
+
+                   
                 }
             });
         });

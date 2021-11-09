@@ -195,13 +195,27 @@
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
                                         <a data-placement="left" title="ডিলেট করুন" data="tooltip"
-                                            class="text-danger dropdown-item" href="#">
+                                            class="text-danger dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee{{ $employee->id}}">
                                             <i class="fas fa-trash-alt"></i>
                                         </a>
                                     </div>
                                 </div>
                             </td>
                         </tr>
+                          <div class="modal fade" id="delete_employee{{ $employee->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog modal-sm" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                    <h5 class="modal-title text-center" id="exampleModalLongTitle">Are you sure delete It!</h5>
+                                    <br>
+                                    <p class="text-center">
+                                        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                         @endforeach
                     </tbody>
                 </table>

@@ -23,11 +23,7 @@
                     <h5>মেয়রের তথ্য</h5>
                 </div>
                 <div class="card-body">
-                    @if(session()->has('success'))
-                        <div class="btn btn-primary">
-                            {{ session()->get('success') }}
-                        </div>
-                    @endif
+   
                     <form action="{{ route('admin.web.contact.mayor.store') }}" method="POST">
                         @csrf
                         <div class="form-row">
@@ -224,11 +220,31 @@
                             <td>{{ $mayor->designation}}</td>
                             <td> {{ $mayor->institute_name }}</td>
                             <td>
-                                <a data-placement="left" title="ডিলেট করুন" data="tooltip" class="text-danger" href="#">
-                                    <i class="fas fa-trash-alt"></i>
+                                <a data-placement="left" data-toggle="modal" data-target="#delete_mayor{{ $mayor->id}}" title="ডিলেট করুন" data="tooltip" class="text-danger" href="#">
+                                    <i class="fa fa-trash"></i>
                                 </a>
                             </td>
                         </tr>
+                        <!-- Button trigger modal -->
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="delete_mayor{{ $mayor->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-sm" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                <h5 class="modal-title text-center" id="exampleModalLongTitle">Are you sure delete It!</h5>
+                                <br>
+                                <form action="{{ route('admin.web.contact.professional_mayor.delete',$mayor->id)}}" method="post">
+                                    @csrf
+                                    <p class="text-center">
+                                        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </p>
+                                 </form>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                         @endforeach
                     </table>
                 </div>
