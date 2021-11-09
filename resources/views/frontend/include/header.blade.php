@@ -121,6 +121,9 @@
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('reg.bosot-bari') }}">বসতবাড়ী
                                         হোল্ডিং নিবন্ধন</a>
+                                        
+                                    <a class="dropdown-item" href="{{ route('reg.osthai-nagorik') }}">অস্থায়ী নাগরিক নিবন্ধন</a>
+
                                     <a class="dropdown-item" href="{{ route('reg.business-hold') }}">বানিজ্যিক
                                         হোল্ডিং নিবন্ধন</a>
                                     <a class="dropdown-item" href="{{ route('reg.business') }}">ব্যবসা

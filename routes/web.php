@@ -51,6 +51,8 @@ Route::post('business-store', [RegistrationController::class, 'business_store'])
 Route::get('business-registration', [FrontController::class, 'business_create'])->name('reg.business');
 Route::post('business-ind-store', [RegistrationController::class, 'business_ind_store'])->name('business-ind-store');
 
+Route::get('osthai-nagorik-registration', [FrontController::class, 'osthai_nagor_create'])->name('reg.osthai-nagorik');
+
 });
 
 // Ajax
@@ -58,6 +60,9 @@ Route::post('business-ind-store', [RegistrationController::class, 'business_ind_
 Route::get('/getvillageinfo/{id}', [AjaxController::class, 'getvillageinfo']);
 Route::get('/getduplicatebirthnid/{value}/{value2}', [AjaxController::class, 'getduplicatebirthnid']);
 Route::get('/getduplicatenumber/{value}/', [AjaxController::class, 'getduplicatenumber']);
+
+Route::get('/getdistrictinfo/{id}', [AjaxController::class, 'getdistrictinfo']);
+Route::get('/getupazilainfo/{id}', [AjaxController::class, 'getupazilainfo']);
 
 //FRONTEND ROUTES END
 
