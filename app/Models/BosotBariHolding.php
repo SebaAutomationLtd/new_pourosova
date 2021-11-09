@@ -51,4 +51,6 @@ class BosotBariHolding extends Model
             'status',
     ];
 
+   
+
 }
