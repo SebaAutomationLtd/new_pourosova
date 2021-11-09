@@ -207,10 +207,13 @@ Route::name('admin.web.contact.')->prefix('admin/web/contact')->namespace('App\H
     Route::post('/admin_other_employee', 'ContactController@admin_other_employee')->name('admin.other_employee.store');
     Route::get('/admin_other_employee_edit/{id}', 'ContactController@admin_other_employee_edit')->name('admin.other_employee.edit');
     Route::post('/admin_other_employee_update/{id}', 'ContactController@admin_other_employee_update')->name('admin.other_employee.update');
-    Route::post('/admin_other_employee_delete', 'ContactController@admin_other_employee_delete')->name('admin.admin_other_employee_delete.delete');
+    Route::post('/admin_other_employee_delete/{id}', 'ContactController@admin_other_employee_delete')->name('admin.other_employee.delete');
     Route::get('/engineer', 'ContactController@engineer')->name('engineer');
     Route::post('/engineer_store', 'ContactController@engineer_store')->name('engineer.store');
-    Route::post('/others_employee', 'ContactController@others_employee')->name('other_employee.store');
+    Route::post('/others_employee_store', 'ContactController@others_employee_store')->name('others_employee.store');
+    Route::get('/others_employee_edit/{id}', 'ContactController@others_employee_edit')->name('others_employee.edit');
+      Route::post('/others_employee_update/{id}', 'ContactController@others_employee_update')->name('others_employee.update');
+      Route::post('/others_employee_delete/{id}', 'ContactController@others_employee_delete')->name('others_employee.delete');
 
     Route::get('/info', 'ContactController@info')->name('info');
     Route::post('/info_store', 'ContactController@info_store')->name('info.store');

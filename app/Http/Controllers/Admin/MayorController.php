@@ -93,7 +93,4 @@ class MayorController extends Controller
         $update = DB::table('mayors')->where('id',$id)->update($data)->with('message','Mayor Updated');
         return redirect(route('admin.web.mayor'));
     }
-
-
-
 }
