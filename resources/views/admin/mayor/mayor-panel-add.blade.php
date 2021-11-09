@@ -28,7 +28,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="">নাম</label>
-                                <input name="name" type="text" value="{{ old('name') }}" class="form-control" placeholder="">
+                                <input name="name" type="text" required value="{{ old('name') }}" class="form-control" placeholder="">
                                 @error('name')
                                     <span class=text-danger>{{$message}}</span>
                                 @enderror
@@ -36,7 +36,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="">স্থান</label>
-                                <input name="place" type="text" value="{{ old('place') }}" class="form-control" placeholder="">
+                                <input name="place" type="text" required value="{{ old('place') }}" class="form-control" placeholder="">
                                 @error('place')
                                     <span class=text-danger>{{$message}}</span>
                                 @enderror
@@ -47,7 +47,7 @@
 
                             <div class="form-group col-md-3">
                                 <label for="">মোবাইল নং</label>
-                                <input name="mobile" type="tel" value="{{ old('mobile') }}" class="form-control" placeholder="">
+                                <input name="mobile" type="tel" required value="{{ old('mobile') }}" class="form-control" placeholder="">
                                 @error('mobile')
                                     <span class=text-danger>{{$message}}</span>
                                 @enderror
@@ -55,7 +55,7 @@
 
                             <div class="form-group col-md-3">
                                 <label for="">মেয়রের ক্রম</label>
-                                <select name="serial" id="" class="custom-select">
+                                <select name="serial" id="" required class="custom-select">
                                     <option disabled selected>-- কত তম মেয়র সিলেক্ট করুন --</option>
                                     <option value="প্রথম">প্রথম</option>
                                     <option value="দ্বিতীয়">দ্বিতীয়</option>
@@ -79,7 +79,7 @@
                             <div class="form-group col-md-6">
                                 <label for="">300px * 300px এবং JPG ছবি </label>
                                 <div class="custom-file">
-                                    <input name="image" type="file" class="custom-file-input" id="customFileLang" lang="es">
+                                    <input name="image" required type="file" class="custom-file-input" id="customFileLang" lang="es">
                                     <label class="custom-file-label" for="customFileLang">ছবি (JPG Format, 300px *
                                         300px)</label>
                                     @error('image')

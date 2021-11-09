@@ -50,7 +50,7 @@ class ServiceController extends Controller
             }
 
     	$delete = DB::table('services')->where('id',$id)->delete();
-    	return redirect(route('admin.web.right.service'))->with('message','Service Deleted');
+    	return redirect(route('admin.web.right.service'))->with('error','Service Deleted');
     }
 
     public function edit($id){

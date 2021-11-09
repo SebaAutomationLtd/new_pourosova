@@ -71,6 +71,7 @@ class RegistrationController extends Controller
         }
         
         $bosotbari->dob = $request->dob;
+         $bosotbari->mobile = $request->mobilenumber;
         $bosotbari->ward_id = $request->ward_id;
         $bosotbari->village_id  = $request->village_id;
         $bosotbari->holding_no  = $request->holding_no;
@@ -140,6 +141,7 @@ class RegistrationController extends Controller
         }
         
         $businessholding->dob = $request->dob;
+          $bosotbari->mobile = $request->mobilenumber;
         $businessholding->ward_id = $request->ward_id;
         $businessholding->holding_no  = $request->holding_no;
         $businessholding->total_room   = $request->total_room;
@@ -233,6 +235,7 @@ class RegistrationController extends Controller
         }
         
         $business->ward_id = $request->ward_id;
+          $bosotbari->mobile = $request->mobilenumber;
         $business->holding_no  = $request->holding_no;
         $business->shopno  = $request->shopno;
         $business->business_name   = $request->business_name;

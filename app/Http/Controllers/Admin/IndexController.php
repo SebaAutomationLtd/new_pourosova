@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
-{
+{   
     public function slider(){
         $sliders = DB::table('sliders')->get();
         return view('admin.index.slider',compact('sliders'));
@@ -72,7 +72,7 @@ class IndexController extends Controller
             }
 
         $delete = Slider::find($id)->delete();
-        return redirect(route('admin.index.slider'))->with('message','Slider Deleted');
+        return redirect(route('admin.index.slider'))->with('error','Slider Deleted');
     }
 
 

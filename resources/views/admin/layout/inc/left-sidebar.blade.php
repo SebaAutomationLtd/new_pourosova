@@ -231,10 +231,38 @@
                         </li>
                 </li>
 
+                <li class="menu-dropdown"> <a href="{{ route('admin.web.religion.religion') }}"> <i
+                            class="fa fa-fw ti-cup"></i>
+                        ধর্ম
+                    </a> 
+                </li>
+
+                <li class="menu-dropdown"> <a href="{{ route('admin.web.religion.gender') }}"> <i
+                            class="fa fa-fw ti-cup"></i>
+                        জেন্ডার
+                    </a> 
+                </li>
+
+
+                <li class="menu-dropdown"> <a href="{{ route('admin.web.village.village') }}"> <i
+                            class="fa fa-fw ti-cup"></i>
+                        গ্রাম
+                    </a> 
+                </li>
+
+                <li class="menu-dropdown"> <a href="{{ route('admin.web.village.post_office') }}"> <i
+                            class="fa fa-fw ti-cup"></i>
+                        পোস্ট অফিস
+                    </a> 
+                </li>
+
+
                 <li class="menu-dropdown"> <a href="{{ route('admin.web.notice.notice') }}"> <i
                             class="fa fa-fw ti-cup"></i>
                         নোটিশ
-                    </a> </li>
+                    </a> 
+                </li>
+
                 <li class="menu-dropdown"> <a href="{{ route('admin.web.notice.download') }}"> <i
                             class="fa fa-fw ti-cup"></i>
                         ডাউনলোড
@@ -243,6 +271,36 @@
 
             </ul>
             </li>
+            <li class="menu-dropdown">
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-fw ti-receipt"></i>এসেসমেন্ট নিবন্ধন
+                
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="sub-menu p-l-40">
+                                <li> 
+                                    <a href="{{ route('action.search') }}"> <i class="fa fa-fw ti-receipt"></i> 
+                            একটিভ / ডিএকটিভ
+                        
+                                    </a> 
+                                </li>
+                                <li> 
+                                    <a href="{{ route('admin.header.marquee') }}"> <i class="fa fa-fw ti-receipt"></i>
+                                      বসত বাড়ী হোল্ডিং 
+                                    </a> 
+                                </li>
+                                <li> 
+                                    <a href="{{ route('admin.header.marquee') }}"> <i class="fa fa-fw ti-receipt"></i> 
+                            বানিজ্যিক হোল্ডিং
+                                    </a> 
+                                </li>
+                                <li> 
+                                    <a href="{{ route('admin.header.marquee') }}"> <i class="fa fa-fw ti-receipt"></i>
+                                     কমার্শিয়াল হোল্ডিং
+                                    </a> 
+                                </li>
+                            </ul>
+                        </li>
 
             </ul>
             <!-- / .navigation -->

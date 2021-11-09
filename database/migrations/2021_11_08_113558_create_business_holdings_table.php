@@ -21,6 +21,7 @@ class CreateBusinessHoldingsTable extends Migration
             $table->string('spouse')->nullable();
             $table->string('gender')->nullable();
             $table->string('marital_status')->nullable();
+             $table->string('mobile')->nullable();
             $table->date('dob')->nullable();
             $table->string('nid')->nullable();
             $table->string('birth_certificate')->nullable();

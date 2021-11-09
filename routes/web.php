@@ -4,6 +4,7 @@ use App\Http\Controllers;
 use App\Http\Controllers\Frontend\FrontController;
 use App\Http\Controllers\Frontend\RegistrationController;
 use App\Http\Controllers\Frontend\AjaxController;
+use App\Http\Controllers\Admin\ActiveController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -211,10 +212,13 @@ Route::name('admin.web.contact.')->prefix('admin/web/contact')->namespace('App\H
     Route::post('/admin_other_employee', 'ContactController@admin_other_employee')->name('admin.other_employee.store');
     Route::get('/admin_other_employee_edit/{id}', 'ContactController@admin_other_employee_edit')->name('admin.other_employee.edit');
     Route::post('/admin_other_employee_update/{id}', 'ContactController@admin_other_employee_update')->name('admin.other_employee.update');
-    Route::post('/admin_other_employee_delete', 'ContactController@admin_other_employee_delete')->name('admin.admin_other_employee_delete.delete');
+    Route::post('/admin_other_employee_delete/{id}', 'ContactController@admin_other_employee_delete')->name('admin.other_employee.delete');
     Route::get('/engineer', 'ContactController@engineer')->name('engineer');
     Route::post('/engineer_store', 'ContactController@engineer_store')->name('engineer.store');
-    Route::post('/others_employee', 'ContactController@others_employee')->name('other_employee.store');
+    Route::post('/others_employee_store', 'ContactController@others_employee_store')->name('others_employee.store');
+    Route::get('/others_employee_edit/{id}', 'ContactController@others_employee_edit')->name('others_employee.edit');
+      Route::post('/others_employee_update/{id}', 'ContactController@others_employee_update')->name('others_employee.update');
+      Route::post('/others_employee_delete/{id}', 'ContactController@others_employee_delete')->name('others_employee.delete');
 
     Route::get('/info', 'ContactController@info')->name('info');
     Route::post('/info_store', 'ContactController@info_store')->name('info.store');
@@ -235,7 +239,55 @@ Route::name('admin.web.notice.')->prefix('admin/web/notice')->namespace('App\Htt
     Route::get('/download/delete/{id}', 'NoticeController@download_delete')->name('download.delete');
 });
 
+
 });
+
+Route::name('admin.web.village.')->prefix('admin/web/village')->namespace('App\Http\Controllers\Admin')->group(function () {
+
+    Route::get('/village', 'VillageController@village')->name('village');
+    Route::post('/village/add', 'VillageController@village_store')->name('village.store');
+    Route::get('/village/delete/{name}', 'VillageController@village_delete')->name('village.delete');
+    Route::get('/village/edit/{name}', 'VillageController@village_edit')->name('village.edit');
+    Route::post('/village/update/{id}', 'VillageController@village_update')->name('village.update');
+
+
+    Route::get('/post_office', 'VillageController@post_office')->name('post_office');
+    Route::post('/post_office/add', 'VillageController@post_office_store')->name('post_office.store');
+    Route::get('/post_office/delete/{id}', 'VillageController@post_office_delete')->name('post_office.delete');
+    Route::get('/post_office/edit/{id}', 'VillageController@post_office_edit')->name('post_office.edit');
+    Route::post('/post_office/update/{id}', 'VillageController@post_office_update')->name('post_office.update');
+
+});
+
+Route::name('admin.web.religion.')->prefix('admin/web/village')->namespace('App\Http\Controllers\Admin')->group(function () {
+
+    Route::get('/religion', 'ReligionController@religion')->name('religion');
+    Route::post('/religion/add', 'ReligionController@religion_store')->name('religion.store');
+    Route::get('/religion/delete/{name}', 'ReligionController@religion_delete')->name('religion.delete');
+    Route::get('/religion/edit/{name}', 'ReligionController@religion_edit')->name('religion.edit');
+    Route::post('/religion/update/{id}', 'ReligionController@religion_update')->name('religion.update');
+
+
+    Route::get('/gender', 'ReligionController@gender')->name('gender');
+    Route::post('/gender/add', 'ReligionController@gender_store')->name('gender.store');
+    Route::get('/gender/delete/{id}', 'ReligionController@gender_delete')->name('gender.delete');
+    Route::get('/gender/edit/{id}', 'ReligionController@gender_edit')->name('gender.edit');
+    Route::post('/gender/update/{id}', 'ReligionController@gender_update')->name('gender.update');
+
+});
+
+
+// assesment nibondhon
+
+Route::get('take_action_users', [ActiveController::class, 'search'])->name('action.search');
+Route::post('take_action_users', [ActiveController::class, 'searchDb'])->name('action.search');
+Route::get('take_action_users_deactive/{id}/{type}', [ActiveController::class, 'deactive'])->name('action.deactivePanel');
+Route::get('take_action_show/{id}/{type}', [ActiveController::class, 'show'])->name('action.show');
+Route::get('take_action_active_show/{id}/{type}', [ActiveController::class, 'activeshow'])->name('action.activeshow');
+Route::post('take_action_users_active', [ActiveController::class, 'active'])->name('action.active');
+Route::get('take_action_edit/{id}/{type}', [ActiveController::class, 'edit'])->name('action.edit');
+Route::post('/update-bosot-bari/{id}', [ActiveController::class, 'UpdateBosotBari'])->name('update.bosot-bari');
+
 
 //Admin Daynamic End
 

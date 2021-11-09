@@ -39,4 +39,5 @@ protected $fillable = [
             'deactivated_at',
             'status',
     ];
+   
 }

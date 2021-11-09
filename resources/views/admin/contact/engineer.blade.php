@@ -128,7 +128,7 @@
             <h5>অন্যান্য কর্মকর্তা</h5>
         </div>
         <div class="card-body">
-            <form action="{{ route('admin.web.contact.other_employee.store') }}" method="POST" >
+            <form action="{{ route('admin.web.contact.others_employee.store') }}" method="POST" >
                 @csrf
                 <div class="row">
                     <div class="form-group col-md-4">
@@ -167,7 +167,7 @@
                     style="width:100%">
                     <thead>
                         <tr>
-                            <th> ক্রমিক </th>
+                            <th>ক্রমিক </th>
                             <th>নাম</th>
                             <th>পদবী</th>
                             <th>মোবাইল নং</th>
@@ -186,32 +186,35 @@
                                     <button class="btn  btn-outline-secondary btn-sm dropdown-toggle" type="button"
                                         id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">
-                                        <i class="fas fa-edit"></i>
+                                        <i class="fa fa-edit"></i>
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-
-                                        <a data-placement="left" title="এডিট করুন" data="tooltip"
+                                        <a href="{{ route('admin.web.contact.others_employee.edit',$employee->id) }}" data-placement="left" title="এডিট করুন" data="tooltip"
                                             class="text-primary dropdown-item" href="#">
-                                            <i class="fas fa-pencil-alt"></i>
+                                            <i class="fa fa-pencil"></i>
                                         </a>
                                         <a data-placement="left" title="ডিলেট করুন" data="tooltip"
                                             class="text-danger dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee{{ $employee->id}}">
-                                            <i class="fas fa-trash-alt"></i>
+                                            <i class="fa fa-trash"></i>
                                         </a>
                                     </div>
                                 </div>
                             </td>
                         </tr>
-                          <div class="modal fade" id="delete_employee{{ $employee->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="delete_employee{{ $employee->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                               <div class="modal-dialog modal-sm" role="document">
                                 <div class="modal-content">
                                     <div class="modal-body">
                                     <h5 class="modal-title text-center" id="exampleModalLongTitle">Are you sure delete It!</h5>
                                     <br>
-                                    <p class="text-center">
-                                        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
-                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                    </p>
+                                    <form method="post" action="{{ route('admin.web.contact.others_employee.delete',$employee->id) }}">
+                                        @csrf
+                                        <p class="text-center">
+                                            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
+                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        </p>
+                                    </form>
+                               
                                   </div>
                                 </div>
                               </div>

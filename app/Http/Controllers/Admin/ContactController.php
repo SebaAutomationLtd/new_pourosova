@@ -150,19 +150,21 @@ class ContactController extends Controller
            return redirect()->back();
     }
     public function admin_other_employee_delete($id){
-        $old = AdminOther::where('id',$id)->first();
-            if (file_exists(public_path('admin/img/'.$old->photo))) {
-                unlink(public_path('admin/img/'.$old->photo));
-            }
-
-        $delete = AdminOther::where('id',$id)->delete();
+        AdminOther::where('id',$id)->delete();
         return redirect()->back()->with(['error'=>'অন্যান্য কর্মকর্তা ডিলেট করা হয়েছে']);
     }
-    public function admin_other_employee_edit(){
-
+    public function admin_other_employee_edit($id){
+        $other_edit = AdminOther::find($id);
+        return view('admin.contact.admin_other_edit',compact('other_edit'));
     }
-    public function admin_other_employee_update(){
-
+    public function admin_other_employee_update(Request $request,$id){
+         $other = AdminOther::find($id);
+            $other->update([
+                'name'          => $request->name,
+                'designation'   => $request->designation,
+                'contact'       => $request->contact
+            ]);
+            return redirect()->back()->with(['message'=>'অন্যান্য কর্মকর্তা আপডেট করা হয়েছে']);
     }
     public function engineer(){
         $engineer = Engineer::first();
@@ -193,10 +195,11 @@ class ContactController extends Controller
                 'photo'         => $imageName,
                 'created_by'    => 1
             ]);  
-            return redirect()->back();
+
+            return redirect()->back()->with('message','প্রকৌশল বিভাগ অ্যাড করা হয়েছে');
         }
     }
-    public function others_employee(Request $request){
+    public function others_employee_store(Request $request){
         $request->validate([
             'name'        => 'required',
             'designation' => 'required',
@@ -208,8 +211,24 @@ class ContactController extends Controller
             'contact'       => $request->contact,
             'created_by'    => 1
         ]);
-        return redirect()->back();
-
+        return redirect()->back()->with('message','প্রকৌশল অন্যান্য কর্মকর্তা অ্যাড করা হয়েছে');
+    }
+    public function others_employee_edit($id){
+        $other_employee_edit = OtherEmployee::find($id);
+        return view('admin.contact.engineer_other_edit',compact('other_employee_edit'));
+    }  
+    public function others_employee_update(Request $request,$id){
+        $other_employee_edit = OtherEmployee::find($id);
+            $other_employee_edit->update([
+                'name'          => $request->name,
+                'designation'   => $request->designation,
+                'contact'       => $request->contact,
+            ]);
+            return redirect()->back()->with(['message'=>'প্রকৌশল বিভাগ অন্যান্য কর্মকর্তা আপডেট করা হয়েছে']);
+    }
+    public function others_employee_delete($id){
+        OtherEmployee::where('id',$id)->delete();
+        return redirect()->back()->with(['error'=>'প্রকৌশল অন্যান্য কর্মকর্তা ডিলেট করা হয়েছে']);
     }
     public function info(){
         $infos = Info::all();
