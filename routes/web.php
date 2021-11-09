@@ -4,6 +4,7 @@ use App\Http\Controllers;
 use App\Http\Controllers\Frontend\FrontController;
 use App\Http\Controllers\Frontend\RegistrationController;
 use App\Http\Controllers\Frontend\AjaxController;
+use App\Http\Controllers\Admin\ActiveController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -235,5 +236,15 @@ Route::name('admin.web.notice.')->prefix('admin/web/notice')->namespace('App\Htt
     Route::get('/download/delete/{id}', 'NoticeController@download_delete')->name('download.delete');
 });
 
+// assesment nibondhon
+
+Route::get('take_action_users', [ActiveController::class, 'search'])->name('action.search');
+Route::post('take_action_users', [ActiveController::class, 'searchDb'])->name('action.search');
+Route::get('take_action_users_deactive/{id}/{type}', [ActiveController::class, 'deactive'])->name('action.deactivePanel');
+Route::get('take_action_show/{id}/{type}', [ActiveController::class, 'show'])->name('action.show');
+Route::get('take_action_active_show/{id}/{type}', [ActiveController::class, 'activeshow'])->name('action.activeshow');
+Route::post('take_action_users_active', [ActiveController::class, 'active'])->name('action.active');
+Route::get('take_action_edit/{id}/{type}', [ActiveController::class, 'edit'])->name('action.edit');
+Route::post('/update-bosot-bari/{id}', [ActiveController::class, 'UpdateBosotBari'])->name('update.bosot-bari');
 //Admin Daynamic End
 

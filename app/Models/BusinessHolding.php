@@ -49,4 +49,6 @@ class BusinessHolding extends Model
             'status',
     ];
 
+    
+
 }

@@ -21,6 +21,7 @@ class CreateBusinessTable extends Migration
             $table->string('spouse')->nullable();
             $table->string('nid')->nullable();
             $table->string('birth_certificate')->nullable();
+             $table->string('mobile')->nullable();
             $table->string('photo')->nullable();
             $table->string('road_moholla')->nullable();
             $table->string('holding_no')->nullable();

@@ -243,6 +243,36 @@
 
             </ul>
             </li>
+            <li class="menu-dropdown">
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-fw ti-receipt"></i>এসেসমেন্ট নিবন্ধন
+                
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="sub-menu p-l-40">
+                                <li> 
+                                    <a href="{{ route('action.search') }}"> <i class="fa fa-fw ti-receipt"></i> 
+                            একটিভ / ডিএকটিভ
+                        
+                                    </a> 
+                                </li>
+                                <li> 
+                                    <a href="{{ route('admin.header.marquee') }}"> <i class="fa fa-fw ti-receipt"></i>
+                                      বসত বাড়ী হোল্ডিং 
+                                    </a> 
+                                </li>
+                                <li> 
+                                    <a href="{{ route('admin.header.marquee') }}"> <i class="fa fa-fw ti-receipt"></i> 
+                            বানিজ্যিক হোল্ডিং
+                                    </a> 
+                                </li>
+                                <li> 
+                                    <a href="{{ route('admin.header.marquee') }}"> <i class="fa fa-fw ti-receipt"></i>
+                                     কমার্শিয়াল হোল্ডিং
+                                    </a> 
+                                </li>
+                            </ul>
+                        </li>
 
             </ul>
             <!-- / .navigation -->
