@@ -21,16 +21,8 @@ use Illuminate\Support\Facades\View;
 class FrontController extends Controller
 {
     public function __construct() {
-        $website_settings = DB::table('website_settings')->get();
-        foreach ($website_settings as $setting) {
-            $data[$setting->name] = $setting->value;
-        }
-        $object = (object) $data ?? [];
         $marquees = Marquee::all()->sortByDesc('created_at');
-        View::share([
-            'marquees' => $marquees,
-            'website_data' => $object
-        ]);
+        View::share('marquees', $marquees);
     }
 
     public function index(){

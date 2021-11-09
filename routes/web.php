@@ -70,9 +70,12 @@ Route::get('/getupazilainfo/{id}', [AjaxController::class, 'getupazilainfo']);
 
 //Admin Daynamic Start
 
-Route::get('/admin', function () {
-    return view('Admin.dashboard');
-});
+Route::get('/admin/login', [Controllers\Admin\AdminController::class, 'admin_login_form'])->name('admin.login');
+Route::post('/admin/login', [Controllers\Admin\AdminController::class, 'admin_login'])->name('admin.login');
+
+Route::middleware('auth')->group(function () {
+
+Route::get('/admin', [Controllers\Admin\AdminController::class, 'admin_dashboard'])->name('admin.dashboard');
 
 Route::name('admin.header.')->prefix('admin/header')->namespace('App\Http\Controllers\Admin')->group(function () {
     Route::get('/logo', 'HeaderController@logo')->name('logo');
@@ -203,7 +206,7 @@ Route::name('admin.web.info.')->prefix('admin/web/info')->namespace('App\Http\Co
 Route::name('admin.web.contact.')->prefix('admin/web/contact')->namespace('App\Http\Controllers\Admin')->group(function () {
     Route::get('/mayor', 'ContactController@mayor')->name('mayor');
     Route::post('mayor/store','ContactController@mayor_store')->name('mayor.store');
-    
+
     Route::post('professional_mayor/store','ContactController@professional_mayor_store')->name('mayor.professional_mayor');
     Route::post('professional_mayor/delete/{id}','ContactController@professional_mayor_delete')->name('professional_mayor.delete');
     Route::get('/uno', 'ContactController@uno')->name('uno');
@@ -241,6 +244,8 @@ Route::name('admin.web.notice.')->prefix('admin/web/notice')->namespace('App\Htt
     Route::get('/download/delete/{id}', 'NoticeController@download_delete')->name('download.delete');
 });
 
+
+});
 
 Route::name('admin.web.village.')->prefix('admin/web/village')->namespace('App\Http\Controllers\Admin')->group(function () {
 
@@ -287,6 +292,7 @@ Route::get('take_action_active_show/{id}/{type}', [ActiveController::class, 'act
 Route::post('take_action_users_active', [ActiveController::class, 'active'])->name('action.active');
 Route::get('take_action_edit/{id}/{type}', [ActiveController::class, 'edit'])->name('action.edit');
 Route::post('/update-bosot-bari/{id}', [ActiveController::class, 'UpdateBosotBari'])->name('update.bosot-bari');
+
 
 //Admin Daynamic End
 

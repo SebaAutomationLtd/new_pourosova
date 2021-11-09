@@ -29,7 +29,7 @@
                 <div>
                     <div class="row advanced_select2">
                         <div class="col-sm-8 ">
-                            <img src="{{ asset('img/'.$website_data->logo_background ?? '') }}" style="height: 90px; width: 100%;">
+                            <img src="{{ asset('img/'. (isset($website_data->logo_background) ? $website_data->logo_background : '')) }}" style="height: 90px; width: 100%;">
                             <label class="control-label txt_media">
                                 ছবি সিলেক্ট করুন
                             </label>
@@ -57,7 +57,7 @@
                 <div>
                     <div class="row advanced_select2">
                         <div class="col-sm-8 ">
-                             <img src="{{ asset('img/'.$website_data->logo_bangla ?? '') }}" style="height: 90px; width: 100%;">
+                             <img src="{{ asset('img/'.(isset($website_data->logo_bangla) ? $website_data->logo_bangla : '')) }}" style="height: 90px; width: 100%;">
                             <label class="control-label txt_media">
                                 লোগো এবং বাংলা টাইটেল
                             </label>
@@ -82,10 +82,10 @@
                     </div>
                 </div>
                 <div>
-                    
+
                     <div class="row advanced_select2">
                         <div class="col-sm-8 ">
-                             <img src="{{ asset('img/'.$website_data->logo_english ?? '') }}" style="height: 90px; width: 100%;">
+                             <img src="{{ asset('img/'.(isset($website_data->logo_english) ? $website_data->logo_english : '')) }}" style="height: 90px; width: 100%;">
                             <label class="control-label txt_media">
                                 লোগো এবং ইংরেজি টাইটেল
                             </label>
