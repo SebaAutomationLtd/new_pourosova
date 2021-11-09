@@ -32,7 +32,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="">শিরোনাম</label>
-                                <input name="title" type="text" class="form-control @error('title') is-invalid @enderror" placeholder="শিরোনাম" value="{{ old('title') }}">
+                                <input name="title" type="text" required class="form-control @error('title') is-invalid @enderror" placeholder="শিরোনাম" value="{{ old('title') }}">
                                 @error('title')
                                     <small class="text-danger">
                                         <strong>{{ $message }}</strong>
@@ -41,7 +41,7 @@
                             </div>
                             <div class="form-group col-md-3 col-sm-6">
                                 <label for="">নোটিশের ধরন</label>
-                                <select  name="notice_type" class="custom-select @error('notice_type') is-invalid @enderror">
+                                <select  name="notice_type" required class="custom-select @error('notice_type') is-invalid @enderror">
                                     <option value="" selected disabled>-- সিলেক্ট করুন --</option>
                                     <option value="1">ফরম</option>
                                     <option value="2">সিটিজেন চার্টার</option>
@@ -55,7 +55,7 @@
                             </div>
                             <div class="form-group col-md-3 col-sm-6">
                                 <label for="">প্রকাশনা</label>
-                                <select name="publication" class="custom-select @error('publication') is-invalid @enderror">
+                                <select name="publication" required class="custom-select @error('publication') is-invalid @enderror">
                                     <option value="" selected disabled>-- সিলেক্ট করুন --</option>
                                     <option value="1">প্রকাশ করুন</option>
                                     <option value="2">পরবর্তিতে প্রকাশ করুন</option>
@@ -71,7 +71,7 @@
                         <div class="form-group">
                             <label for="">ফাইল আপলোড করুন </label>
                             <div class="custom-file">
-                                <input name="file" type="file" class="custom-file-input @error('file') is-invalid @enderror" id="customFileLang" lang="es">
+                                <input name="file" type="file" required class="custom-file-input @error('file') is-invalid @enderror" id="customFileLang" lang="es">
                                 <label class="custom-file-label" for="customFileLang">ফাইল আপলোড </label>
                                 @error('file')
                                     <small class="text-danger">

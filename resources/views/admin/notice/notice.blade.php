@@ -28,7 +28,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="">শিরোনাম</label>
-                                <input name="title" type="text" class="form-control" placeholder="">
+                                <input name="title" type="text" required class="form-control" placeholder="">
                                 <input type="hidden" value="{{ old('title') }}" value="notice" name="type">
                                 @error('title')
                                     <span class=text-danger>{{$message}}</span>
@@ -37,7 +37,7 @@
 
                             <div class="form-group col-md-3 col-sm-6">
                                 <label for="">নোটিশের ধরন</label>
-                                <select name="type" id="type" class="custom-select">
+                                <select name="type" required id="type" class="custom-select">
                                     <option value="">-- সিলেক্ট করুন --</option>
                                     <option>নোটিশ</option>
                                     <option>নিয়োগ বিজ্ঞপ্তি</option>
@@ -49,7 +49,7 @@
 
                             <div class="form-group col-md-3 col-sm-6">
                                 <label for="">প্রকাশনা</label>
-                                <select name="publish" id="type" class="custom-select">
+                                <select name="publish" required id="type" class="custom-select">
                                     <option disabled selected>-- সিলেক্ট করুন --</option>
                                     <option value="1">প্রকাশ করুন</option>
                                     <option value="2">পরবর্তিতে প্রকাশ করুন</option>
@@ -64,7 +64,7 @@
                         <div class="form-group">
                             <label for="">ফাইল আপলোড করুন </label>
                             <div class="custom-file">
-                                <input name="file" type="file" class="custom-file-input" id="customFileLang" lang="es">
+                                <input name="file" type="file" required class="custom-file-input" id="customFileLang" lang="es">
                                 <label class="custom-file-label" for="customFileLang">ফাইল আপলোড </label>
                             </div>
                             @error('file')

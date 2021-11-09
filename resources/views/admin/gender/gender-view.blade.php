@@ -14,47 +14,58 @@
     </section>
 @stop
 
+
 @section('content')
     <div class="row">
-
-
         <div class="col-md-12">
-            <div class="card main-chart mt-4">
+            <div class="card main-chart">
                 <div class="card-header panel-tabs">
-                    <h5>কাউন্সিলর বৃন্দ</h5>
+                    <h5>জেন্ডার</h5>
+                </div>
+                <div class="card-body">
+                    <form action="{{route('admin.web.religion.gender.store')}}" method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <label for="">নাম</label>
+                            <input type="text" name="name" required value="{{ old('name') }}" class="form-control">
+                            @error('name')
+                                <span class=text-danger>{{$message}}</span>
+                            @enderror
+                        </div>
+
+                        <button class="btn btn-primary">সাবমিট</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 mt-4">
+            <div class="card main-chart mt-4 mt-md-0">
+                <div class="card-header panel-tabs">
+                    <h5>জেন্ডার</h5>
                 </div>
                 <div class="card-body">
                     <div class="">
-
                         <div class="table-data">
-                            <table class="table table-striped table-bordered responsive nowrap table-hover" id="sample_1"
+                            <table class="table table-striped table-bordered responsive nowrap table-hover"
                                 style="width:100%">
-                                <thead> 
+                                <thead>
                                     <tr>
                                         <th> ক্রমিক </th>
-                                        <th data-priority="2">নাম</th>
-                                        <th>স্থান</th>
-                                        <th data-priority="3">ওয়ার্ড </th>
-                                        <th>মোবাইল নং</th>
-                                        <th data-priority="1">ছবি</th>
-                                        <th>কাউন্সিলরের বাণী </th>
+                                        <th>নাম</th>
                                         <th>একশন</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($male_councilors as $key=>$councilor)
+                                    @php
+                                        $no = 1;
+                                    @endphp
+
+                                    @foreach($genders as $gender)
                                     <tr>
-                                        <td>{{ $key++ }}</td>
-                                    
-                                        <td>{{ $councilor->name }}</td>
-                                        <td>{{ $councilor->place }}</td>
-                                        <td>{{ $councilor->ward_no }}</td>
-                                        <td>{{ $councilor->contact }}</td>
-                                        <td>
-                                            <img class="rounded" src="{{ asset('councilor/img') }}/{{$councilor->photo }}"
-                                               style=" height: 100px; width: 100px;" alt="">
-                                        </td>
-                                        <td>{{ $councilor->description }}</td>
+                                        <td>{{$no++}}</td>
+                                        <td>{{$gender->name ?? ''}}</td>
+                                        
                                         <td>
                                             <div class="dropdown">
                                                 <button class="btn  btn-outline-secondary btn-sm dropdown-toggle"
@@ -63,22 +74,20 @@
                                                     <i class="fa fa-edit"></i>
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                    
-                                                    <a href="{{ route('admin.web.councilor.edit',$councilor->id) }}" data-placement="left" title="এডিট করুন" data="tooltip"
-                                                        class="text-primary dropdown-item" href="#">
+                                                    <a data-placement="left" title="এডিট করুন" data="tooltip"
+                                                        class="text-primary dropdown-item" href="{{route('admin.web.religion.gender.edit',$gender->id ?? '')}}">
                                                         <i class="fa fa-pencil"></i>
                                                     </a>
                                                     <a data-placement="left" title="ডিলেট করুন" data="tooltip"
-                                                        class="text-danger dropdown-item" href="{{ route('admin.web.councilor.delete',$councilor->id) }}">
+                                                        class="text-danger dropdown-item" href="{{route('admin.web.religion.gender.delete',$gender->id ?? '')}}">
                                                         <i class="fa fa-trash"></i>
                                                     </a>
-
-                                                    </div>
                                                 </div>
-                                            </td>
-                                        </tr>
-                                        @endforeach
+                                            </div>
 
+                                        </td>
+                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -88,6 +97,7 @@
                 </div>
             </div>
         </div>
+
 
     </div>
 

@@ -231,6 +231,18 @@
                         </li>
                 </li>
 
+                <li class="menu-dropdown"> <a href="{{ route('admin.web.religion.religion') }}"> <i
+                            class="fa fa-fw ti-cup"></i>
+                        ধর্ম
+                    </a> 
+                </li>
+
+                <li class="menu-dropdown"> <a href="{{ route('admin.web.religion.gender') }}"> <i
+                            class="fa fa-fw ti-cup"></i>
+                        জেন্ডার
+                    </a> 
+                </li>
+
 
                 <li class="menu-dropdown"> <a href="{{ route('admin.web.village.village') }}"> <i
                             class="fa fa-fw ti-cup"></i>
@@ -238,7 +250,7 @@
                     </a> 
                 </li>
 
-                <li class="menu-dropdown"> <a href="{{ route('admin.web.notice.notice') }}"> <i
+                <li class="menu-dropdown"> <a href="{{ route('admin.web.village.post_office') }}"> <i
                             class="fa fa-fw ti-cup"></i>
                         পোস্ট অফিস
                     </a> 

@@ -234,11 +234,36 @@ Route::name('admin.web.notice.')->prefix('admin/web/notice')->namespace('App\Htt
 
 
 Route::name('admin.web.village.')->prefix('admin/web/village')->namespace('App\Http\Controllers\Admin')->group(function () {
+
     Route::get('/village', 'VillageController@village')->name('village');
     Route::post('/village/add', 'VillageController@village_store')->name('village.store');
     Route::get('/village/delete/{name}', 'VillageController@village_delete')->name('village.delete');
     Route::get('/village/edit/{name}', 'VillageController@village_edit')->name('village.edit');
     Route::post('/village/update/{id}', 'VillageController@village_update')->name('village.update');
+
+
+    Route::get('/post_office', 'VillageController@post_office')->name('post_office');
+    Route::post('/post_office/add', 'VillageController@post_office_store')->name('post_office.store');
+    Route::get('/post_office/delete/{id}', 'VillageController@post_office_delete')->name('post_office.delete');
+    Route::get('/post_office/edit/{id}', 'VillageController@post_office_edit')->name('post_office.edit');
+    Route::post('/post_office/update/{id}', 'VillageController@post_office_update')->name('post_office.update');
+
+});
+
+Route::name('admin.web.religion.')->prefix('admin/web/village')->namespace('App\Http\Controllers\Admin')->group(function () {
+
+    Route::get('/religion', 'ReligionController@religion')->name('religion');
+    Route::post('/religion/add', 'ReligionController@religion_store')->name('religion.store');
+    Route::get('/religion/delete/{name}', 'ReligionController@religion_delete')->name('religion.delete');
+    Route::get('/religion/edit/{name}', 'ReligionController@religion_edit')->name('religion.edit');
+    Route::post('/religion/update/{id}', 'ReligionController@religion_update')->name('religion.update');
+
+
+    Route::get('/gender', 'ReligionController@gender')->name('gender');
+    Route::post('/gender/add', 'ReligionController@gender_store')->name('gender.store');
+    Route::get('/gender/delete/{id}', 'ReligionController@gender_delete')->name('gender.delete');
+    Route::get('/gender/edit/{id}', 'ReligionController@gender_edit')->name('gender.edit');
+    Route::post('/gender/update/{id}', 'ReligionController@gender_update')->name('gender.update');
 
 });
 

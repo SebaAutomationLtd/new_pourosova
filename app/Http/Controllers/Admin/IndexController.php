@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
-{
+{   
     public function slider(){
         $sliders = DB::table('sliders')->get();
         return view('admin.index.slider',compact('sliders'));
