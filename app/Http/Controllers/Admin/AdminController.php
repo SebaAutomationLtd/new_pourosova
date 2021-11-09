@@ -21,19 +21,24 @@ class AdminController extends Controller
     public function admin_login(Request $request)
     {
         $data = $request->all();
-        if(Auth::attempt(['email'=> $data['email'], 'password'=>$data['password']])){
-            return redirect()->route('admin');
+        if(Auth::attempt(['username'=> $data['username'], 'password'=>$data['password']])){
+            return redirect()->route('admin.dashboard');
         }else{
             $notification=array(
-                'messege'=>'Email Or Password Invalid',
+                'message'=>'Email Or Password Invalid',
                 'alert-type'=>'error'
             );
             return Redirect()->back()->with($notification);
         }
     }
-    public function logout()
+    public function admin_logout()
     {
         Auth::logout();
         return redirect('/admin/login');
+    }
+
+    public function username()
+    {
+        return 'username';
     }
 }

@@ -27,7 +27,8 @@
                 </div>
                 <div class="ml-4">
                     <h6 class="m-0 subtitle">Department of ICT</h6>
-                    <h5 class="m-0 title">{{ isset($website_data->title_bangla) ? $website_data->title_bangla : "" }} পৌরসভা ম্যানেজমেন্ট সিষ্টেম</h5>
+                    <h5 class="m-0 title">{{ isset($website_data->title_bangla) ? $website_data->title_bangla : "" }}
+                        পৌরসভা ম্যানেজমেন্ট সিষ্টেম</h5>
                 </div>
             </div>
         </div>
@@ -43,22 +44,28 @@
                             @csrf
                             <div>
                                 <div class="form-group">
+                                    <label for="username">Username</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                                 <span class="input-group-text" id="my-addon"><i
-                                                        class="fas fa-user"></i></span>
+                                                        class="fa fa-user"></i></span>
                                         </div>
-                                        <input class="form-control" type="email" name="email" placeholder="Enter Email"
+
+                                        <input class="form-control" id="username" type="text" name="username"
+                                               placeholder="Enter Username"
                                                required>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="password">Password</label>
                                     <div class="input-group">
+
                                         <div class="input-group-prepend">
                                                 <span class="input-group-text" id="my-addon"><i
-                                                        class="fas fa-unlock-alt"></i></span>
+                                                        class="fa fa-unlock-alt"></i></span>
                                         </div>
+
                                         <input class="form-control" type="password" name="password"
                                                placeholder="Enter Password" required>
                                     </div>
@@ -86,24 +93,25 @@
 </div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script type="text/javascript" src="{{asset('js/frontend/jquery-3.5.1.slim.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/frontend/popper.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/frontend/bootstrap.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/frontend/custom.js')}}"></script>
 <script>
-    @if(Session::has('messege'))
+    @if(Session::has('message'))
     var type = "{{Session::get('alert-type','info')}}"
     switch (type) {
         case 'info':
-            toastr.info("{{ Session::get('messege') }}");
+            toastr.info("{{ Session::get('message') }}");
             break;
         case 'success':
-            toastr.success("{{ Session::get('messege') }}");
+            toastr.success("{{ Session::get('message') }}");
             break;
         case 'warning':
-            toastr.warning("{{ Session::get('messege') }}");
+            toastr.warning("{{ Session::get('message') }}");
             break;
         case 'error':
-            toastr.error("{{ Session::get('messege') }}");
+            toastr.error("{{ Session::get('message') }}");
             break;
     }
     @endif
