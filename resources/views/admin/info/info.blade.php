@@ -26,7 +26,7 @@
                                                 @csrf
                                                 <div class="form-group">
                                                     <label for="">শিরোনাম</label>
-                                                    <input type="text" name="title" value="{{ old('title') }}" class="form-control" placeholder="">
+                                                    <input type="text" name="title" required value="{{ old('title') }}" class="form-control" placeholder="">
                                                     @error('title')
                                                         <span class=text-danger>{{$message}}</span>
                                                     @enderror
@@ -34,7 +34,7 @@
 
                                                 <div class="form-group">
                                                     <label for="">বর্ণনা</label>
-                                                    <textarea rows="4" cols="50" name="description" type="text" class="form-control" ></textarea>
+                                                    <textarea rows="4" cols="50" required name="description" type="text" class="form-control" ></textarea>
                                                     @error('title')
                                                         <span class=text-danger>{{$message}}</span>
                                                     @enderror

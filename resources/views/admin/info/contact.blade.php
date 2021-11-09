@@ -31,7 +31,7 @@
                                 <div class="">
                                     <div class="form-group">
                                         <label for="">যোগাযোগ</label>
-                                        <input type="text" value="{{ old('address') }}" name="address" class="form-control">
+                                        <input type="text" value="{{ old('address') }}" required name="address" class="form-control">
                                         @error('address')
                                             <span class=text-danger>{{$message}}</span>
                                         @enderror
@@ -39,7 +39,7 @@
 
                                     <div class="form-group">
                                         <label for="">টেলিফোন</label>
-                                        <input type="text" value="{{ old('telephone') }}" name="telephone" class="form-control">
+                                        <input type="text" value="{{ old('telephone') }}" required name="telephone" class="form-control">
                                         @error('telephone')
                                             <span class=text-danger>{{$message}}</span>
                                         @enderror
@@ -47,7 +47,7 @@
 
                                     <div class="form-group">
                                         <label for="">ইমেইল</label>
-                                        <input type="text" value="{{ old('email') }}" name="email" class="form-control">
+                                        <input type="text" value="{{ old('email') }}" required name="email" class="form-control">
                                         @error('email')
                                             <span class=text-danger>{{$message}}</span>
                                         @enderror

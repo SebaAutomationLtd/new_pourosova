@@ -223,5 +223,16 @@ Route::name('admin.web.notice.')->prefix('admin/web/notice')->namespace('App\Htt
     Route::get('/download/delete/{id}', 'NoticeController@download_delete')->name('download.delete');
 });
 
+
+Route::name('admin.web.village.')->prefix('admin/web/village')->namespace('App\Http\Controllers\Admin')->group(function () {
+    Route::get('/village', 'VillageController@village')->name('village');
+    Route::post('/village/add', 'VillageController@village_store')->name('village.store');
+    Route::get('/village/delete/{name}', 'VillageController@village_delete')->name('village.delete');
+    Route::get('/village/edit/{name}', 'VillageController@village_edit')->name('village.edit');
+    Route::post('/village/update/{id}', 'VillageController@village_update')->name('village.update');
+
+});
+
+
 //Admin Daynamic End
 

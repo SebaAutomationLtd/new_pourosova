@@ -20,29 +20,35 @@
         <div class="col-md-12">
             <div class="card main-chart">
                 <div class="card-header panel-tabs">
-                    <h5>কর্মকর্তা ও কর্মচারী</h5>
+                    <h5>গ্রাম</h5>
                 </div>
                 <div class="card-body">
-                    <form action="{{route('admin.web.info.employee.store')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('admin.web.village.village.store')}}" method="POST">
                         @csrf
-                        <div class="form-group">
+                       <div class="form-row"> 
+                        <div class="form-group col-md-6">
                             <label for="">শিরোনাম</label>
-                            <input type="text" name="title" required value="{{ old('title') }}" class="form-control">
-                            @error('title')
+                            <input type="text" name="name" required value="{{ old('name') }}" class="form-control">
+                            @error('name')
                                 <span class=text-danger>{{$message}}</span>
                             @enderror
                         </div>
 
-                        <div class="form-group">
-                            <label for="">JPG ছবি </label>
-                            <div class="custom-file">
-                                <input type="file" name="image" required class="custom-file-input" id="customFileLang" lang="es">
-                                <label class="custom-file-label" for="customFileLang">ছবি (JPG Format)</label>
-                            </div>
-                            @error('image')
+                        <div class="form-group col-md-6">
+                            <label for="">ওয়ার্ড নং</label>
+                            <select name="ward_id" required id="" class="custom-select">
+                                <option disabled selected>-- সিলেক্ট করুন --</option>
+                                @foreach($words as $word)
+                                <option value="{{$word->id}}">{{$word->ward_no}}</option>
+                                @endforeach
+                            </select>
+                            @error('ward_id')
                                 <span class=text-danger>{{$message}}</span>
                             @enderror
                         </div>
+                        
+                       </div> 
+
 
                         <button class="btn btn-primary">সাবমিট</button>
                     </form>
@@ -53,7 +59,7 @@
         <div class="col-md-12 mt-4">
             <div class="card main-chart mt-4 mt-md-0">
                 <div class="card-header panel-tabs">
-                    <h5>কর্মকর্তা ও কর্মচারী</h5>
+                    <h5>গ্রাম</h5>
                 </div>
                 <div class="card-body">
                     <div class="">
@@ -64,7 +70,7 @@
                                     <tr>
                                         <th> ক্রমিক </th>
                                         <th>শিরোনাম</th>
-                                        <th>ছবি</th>
+                                        <th>ওয়ার্ড নং</th>
                                         <th>একশন</th>
                                     </tr>
                                 </thead>
@@ -73,16 +79,11 @@
                                         $no = 1;
                                     @endphp
 
-                                    @foreach($employees as $employee)
+                                    @foreach($villages as $village)
                                     <tr>
                                         <td>{{$no++}}</td>
-                                        <td>{{$employee->title ?? ''}}</td>
-                                        <td>
-                                            <a  href="#">
-                                                <img class="rounded" src="{{ asset('img/'.$employee->image ?? '') }}"
-                                                alt="" style="height: 100px; width: 100px;">
-                                            </a>
-                                        </td>
+                                        <td>{{$village->name ?? ''}}</td>
+                                        <td>{{$village->ward_no ?? ''}}</td>
                                         <td>
                                             <div class="dropdown">
                                                 <button class="btn  btn-outline-secondary btn-sm dropdown-toggle"
@@ -92,11 +93,11 @@
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                     <a data-placement="left" title="এডিট করুন" data="tooltip"
-                                                        class="text-primary dropdown-item" href="{{route('admin.web.info.employee.edit',$employee->id ?? '')}}">
+                                                        class="text-primary dropdown-item" href="{{route('admin.web.village.village.edit',$village->name ?? '')}}">
                                                         <i class="fa fa-pencil"></i>
                                                     </a>
                                                     <a data-placement="left" title="ডিলেট করুন" data="tooltip"
-                                                        class="text-danger dropdown-item" href="{{route('admin.web.info.employee.delete',$employee->id ?? '')}}">
+                                                        class="text-danger dropdown-item" href="{{route('admin.web.village.village.delete',$village->name ?? '')}}">
                                                         <i class="fa fa-trash"></i>
                                                     </a>
                                                 </div>
@@ -105,7 +106,6 @@
                                         </td>
                                     </tr>
                                     @endforeach
-
                                 </tbody>
                             </table>
                         </div>

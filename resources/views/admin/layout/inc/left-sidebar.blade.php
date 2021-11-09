@@ -231,10 +231,26 @@
                         </li>
                 </li>
 
+
+                <li class="menu-dropdown"> <a href="{{ route('admin.web.village.village') }}"> <i
+                            class="fa fa-fw ti-cup"></i>
+                        গ্রাম
+                    </a> 
+                </li>
+
+                <li class="menu-dropdown"> <a href="{{ route('admin.web.notice.notice') }}"> <i
+                            class="fa fa-fw ti-cup"></i>
+                        পোস্ট অফিস
+                    </a> 
+                </li>
+
+
                 <li class="menu-dropdown"> <a href="{{ route('admin.web.notice.notice') }}"> <i
                             class="fa fa-fw ti-cup"></i>
                         নোটিশ
-                    </a> </li>
+                    </a> 
+                </li>
+
                 <li class="menu-dropdown"> <a href="{{ route('admin.web.notice.download') }}"> <i
                             class="fa fa-fw ti-cup"></i>
                         ডাউনলোড
