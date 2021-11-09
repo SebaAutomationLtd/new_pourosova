@@ -13,6 +13,11 @@ class AdminController extends Controller
         return view('admin.admin_login');
     }
 
+    public function admin_dashboard()
+    {
+        return view('admin.dashboard');
+    }
+
     public function admin_login(Request $request)
     {
         $data = $request->all();

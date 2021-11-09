@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-    <title>Login Panel | Madarganj Pourshova</title>
+    <title>Login Panel | {{ @$website_data->title_bangla }}</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="shortcut icon" href="{{ asset('img/logo.svg') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset("img/".@$website_data->logo_bangla) }}" type="image/x-icon">
 
     <link rel="stylesheet" type="text/css" href="{{asset('css/all.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
@@ -23,7 +23,7 @@
         <div class="container">
             <div class="d-flex flex-row align-items-center">
                 <div>
-                    <img src="{{ asset('img/logo.svg') }}" alt="">
+                    <img src="{{ asset("img/".@$website_data->logo_bangla) }}" alt="">
                 </div>
                 <div class="ml-4">
                     <h6 class="m-0 subtitle">Department of ICT</h6>
@@ -86,10 +86,9 @@
 </div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script type="text/javascript" src="{{ asset('new_login/js/jquery-3.5.1.slim.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('new_login/js/popper.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('new_login/js/bootstrap.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('new_login/js/custom.js') }}"></script>
+<script type="text/javascript" src="{{asset('js/frontend/popper.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/frontend/bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/frontend/custom.js')}}"></script>
 <script>
     @if(Session::has('messege'))
     var type = "{{Session::get('alert-type','info')}}"
