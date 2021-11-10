@@ -32,7 +32,7 @@ class InfoController extends Controller
 
     public function info_delete($id){
         $delete = DB::table('short_descriptions')->where('id',$id)->delete();
-        return redirect(route('admin.web.info.info'))->with('message','Info Deleted');
+        return redirect(route('admin.web.info.info'))->with('error','Info Deleted');
     }
 
     public function info_edit($id){
@@ -95,12 +95,12 @@ class InfoController extends Controller
             }
 
         $delete = DB::table('organograms')->where('id',$id)->delete();
-        return redirect(route('admin.web.info.organogram'));
+        return redirect(route('admin.web.info.organogram'))->with('error','Organogram Deleted');
     }
 
     public function organogram_edit($id){
         $organogram = DB::table('organograms')->where('id',$id)->first();
-        return view('admin.info.organogram_edit',compact('organogram'))->with('message','Organogram Deleted');
+        return view('admin.info.organogram_edit',compact('organogram'));
     }
 
 
@@ -170,7 +170,7 @@ class InfoController extends Controller
             }
 
         $delete = DB::table('maps')->where('id',$id)->delete();
-        return redirect(route('admin.web.info.map'))->with('message','Map Deleted');
+        return redirect(route('admin.web.info.map'))->with('error','Map Deleted');
     }
 
     public function map_edit($id){
@@ -245,7 +245,7 @@ class InfoController extends Controller
             }
 
         $delete = DB::table('employees')->where('id',$id)->delete();
-        return redirect(route('admin.web.info.employee'))->with('message','Employee Deleted');
+        return redirect(route('admin.web.info.employee'))->with('error','Employee Deleted');
     }
 
     public function employee_edit($id){
@@ -308,12 +308,12 @@ class InfoController extends Controller
 
     public function education_delete($id){
         $delete = DB::table('educations')->where('id',$id)->delete();
-        return redirect(route('admin.web.info.education'));
+        return redirect(route('admin.web.info.education'))->with('error','Education Deleted');
     }
 
     public function education_edit($id){
         $education = DB::table('educations')->where('id',$id)->first();
-        return view('admin.info.education_edit',compact('education'))->with('message','Education Deleted');
+        return view('admin.info.education_edit',compact('education'));
     }
 
 
@@ -362,7 +362,7 @@ class InfoController extends Controller
 
     public function contact_delete($id){
         $delete = DB::table('contacts')->where('id',$id)->delete();
-        return redirect(route('admin.web.info.contact'))->with('message','Contact Deleted');
+        return redirect(route('admin.web.info.contact'))->with('error','Contact Deleted');
     }
 
     public function contact_edit($id){

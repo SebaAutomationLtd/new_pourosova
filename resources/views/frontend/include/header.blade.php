@@ -57,8 +57,8 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto">
+                    <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
+                        <ul class="navbar-nav">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -76,12 +76,6 @@
                                 </div>
                             </li>
 
-                            <li class="nav-item active">
-                                <a class="nav-link" href="{{ route ('citizen_chartered') }}">সিটিজেন চার্টার</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route ('contact') }}">যোগাযোগ</a>
-                            </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -98,19 +92,22 @@
                                     <a class="dropdown-item" href="{{ route('administration') }}">প্রশাসন বিভাগ</a>
                                     <a class="dropdown-item" href="{{ route('eng.dept') }}">প্রকৌশল বিভাগ</a>
                                     <a class="dropdown-item" href="{{ route('health') }}">স্বাস্থ্য বিভাগ</a>
+                                    <a class="dropdown-item" href="{{ route ('contact') }}">যোগাযোগ</a>
                                 </div>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('once_eye') }}">এক নজরে</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('notice') }}">নোটিশ</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('download') }}">ডাউনলোড</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">ডিজিটাল সেবা</a>
+
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    অন্যান্য
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route ('citizen_chartered') }}">সিটিজেন চার্টার</a>
+                                    <a class="dropdown-item" href="{{ route('once_eye') }}">এক নজরে</a>
+                                    <a class="dropdown-item" href="{{ route('notice') }}">নোটিশ</a>
+                                    <a class="dropdown-item" href="{{ route('download') }}">ডাউনলোড</a>
+                                </div>
                             </li>
 
                             <li class="nav-item dropdown">
@@ -121,6 +118,9 @@
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('reg.bosot-bari') }}">বসতবাড়ী
                                         হোল্ডিং নিবন্ধন</a>
+                                        
+                                    <a class="dropdown-item" href="{{ route('reg.osthai-nagorik') }}">অস্থায়ী নাগরিক নিবন্ধন</a>
+
                                     <a class="dropdown-item" href="{{ route('reg.business-hold') }}">বানিজ্যিক
                                         হোল্ডিং নিবন্ধন</a>
                                     <a class="dropdown-item" href="{{ route('reg.business') }}">ব্যবসা

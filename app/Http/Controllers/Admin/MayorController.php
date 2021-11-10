@@ -53,7 +53,7 @@ class MayorController extends Controller
             }
 
     	$delete = Mayor::find($id)->delete();
-    	return redirect(route('admin.web.mayor'))->with('message','Mayor Deleted');
+    	return redirect(route('admin.web.mayor'))->with('error','Mayor Deleted');
     }
 
     public function edit($id){

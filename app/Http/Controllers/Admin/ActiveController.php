@@ -85,7 +85,7 @@ class ActiveController extends Controller
                 ]);
         }
         $notification = array(
-            'messege' => "Deactivated Successfully",
+            'message' => "Deactivated Successfully",
             'alert-type' => 'success'
         );
         return Redirect()->back()->with($notification);
@@ -254,7 +254,7 @@ class ActiveController extends Controller
 
 
         $notification = array(
-            'messege' => "Activated Successfully",
+            'message' => "Activated Successfully",
             'alert-type' => 'success'
         );
         return Redirect()->route('action.search')->with($notification);

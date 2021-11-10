@@ -22,7 +22,7 @@
                     <h5>পৌরসভার সম্পর্কে</h5>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('admin.web.right.about_paurosova.update' , $about_puaro->id) }}" method="POST">
+                    <form action="{{ route('admin.web.right.about_paurosova.update' , $about_puaro->id ?? '') }}" method="POST">
                         @csrf
                         <div class="form-row">
 
@@ -33,13 +33,13 @@
                                     <span class=text-danger>{{$message}}</span>
                                 @enderror
                             </div>
-                         </div>   
-                            
+                         </div>
+
                         <div class="form-row">
                             <div class="form-group col-md-10">
                                 <label for="">বিস্তারিত</label>
                                 <textarea rows="4" cols="50" name="description" type="text" class="form-control"> {{$about_puaro->description ?? ''}}
-                                </textarea>  
+                                </textarea>
                                 @error('description')
                                     <span class=text-danger>{{$message}}</span>
                                 @enderror

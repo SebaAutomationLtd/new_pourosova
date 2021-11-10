@@ -11,6 +11,7 @@
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
+    <script type="text/javascript" src="{{asset('js/admin/app.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/frontend/popper.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/frontend/bootstrap.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/frontend/custom.js')}}"></script>
