@@ -45,7 +45,7 @@ class CreateBosotBariTable extends Migration
             $table->unsignedFloat('yearly_value')->nullable();
             $table->unsignedFloat('yearly_vat')->nullable();
             $table->unsignedFloat('service_charge')->nullable();
-            $table->date('last_tax_year')->nullable();
+            $table->string('last_tax_year')->nullable();
             $table->unsignedBigInteger('activated_by')->nullable();
             $table->unsignedBigInteger('deactivated_by')->nullable();
             $table->timestamp('activated_at')->nullable();

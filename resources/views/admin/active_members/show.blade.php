@@ -62,13 +62,13 @@
                                         <td>{{ $user->spouse }}</td>
                                     </tr>
                                     @endif
-                                     @if($user->gender)
+                                     @if($type != '3' && $user->gender)
                                     <tr>
                                         <td>লিঙ্গ </td>
                                         <td>{{ $user->gender }}</td>
                                     </tr>
                                     @endif
-                                     @if($user->marital_status)
+                                     @if($type != '3' && $user->marital_status)
                                     <tr>
                                         <td>বৈবাহিক অবস্থা </td>
                                         <td>{{ $user->marital_status }}</td>
@@ -83,7 +83,7 @@
 
                                         </td>
                                     </tr>
-                                    @if ($type == 1)
+                                    @if ($type == 1 || $type == 2)
                                         <tr>
                                             <td>জন্ম তারিখ</td>
                                             <td>{{ date("d-m-Y", strtotime($user->dob ?? '')) }}</td>

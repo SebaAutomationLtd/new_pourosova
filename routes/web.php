@@ -246,5 +246,7 @@ Route::get('take_action_active_show/{id}/{type}', [ActiveController::class, 'act
 Route::post('take_action_users_active', [ActiveController::class, 'active'])->name('action.active');
 Route::get('take_action_edit/{id}/{type}', [ActiveController::class, 'edit'])->name('action.edit');
 Route::post('/update-bosot-bari/{id}', [ActiveController::class, 'UpdateBosotBari'])->name('update.bosot-bari');
+Route::post('/update-business-holding/{id}', [ActiveController::class, 'UpdateBusinessHolding'])->name('update.business-holding');
+Route::post('/update-business/{id}', [ActiveController::class, 'UpdateBusiness'])->name('update.business');
 //Admin Daynamic End
 

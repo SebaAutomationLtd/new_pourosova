@@ -31,6 +31,7 @@ class CreateBusinessTable extends Migration
             $table->text('current_address')->nullable();
             $table->text('permanent_address')->nullable();
             $table->foreignId('ward_id')->nullable();
+            $table->foreignId('village_id')->nullable();
             $table->foreignId('business_type_id')->nullable();
             $table->foreignId('payment_method_id')->nullable();
             $table->unsignedFloat('trade_fee')->nullable();
@@ -40,7 +41,7 @@ class CreateBusinessTable extends Migration
             $table->unsignedFloat('other_tax')->nullable();
             $table->unsignedFloat('trade_total')->nullable();
             $table->unsignedFloat('service_charge')->nullable();
-            $table->date('last_license_issue_year')->nullable();
+            $table->string('last_license_issue_year')->nullable();
             $table->unsignedBigInteger('activated_by')->nullable();
             $table->unsignedBigInteger('deactivated_by')->nullable();
             $table->timestamp('activated_at')->nullable();

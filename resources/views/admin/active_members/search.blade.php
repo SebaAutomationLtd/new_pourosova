@@ -48,7 +48,7 @@
                                                         <option value="">--Select--</option>
                                                         <option value="1">বসতবাড়ি</option>
                                                         <option value="2">বাণিজ্যিক</option>
-                                                        <option value="3">কমার্শিয়াল</option>
+                                                        <option value="3">ব্যাবসা প্রতিষ্ঠান</option>
                                                     </select>
                                                 </div>
                                             </div>
