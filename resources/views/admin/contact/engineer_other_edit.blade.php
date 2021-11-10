@@ -27,7 +27,7 @@
 	                <div class="row">
 	                    <div class="form-group col-md-4">
 	                        <label for="">নাম</label>
-	                        <input type="text" class="form-control @error('name') is-invalid @enderror" value="{{ $other_employee_edit->name}}"  name="name" placeholder="নাম">
+	                        <input type="text" class="form-control @error('name') is-invalid @enderror" value="{{ $other_employee_edit->name}}"  name="name" placeholder="নাম" required>
 	                        @error('name')
 	                            <small class="text-danger">
 	                                <strong>{{ $message }}</strong>
@@ -36,7 +36,7 @@
 	                    </div>
 	                    <div class="form-group col-md-4">
 	                        <label for="">পদবী</label>
-	                        <input type="text" class="form-control @error('designation') is-invalid @enderror" value="{{ $other_employee_edit->designation}}"  name="designation" placeholder="পদবী">
+	                        <input type="text" class="form-control @error('designation') is-invalid @enderror" value="{{ $other_employee_edit->designation}}"  name="designation" placeholder="পদবী" required>
 	                        @error('designation')
 	                            <small class="text-danger">
 	                                <strong>{{ $message }}</strong>
@@ -45,7 +45,7 @@
 	                    </div>
 	                    <div class="form-group col-md-4">
 	                        <label for="">মোবাইল</label>
-	                        <input type="tel" class="form-control @error('contact') is-invalid @enderror"  value="{{ $other_employee_edit->contact }}" name="contact" placeholder="মোবাইল">
+	                        <input type="tel" class="form-control @error('contact') is-invalid @enderror"  value="{{ $other_employee_edit->contact }}" name="contact" placeholder="মোবাইল" required>
 	                        @error('contact')
 	                            <small class="text-danger">
 	                                <strong>{{ $message }}</strong>

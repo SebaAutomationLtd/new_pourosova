@@ -26,7 +26,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="">শিরোনাম</label>
-                            <input type="text"  value="{{ old('title') }}" class="form-control @error('title') is-invalid @enderror" name="title" placeholder="শিরোনাম">
+                            <input type="text"  value="{{ old('title') }}" class="form-control @error('title') is-invalid @enderror" name="title" placeholder="শিরোনাম" required>
                             @error('title')
                                 <small class="text-danger">
                                     <strong>{{ $message }}</strong>
@@ -36,7 +36,7 @@
 
                         <div class="form-group">
                             <label for="">লিঙ্ক</label>
-                            <input type="text"  value="{{ old('link') }}" class="form-control @error('link') is-invalid @enderror" placeholder="লিঙ্ক" name="link">
+                            <input type="text"  value="{{ old('link') }}" class="form-control @error('link') is-invalid @enderror" placeholder="লিঙ্ক" name="link" required>
                             @error('link')
                                 <small class="text-danger">
                                     <strong>{{ $message }}</strong>

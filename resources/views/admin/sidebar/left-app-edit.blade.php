@@ -26,12 +26,12 @@
                         @csrf
                         <div class="form-group">
                             <label for="">শিরোনাম</label>
-                            <input type="text"  value="{{ $left_app->title }}" class="form-control @error('title') is-invalid @enderror" name="title" placeholder="শিরোনাম">
+                            <input type="text"  value="{{ $left_app->title }}" class="form-control @error('title') is-invalid @enderror" name="title" placeholder="শিরোনাম" required>
                         </div>
 
                         <div class="form-group">
                             <label for="">লিঙ্ক</label>
-                            <input type="text"  value="{{ $left_app->link }}" class="form-control @error('link') is-invalid @enderror" placeholder="লিঙ্ক" name="link">
+                            <input type="text"  value="{{ $left_app->link }}" class="form-control @error('link') is-invalid @enderror" placeholder="লিঙ্ক" name="link" required>
                         </div>
                         <button type="submit" class="btn btn-primary">সাবমিট</button>
                     </form>

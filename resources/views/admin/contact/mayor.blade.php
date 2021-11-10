@@ -29,7 +29,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-4 col-sm-6">
                                 <label for="">মেয়রের নাম</label>
-                                <input type="text" class="form-control @error('mayor_name') is-invalid @enderror" value="{{ old('mayor_name') }}" placeholder="নাম" name="mayor_name">
+                                <input type="text" class="form-control @error('mayor_name') is-invalid @enderror" value="{{ old('mayor_name') }}" placeholder="নাম" name="mayor_name" required>
                                 @error('mayor_name')
                                     <small class="text-danger">
                                         <strong>{{ $message }}</strong>
@@ -38,7 +38,7 @@
                             </div>
                             <div class="form-group col-md-4 col-sm-6">
                                 <label for="">মোবাইল নং</label>
-                                <input type="number" class="form-control @error('contact') is-invalid @enderror" value="{{ old('contact') }}" placeholder="মোবাইল নং" name="contact">
+                                <input type="number" class="form-control @error('contact') is-invalid @enderror" value="{{ old('contact') }}" placeholder="মোবাইল নং" name="contact" required>
                                 @error('contact')
                                     <small class="text-danger">
                                         <strong>{{ $message }}</strong>
@@ -47,7 +47,7 @@
                             </div>
                             <div class="form-group col-md-4 col-sm-6">
                                 <label for="">ইমেইল</label>
-                                <input type="text" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="ইমেইল" name="email">
+                                <input type="text" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="ইমেইল" name="email" required>
                                 @error('email')
                                     <small class="text-danger">
                                         <strong>{{ $message }}</strong>
@@ -56,7 +56,7 @@
                             </div>
                             <div class="form-group col-md-4 col-sm-6">
                                 <label for="">পিতার নাম</label>
-                                <input type="text" class="form-control @error('father') is-invalid @enderror" value="{{ old('father') }}" placeholder="পিতার নাম" name="father">
+                                <input type="text" class="form-control @error('father') is-invalid @enderror" value="{{ old('father') }}" placeholder="পিতার নাম" name="father" required>
                                 @error('father')
                                     <small class="text-danger">
                                         <strong>{{ $message }}</strong>
@@ -65,7 +65,7 @@
                             </div>
                             <div class="form-group col-md-4 col-sm-6">
                                 <label for="">মাতার নাম</label>
-                                <input type="text" class="form-control @error('mother') is-invalid @enderror" value="{{ old('mother') }}" placeholder="মাতার নাম" name="mother">
+                                <input type="text" class="form-control @error('mother') is-invalid @enderror" value="{{ old('mother') }}" placeholder="মাতার নাম" name="mother" required>
                                 @error('mother')
                                     <small class="text-danger">
                                         <strong>{{ $message }}</strong>
@@ -74,7 +74,7 @@
                             </div>
                             <div class="form-group col-md-4 col-sm-6">
                                 <label for="">জন্ম তারিখ</label>
-                                <input type="text" class="form-control @error('date_birth') is-invalid @enderror" value="{{ old('date_birth') }}" placeholder="জন্ম তারিখ" name="date_birth">
+                                <input type="date" class="form-control @error('date_birth') is-invalid @enderror" value="{{ old('date_birth') }}" placeholder="জন্ম তারিখ" name="date_birth" required>
                                      @error('title')
                                     <small class="text-danger">
                                         <strong>{{ $message }}</strong>
@@ -83,7 +83,7 @@
                             </div>
                             <div class="form-group col-md-4 col-sm-6">
                                 <label for="">বর্তমান ঠিকানা</label>
-                                <textarea class="form-control @error('present_address') is-invalid @enderror" value="{{ old('present_address') }}" placeholder="বর্তমান ঠিকানা" name="present_address"></textarea>
+                                <textarea class="form-control @error('present_address') is-invalid @enderror" value="{{ old('present_address') }}" placeholder="বর্তমান ঠিকানা" name="present_address" required></textarea>
                                 @error('present_address')
                                     <small class="text-danger">
                                         <strong>{{ $message }}</strong>
@@ -92,7 +92,7 @@
                             </div>
                             <div class="form-group col-md-4 col-sm-6">
                                 <label for="">স্থায়ী ঠিকানা</label>
-                                <textarea name="permanent_address" class="form-control @error('permanent_address') is-invalid @enderror" value="{{ old('permanent_address') }}" placeholder="স্থায়ী ঠিকানা"></textarea>
+                                <textarea name="permanent_address" class="form-control @error('permanent_address') is-invalid @enderror" value="{{ old('permanent_address') }}" placeholder="স্থায়ী ঠিকানা" required></textarea>
                                 @error('permanent_address')
                                     <small class="text-danger">
                                         <strong>{{ $message }}</strong>
@@ -101,7 +101,7 @@
                             </div>
                             <div class="form-group col-md-4 col-sm-6">
                                 <label for="">জাতীয়তা</label>
-                                <input type="text" class="form-control @error('nationality') is-invalid @enderror" value="{{ old('nationality') }}" placeholder="জাতীয়তা" name="nationality">
+                                <input type="text" class="form-control @error('nationality') is-invalid @enderror" value="{{ old('nationality') }}" placeholder="জাতীয়তা" name="nationality" required>
                                 @error('nationality')
                                     <small class="text-danger">
                                         <strong>{{ $message }}</strong>
@@ -110,7 +110,7 @@
                             </div>
                             <div class="form-group col-md-4 col-sm-6">
                                 <label for="">ধর্ম</label>
-                                <input type="text" class="form-control @error('religion') is-invalid @enderror" value="{{ old('religion') }}" placeholder="ধর্ম" name="religion">
+                                <input type="text" class="form-control @error('religion') is-invalid @enderror" value="{{ old('religion') }}" placeholder="ধর্ম" name="religion" required>
                                 @error('religion')
                                     <small class="text-danger">
                                         <strong>{{ $message }}</strong>
@@ -119,7 +119,7 @@
                             </div>
                             <div class="form-group col-md-4 col-sm-6">
                                 <label for="">লিঙ্গ</label>
-                                <select name="gender" class="custom-select  @error('gender') is-invalid @enderror" id="" >
+                                <select name="gender" class="custom-select  @error('gender') is-invalid @enderror" id=""  required>
                                     <option value="" selected disabled>-- সিলেক্ট করুন --</option>
                                     <option value="1">পুরুষ</option>
                                     <option value="2">মহিলা</option>
@@ -145,7 +145,7 @@
                             </div>
                             <div class="form-group col-md-4 col-sm-6">
                                 <label for="">অর্জিত সর্বশেষ ডিগ্রী</label>
-                                <input type="text" class="form-control @error('latest_degree') is-invalid @enderror" value="{{ old('latest_degree') }}" placeholder="অর্জিত সর্বশেষ ডিগ্রী" name="latest_degree">
+                                <input type="text" class="form-control @error('latest_degree') is-invalid @enderror" value="{{ old('latest_degree') }}" placeholder="অর্জিত সর্বশেষ ডিগ্রী" name="latest_degree" required>
                                 @error('latest_degree')
                                     <small class="text-danger">
                                         <strong>{{ $message }}</strong>
@@ -154,7 +154,7 @@
                             </div>
                             <div class="form-group col-md-4 col-sm-6 col-sm-6">
                                 <label for="">রক্তের গ্রুপ</label>
-                                <select name="blood_group" class="custom-select  @error('blood_group') is-invalid @enderror">
+                                <select name="blood_group" class="custom-select  @error('blood_group') is-invalid @enderror" required>
                                     <option value="" selected disabled>-- সিলেক্ট করুন --</option>
                                     <option value="B+">B+</option>
                                     <option value="B">B-</option>
@@ -189,7 +189,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="">পদবী</label>
-                                <input type="text" class="form-control @error('designation') is-invalid @enderror" name="designation" value="{{ old('designation') }}" placeholder="পদবী">
+                                <input type="text" class="form-control @error('designation') is-invalid @enderror" name="designation" value="{{ old('designation') }}" placeholder="পদবী" required>
                                 @error('designation')
                                     <small class="text-danger">
                                         <strong>{{ $message }}</strong>
@@ -198,7 +198,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="">প্রতিষ্ঠানের নাম</label>
-                                <input type="text" class="form-control @error('institute_name') is-invalid @enderror" name="institute_name" value="{{ old('institute_name') }}" placeholder="প্রতিষ্ঠানের নাম">
+                                <input type="text" class="form-control @error('institute_name') is-invalid @enderror" name="institute_name" value="{{ old('institute_name') }}" placeholder="প্রতিষ্ঠানের নাম" required>
                                 @error('institute_name')
                                     <small class="text-danger">
                                         <strong>{{ $message }}</strong>
