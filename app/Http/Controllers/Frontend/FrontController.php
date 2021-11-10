@@ -11,6 +11,9 @@ use App\Models\RightSideApplication;
 use App\Models\RightSideBanner;
 use App\Models\Slider;
 use App\Models\Ward;
+use Devfaysal\BangladeshGeocode\Models\Division;
+use Devfaysal\BangladeshGeocode\Models\District;
+use Devfaysal\BangladeshGeocode\Models\Upazila;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
@@ -18,16 +21,8 @@ use Illuminate\Support\Facades\View;
 class FrontController extends Controller
 {
     public function __construct() {
-        $website_settings = DB::table('website_settings')->get();
-        foreach ($website_settings as $setting) {
-            $data[$setting->name] = $setting->value;
-        }
-        $object = (object) $data ?? [];
         $marquees = Marquee::all()->sortByDesc('created_at');
-        View::share([
-            'marquees' => $marquees,
-            'website_data' => $object
-        ]);
+        View::share('marquees', $marquees);
     }
 
     public function index(){
@@ -350,6 +345,23 @@ $right_top_banner = DB::table('right_top_banners')->first();
         $right_top_banner = DB::table('right_top_banners')->first();
         return view('frontend.registration.business-hold-create', compact('title', 'wards', 'house_types','right_top_banner'));
     }
+
+
+
+
+    public function osthai_nagor_create(){
+
+        $title = "অস্থায়ী নাগরিক নিবন্ধন";
+        $wards = Ward::all();
+        $house_types = DB::table('house_types')->get();
+        $right_top_banner = DB::table('right_top_banners')->first();
+
+        $divisions = Division::all();
+        $districts = District::all();
+        $upazilas = Upazila::all();
+        return view('frontend.registration.osthai-nagorik-create', compact('title','wards', 'house_types','right_top_banner','divisions','districts','upazilas'));
+    }
+
 
 }
 

@@ -104,23 +104,23 @@
                 <div class="card-body">
                     <div class="text-center">
                         <div>
-                            <img src="{{ asset('uno/img') }}/{{ $uno->photo }}" width="200"
+                            <img src="{{ asset('uno/img') }}/{{ $uno->photo ?? ''}}" width="200"
                                 alt="Photo">
                         </div>
                         <div class="h5">
-                            নাম: {{ $uno->name }}
+                            নাম: {{ $uno->name ?? ''}}
                         </div>
                         <div>
-                            পদবী: {{ $uno->designation }}
+                            পদবী: {{ $uno->designation ?? ''}}
                         </div>
                         <div>
-                            মোবাইল: {{ $uno->contact}}
+                            মোবাইল: {{ $uno->contact  ?? ''}}
                         </div>
                         <div>
-                            টেলিফোন: {{ $uno->telephone}}
+                            টেলিফোন: {{ $uno->telephone ?? ''}}
                         </div>
                         <div>
-                            ইমেইল: {{ $uno->email }}
+                            ইমেইল: {{ $uno->email ?? ''}}
                         </div>
                     </div>
                 </div>

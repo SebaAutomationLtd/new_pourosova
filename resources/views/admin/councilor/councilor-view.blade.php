@@ -52,7 +52,7 @@
                                         <td>{{ $councilor->contact }}</td>
                                         <td>
                                             <img class="rounded" src="{{ asset('councilor/img') }}/{{$councilor->photo }}"
-                                               height="60px" alt="">
+                                               style=" height: 100px; width: 100px;" alt="">
                                         </td>
                                         <td>{{ $councilor->description }}</td>
                                         <td>

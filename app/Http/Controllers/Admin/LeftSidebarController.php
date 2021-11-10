@@ -17,8 +17,8 @@ class LeftSidebarController extends Controller
 
     public function app_store(Request $request){
         $request->validate([
-            'title'      => 'required|max:255',
-            'link'       => 'required|max:255',
+            'title'      => 'required|max:100',
+            'link'       => 'required|max:100',
         ]);
     	LeftSideApplication::create([
             'title' 		=> $request->title,

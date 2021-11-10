@@ -22,6 +22,35 @@ class AjaxController extends Controller
         }
     }
 
+
+     public function getdistrictinfo($id) {
+        $count = DB::table('districts')->where('id', $id)->count();
+        $data = DB::table('districts')->where('id', $id)->get();
+        if ($count == 0) {
+            echo "no_data";
+        } else {
+            echo'<option value="" selected="" disabled="">নির্বাচন করুন</option>';
+            foreach ($data as $row) {
+                echo'<option value="' . $row->id . '">' . $row->bn_name . '</option>';
+            }
+        }
+    }
+
+
+    public function getupazilainfo($id) {
+        $count = DB::table('upazilas')->where('id', $id)->count();
+        $data = DB::table('upazilas')->where('id', $id)->get();
+        if ($count == 0) {
+            echo "no_data";
+        } else {
+            echo'<option value="" selected="" disabled="">নির্বাচন করুন</option>';
+            foreach ($data as $row) {
+                echo'<option value="' . $row->id . '">' . $row->bn_name . '</option>';
+            }
+        }
+    }
+
+
         public function getduplicatebirthnid($data, $number) {
         $niddata = DB::table('bosot_bari')->where(['nid' => $number])->count();
         $birthdata = DB::table('bosot_bari')->where(['birth_certificate' => $number])->count();

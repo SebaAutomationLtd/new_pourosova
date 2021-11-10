@@ -29,7 +29,7 @@
 
                             <div class="form-group col-md-6 col-sm-12">
                                 <label for="">শিক্ষা প্রতিষ্ঠানের ধরণ</label>
-                                <input type="text" name="type" class="form-control">
+                                <input type="text" required name="type" class="form-control">
                                 @error('type')
                                     <span class=text-danger>{{$message}}</span>
                                 @enderror
@@ -37,7 +37,7 @@
 
                             <div class="form-group col-md-2 col-sm-4">
                                 <label for="">মোট</label>
-                                <input type="text" name="total" class="form-control">
+                                <input type="text" required name="total" class="form-control">
                                 @error('total')
                                     <span class=text-danger>{{$message}}</span>
                                 @enderror
@@ -46,7 +46,7 @@
 
                             <div class="form-group col-md-4 col-sm-8">
                                 <label for="">প্রতিষ্ঠানের ধরণ</label>
-                                <select name="type_of_organization" id="" class="custom-select">
+                                <select name="type_of_organization" required id="" class="custom-select">
                                     <option disabled selected>-- সিলেক্ট করুন --</option>
                                     <option value="সরকারি শিক্ষা প্রতিষ্ঠান">সরকারি শিক্ষা প্রতিষ্ঠান</option>
                                     <option value="বেসরকারি শিক্ষা প্রতিষ্ঠান">বেসরকারি শিক্ষা প্রতিষ্ঠান</option>

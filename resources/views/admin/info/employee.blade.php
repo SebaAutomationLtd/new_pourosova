@@ -27,7 +27,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="">শিরোনাম</label>
-                            <input type="text" name="title" value="{{ old('title') }}" class="form-control">
+                            <input type="text" name="title" required value="{{ old('title') }}" class="form-control">
                             @error('title')
                                 <span class=text-danger>{{$message}}</span>
                             @enderror
@@ -36,7 +36,7 @@
                         <div class="form-group">
                             <label for="">JPG ছবি </label>
                             <div class="custom-file">
-                                <input type="file" name="image" class="custom-file-input" id="customFileLang" lang="es">
+                                <input type="file" name="image" required class="custom-file-input" id="customFileLang" lang="es">
                                 <label class="custom-file-label" for="customFileLang">ছবি (JPG Format)</label>
                             </div>
                             @error('image')

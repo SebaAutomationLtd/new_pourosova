@@ -49,7 +49,7 @@
                             <div class="form-group col-md-6">
                                 <label for="">300px * 300px এবং JPG ছবি </label>
                                 <div class="custom-file">
-                                    <input name="image" type="file" class="custom-file-input" id="customFileLang" lang="es">
+                                    <input name="image" type="file" required class="custom-file-input" id="customFileLang" lang="es">
                                     <label class="custom-file-label" for="customFileLang">ছবি (JPG Format, 300px *
                                         300px)</label>
                                     @error('image')
