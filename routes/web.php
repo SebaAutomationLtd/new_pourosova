@@ -262,11 +262,18 @@ Route::middleware('auth')->group(function () {
 
 Route::name('admin.web.village.')->prefix('admin/web/village')->namespace('App\Http\Controllers\Admin')->group(function () {
 
+    Route::get('/ward', 'VillageController@ward')->name('ward');
+    Route::get('/ward/edit/{$id}', 'VillageController@ward_edit')->name('ward.edit');
+    Route::post('/ward/store', 'VillageController@ward_store')->name('ward.store');
+    Route::post('/ward/update/{id}', 'WardController@ward_update')->name('ward.update');
     Route::get('/village', 'VillageController@village')->name('village');
     Route::post('/village/add', 'VillageController@village_store')->name('village.store');
     Route::get('/village/delete/{name}', 'VillageController@village_delete')->name('village.delete');
     Route::get('/village/edit/{name}', 'VillageController@village_edit')->name('village.edit');
     Route::post('/village/update/{id}', 'VillageController@village_update')->name('village.update');
+
+    Route::get('/house_type', 'VillageController@house_type')->name('house_type');
+    Route::get('/house_type/store', 'VillageController@house_type_store')->name('house_type.store');
 
 
     Route::get('/post_office', 'VillageController@post_office')->name('post_office');

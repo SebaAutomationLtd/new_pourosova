@@ -94,7 +94,4 @@ class ReligionController extends Controller
             return redirect(route('admin.web.religion.gender'))->with('message','Gender Updated');
     }
 
-
-
-
 }

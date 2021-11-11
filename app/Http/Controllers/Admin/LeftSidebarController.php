@@ -63,9 +63,9 @@ class LeftSidebarController extends Controller
     }
     public function banner_store(Request $request){
         $request->validate([
-            'title'             => 'required',
-            'information_type'  => 'required',
-            'description'       => 'required',
+            'title'             => 'required|string',
+            'information_type'  => 'required|string',
+            'description'       => 'required|string',
             'photo'             => 'mimes:jpeg,jpg,png|required|max:10000'
         ]);
     	if($request->hasFile('photo')){

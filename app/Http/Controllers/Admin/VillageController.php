@@ -8,6 +8,26 @@ use DB;
 
 class VillageController extends Controller
 {
+    public function ward(){
+        $wards =  DB::table('wards')->where('status',1)->get();
+        return view('admin.ward.ward-view',compact('wards'));
+    }
+    public function ward_store(Request $request){
+        $request->validate([
+            'name'=> 'required|max:100',
+        ]);
+
+        $data =array();
+        $data['ward_no']= $request->name;
+        $data['status']= 1;
+        $store = DB::table('wards')->insert($data);
+        return redirect()->back()->with('message','Ward Added');
+    }
+    public function ward_edit($id){
+        $ward = DB::table('wards')->where('id',$id)->first();
+        return view('admin.web.ward-edit',compact('ward'));
+    }
+
      public function village(){
     	$villages = DB::table('villages')->join('wards','villages.ward_id','wards.id')->get();
     	$words = DB::table('wards')->get();
@@ -109,8 +129,6 @@ class VillageController extends Controller
             return redirect(route('admin.web.village.post_office'))->with('message','Post Office Updated');
 
     }
-
-
 
 
 }

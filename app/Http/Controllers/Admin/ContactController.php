@@ -178,7 +178,7 @@ class ContactController extends Controller
             'email'       => 'required',
             'contact'     => 'required|min:11|max:11',
             'telephone'   => 'required',
-            'photo'       => 'mimes:jpeg,jpg,png|required|max:10000',,
+            'photo'       => 'mimes:jpeg,jpg,png|required|max:10000'
         ]);
        
         if($request->hasFile('photo')) {

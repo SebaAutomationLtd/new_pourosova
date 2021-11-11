@@ -263,11 +263,21 @@
                                 জেন্ডার
                             </a>
                         </li>
-
+                        <li><a href="{{ route('admin.web.village.ward') }}"> <i
+                                    class="fa fa-fw ti-cup"></i>
+                                ওয়ার্ড
+                            </a>
+                        </li>
 
                         <li><a href="{{ route('admin.web.village.village') }}"> <i
                                     class="fa fa-fw ti-cup"></i>
                                 গ্রাম
+                            </a>
+                        </li>
+           
+                        <li><a href="{{ route('admin.web.village.house_type') }}"> <i
+                                    class="fa fa-fw ti-cup"></i>
+                                বাড়ির ধরন
                             </a>
                         </li>
 
