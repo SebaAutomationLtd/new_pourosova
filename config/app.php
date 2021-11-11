@@ -167,7 +167,11 @@ return [
          */
 
         Spatie\Permission\PermissionServiceProvider::class,
+
         Yajra\DataTables\DataTablesServiceProvider::class,
+
+        Meneses\LaravelMpdf\LaravelMpdfServiceProvider::class,
+
 
         /*
          * Application Service Providers...
@@ -232,6 +236,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+        'PDF' => Meneses\LaravelMpdf\Facades\LaravelMpdf::class,
 
     ],
 

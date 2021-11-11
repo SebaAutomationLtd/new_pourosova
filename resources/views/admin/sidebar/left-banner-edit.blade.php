@@ -27,7 +27,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="">শিরোনাম</label>
-                            <input type="text" name="title" value="{{ $left_banner->title }}" class="form-control @error('title') is-invalid @enderror" placeholder="শিরোনাম">
+                            <input type="text" name="title" value="{{ $left_banner->title }}" class="form-control @error('title') is-invalid @enderror" placeholder="শিরোনাম" required>
                             @error('title')
                                 <small class="text-danger">
                                     <strong>{{ $message }}</strong>
@@ -36,7 +36,7 @@
                         </div>
                         <div class="form-group">
                             <label for="">তথ্যের ধরন</label>
-                            <select id="type" name="information_type" value="{{ $left_banner->information_type }}" class="custom-select @error('information_type') is-invalid @enderror">
+                            <select id="type" name="information_type" value="{{ $left_banner->information_type }}" class="custom-select @error('information_type') is-invalid @enderror" required>
                                 <option value="1">ছবি</option>
                                 <option value="2">বর্ণনা</option>
                             </select>
@@ -48,7 +48,7 @@
                         </div>
                         <div id="desc" class="form-group">
                             <label for="">বর্ণনা লিখুন</label>
-                            <textarea class="form-control @error('description') is-invalid @enderror"  name="description" placeholder="বর্ণনা লিখুন">{{ $left_banner->description }}</textarea>
+                            <textarea class="form-control @error('description') is-invalid @enderror"  name="description" placeholder="বর্ণনা লিখুন" required>{{ $left_banner->description }}</textarea>
                             @error('description')
                                 <small class="text-danger">
                                     <strong>{{ $message }}</strong>

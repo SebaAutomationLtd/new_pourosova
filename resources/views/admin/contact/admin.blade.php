@@ -28,7 +28,7 @@
                         <div class="">
                             <div class="form-group">
                                 <label for="">নাম</label>
-                                <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="নাম" name="name" value="{{ old('name') }}">
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="নাম" name="name" value="{{ old('name') }}" required>
                                 @error('name')
                                     <small class="text-danger">
                                         <strong>{{ $message }}</strong>
@@ -37,7 +37,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="">পদবী</label>
-                                <input type="text" class="form-control @error('designation') is-invalid @enderror" placeholder="পদবী" name="designation" value="{{ old('designation') }}">
+                                <input type="text" class="form-control @error('designation') is-invalid @enderror" placeholder="পদবী" name="designation" value="{{ old('designation') }}" required>
                                 @error('designation')
                                     <small class="text-danger">
                                         <strong>{{ $message }}</strong>
@@ -47,7 +47,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="">ইমেইল</label>
-                                <input type="tel" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="ইমেইল" name="email">
+                                <input type="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="ইমেইল" name="email" required>
                                 @error('email')
                                     <small class="text-danger">
                                         <strong>{{ $message }}</strong>
@@ -57,7 +57,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="">মোবাইল নং</label>
-                                <input type="tel" class="form-control @error('contact') is-invalid @enderror" placeholder="মোবাইল নং" name="contact" value="{{ old('contact') }}">
+                                <input type="number" class="form-control @error('contact') is-invalid @enderror" placeholder="মোবাইল নং" name="contact" value="{{ old('contact') }}" required>
                                 @error('contact')
                                     <small class="text-danger">
                                         <strong>{{ $message }}</strong>
@@ -67,7 +67,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="">টেলিফোন</label>
-                                <input type="tel" class="form-control @error('telephone') is-invalid @enderror" placeholder="টেলিফোন" name="telephone" value="{{ old('telephone') }}">
+                                <input type="number" class="form-control @error('telephone') is-invalid @enderror" placeholder="টেলিফোন" name="telephone" value="{{ old('telephone') }}" required>
                                 @error('telephone')
                                     <small class="text-danger">
                                         <strong>{{ $message }}</strong>
@@ -79,7 +79,7 @@
                             <div class="form-group">
                                 <label for="">300px * 300px এবং JPG ছবি </label>
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input @error('telephone') is-invalid @enderror" name="photo" id="customFileLang" lang="es">
+                                    <input type="file" class="custom-file-input @error('telephone') is-invalid @enderror" name="photo" id="customFileLang" lang="es" required>
                                     <label class="custom-file-label" for="customFileLang">ছবি (JPG Format, 300px *
                                         300px)</label>
                               
@@ -140,17 +140,17 @@
                 <div class="row">
                     <div class="form-group col-md-4">
                         <label for="">নাম</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="নাম" name="name" value="{{ old('name') }}" id="name">
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="নাম" name="name" value="{{ old('name') }}" id="name" required>
 
                     </div>
                     <div class="form-group col-md-4">
                         <label for="">পদবী</label>
-                        <input type="text" class="form-control @error('designation') is-invalid @enderror" placeholder="পদবী" name="designation" value="{{ old('designation') }}" id="designation">
+                        <input type="text" class="form-control @error('designation') is-invalid @enderror" placeholder="পদবী" name="designation" value="{{ old('designation') }}" id="designation" required>
           
                     </div>
                     <div class="form-group col-md-4">
                         <label for="">মোবাইল</label>
-                        <input type="number" class="form-control @error('contact') is-invalid @enderror" placeholder="মোবাইল"  value="{{ old('contact') }}" name="contact">
+                        <input type="number" class="form-control @error('contact') is-invalid @enderror" placeholder="মোবাইল"  value="{{ old('contact') }}" name="contact" required>
     
                     </div>
                 </div>

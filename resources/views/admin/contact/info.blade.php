@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+ required@extends('admin.layout.master')
 @section('header')
     <section class="content-header pl-3">
         <h1>ওয়েবসাইট</h1>
@@ -27,7 +27,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="">শিরোনাম</label>
-                                <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" placeholder="শিরোনাম">
+                                <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" placeholder="শিরোনাম" required>
                                @error('title')
                                     <small class="text-danger">
                                         <strong>{{ $message }}</strong>
@@ -36,7 +36,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="">তথ্যের ধরন</label>
-                                <select id="type" class="custom-select @error('info_type') is-invalid @enderror" name="info_type">
+                                <select id="type" class="custom-select @error('info_type') is-invalid @enderror" name="info_type" required>
                                     <option value="1">ছবি</option>
                                     <option value="2">বর্ণনা</option>
                                 </select>
@@ -49,7 +49,7 @@
                         </div>
                         <div id="desc" class="form-group">
                             <label for="">বর্ণনা লিখুন</label>
-                            <textarea name="description" id="summernote" placeholder="বর্ণনা লিখুন" class="@error('description') is-invalid @enderror"></textarea>
+                            <textarea name="description" id="summernote" placeholder="বর্ণনা লিখুন" class="@error('description') is-invalid @enderror" required></textarea>
                                 @error('description')
                                     <small class="text-danger">
                                         <strong>{{ $message }}</strong>
@@ -60,7 +60,7 @@
                         <div id="banner" class="form-group">
                             <label for="">JPG ছবি </label>
                             <div class="custom-file">
-                                <input type="file" name="photo" class="custom-file-input @error('photo') is-invalid @enderror" id="customFileLang" lang="es">
+                                <input type="file" name="photo" class="custom-file-input @error('photo') is-invalid @enderror" id="customFileLang" lang="es" required>
                                 <label class="custom-file-label" for="customFileLang">ছবি (JPG Format)</label>
                                 @error('photo')
                                     <small class="text-danger">

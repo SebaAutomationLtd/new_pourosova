@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers;
+use App\Http\Controllers\Admin\PdfReportController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Frontend\FrontController;
@@ -91,6 +92,9 @@ Route::middleware('auth')->group(function () {
         Route::get('delete-user/{id}', [UserController::class, 'delete_user'])->name('user.delete');
 
         Route::resource('roles', RoleController::class);
+
+        Route::get('/khosora-report', [PdfReportController::class, 'khosora_report'])->name('khosora-report');
+        Route::post('/khosora-report', [PdfReportController::class, 'khosora_report_download'])->name('khosora-report');
     });
 
     Route::name('admin.header.')->prefix('admin/header')->namespace('App\Http\Controllers\Admin')->group(function () {

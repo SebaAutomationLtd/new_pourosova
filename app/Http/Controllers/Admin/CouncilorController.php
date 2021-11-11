@@ -49,8 +49,7 @@ class CouncilorController extends Controller
                 'councilor_type'=> 'male',
                 'created_by'    => 1
             ]);
-            /*return redirect()->back()->with(['success'=>'নতুন কাউন্সিলর অ্যাড করা হয়েছে']);*/
-            return redirect(route('admin.web.councilor'));
+            return redirect(route('admin.web.councilor'))->with(['message'=>'নতুন কাউন্সিলর অ্যাড করা হয়েছে']);
         }
     }
 
@@ -132,8 +131,8 @@ class CouncilorController extends Controller
                 'councilor_type'=> 'female',
                 'created_by'    => 1
             ]);
-            /*return redirect()->back()->with(['success'=>' নতুন (সংরক্ষিত) কাউন্সিলর অ্যাড করা হয়েছে']);*/
-            return redirect(route('admin.web.councilor.female'));
+
+            return redirect(route('admin.web.councilor.female'))->with(['message'=>' নতুন (সংরক্ষিত) কাউন্সিলর অ্যাড করা হয়েছে']);
         }
     }
 

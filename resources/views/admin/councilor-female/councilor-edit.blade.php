@@ -31,7 +31,7 @@
                             <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="">নাম</label>
-                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $female_councilor->name }}">
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $female_councilor->name }}" required>
                                 @error('name')
                                     <small class="text-danger">
                                         <strong>{{ $message }}</strong>
@@ -40,7 +40,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="">স্থান</label>
-                                <input type="text" name="place" value="{{ $female_councilor->place }}" class="form-control @error('contact') is-invalid @enderror">
+                                <input type="text" name="place" value="{{ $female_councilor->place }}" class="form-control @error('contact') is-invalid @enderror" required>
                                 @error('place')
                                     <small class="text-danger">
                                         <strong>{{ $message }}</strong>
@@ -52,8 +52,8 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="">ওয়ার্ড নং</label>
-                                <select name="ward_no" class="custom-select">
-                                    <option value="">-- সিলেক্ট করুন --</option>
+                                <select name="ward_no" class="custom-select" required>
+                                    <option value="" selected disabled>-- সিলেক্ট করুন --</option>
                                     <option value="1">ওয়ার্ড ০১</option>
                                     <option value="2">ওয়ার্ড ০২</option>
                                     <option value="3">ওয়ার্ড ০৩</option>
@@ -74,7 +74,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="">মোবাইল নং</label>
-                                <input type="tel" class="form-control @error('contact') is-invalid @enderror" placeholder="মোবাইল নং" name="contact" value="{{ $female_councilor->contact }}">
+                                <input type="tel" class="form-control @error('contact') is-invalid @enderror" placeholder="মোবাইল নং" name="contact" value="{{ $female_councilor->contact }}" required>
                                 @error('contact')
                                     <small class="text-danger">
                                         <strong>{{ $message }}</strong>
@@ -101,7 +101,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <textarea id="summernote" name="description" class="form-control @error('description') is-invalid @enderror"  placeholder="দৈর্ঘ পরিমান" >{{ $female_councilor->description }}</textarea>
+                            <textarea id="summernote" name="description" class="form-control @error('description') is-invalid @enderror"  placeholder="দৈর্ঘ পরিমান" required>{{ $female_councilor->description }}</textarea>
                             @error('description')
                                 <small class="text-danger">
                                     <strong>{{ $message }}</strong>

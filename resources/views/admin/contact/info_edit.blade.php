@@ -27,7 +27,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="">শিরোনাম</label>
-                                <input type="text" class="form-control" value="{{ $info_edit->title }}" name="title" placeholder="শিরোনাম">
+                                <input type="text" class="form-control" value="{{ $info_edit->title }}" name="title" placeholder="শিরোনাম" required>
                                @error('title')
                                     <small class="text-danger">
                                         <strong>{{ $message }}</strong>
@@ -36,7 +36,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="">তথ্যের ধরন</label>
-                                <select id="type" class="custom-select" name="info_type">
+                                <select id="type" class="custom-select" name="info_type" required>
                                     <option value="1">ছবি</option>
                                     <option value="2">বর্ণনা</option>
                                 </select>
@@ -49,7 +49,7 @@
                         </div>
                         <div id="desc" class="form-group">
                             <label for="">বর্ণনা লিখুন</label>
-                            <textarea name="description" id="summernote" placeholder="বর্ণনা লিখুন">{{ $info_edit->description}}</textarea>
+                            <textarea name="description" id="summernote" placeholder="বর্ণনা লিখুন" required>{{ $info_edit->description}}</textarea>
                                 @error('description')
                                     <small class="text-danger">
                                         <strong>{{ $message }}</strong>
@@ -58,13 +58,13 @@
                         </div>
                         <div id="banner" class="form-group">
                             <label for="">JPG ছবি </label><br>
-                            <img src="{{ asset('info/img') }}/{{ $info_edit->photo }}" height="100px" width="60px">
+                            <img src="{{ asset('info/img') }}/{{ $info_edit->photo }}" height="100px" width="60px" required>
                             
                         </div>
                         <div id="banner" class="form-group">
                             <label for="">JPG ছবি </label>
                             <div class="custom-file">
-                                <input type="file" name="photo" class="custom-file-input @error('photo') is-invalid @enderror" id="customFileLang" lang="es">
+                                <input type="file" name="photo" class="custom-file-input @error('photo') is-invalid @enderror" id="customFileLang" lang="es" required>
                                 <label class="custom-file-label" for="customFileLang">ছবি (JPG Format)</label>
                                 @error('photo')
                                     <small class="text-danger">

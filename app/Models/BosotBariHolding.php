@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class BosotBariHolding extends Model
 {
     protected $table = 'bosot_bari';
-    
+
     use HasFactory;
 
 
@@ -51,6 +51,24 @@ class BosotBariHolding extends Model
             'status',
     ];
 
-   
+     public function house_type()
+     {
+        return $this->belongsTo(HouseType::class, 'house_type_id');
+     }
+
+    public function ward()
+    {
+        return $this->belongsTo(Ward::class);
+    }
+
+    public function village()
+    {
+        return $this->belongsTo(Village::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
 }

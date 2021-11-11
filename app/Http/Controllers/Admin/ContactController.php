@@ -21,20 +21,20 @@ class ContactController extends Controller
     }
     public function mayor_store(Request $request){
         $request->validate([
-            'mayor_name'    =>'required',
-            'contact'       =>'required',
-            'email'         =>'required',
-            'father'        =>'required',
-            'mother'        =>'required',
-            'date_birth'    =>'required' ,
-            'present_address' =>'required',
-            'permanent_address' =>'required',
-            'nationality'   =>'required',
-            'religion'      =>'required',
-            'gender'        =>'required',
-            'marital_status'=>'required',
-            'latest_degree' =>'required',
-            'blood_group'   =>'required'
+            'mayor_name'    =>'required|max:255',
+            'contact'       =>'required|min:11|max:11',
+            'email'         =>'required|max:255',
+            'father'        =>'required|max:255',
+            'mother'        =>'required|max:255',
+            'date_birth'    =>'required|max:255' ,
+            'present_address' =>'required|max:255',
+            'permanent_address' =>'required|max:255',
+            'nationality'   =>'required|max:255',
+            'religion'      =>'required|max:255',
+            'gender'        =>'required|max:255',
+            'marital_status'=>'required|max:255',
+            'latest_degree' =>'required|max:255',
+            'blood_group'   =>'required|max:255'
         ]);
         ContactMayor::create([
             'mayor_name'    =>$request->mayor_name,
@@ -57,8 +57,8 @@ class ContactController extends Controller
     }
     public function professional_mayor_store(Request $request){
         $request->validate([
-            'designation'    =>'required',
-            'institute_name' =>'required',
+            'designation'    =>'required|max:255',
+            'institute_name' =>'required|max:255',
         ]);
         ProfessionalMayor::create([
             'designation'    => $request->designation,
@@ -83,7 +83,7 @@ class ContactController extends Controller
             'email'         => 'required',
             'contact'       => 'required',
             'telephone'     => 'required',
-            'photo'         => 'required',
+            'photo'         => 'mimes:jpeg,jpg,png|required|max:10000',
         ]);
         if($request->hasFile('photo')) {
             $image = $request->file('photo');
@@ -113,9 +113,9 @@ class ContactController extends Controller
             'name'          => 'required',
             'designation'   => 'required',
             'email'         => 'required',
-            'contact'       => 'required',
+            'contact'       => 'required|min:11|max:11',
             'telephone'     => 'required',
-            'photo'         => 'required',
+            'photo'         => 'mimes:jpeg,jpg,png|required|max:10000',
         ]);
         if($request->hasFile('photo')) {
             $image = $request->file('photo');
@@ -176,9 +176,9 @@ class ContactController extends Controller
             'name'        => 'required',
             'designation' => 'required',
             'email'       => 'required',
-            'contact'     => 'required',
+            'contact'     => 'required|min:11|max:11',
             'telephone'   => 'required',
-            'photo'       =>'required',
+            'photo'       => 'mimes:jpeg,jpg,png|required|max:10000',,
         ]);
        
         if($request->hasFile('photo')) {
@@ -203,7 +203,7 @@ class ContactController extends Controller
         $request->validate([
             'name'        => 'required',
             'designation' => 'required',
-            'contact'     => 'required',
+            'contact'     => 'required|min:11|max:11',
         ]);
         OtherEmployee::create([
             'name'          => $request->name,
@@ -239,7 +239,7 @@ class ContactController extends Controller
             'title'          => 'required',
             'info_type'      => 'required',
             'description'    => 'required',
-            'photo'          => 'required',
+            'photo'          => 'mimes:jpeg,jpg,png|required|max:10000',
         ]);
         if($request->hasFile('photo')) {
             $image = $request->file('photo');
