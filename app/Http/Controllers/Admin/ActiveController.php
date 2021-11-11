@@ -379,6 +379,7 @@ if($request->gurdian_status == "father")
         $data['last_tax_year'] = $request->last_tax_year;
         $data['service_charge'] = $request->service_charge;
         $data['payment_method_id'] = $request->payment_type;
+        $data['status'] = $request->status;
 
         if($request->hasFile('photo')) {
             $image = $request->file('photo');
@@ -491,6 +492,7 @@ if($request->gurdian_status == "father")
         $data['last_tax_year'] = $request->last_tax_year;
         $data['service_charge'] = $request->service_charge;
         $data['payment_method_id'] = $request->payment_type;
+        $data['status'] = $request->status;
 
         if($request->hasFile('photo')) {
             $image = $request->file('photo');
@@ -604,6 +606,7 @@ if($request->gurdian_status == "father")
         $data['trade_total'] = $request->trade_total;
         $data['service_charge'] = $request->service_charge;
         $data['payment_method_id'] = $request->payment_type;
+        $data['status'] = $request->status;
 
         if($request->hasFile('photo')) {
             $image = $request->file('photo');
@@ -617,7 +620,7 @@ if($request->gurdian_status == "father")
         }
         DB::table('business')->where('id', $id)->update($data);
 
-        return Redirect()->back()->with('message','ব্যাবসা প্রতিষ্ঠান আপডেট হয়েছে');
+        return redirect()->back()->with('message','ব্যাবসা প্রতিষ্ঠান আপডেট হয়েছে');
             
         } catch (Exception $e) {
              $err_message = \Lang::get($e->getMessage());

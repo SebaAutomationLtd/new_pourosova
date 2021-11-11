@@ -5,10 +5,14 @@
             <div class="nav_profile">
                 <div class="media profile-left">
                     <a class="float-left profile-thumb" href="#">
-                        <img src="{{ asset('img/users/'. auth()->user()->photo) }}" class="rounded-circle"
-                             alt="User Image"></a>
+                        @if(isset(auth()->user()->photo))
+                        <img src="{{ asset('img/users/'. auth()->user()->photo ?? '') }}" class="rounded-circle"
+                             alt="User Image">
+                             @endif
+
+                         </a>
                     <div class="content-profile">
-                        <h4 class="media-heading">{{ auth()->user()->name }}</h4>
+                        <h4 class="media-heading">{{ auth()->user()->name ?? '' }}</h4>
                         <ul class="icon-list">
                             <li>
                                 <a href="#" title="user">
@@ -35,7 +39,7 @@
                 </div>
             </div>
             <ul class="navigation">
-                <li class="menu-dropdown active">
+                <li class="menu-dropdown">
                     <a href="javascript:void(0)">
                         <i class="menu-icon ti-check-box"></i>
                         <span>ওয়েবসাইট</span>
@@ -335,29 +339,104 @@
 
                         <span class="fa arrow"></span>
                     </a>
-                    <ul class="sub-menu p-l-40">
+                    <ul class="sub-menu">
                         <li>
                             <a href="{{ route('action.search') }}"> <i class="fa fa-fw ti-receipt"></i>
                                 একটিভ / ডিএকটিভ
 
                             </a>
                         </li>
-                        <li>
-                            <a href="{{ route('admin.header.marquee') }}"> <i class="fa fa-fw ti-receipt"></i>
-                                বসত বাড়ী হোল্ডিং
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('admin.header.marquee') }}"> <i class="fa fa-fw ti-receipt"></i>
-                                বানিজ্যিক হোল্ডিং
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('admin.header.marquee') }}"> <i class="fa fa-fw ti-receipt"></i>
-                                কমার্শিয়াল হোল্ডিং
-                            </a>
-                        </li>
+                         <li class="menu-dropdown">
+                    <a href="#">
+                        <i class="fa fa-fw ti-receipt"></i> বসত বাড়ী হোল্ডিং
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                           <li>
+                                <a href="{{url('new-bosot-index')}}" id="all_bosot_bari"> <i class="fa fa-fw ti-receipt"></i> মোট ইউজার
+                                </a>
+                            </li>
+
+
+                            <li>
+                                <a href="{{url('new-bosot-index-active')}}" id="all_bosot_bari_active">
+                                    <i class="fa fa-fw ti-receipt"></i> একটিভ ইউজার
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{url('new-bosot-index-inactive')}}" id="all_bosot_bari_inactive">
+                                    <i class="fa fa-fw ti-receipt"></i> পেন্ডিং ইউজার
+                                </a>
+                            </li>
+
+
+                            <li>
+                                <a href="{{url('new-bosot-index-family')}}">
+                                    <i class="fa fa-fw ti-receipt"></i> পরিবারের শ্রেণীবিন্যাস
+                                </a>
+                            </li>
+
                     </ul>
+                </li>
+                <li class="menu-dropdown">
+                    <a href="#">
+                        <i class="fa fa-fw ti-receipt"></i>  বানিজ্যিক হোল্ডিং
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                           <li>
+                                <a href="{{url('new-business-holding-index')}}" id="all_bosot_bari"> <i class="fa fa-fw ti-receipt"></i> মোট ইউজার
+                                </a>
+                            </li>
+
+
+                            <li>
+                                <a href="{{url('new-business-holding-index-active')}}" id="all_bosot_bari_active">
+                                    <i class="fa fa-fw ti-receipt"></i> একটিভ ইউজার
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{url('new-business-holding-index-inactive')}}" id="all_bosot_bari_inactive">
+                                    <i class="fa fa-fw ti-receipt"></i> পেন্ডিং ইউজার
+                                </a>
+                            </li>
+
+                    </ul>
+                </li>
+
+                <li class="menu-dropdown">
+                    <a href="#">
+                        <i class="fa fa-fw ti-receipt"></i> ব্যাবসা প্রতিষ্ঠান
+                        <span class="fa arrow"></span>
+                    </a>
+                     <ul class="sub-menu">
+                           <li>
+                                <a href="{{url('new-business-index')}}" id="all_bosot_bari"> <i class="fa fa-fw ti-receipt"></i> মোট ইউজার
+                                </a>
+                            </li>
+
+
+                            <li>
+                                <a href="{{url('new-business-index-active')}}" id="all_bosot_bari_active">
+                                    <i class="fa fa-fw ti-receipt"></i> একটিভ ইউজার
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{url('new-business-index-inactive')}}" id="all_bosot_bari_inactive">
+                                    <i class="fa fa-fw ti-receipt"></i> পেন্ডিং ইউজার
+                                </a>
+                            </li>
+
+                    </ul>
+                </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="{{ route('khosora-report') }}"> <i class="fa fa-fw ti-receipt"></i>
+                        খসড়া রিপোর্ট
+
+                    </a>
                 </li>
 
             </ul>

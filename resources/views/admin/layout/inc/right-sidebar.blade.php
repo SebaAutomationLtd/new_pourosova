@@ -9,7 +9,7 @@
                     class="rounded-circle img-fluid float-left" height="35" alt="User Image">
                 <div class="riot">
                     <div>
-                        {{ auth()->user()->name }}
+                        {{ auth()->user()->name ?? '' }}
                         <span><i class="fa fa-sort-down"></i></span>
                     </div>
                 </div>
@@ -18,7 +18,7 @@
                 <!-- User image -->
                 <li class="user-header">
                     <img src="{{ asset('Admin') }}/img/authors/avatar1.jpg" class="rounded-circle" alt="User Image">
-                    <p> {{ auth()->user()->name }}</p>
+                    <p> {{ auth()->user()->name ?? '' }}</p>
                 </li>
                 <!-- Menu Body -->
                 <li class="p-t-3"><a href="user_profile.html" class="dropdown-item"> <i class="fa fa-fw ti-user"></i> My

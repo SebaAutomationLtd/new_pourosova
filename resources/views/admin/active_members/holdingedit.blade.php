@@ -650,6 +650,22 @@ $date_year = date("Y");
                                                 </div>
                                             </div>
                                         </div>
+                                         <div class="form-group row">
+                                               <div class="col-md-4">
+                                                    <label for="inputName" class="col-form-label">একশন
+                                                    <span style="color: red">*</span>
+                                                </label>
+                                                
+                                                    <select required class="form-control" name="status" id="">
+                                                        <option value="">নির্বাচন করুন</option>
+                                                        <option {{ $user->status == 0 ? 'selected' : '' }} value="1">একটিভ
+                                                        </option>
+                                                        <option {{ $user->status == 1 ? 'selected' : '' }} value="0">
+                                                            ডিএকটিভ</option>
+                                                    </select>
+                                               </div>
+                                                
+                                            </div>
 
                                         
                                     </div>

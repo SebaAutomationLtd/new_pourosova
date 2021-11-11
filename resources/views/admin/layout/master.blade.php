@@ -21,14 +21,25 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/custom.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/responsive.css')}}">
     <link href="{{ asset('css/admin/iCheck/css/all.css') }}" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/admin/datatables/css/dataTables.bootstrap4.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/admin/datatables/css/datatables_custom.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/admin/datatables/css/responsive.dataTables.min.css') }}">
+<!--     <link rel="stylesheet" href="{{ asset('css/admin/datatables/css/responsive.dataTables.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/admin/datatables/css/dataTables.bootstrap4.css') }}" /> -->
+    <!-- <link rel="stylesheet" type="text/css" href="{{ asset('css/admin/datatables/css/datatables_custom.css') }}"> -->
+ <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="{{ asset('css/admin/bootstrap-fileinput/css/fileinput.min.css') }}" media="all" rel="stylesheet"
           type="text/css" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/admin/formelements.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 </head>
+
+<style type="text/css">
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        padding: 0px;
+    }
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        border: 0px;
+    }
+</style>
 
 <body class="skin-default">
 <div class="preloader">
@@ -65,11 +76,14 @@
 <script src="{{ asset('js/admin/bootstrap-fileinput/js/fileinput.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/admin/vendors/bootstrap-fileinput/js/theme.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/admin/form_elements.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/admin/datatables/js/jquery.dataTables.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/admin/datatables/js/dataTables.bootstrap4.js') }}"></script>
+<!-- <script type="text/javascript" src="{{ asset('js/admin/datatables/js/jquery.dataTables.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/admin/datatables/js/dataTables.bootstrap4.js') }}"></script> -->
 <script src="{{ asset('js/admin/dataTables.responsive.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/admin/custom_js/datatables_custom.js') }}"></script>
+<!-- <script type="text/javascript" src="{{ asset('js/admin/custom_js/datatables_custom.js') }}"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
 
 <!-- Toaster -->
     <link rel="stylesheet" type="text/css"

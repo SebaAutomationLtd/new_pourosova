@@ -370,7 +370,7 @@ input[type="range"] {
 .content {
   display: block;
   width: auto;
-  padding: 0 15px;
+  padding: 30px 15px;
 }
 
 .left-side {
