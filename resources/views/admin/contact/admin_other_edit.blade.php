@@ -26,17 +26,17 @@
                 <div class="row">
                     <div class="form-group col-md-4">
                         <label for="">নাম</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="নাম" name="name" value="{{ $other_edit->name }}" id="name">
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="নাম" name="name" value="{{ $other_edit->name }}" id="name" required>
 
                     </div>
                     <div class="form-group col-md-4">
                         <label for="">পদবী</label>
-                        <input type="text" class="form-control @error('designation') is-invalid @enderror" placeholder="পদবী" name="designation" value="{{ $other_edit->designation }}" id="designation">
+                        <input type="text" class="form-control @error('designation') is-invalid @enderror" placeholder="পদবী" name="designation" value="{{ $other_edit->designation }}" id="designation" required>
           
                     </div>
                     <div class="form-group col-md-4">
                         <label for="">মোবাইল</label>
-                        <input type="number" class="form-control @error('contact') is-invalid @enderror" placeholder="মোবাইল"  value="{{ $other_edit->contact }}" name="contact">
+                        <input type="number" class="form-control @error('contact') is-invalid @enderror" placeholder="মোবাইল"  value="{{ $other_edit->contact }}" name="contact" required>
                     </div>
                 </div>
                 <button class="btn btn-primary" type="submit" >সাবমিট</button>

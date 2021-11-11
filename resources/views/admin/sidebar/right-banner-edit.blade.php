@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+r equired@extends('admin.layout.master')
 @section('header')
     <section class="content-header pl-3">
         <h1>ওয়েবসাইট</h1>
@@ -27,12 +27,12 @@
                         @csrf
                           <div class="form-group">
                             <label for="">শিরোনাম</label>
-                            <input type="text" name="title" value="{{ $right_banner->title }}" class="form-control" placeholder="শিরোনাম">
+                            <input type="text" name="title" value="{{ $right_banner->title }}" class="form-control" placeholder="শিরোনাম" required>
            
                         </div>
                         <div class="form-group">
                             <label for="">তথ্যের ধরন</label>
-                            <select id="type" name="information_type" value="{{ $right_banner->information_type }}" class="custom-select">
+                            <select id="type" name="information_type" value="{{ $right_banner->information_type }}" class="custom-select" required>
                                 <option value="1">ছবি</option>
                                 <option value="2">বর্ণনা</option>
                             </select>
@@ -40,7 +40,7 @@
                         </div>
                         <div id="desc" class="form-group">
                             <label for="">বর্ণনা লিখুন</label>
-                            <textarea class="form-control"  name="description" placeholder="বর্ণনা লিখুন">{{ $right_banner->description }}</textarea>
+                            <textarea class="form-control"  name="description" placeholder="বর্ণনা লিখুন" required>{{ $right_banner->description }}</textarea>
                         </div>     
                         <div class="form-group">
                             <label for="">300px * 300px এবং JPG ছবি</label><br>
