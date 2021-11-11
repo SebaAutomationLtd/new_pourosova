@@ -4,7 +4,7 @@ return [
     'mode' => '',
     'format' => 'A4',
     'default_font_size' => '12',
-    'default_font' => 'sans-serif',
+    'default_font' => 'solaimanlipi',
     'margin_left' => 10,
     'margin_right' => 10,
     'margin_top' => 10,
@@ -16,7 +16,7 @@ return [
     'author' => '',
     'watermark' => '',
     'show_watermark' => false,
-    'watermark_font' => 'sans-serif',
+    'watermark_font' => 'solaimanlipi',
     'display_mode' => 'fullpage',
     'watermark_text_alpha' => 0.1,
     'custom_font_dir' => public_path('fonts/'), // don't forget the trailing slash!
