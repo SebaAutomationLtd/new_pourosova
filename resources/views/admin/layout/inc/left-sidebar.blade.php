@@ -350,6 +350,13 @@
                     </ul>
                 </li>
 
+                <li>
+                    <a href="{{ route('khosora-report') }}"> <i class="fa fa-fw ti-receipt"></i>
+                        খসড়া রিপোর্ট
+
+                    </a>
+                </li>
+
             </ul>
             <!-- / .navigation -->
         </div>

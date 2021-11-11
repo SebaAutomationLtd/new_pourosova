@@ -49,6 +49,20 @@ class BusinessHolding extends Model
             'status',
     ];
 
-    
+
+    public function ward()
+    {
+        return $this->belongsTo(Ward::class);
+    }
+
+    public function village()
+    {
+        return $this->belongsTo(Village::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
 }
