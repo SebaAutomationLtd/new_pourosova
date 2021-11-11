@@ -7,6 +7,9 @@ use App\Http\Controllers\Frontend\FrontController;
 use App\Http\Controllers\Frontend\RegistrationController;
 use App\Http\Controllers\Frontend\AjaxController;
 use App\Http\Controllers\Admin\ActiveController;
+use App\Http\Controllers\Admin\BosotBariController;
+use App\Http\Controllers\Admin\BusinessHoldingController;
+use App\Http\Controllers\Admin\BusinessController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -308,6 +311,50 @@ Route::post('/update-bosot-bari/{id}', [ActiveController::class, 'UpdateBosotBar
 
 Route::post('/update-business-holding/{id}', [ActiveController::class, 'UpdateBusinessHolding'])->name('update.business-holding');
 Route::post('/update-business/{id}', [ActiveController::class, 'UpdateBusiness'])->name('update.business');
+
+// Bosot Bari
+Route::get('/new-bosot-index', [BosotBariController::class, 'BosotSearchResult2']);
+Route::get('/bosot-search-result', [BosotBariController::class, 'BosotSearchResult2']);
+
+Route::get('/new-bosot-index-active', [BosotBariController::class, 'BosotSearchResult3']);
+Route::get('/bosot-search-result-active', [BosotBariController::class, 'BosotSearchResult3']);
+
+Route::get('/new-bosot-index-inactive', [BosotBariController::class, 'BosotSearchResult4']);
+Route::get('/bosot-search-result-inactive', [BosotBariController::class, 'BosotSearchResult4']);
+
+Route::get('/new-bosot-index-family', [BosotBariController::class, 'BosotSearchResult5']);
+Route::get('/bosot-search-result-family', [BosotBariController::class, 'BosotSearchResult5']);
+
+Route::get('/get-info/{id}', [BosotBariController::class, 'GetInfo']);
+Route::get('/update-member_info', [BosotBariController::class, 'UpdateMemberInfo']);
+Route::get('/delete-member/{id}', [BosotBariController::class, 'DeleteMember'])->name('delete.general_member');
+
+Route::get('/new-business-holding-index', [BusinessHoldingController::class, 'BusinessHoldingResult2']);
+Route::get('/business-holding-search-result', [BusinessHoldingController::class, 'BusinessHoldingResult2']);
+
+Route::get('/new-business-holding-index-active', [BusinessHoldingController::class, 'BusinessHoldingResult3']);
+Route::get('/business-holding-search-result-active', [BusinessHoldingController::class, 'BusinessHoldingResult3']);
+
+Route::get('/new-business-holding-index-inactive', [BusinessHoldingController::class, 'BusinessHoldingResult4']);
+Route::get('/business-holding-search-result-inactive', [BusinessHoldingController::class, 'BusinessHoldingResult4']);
+
+Route::get('/get-business-info/{id}', [BusinessHoldingController::class, 'GetBusinessHoldingInfo']);
+Route::get('/update-business-holding_info', [BusinessHoldingController::class, 'UpdateBusinessHoldingInfo']);
+Route::get('/delete-business-holding/{id}', [BusinessHoldingController::class, 'DeleteBusinessHolding'])->name('delete.business-holding');
+
+Route::get('/new-business-index', [BusinessController::class, 'BusinessResult2']);
+Route::get('/business-search-result', [BusinessController::class, 'BusinessResult2']);
+
+Route::get('/new-business-index-active', [BusinessController::class, 'BusinessResult3']);
+Route::get('/business-search-result-active', [BusinessController::class, 'BusinessResult3']);
+
+Route::get('/new-business-index-inactive', [BusinessController::class, 'BusinessResult4']);
+Route::get('/business-search-result-inactive', [BusinessController::class, 'BusinessResult4']);
+
+Route::get('/get-businesss-info/{id}', [BusinessController::class, 'GetBusinessInfo']);
+Route::get('/update-business_info', [BusinessController::class, 'UpdateBusinessInfo']);
+Route::get('/delete-business/{id}', [BusinessController::class, 'DeleteBusiness'])->name('delete.business');
+
 
 //Admin Daynamic End
 
