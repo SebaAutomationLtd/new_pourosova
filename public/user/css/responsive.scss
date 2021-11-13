@@ -1,0 +1,46 @@
+@import 'colors';
+@import 'classes';
+
+
+@media only screen and (max-width: 767px){
+    #nav{
+        .dropdownmenu{
+            left: unset;
+            right: 0;
+        }
+        
+    }
+
+    #profile {
+        margin-top: 40px;
+        .sidebar .items  a{
+            display: block;
+            color: $black;
+            padding: 5px 20px;
+        }
+    }
+}
+
+@media only screen and (max-width: 576px){
+    #nav{
+        .title{
+            font-size: 25px;
+        }
+        img.logo{
+            width: 45px;
+        }
+    }
+    #banner{
+        .overlay{
+            padding: 25px 0; 
+        }  
+        .title{
+            font-size: 25px;
+        }  
+    }
+    #profile{
+        .container{
+            padding: 0;
+        }
+    }
+}

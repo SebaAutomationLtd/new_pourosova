@@ -48,7 +48,7 @@ class HeaderController extends Controller
         if($request->file()) {
             foreach ($request->file() as $name => $image) {
                 $imageName = time().'_'.$image->getClientOriginalName();
-                $image->move(public_path('img'), $imageName);
+                $image->move(public_path('uploads/header_logo'), $imageName);
                 DB::table('website_settings')->insert([
                     'name' => $name,
                     'value' => $imageName,

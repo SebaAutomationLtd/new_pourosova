@@ -19,7 +19,7 @@
                                 <a href="#">
                                     <div class="mayor">
                                         <div class="text-center">
-                                            <img class="rounded img-fluid w-100 d-block" src="{{ asset('img/'. ($mayor ? $mayor->image : '')) }}"
+                                            <img class="rounded img-fluid w-100 d-block" src="{{ asset('uploads/mayor/'. ($mayor ? $mayor->image : '')) }}"
                                                 alt="">
                                             <h5 class="mt-2 mb-0">{{$mayor->name ?? ''}}</h5>
                                             <div>
@@ -55,7 +55,7 @@
                                                 <a href="#">
                                                     <div class="info">
                                                         <img class="img-fluid w-100 d-block"
-                                                            src="{{ asset('councilor/img/'.$councilor->photo) }}" alt="">
+                                                            src="{{ asset('uploads/councilor/'.$councilor->photo) }}" alt="">
                                                         <h5 class="m-0 title">ওয়ার্ড {{ $councilor->ward_no ?? '' }}</h5>
                                                     </div>
                                                 </a>
@@ -95,7 +95,7 @@
                                                 <a href="#">
                                                     <div class="info">
                                                         <img class="img-fluid w-100 d-block"
-                                                            src="{{ asset('councilor/img/'.$councilor->photo) }}" alt="">
+                                                            src="{{ asset('uploads/councilor/'.$councilor->photo) }}" alt="">
                                                         <h5 class="m-0 title">ওয়ার্ড {{ $councilor->ward_no ?? '' }}</h5>
                                                     </div>
                                                 </a>
@@ -153,7 +153,7 @@
                                 <div class="app-links ">
                                     <div>
                                         <div>
-                                            <img class="d-block w-100" src="{{ asset('leftside/img/'.$left_banner->photo) }}" alt="">
+                                            <img class="d-block w-100" src="{{ asset('uploads/leftside/'.$left_banner->photo) }}" alt="">
                                         </div>
                                     </div>
                                 </div>

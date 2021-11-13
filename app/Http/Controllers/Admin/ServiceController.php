@@ -28,7 +28,7 @@ class ServiceController extends Controller
     	if($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time().'_'.$image->getClientOriginalName();
-            $image->move(public_path('img'), $imageName);
+            $image->move(public_path('uploads/service/'), $imageName);
            	
            	$data =array();
 	        $data['title']= $request->title;
@@ -45,8 +45,8 @@ class ServiceController extends Controller
     public function delete($id){
 
         $old = DB::table('services')->where('id',$id)->first();
-            if (file_exists(public_path('img/'.$old->image))) {
-                unlink(public_path('img/'.$old->image));
+            if (file_exists(public_path('uploads/service/'.$old->image))) {
+                unlink(public_path('uploads/service/'.$old->image));
             }
 
     	$delete = DB::table('services')->where('id',$id)->delete();
@@ -72,13 +72,13 @@ class ServiceController extends Controller
     	if($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time().'_'.$image->getClientOriginalName();
-            $image->move(public_path('img'), $imageName);
+            $image->move(public_path('uploads/service'), $imageName);
 
             $data['image']=$imageName;
 
             $old = DB::table('services')->where('id',$id)->first();
-            if (file_exists(public_path('img/'.$old->image))) {
-                unlink(public_path('img/'.$old->image));
+            if (file_exists(public_path('uploads/service/'.$old->image))) {
+                unlink(public_path('uploads/service/'.$old->image));
             }
 
         }

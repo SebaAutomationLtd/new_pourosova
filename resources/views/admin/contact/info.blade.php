@@ -1,4 +1,4 @@
- required@extends('admin.layout.master')
+@extends('admin.layout.master')
 @section('header')
     <section class="content-header pl-3">
         <h1>ওয়েবসাইট</h1>
@@ -103,7 +103,7 @@
                                         </td>
                                         <td>
                                             <a target="_blank" href="">
-                                                <img class="rounded" src="{{ asset('info/img') }}/{{$info->photo}}"
+                                                <img class="rounded" src="{{ asset('uploads/info') }}/{{$info->photo}}"
                                                     alt="" height="80px">
                                             </a>
                                         </td>

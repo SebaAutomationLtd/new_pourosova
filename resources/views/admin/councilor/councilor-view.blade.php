@@ -51,7 +51,7 @@
                                         <td>{{ $councilor->ward_no }}</td>
                                         <td>{{ $councilor->contact }}</td>
                                         <td>
-                                            <img class="rounded" src="{{ asset('councilor/img') }}/{{$councilor->photo }}"
+                                            <img class="rounded" src="{{ asset('uploads/councilor') }}/{{$councilor->photo }}"
                                                style=" height: 100px; width: 100px;" alt="">
                                         </td>
                                         <td>{{ $councilor->description }}</td>

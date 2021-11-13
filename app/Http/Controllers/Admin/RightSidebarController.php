@@ -23,7 +23,7 @@ class RightSidebarController extends Controller
         if($request->hasFile('photo')) {
             $image = $request->file('photo');
             $imageName = time().'_'.$image->getClientOriginalName();
-            $image->move(public_path('rightside/img'), $imageName);
+            $image->move(public_path('uploads/rightside'), $imageName);
 
             RightTopBanner::create([
                 'photo'             => $imageName,
@@ -49,14 +49,14 @@ class RightSidebarController extends Controller
         if($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time().'_'.$image->getClientOriginalName();
-            $image->move(public_path('rightside/img'), $imageName);
+            $image->move(public_path('uploads/rightside'), $imageName);
 
             $data =array();
             $data['photo']=$imageName;
 
             $old = DB::table('right_top_banners')->where('id',$id)->first();
-            if (file_exists(public_path('rightside/img/'.$old->photo))) {
-                unlink(public_path('rightside/img/'.$old->photo));
+            if (file_exists(public_path('uploads/rightside/'.$old->photo))) {
+                unlink(public_path('uploads/rightside/'.$old->photo));
             }
 
             $update = DB::table('right_top_banners')->where('id',$id)->update($data);
@@ -125,7 +125,7 @@ class RightSidebarController extends Controller
     	if($request->hasFile('photo')) {
             $image = $request->file('photo');
             $imageName = time().'_'.$image->getClientOriginalName();
-            $image->move(public_path('rightside/img'), $imageName);
+            $image->move(public_path('uploads/rightside'), $imageName);
         
             RightSideBanner::create([
                 'title'           	=> $request->title,
@@ -142,8 +142,8 @@ class RightSidebarController extends Controller
     public function banner_delete($id){
 
         $old = DB::table('right_side_banners')->where('id',$id)->first();
-            if (file_exists(public_path('rightside/img/'.$old->photo))) {
-                unlink(public_path('rightside/img/'.$old->photo));
+            if (file_exists(public_path('uploads/rightside/'.$old->photo))) {
+                unlink(public_path('uploads/rightside/'.$old->photo));
             }
 
         $delete = DB::table('right_side_banners')->where('id',$id)->delete();
@@ -168,7 +168,7 @@ class RightSidebarController extends Controller
             }else{
                 $image = $request->file('photo');
                 $imageName = time().'_'.$image->getClientOriginalName();
-                $image->move(public_path('rightside/img'), $imageName);
+                $image->move(public_path('uploads/rightside'), $imageName);
 
                 $update_banner->update([
                     'title'             => $request->title,

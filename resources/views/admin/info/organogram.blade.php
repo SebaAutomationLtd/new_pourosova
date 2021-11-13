@@ -79,7 +79,7 @@
                                         <td>{{$organogram->title ?? ''}}</td>
                                         <td>
                                             <a  href="#">
-                                                <img class="rounded" src="{{ asset('img/'.$organogram->image ?? '') }}"
+                                                <img class="rounded" src="{{ asset('uploads/organogram/'.$organogram->image ?? '') }}"
                                                 alt="" style="height: 100px; width: 100px;">
                                             </a>
                                         </td>

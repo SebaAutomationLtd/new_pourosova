@@ -44,7 +44,7 @@ r equired@extends('admin.layout.master')
                         </div>     
                         <div class="form-group">
                             <label for="">300px * 300px এবং JPG ছবি</label><br>
-                            <img src="{{ asset('rightside/img')}}/{{ $right_banner->photo}}" height="100px" width="200px">
+                            <img src="{{ asset('uploads/rightside')}}/{{ $right_banner->photo}}" height="100px" width="200px">
                         </div>
                         <div id="banner" class="form-group">
                             <label for="">JPG ছবি </label>

@@ -78,9 +78,6 @@
                                 <li><a href="{{ route('admin.web.right.service') }}"> <i class="fa fa-fw ti-cup"></i>
                                         সার্ভিসসমূহ
                                     </a></li>
-                                <li><a href="{{ route('admin.web.mayor') }}"> <i class="fa fa-fw ti-cup"></i>
-                                        অন্যান্য তথ্য
-                                    </a></li>
                             </ul>
                         </li>
 

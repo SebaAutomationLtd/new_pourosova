@@ -105,7 +105,7 @@
                                         <td>{{ $banner->description }}</td>
                                         <td>
                                             <a target="_blank" href="">
-                                                <img class="rounded" src="{{ asset('rightside/img') }}/{{$banner->photo}}"
+                                                <img class="rounded" src="{{ asset('uploads/rightside') }}/{{$banner->photo}}"
                                                     alt="">
                                             </a>
                                         </td>

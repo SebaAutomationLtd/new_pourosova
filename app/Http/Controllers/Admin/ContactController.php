@@ -88,7 +88,7 @@ class ContactController extends Controller
         if($request->hasFile('photo')) {
             $image = $request->file('photo');
             $imageName = time().'_'.$image->getClientOriginalName();
-            $image->move(public_path('uno/img'), $imageName);
+            $image->move(public_path('uploads/uno'), $imageName);
 
             Uno::create([
                 'name'          => $request->name,
@@ -120,7 +120,7 @@ class ContactController extends Controller
         if($request->hasFile('photo')) {
             $image = $request->file('photo');
             $imageName = time().'_'.$image->getClientOriginalName();
-            $image->move(public_path('admin/img'), $imageName);
+            $image->move(public_path('uploads/admin'), $imageName);
 
             Admin::create([
                 'name'          => $request->name,
@@ -184,7 +184,7 @@ class ContactController extends Controller
         if($request->hasFile('photo')) {
             $image = $request->file('photo');
             $imageName = time().'_'.$image->getClientOriginalName();
-            $image->move(public_path('engineer/img'), $imageName);
+            $image->move(public_path('uploads/engineer'), $imageName);
 
             Engineer::create([
                 'name'          => $request->name,
@@ -244,7 +244,7 @@ class ContactController extends Controller
         if($request->hasFile('photo')) {
             $image = $request->file('photo');
             $imageName = time().'_'.$image->getClientOriginalName();
-            $image->move(public_path('info/img'), $imageName);
+            $image->move(public_path('uploads/info'), $imageName);
 
             Info::create([
                 'title'         => $request->title,
@@ -271,7 +271,7 @@ class ContactController extends Controller
             }else{
                 $image = $request->file('photo');
                 $imageName = time().'_'.$image->getClientOriginalName();
-                $image->move(public_path('info/img'), $imageName);
+                $image->move(public_path('uploads/info'), $imageName);
                 $info->update([
                 'title'         => $request->title,
                 'info_type'     => $request->info_type,
@@ -283,8 +283,8 @@ class ContactController extends Controller
     }
     public function info_delete($id){
         $old = Info::where('id',$id)->first();
-            if (file_exists(public_path('info/img/'.$old->photo))) {
-                unlink(public_path('info/img/'.$old->photo));
+            if (file_exists(public_path('uploads/info'.$old->photo))) {
+                unlink(public_path('uploads/info'.$old->photo));
             }
 
         $delete = Info::where('id',$id)->delete();
