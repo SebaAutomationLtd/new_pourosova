@@ -449,6 +449,10 @@
                             <a href="{{url('warish-report')}}"> <i class="fa fa-fw ti-receipt"></i> ওয়ারিশ সনদ </a>
 
                         </li>
+                        <li class="menu-dropdown">
+                            <a href="{{url('new-report')}}"> <i class="fa fa-fw ti-receipt"></i> নতুন সনদ </a>
+
+                        </li>
 
 
 

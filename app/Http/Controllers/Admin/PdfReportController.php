@@ -97,4 +97,12 @@ class PdfReportController extends Controller
 
 
     }
+    public function newreport()
+    {
+            Config::set('pdf.orientation', 'P');
+            $pdf = PDF::loadView('report.newreport');
+            return $pdf->download('newreport.pdf');
+
+
+    }
 }

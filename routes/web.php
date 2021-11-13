@@ -382,6 +382,7 @@ Route::get('/delete-business/{id}', [BusinessController::class, 'DeleteBusiness'
 // Report 
  Route::get('/puno-bibaho-report', [PdfReportController::class, 'punobibaho']);
  Route::get('/warish-report', [PdfReportController::class, 'warish']);
+ Route::get('/new-report', [PdfReportController::class, 'newreport']);
 
 
 //Admin Daynamic End

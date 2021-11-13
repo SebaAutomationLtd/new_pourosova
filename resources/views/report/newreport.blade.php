@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>sonod</title>
   <style type="text/css">
- html {
+html {
             height: 100%;
         }
 
@@ -65,7 +65,7 @@ font-weight: 900;
 }
 
 .sonod-title {
-  width: 160px;
+  width: 130px;
   text-align: center;  
   font-size: 16px;
   background-color: #000;
@@ -77,12 +77,12 @@ font-weight: 900;
   border-radius: 5px;
 }
 .info_table tr th{
-padding: 10px 0px;
+padding: 5px 0px;
 font-weight: normal;
 }
 
 .info_table tr td {
-  padding: 10px 5px;
+  padding: 5px;
   font-weight: normal;
 }
 
@@ -94,8 +94,6 @@ font-weight: normal;
                             </div>
 <section>
   <div class="container">
-    <div class="certificate">
-      
       <div class="border-1">
         <div class="border-2">
           
@@ -108,7 +106,7 @@ font-weight: normal;
 
                                             <h2 class="main-title" style="margin-bottom: 0px !important;margin-top: 0px; !important">ত্রিশাল পৌরসভা</h2>
                                             <h2 class="sub-title" style="margin-bottom: 0px !important;margin-top: 0px; !important">ত্রিশাল, ময়মনসিংহ</h2>
-                                            <h3 class="sonod-title" style="margin-bottom: 0px !important;color: #fff;">পূণ বিবাহ না হওয়া সনদ</h3>
+                                            <h3 class="sonod-title" style="margin-bottom: 0px !important;color: #fff;">প্রত্যয়ন সনদ </h3>
             </div>
             <div class="column25">
               <img src="{{asset('logo/mujib.png')}}" width="150" alt="" style="float: right;display: block;text-align: right;margin-top: 0.153in;">
@@ -119,59 +117,86 @@ font-weight: normal;
             
             <div class="column50">
                 <h2 style="font-size: 18px;margin-bottom: 0px !important;margin-top: 0px !important;">সনদ নং :</h2>
-                                    <h2 style="font-size: 18px;margin-bottom: 0px !important;margin-top: 0px !important;">নাগরিক তথ্যঃ</h2>
+                                
                 
             </div>
             <div class="column50" style="text-align: right;">
-                     <h2 style="font-size: 18px;margin-bottom: 0px !important;margin-top: 0px !important;">লাইসেন্স নং-২১৪৩২৪২৩</h2>
                                     <h2 style="font-size: 18px;margin-bottom: 0px !important;margin-top: 0px !important;">ইস্যু তারিখঃ ২০-১১-২০২০ ইং</h2>
                 
             </div>
             
           </div>
+          <div style="width: 100%;text-align: justify;font-size: 17px;font-weight: normal;margin-bottom: 10px;">
+                                   এই মর্মে প্রত্যয়ন করা যাইতেছে যে , 
+                                </div>
 
-           <table class="info_table" style="text-align: left;margin-bottom: 10px;">
+           <table class="info_table" style="text-align: left;margin-bottom: 7px;">
                                     <tr>
-                                        <th width="220" align="left">১) নাম</th>
+                                        <th width="220" align="left"> নাম :</th>
                                         <td>:</td>
-                                        <td>তথ্য</td>
+                                        <td>মোঃ লাক মিয়া </td>
                                     </tr>
                                     <tr>
-                                        <th align="left">২) পিতা</th>
+                                        <th align="left">পিতা</th>
                                         <td>:</td>
-                                        <td>তথ্য</td>
+                                        <td>মোঃ সামছ উদ্দিন </td>
                                     </tr>
                                     <tr>
-                                        <th align="left">৩) মাতা</th>
+                                        <th align="left">মাতা</th>
                                         <td>:</td>
-                                        <td>তথ্য</td>
+                                        <td>মোছাঃ জুলেখা বেগম</td>
                                     </tr>
                                     <tr>
-                                        <th align="left">৪) জাতীয় পরিচয়পত্র</th>
+                                        <th align="left">বর্তমান ঠিকানা</th>
                                         <td>:</td>
-                                        <td>তথ্য</td>
+                                        <td style="padding: 0px;">
+                                          <table class="info_table" style="text-align: left;margin-bottom: 0px;" style="width: 350px;">
+                                            <tr>
+                                              <td style="margin-bottom: 0px;">গ্রামঃ</td>
+                                              <td style="margin-bottom: 0px;">ডাকঘরঃ </td>
+                                            </tr>
+                                            <tr>
+                                              <td style="margin-bottom: 0px;">উপজেলাঃ </td>
+                                              <td style="margin-bottom: 0px;">জেলাঃ </td>
+                                            </tr>
+                                          </table>
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <th align="left">৫) জন্ম তারিখ</th>
+                                        <th align="left">স্থায়ী ঠিকানা </th>
                                         <td>:</td>
-                                        <td>তথ্য</td>
+                                        <td style="padding: 0px;">
+                                           <table class="info_table" style="text-align: left;margin-bottom: 0px;" style="width: 350px;">
+                                            <tr>
+                                              <td style="margin-bottom: 0px;">গ্রামঃ</td>
+                                              <td style="margin-bottom: 0px;">ডাকঘরঃ </td>
+                                            </tr>
+                                            <tr>
+                                              <td style="margin-bottom: 0px;">উপজেলাঃ </td>
+                                              <td style="margin-bottom: 0px;">জেলাঃ </td>
+                                            </tr>
+                                          </table>
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <th align="left">৬) ঠিকানা</th>
+                                        <th align="left">ওয়ার্ড নং </th>
                                         <td>:</td>
-                                        <td>তথ্য</td>
+                                        <td>০৬</td>
+                                    </tr>
+                                    <tr>
+                                        <th align="left">ন্যাশনাল আইডি নং </th>
+                                        <td>:</td>
+                                        <td>১৯২৩৭৪৯৭৭৬ </td>
                                     </tr>
                                 </table>
 
-                                <div style="width: 100%;text-align: justify;font-size: 17px;font-weight: normal;margin-bottom: 10px;">
-                                    এই মর্মে সনদ প্রদান করা যাচ্ছে যে, তিনি অত্র পৌরসভার একজন স্থায়ী বাসিন্দা হিসেবে
-                                    আমার কাছে পরিচিত। আমার জানামতে উক্ত উনি তাহার স্বামী / স্ত্রী মৃত্যুবরণ করার পর অদ্য
-                                    অবধি দ্বিতীয় বিবাহ বন্ধনে আবদ্ধ হন নাই।
+                                <div style="width: 100%;text-align: justify;font-size: 17px;font-weight: normal;">
+                                   তিনি অত্র ১০ নং সিধলা ইউনিয়ন পরিষদ এর অন্তগত ০৬ নং ওয়ার্ড এর স্থায়ী বাসিন্দা । আমার জানা মতে , মোঃ লাক মিয়া প্রকাশে মোঃ আলমগির মুনসুর ( লাক মিয়া ) একই ব্যক্তি উভয় নামে পরিচিত । 
                                     <br><br>
-                                    আমি তার সবসময় উন্নতি ও মঙ্গল কামনা করি।
+                                    আমি তাহার জীবনের সার্বিক উন্নতি ও মঙ্গল কামনা করছি । 
                                 </div>
 
-                                <table style="width: 100%;margin-bottom: 10px;" >
+                                <table style="width: 100%;margin-bottom: 7px;margin-top: -20px;" >
                                     <tr>
                                         <td></td>
                                         <td></td>
@@ -209,7 +234,7 @@ font-weight: normal;
           
         </div>
       </div>
-    </div>
+
   </div>
 </section>
 </body>
