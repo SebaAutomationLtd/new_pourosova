@@ -19,13 +19,13 @@ class NoticeController extends Controller
             'title'=> 'required|max:255',
             'type'=> 'required',
             'publish'=> 'required',
-            'file'=> 'required|mimes:application/pdf, application/x-pdf,application/acrobat, applications/vnd.pdf, text/pdf, text/x-pdf|max:10000',
+            'file'=> 'required|mimes:pdf, application/pdf ,application/acrobat, applications/vnd.pdf, text/pdf, text/x-pdf|max:10000',
         ]);
 
         if($request->hasFile('file')) {
             $file = $request->file('file');
             $fileName = $file->getClientOriginalName();
-            $file->move(public_path('pdf'), $fileName);
+            $file->move(public_path('uploads/notice'), $fileName);
             
             $data =array();
             $data['title']= $request->title;
@@ -44,12 +44,12 @@ class NoticeController extends Controller
     public function notice_delete($id){
 
         $old = DB::table('notices')->where('id',$id)->first();
-            if (file_exists(public_path('pdf/'.$old->file))) {
-                unlink(public_path('pdf/'.$old->file));
+            if (file_exists(public_path('uploads/notice/'.$old->file))) {
+                unlink(public_path('uploads/notice/'.$old->file));
             }
 
         $delete = DB::table('notices')->where('id',$id)->delete();
-        return redirect(route('admin.web.notice.notice'))->with('message','Service Deleted');
+        return redirect(route('admin.web.notice.notice'))->with('error','Service Deleted');
     }
 
 
@@ -64,12 +64,12 @@ class NoticeController extends Controller
             'title'            => 'required|max:255',
             'notice_type'      => 'required',
             'publication'      => 'required',
-            'file'            => 'required|mimes:application/pdf, application/x-pdf,application/acrobat, applications/vnd.pdf, text/pdf, text/x-pdf|max:10000',
+            'file'            => 'required|mimes:pdf, application/pdf,application/acrobat, applications/vnd.pdf, text/pdf, text/x-pdf|max:10000',
         ]);
          if($request->hasFile('file')) {
             $image = $request->file('file');
-            $imageName = time().'_'.$image->getClientOriginalName();
-            $image->move(public_path('pdf'), $imageName);
+            $imageName = $image->getClientOriginalName();
+            $image->move(public_path('uploads/download'), $imageName);
 
             Download::create([
                 'title'         => $request->title,
@@ -86,12 +86,12 @@ class NoticeController extends Controller
     public function download_delete($id){
 
         $old = DB::table('downloads')->where('id',$id)->first();
-            if (file_exists(public_path('pdf/'.$old->file))) {
-                unlink(public_path('pdf/'.$old->file));
+            if (file_exists(public_path('uploads/download/'.$old->file))) {
+                unlink(public_path('uploads/download/'.$old->file));
             }
 
         $delete = DB::table('downloads')->where('id',$id)->delete();
-        return redirect(route('admin.web.notice.download'))->with('message','Download Deleted');
+        return redirect(route('admin.web.notice.download'))->with('error','Download Deleted');
     }
 
 

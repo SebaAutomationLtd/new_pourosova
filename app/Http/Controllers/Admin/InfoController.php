@@ -74,7 +74,7 @@ class InfoController extends Controller
         if($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time().'_'.$image->getClientOriginalName();
-            $image->move(public_path('img'), $imageName);
+            $image->move(public_path('uploads/organogram'), $imageName);
             
             $data =array();
             $data['title']= $request->title;
@@ -90,8 +90,8 @@ class InfoController extends Controller
     public function organogram_delete($id){
 
         $old = DB::table('organograms')->where('id',$id)->first();
-            if (file_exists(public_path('img/'.$old->image))) {
-                unlink(public_path('img/'.$old->image));
+            if (file_exists(public_path('uploads/organogram/'.$old->image))) {
+                unlink(public_path('uploads/organogram/'.$old->image));
             }
 
         $delete = DB::table('organograms')->where('id',$id)->delete();
@@ -115,13 +115,13 @@ class InfoController extends Controller
         if($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time().'_'.$image->getClientOriginalName();
-            $image->move(public_path('img'), $imageName);
+            $image->move(public_path('uploads/organogram'), $imageName);
             
             $data['image']=$imageName;
 
             $old = DB::table('organograms')->where('id',$id)->first();
-            if (file_exists(public_path('img/'.$old->image))) {
-                unlink(public_path('img/'.$old->image));
+            if (file_exists(public_path('uploads/organogram/'.$old->image))) {
+                unlink(public_path('uploads/organogram/'.$old->image));
             }
 
         }
@@ -149,7 +149,7 @@ class InfoController extends Controller
         if($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time().'_'.$image->getClientOriginalName();
-            $image->move(public_path('img'), $imageName);
+            $image->move(public_path('uploads/organogram'), $imageName);
             
             $data =array();
             $data['title']= $request->title;
@@ -165,8 +165,8 @@ class InfoController extends Controller
     public function map_delete($id){
 
         $old = DB::table('maps')->where('id',$id)->first();
-            if (file_exists(public_path('img/'.$old->image))) {
-                unlink(public_path('img/'.$old->image));
+            if (file_exists(public_path('uploads/organogram/'.$old->image))) {
+                unlink(public_path('uploads/organogram/'.$old->image));
             }
 
         $delete = DB::table('maps')->where('id',$id)->delete();
@@ -190,13 +190,13 @@ class InfoController extends Controller
         if($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time().'_'.$image->getClientOriginalName();
-            $image->move(public_path('img'), $imageName);
+            $image->move(public_path('uploads/organogram'), $imageName);
             
             $data['image']=$imageName;
 
             $old = DB::table('maps')->where('id',$id)->first();
-            if (file_exists(public_path('img/'.$old->image))) {
-                unlink(public_path('img/'.$old->image));
+            if (file_exists(public_path('uploads/organogram/'.$old->image))) {
+                unlink(public_path('uploads/organogram/'.$old->image));
             }
 
         }
@@ -224,7 +224,7 @@ class InfoController extends Controller
         if($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time().'_'.$image->getClientOriginalName();
-            $image->move(public_path('img'), $imageName);
+            $image->move(public_path('uploads/organogram'), $imageName);
             
             $data =array();
             $data['title']= $request->title;
@@ -240,8 +240,8 @@ class InfoController extends Controller
     public function employee_delete($id){
 
         $old = DB::table('employees')->where('id',$id)->first();
-            if (file_exists(public_path('img/'.$old->image))) {
-                unlink(public_path('img/'.$old->image));
+            if (file_exists(public_path('uploads/organogram/'.$old->image))) {
+                unlink(public_path('uploads/organogram/'.$old->image));
             }
 
         $delete = DB::table('employees')->where('id',$id)->delete();
@@ -265,13 +265,13 @@ class InfoController extends Controller
         if($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time().'_'.$image->getClientOriginalName();
-            $image->move(public_path('img'), $imageName);
+            $image->move(public_path('uploads/organogram'), $imageName);
             
             $data['image']=$imageName;
 
             $old = DB::table('employees')->where('id',$id)->first();
-            if (file_exists(public_path('img/'.$old->image))) {
-                unlink(public_path('img/'.$old->image));
+            if (file_exists(public_path('uploads/organogram/'.$old->image))) {
+                unlink(public_path('uploads/organogram/'.$old->image));
             }
 
         }

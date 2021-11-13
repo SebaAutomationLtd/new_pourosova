@@ -86,7 +86,7 @@
                      
                         <div class="form-group">
                             <label for="">300px * 300px এবং JPG ছবি</label><br>
-                            <img src="{{ asset('councilor/img')}}/{{ $councilor->photo}}" height="100px" width="200px">
+                            <img src="{{ asset('uploads/councilor')}}/{{ $councilor->photo}}" height="100px" width="200px">
                         </div>
 
                         <div class="form-group">

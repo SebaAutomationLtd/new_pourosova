@@ -31,7 +31,7 @@ class MayorController extends Controller
     	if($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time().'_'.$image->getClientOriginalName();
-            $image->move(public_path('img'), $imageName);
+            $image->move(public_path('uploads/mayor'), $imageName);
             Mayor::create([
                 'name' => $request->name,
                 'place' => $request->place,
@@ -48,8 +48,8 @@ class MayorController extends Controller
 
     public function delete($id){
          $old = DB::table('mayors')->where('id',$id)->first();
-            if (file_exists(public_path('img/'.$old->image))) {
-                unlink(public_path('img/'.$old->image));
+            if (file_exists(public_path('uploads/mayor/'.$old->image))) {
+                unlink(public_path('uploads/mayor/'.$old->image));
             }
 
     	$delete = Mayor::find($id)->delete();
@@ -79,13 +79,13 @@ class MayorController extends Controller
     	if($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time().'_'.$image->getClientOriginalName();
-            $image->move(public_path('img'), $imageName);
+            $image->move(public_path('uploads/mayor'), $imageName);
            	
 	        $data['image']=$imageName;
 
             $old = DB::table('mayors')->where('id',$id)->first();
-            if (file_exists(public_path('img/'.$old->image))) {
-                unlink(public_path('img/'.$old->image));
+            if (file_exists(public_path('uploads/mayor/'.$old->image))) {
+                unlink(public_path('uploads/mayor/'.$old->image));
             }
 
         }

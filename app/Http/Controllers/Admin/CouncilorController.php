@@ -37,7 +37,7 @@ class CouncilorController extends Controller
         if($request->hasFile('photo')) {
             $image = $request->file('photo');
             $imageName = time().'_'.$image->getClientOriginalName();
-            $image->move(public_path('councilor/img'), $imageName);
+            $image->move(public_path('uploads/councilor'), $imageName);
         
             Councilor::create([
                 'name'          => $request->name,
@@ -55,8 +55,8 @@ class CouncilorController extends Controller
 
     public function councilor_delete($id){
         $old = DB::table('councilors')->where('id',$id)->first();
-            if (file_exists(public_path('councilor/img/'.$old->photo))) {
-                unlink(public_path('councilor/img/'.$old->photo));
+            if (file_exists(public_path('uploads/councilor/'.$old->photo))) {
+                unlink(public_path('uploads/councilor/'.$old->photo));
             }
 
         $delete = DB::table('councilors')->where('id',$id)->delete();
@@ -82,7 +82,7 @@ class CouncilorController extends Controller
             }else{
                 $image = $request->file('photo');
                 $imageName = time().'_'.$image->getClientOriginalName();
-                $image->move(public_path('councilor/img'), $imageName);
+                $image->move(public_path('uploads/councilor'), $imageName);
                    $update_concilor->update([
                     'name'          => $request->name,
                     'place'         => $request->place,
@@ -119,7 +119,7 @@ class CouncilorController extends Controller
         if($request->hasFile('photo')) {
             $image = $request->file('photo');
             $imageName = time().'_'.$image->getClientOriginalName();
-            $image->move(public_path('councilor/img'), $imageName);
+            $image->move(public_path('uploads/councilor'), $imageName);
     
             Councilor::create([
                 'name'          => $request->name,
@@ -138,8 +138,8 @@ class CouncilorController extends Controller
 
     public function councilor_female_delete($id){
         $old = DB::table('councilors')->where('id',$id)->first();
-            if (file_exists(public_path('councilor/img/'.$old->photo))) {
-                unlink(public_path('councilor/img/'.$old->photo));
+            if (file_exists(public_path('uploads/councilor'.$old->photo))) {
+                unlink(public_path('uploads/councilor'.$old->photo));
             }
 
         $delete = DB::table('councilors')->where('id',$id)->delete();
@@ -167,7 +167,7 @@ class CouncilorController extends Controller
             }else{
                 $image = $request->file('photo');
                 $imageName = time().'_'.$image->getClientOriginalName();
-                $image->move(public_path('councilor/img'), $imageName);
+                $image->move(public_path('uploads/councilor'), $imageName);
                 $update_female->update([
                     'name'          => $request->name,
                     'place'         => $request->place,

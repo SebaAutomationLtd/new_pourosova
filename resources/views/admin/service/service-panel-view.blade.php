@@ -51,7 +51,7 @@
                                         <td>{{$service->title ?? ''}}</td>
                                         <td>{{$service->link ?? ''}}</td>
                                         <td>
-                                            <img class="rounded" src="{{ asset('img/'.$service->image ?? '') }}"
+                                            <img class="rounded" src="{{ asset('uploads/service/'.$service->image ?? '') }}"
                                                 alt="" style="height: 80px; width: 100px;">
                                         </td>
                                     

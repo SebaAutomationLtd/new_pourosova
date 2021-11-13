@@ -1,0 +1,218 @@
+.overlay {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.form-control:focus, .custom-select:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: 0;
+}
+
+.form-control, .custom-select {
+  border-radius: 0;
+  border-color: #01937C;
+}
+
+.custom-select option {
+  border-radius: 0;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+@font-face {
+  font-family: customFont;
+  src: url("../fonts/kalpurush.ttf");
+}
+
+* {
+  font-family: customFont;
+  font-size: 17px;
+}
+
+#nav .title {
+  font-size: 30px;
+}
+
+#nav img.logo {
+  width: 72px;
+}
+
+#nav .user-info-right {
+  position: relative;
+}
+
+#nav .user-info-right img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #444;
+}
+
+#nav a {
+  color: #444;
+}
+
+#nav a:hover {
+  text-decoration: none;
+}
+
+#nav .dropdownmenu {
+  left: 0;
+  position: absolute;
+  top: 110%;
+  width: 255px;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  border-bottom: 3px solid #f04b0f;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #444;
+  z-index: 999;
+  padding-top: 10px;
+}
+
+#nav .dropdownmenu a {
+  display: block;
+  padding: 10px 15px;
+  color: #444;
+  text-transform: capitalize;
+  font-weight: 500;
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+#nav .dropdownmenu a:hover {
+  padding-left: 30px;
+  color: #01937C;
+}
+
+#nav .user-info-right:hover .dropdownmenu {
+  visibility: visible;
+  opacity: 1;
+}
+
+#banner {
+  background: url("../img/background.jpg");
+}
+
+#banner .overlay {
+  padding: 50px 0;
+  color: #fff;
+}
+
+#banner .title {
+  font-size: 30px;
+}
+
+#profile {
+  margin: 70px 0;
+}
+
+#profile .sidebar {
+  border: 1px solid #e6e6e6;
+}
+
+#profile .sidebar img {
+  width: 100px;
+  border: 1px solid #e6e6e6;
+}
+
+#profile .sidebar .user-photo-name {
+  border-bottom: 7px solid #f04b0f;
+}
+
+#profile .sidebar .items a {
+  display: block;
+  color: #444;
+  padding: 10px 20px;
+}
+
+#profile .sidebar .items a i {
+  margin-right: 10px;
+}
+
+#profile .sidebar .items a:hover {
+  text-decoration: none;
+  background: #01937C;
+  color: #fff;
+}
+
+#profile .sidebar .items .active {
+  background: #01937C;
+  color: #fff;
+}
+
+#profile .sidebar .items .active i {
+  color: #fff;
+}
+
+#profile .dashboard-body {
+  -webkit-box-shadow: 0px 0px 29px 0px rgba(102, 102, 102, 0.08);
+          box-shadow: 0px 0px 29px 0px rgba(102, 102, 102, 0.08);
+  border: 1px solid #e6e6e6;
+  padding: 20px;
+}
+
+#profile .dashboard-body .content-header {
+  background: #01937C;
+  padding: 6px 20px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+#profile .dashboard-body .content table.data {
+  width: 100%;
+}
+
+#profile .dashboard-body .content table.data tr {
+  border-bottom: 1px solid #e6e6e6;
+}
+
+#profile .dashboard-body .content table.data tr th, #profile .dashboard-body .content table.data tr td {
+  padding: 10px;
+}
+
+#profile .dashboard-body .content table.data tr th img, #profile .dashboard-body .content table.data tr td img {
+  width: 100px;
+  border: 1px solid #e6e6e6;
+}
+
+#profile .dashboard-body .content table.data tr:last-child {
+  border-bottom: 0;
+}
+
+#profile .dashboard-body .content .download {
+  padding: 25px 15px;
+  border-radius: 5px;
+  background: #01937C;
+}
+
+#profile .dashboard-body .content .download a {
+  display: block;
+  color: #fff;
+}
+
+#profile .dashboard-body .content .download a i {
+  font-size: 35px;
+}
+
+#profile .dashboard-body .content .download:hover {
+  opacity: .8;
+}
+
+#footer .techpath {
+  width: 100px;
+}
+
+#footer .govt-logo {
+  width: 250px;
+}
+
+#footer .text {
+  font-size: 12px;
+}
+/*# sourceMappingURL=style.css.map */

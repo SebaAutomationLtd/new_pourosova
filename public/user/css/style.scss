@@ -1,0 +1,173 @@
+@import 'colors';
+@import 'classes';
+
+@font-face {
+    font-family: customFont;
+    src: url("../fonts/kalpurush.ttf");
+}
+*{
+    font-family: customFont;
+    font-size: 17px;
+}
+#nav{
+    .title{
+        font-size: 30px;
+    }
+    img.logo{
+        width: 72px;
+    }
+    .user-info-right {
+        position: relative;
+        img{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border:  1px solid $black;
+        }
+    }
+    a{
+        color: $black;
+    }
+    a:hover{
+        text-decoration: none;
+    }
+    .dropdownmenu{
+        left: 0;
+        position: absolute;
+        top: 110%;
+        width: 255px;
+        opacity: 0;
+        visibility: hidden;
+        -webkit-transition: all 0.3s ease 0s;
+        transition: all 0.3s ease 0s;
+        border-bottom: 3px solid $secondary;
+        background-color: rgba($color: $white, $alpha: .9);
+        color: $black;
+        z-index: 999;
+        padding-top: 10px;
+        a{
+            display: block;
+            padding: 10px 15px;
+            color: $black;
+            text-transform: capitalize;
+            font-weight: 500;
+            -webkit-transition: all 0.4s ease 0s;
+            transition: all 0.4s ease 0s;
+        }
+        a:hover{
+            padding-left: 30px;
+            color: $primary;
+        }
+    }
+    .user-info-right:hover .dropdownmenu{
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+#banner{
+    background: url("../img/background.jpg");
+    .overlay{
+        padding: 50px 0; 
+        color: $white;
+    }  
+    .title{
+        font-size: 30px;
+    }  
+}
+
+#profile{
+    margin: 70px 0;
+    .sidebar{
+        border: 1px solid $border;
+        img{
+            width: 100px;
+            border: 1px solid $border;
+        }
+        .user-photo-name{
+            border-bottom: 7px solid $secondary;
+        }
+        .items{
+            a{
+                display: block;
+                color: $black;
+                padding: 10px 20px;;
+                i{
+                    margin-right: 10px;
+                }
+            }
+            a:hover{
+                text-decoration: none;
+                background: $primary;
+                color: $white;
+            }
+            .active{
+                background: $primary;
+                color: $white;
+                i{
+                    color: $white;
+                }
+            }
+        }
+    }
+    .dashboard-body{
+        box-shadow: 0px 0px 29px 0px rgba(102, 102, 102, 0.08);
+        border: 1px solid $border;
+        padding: 20px;
+        .content-header{
+            background: $primary;
+            padding: 6px 20px;
+            color:$white;
+            font-size: 20px;
+            font-weight: 400;
+        }
+        .content{
+            table.data{
+                width: 100%;
+            }
+            table.data tr{
+                border-bottom: 1px solid $border;
+                th, td{
+                    padding: 10px;
+                    img{
+                        width: 100px;
+                        border: 1px solid $border;
+                    }
+                }
+            }
+            table.data tr:last-child{
+                border-bottom: 0;
+            }
+            .download{
+                padding: 25px 15px;
+                border-radius: 5px;
+                background: $primary;
+                a{
+                    display: block;
+                    color: $white;
+                    i{
+                        font-size: 35px;
+                    }
+                }
+                
+            }
+            .download:hover{
+                opacity: .8;
+            }
+            
+        }
+    }
+
+}
+
+#footer{
+    .techpath{
+        width: 100px;
+    }
+    .govt-logo{
+        width: 250px;
+    }
+    .text{
+        font-size: 12px;
+    }
+}

@@ -90,7 +90,7 @@
                             <div class="form-group col-md-2">
                                 <label for="">আগের ছবি </label>
                                 <div class="custom-file">
-                                    <img src="{{ asset('img/'.$mayor->image ?? '') }}" style="height: 80px; width: 100px;">
+                                    <img src="{{ asset('uploads/mayor/'.$mayor->image ?? '') }}" style="height: 80px; width: 100px;">
                                 </div>
                             </div>
 

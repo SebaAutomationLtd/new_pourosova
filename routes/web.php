@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Frontend\FrontController;
 use App\Http\Controllers\Frontend\RegistrationController;
 use App\Http\Controllers\Frontend\AjaxController;
+use App\Http\Controllers\Frontend\MemberAccessController;
 use App\Http\Controllers\Admin\ActiveController;
 use App\Http\Controllers\Admin\BosotBariController;
 use App\Http\Controllers\Admin\BusinessHoldingController;
@@ -56,7 +57,18 @@ Route::namespace('App\Http\Controllers\Frontend')->group(function () {
     Route::get('business-registration', [FrontController::class, 'business_create'])->name('reg.business');
     Route::post('business-ind-store', [RegistrationController::class, 'business_ind_store'])->name('business-ind-store');
 
-Route::get('osthai-nagorik-registration', [FrontController::class, 'osthai_nagor_create'])->name('reg.osthai-nagorik');
+    Route::get('osthai-nagorik-registration', [FrontController::class, 'osthai_nagor_create'])->name('reg.osthai-nagorik');
+
+     //member login
+    Route::get('/login', function () {
+        return view('frontend.member.member_login_page');
+    });
+
+    Route::get('/member-dashboard', [MemberAccessController::class, 'MemberDashboard'])->name('member.dashboard');
+
+    Route::get('/member_change_password', [MemberAccessController::class, 'member_change_password'])->name('member.change_password');
+    Route::post('/member_update_password', [MemberAccessController::class, 'member_update_password'])->name('member.update_password'); 
+    Route::post('/member_photo_update', [MemberAccessController::class, 'member_photo_update'])->name('member.photo_update'); 
 
 });
 
@@ -269,11 +281,18 @@ Route::middleware('auth')->group(function () {
 
 Route::name('admin.web.village.')->prefix('admin/web/village')->namespace('App\Http\Controllers\Admin')->group(function () {
 
+    Route::get('/ward', 'VillageController@ward')->name('ward');
+    Route::get('/ward/edit/{$id}', 'VillageController@ward_edit')->name('ward.edit');
+    Route::post('/ward/store', 'VillageController@ward_store')->name('ward.store');
+    Route::post('/ward/update/{id}', 'WardController@ward_update')->name('ward.update');
     Route::get('/village', 'VillageController@village')->name('village');
     Route::post('/village/add', 'VillageController@village_store')->name('village.store');
     Route::get('/village/delete/{name}', 'VillageController@village_delete')->name('village.delete');
     Route::get('/village/edit/{name}', 'VillageController@village_edit')->name('village.edit');
     Route::post('/village/update/{id}', 'VillageController@village_update')->name('village.update');
+
+    Route::get('/house_type', 'VillageController@house_type')->name('house_type');
+    Route::get('/house_type/store', 'VillageController@house_type_store')->name('house_type.store');
 
 
     Route::get('/post_office', 'VillageController@post_office')->name('post_office');

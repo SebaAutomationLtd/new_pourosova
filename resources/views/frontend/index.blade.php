@@ -18,7 +18,7 @@
                                 <div class="carousel-inner">
                                     @forelse($sliders as $slider)
                                         <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                                            <img class="d-block w-100" src="{{ asset('img/'.$slider->image ?? '') }}" alt="">
+                                            <img class="d-block w-100" src="{{ asset('uploads/slider/'.$slider->image ?? '') }}" alt="">
                                         </div>
                                     @empty
                                     @endforelse
@@ -79,7 +79,7 @@
                                                         <div class="card-body text-center">
 
                                                             <!-- <i class="fa fa-house-user"></i> -->
-                                                            <img src="{{ asset('img/'.$service->image ?? '') }}" style="height: 80px; width: 80px;">
+                                                            <img src="{{ asset('uploads/service/'.$service->image ?? '') }}" style="height: 80px; width: 80px;">
                                                             <div class="title">
                                                                 {{$service->title ?? ''}}
                                                             </div>

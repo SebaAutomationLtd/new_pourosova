@@ -88,7 +88,7 @@
                                 </a>
                             </span>
 
-                            <img src="{{ asset('img/'.$slider->image ?? '') }}"  class="d-blok w-100 rounded border"
+                            <img src="{{ asset('uploads/slider/'.$slider->image ?? '') }}"  class="d-blok w-100 rounded border"
                                 alt="">
                         </div>
                         @endforeach

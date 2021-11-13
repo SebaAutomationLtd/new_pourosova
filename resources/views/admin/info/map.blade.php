@@ -79,7 +79,7 @@
                                         <td>{{$map->title ?? ''}}</td>
                                         <td>
                                             <a  href="#">
-                                                <img class="rounded" src="{{ asset('img/'.$map->image ?? '') }}"
+                                                <img class="rounded" src="{{ asset('uploads/organogram/'.$map->image ?? '') }}"
                                                 alt="" style="height: 100px; width: 100px;">
                                             </a>
                                         </td>

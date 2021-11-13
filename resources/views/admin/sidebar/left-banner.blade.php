@@ -105,8 +105,8 @@
                                         </td>
                                         <td>{{ $banner->description }}</td>
                                         <td>
-                                            <a target="_blank" href="{{ asset('Front') }}/images//photos/mayor.jpg">
-                                            <img class="rounded" src="{{ asset('leftside/img') }}/{{$banner->photo}}"
+                                            <a  href="">
+                                            <img class="rounded" src="{{ asset('uploads/leftside') }}/{{$banner->photo}}"
                                                     alt="">
                                             </a>
                                         </td>

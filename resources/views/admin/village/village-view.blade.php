@@ -28,7 +28,7 @@
                        <div class="form-row"> 
                         <div class="form-group col-md-6">
                             <label for="">শিরোনাম</label>
-                            <input type="text" name="name" required value="{{ old('name') }}" class="form-control">
+                            <input type="text" name="name" placeholder="শিরোনাম" required value="{{ old('name') }}" class="form-control">
                             @error('name')
                                 <span class=text-danger>{{$message}}</span>
                             @enderror
