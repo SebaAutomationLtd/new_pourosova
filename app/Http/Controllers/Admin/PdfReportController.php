@@ -10,7 +10,7 @@ use App\Models\Ward;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PDF;
-
+use Config;
 
 class PdfReportController extends Controller
 {
@@ -76,6 +76,24 @@ class PdfReportController extends Controller
             );
             return back()->with($notification);
         }
+
+
+    }
+
+    public function punobibaho()
+    {
+            Config::set('pdf.orientation', 'P');
+            $pdf = PDF::loadView('report.punobibaho');
+            return $pdf->download('পুন বিবাহ.pdf');
+
+
+    }
+
+    public function warish()
+    {
+            Config::set('pdf.orientation', 'P');
+            $pdf = PDF::loadView('report.warish');
+            return $pdf->download('warish.pdf');
 
 
     }

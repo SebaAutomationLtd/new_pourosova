@@ -428,6 +428,25 @@
 
                     </a>
                 </li>
+                <li class="menu-dropdown">
+                    <a href="#">
+                        <i class="fa fa-fw ti-receipt"></i>রিপোর্ট
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="sub-menu ">
+                        <li class="menu-dropdown">
+                            <a href="{{url('puno-bibaho-report')}}"> <i class="fa fa-fw ti-receipt"></i> পুন বিবাহ না হওয়ার সনদ  </a>
+
+                        </li> 
+                        <li class="menu-dropdown">
+                            <a href="{{url('warish-report')}}"> <i class="fa fa-fw ti-receipt"></i> ওয়ারিশ সনদ </a>
+
+                        </li>
+
+
+
+                    </ul>
+                </li>
 
             </ul>
             <!-- / .navigation -->
