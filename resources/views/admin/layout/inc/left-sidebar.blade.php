@@ -78,9 +78,6 @@
                                 <li><a href="{{ route('admin.web.right.service') }}"> <i class="fa fa-fw ti-cup"></i>
                                         সার্ভিসসমূহ
                                     </a></li>
-                                <li><a href="{{ route('admin.web.mayor') }}"> <i class="fa fa-fw ti-cup"></i>
-                                        অন্যান্য তথ্য
-                                    </a></li>
                             </ul>
                         </li>
 
@@ -437,6 +434,29 @@
                         খসড়া রিপোর্ট
 
                     </a>
+                </li>
+                <li class="menu-dropdown">
+                    <a href="#">
+                        <i class="fa fa-fw ti-receipt"></i>রিপোর্ট
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="sub-menu ">
+                        <li class="menu-dropdown">
+                            <a href="{{url('puno-bibaho-report')}}"> <i class="fa fa-fw ti-receipt"></i> পুন বিবাহ না হওয়ার সনদ  </a>
+
+                        </li> 
+                        <li class="menu-dropdown">
+                            <a href="{{url('warish-report')}}"> <i class="fa fa-fw ti-receipt"></i> ওয়ারিশ সনদ </a>
+
+                        </li>
+                        <li class="menu-dropdown">
+                            <a href="{{url('new-report')}}"> <i class="fa fa-fw ti-receipt"></i> নতুন সনদ </a>
+
+                        </li>
+
+
+
+                    </ul>
                 </li>
 
             </ul>

@@ -45,4 +45,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function bosotbariholding()
+    {
+        return $this->hasOne('App\Models\BosotBariHolding', 'user_id', 'id');
+    }
+
+    public function businessholding()
+    {
+        return $this->hasOne('App\Models\BusinessHolding', 'user_id', 'id');
+    }
+
 }

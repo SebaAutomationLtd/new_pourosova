@@ -104,7 +104,7 @@
                 <div class="card-body">
                     <div class="text-center">
                         <div>
-                            <img src="{{ asset('uno/img') }}/{{ $uno->photo ?? ''}}" width="200"
+                            <img src="{{ asset('uploads/uno') }}/{{ $uno->photo ?? ''}}" width="200"
                                 alt="Photo">
                         </div>
                         <div class="h5">

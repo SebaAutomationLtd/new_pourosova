@@ -47,7 +47,7 @@
                                                 <div class="form-group col-md-2">
 					                                <label for="">আগের ছবি </label>
 					                                <div class="custom-file">
-					                                    <img src="{{ asset('img/'.$organogram->image ?? '') }}" style="height: 80px; width: 100px;">
+					                                    <img src="{{ asset('uploads/organogram/'.$organogram->image ?? '') }}" style="height: 80px; width: 100px;">
 					                                </div>
 					                            </div>
 

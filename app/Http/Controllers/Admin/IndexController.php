@@ -28,7 +28,7 @@ class IndexController extends Controller
             if($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time().'_'.$image->getClientOriginalName();
-            $image->move(public_path('img'), $imageName);
+            $image->move(public_path('uploads/slider'), $imageName);
             Slider::create([
                 'title' => $request->title,
                 'serial' => $request->serial,
@@ -45,13 +45,13 @@ class IndexController extends Controller
             if($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time().'_'.$image->getClientOriginalName();
-            $image->move(public_path('img'), $imageName);
+            $image->move(public_path('uploads/slider'), $imageName);
             
             $data['image']=$imageName;
 
             $old = DB::table('sliders')->where('serial',$request->serial)->first();
-            if (file_exists(public_path('img/'.$old->image))) {
-                unlink(public_path('img/'.$old->image));
+            if (file_exists(public_path('uploads/slider/'.$old->image))) {
+                unlink(public_path('uploads/slider/'.$old->image));
             }
 
         }
@@ -67,8 +67,8 @@ class IndexController extends Controller
     public function delete($id){
 
         $old = DB::table('sliders')->where('id',$id)->first();
-            if (file_exists(public_path('img/'.$old->image))) {
-                unlink(public_path('img/'.$old->image));
+            if (file_exists(public_path('uploads/slider/'.$old->image))) {
+                unlink(public_path('uploads/slider/'.$old->image));
             }
 
         $delete = Slider::find($id)->delete();

@@ -47,7 +47,7 @@
                                     <tr>
                                         <td>{{$no++}}</td>
                                         <td>
-                                            <img class="rounded" src="{{ asset('img/'.$mayor->image ?? '') }}"
+                                            <img class="rounded" src="{{ asset('uploads/mayor/'.$mayor->image ?? '') }}"
                                                 alt="" style="height: 100px; width: 100px;">
                                         </td>
                                         <td>{{$mayor->name ?? ''}}</td>

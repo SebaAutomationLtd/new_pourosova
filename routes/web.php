@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Frontend\FrontController;
 use App\Http\Controllers\Frontend\RegistrationController;
 use App\Http\Controllers\Frontend\AjaxController;
+use App\Http\Controllers\Frontend\MemberAccessController;
 use App\Http\Controllers\Admin\ActiveController;
 use App\Http\Controllers\Admin\BosotBariController;
 use App\Http\Controllers\Admin\BusinessHoldingController;
@@ -56,7 +57,18 @@ Route::namespace('App\Http\Controllers\Frontend')->group(function () {
     Route::get('business-registration', [FrontController::class, 'business_create'])->name('reg.business');
     Route::post('business-ind-store', [RegistrationController::class, 'business_ind_store'])->name('business-ind-store');
 
-Route::get('osthai-nagorik-registration', [FrontController::class, 'osthai_nagor_create'])->name('reg.osthai-nagorik');
+    Route::get('osthai-nagorik-registration', [FrontController::class, 'osthai_nagor_create'])->name('reg.osthai-nagorik');
+
+     //member login
+    Route::get('/login', function () {
+        return view('frontend.member.member_login_page');
+    });
+
+    Route::get('/member-dashboard', [MemberAccessController::class, 'MemberDashboard'])->name('member.dashboard');
+
+    Route::get('/member_change_password', [MemberAccessController::class, 'member_change_password'])->name('member.change_password');
+    Route::post('/member_update_password', [MemberAccessController::class, 'member_update_password'])->name('member.update_password'); 
+    Route::post('/member_photo_update', [MemberAccessController::class, 'member_photo_update'])->name('member.photo_update'); 
 
 });
 
@@ -365,6 +377,12 @@ Route::get('/business-search-result-inactive', [BusinessController::class, 'Busi
 Route::get('/get-businesss-info/{id}', [BusinessController::class, 'GetBusinessInfo']);
 Route::get('/update-business_info', [BusinessController::class, 'UpdateBusinessInfo']);
 Route::get('/delete-business/{id}', [BusinessController::class, 'DeleteBusiness'])->name('delete.business');
+
+
+// Report 
+ Route::get('/puno-bibaho-report', [PdfReportController::class, 'punobibaho']);
+ Route::get('/warish-report', [PdfReportController::class, 'warish']);
+ Route::get('/new-report', [PdfReportController::class, 'newreport']);
 
 
 //Admin Daynamic End

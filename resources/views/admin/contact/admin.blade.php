@@ -106,7 +106,7 @@
                 <div class="card-body">
                     <div class="text-center">
                         <div>
-                            <img src="{{ asset('admin/img') }}/{{ $admin->photo ?? ''}}" width="200"
+                            <img src="{{ asset('uploads/admin') }}/{{ $admin->photo ?? ''}}" width="200"
                                 alt="Photo">
                         </div>
                         <div class="h5">

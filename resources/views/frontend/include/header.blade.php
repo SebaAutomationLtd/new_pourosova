@@ -24,20 +24,20 @@
 
         <div class="container">
             <div class="header-section"
-                style="background-image: url('{{ asset('img/' . @$website_data->logo_background) }}')">
+                style="background-image: url('{{ asset('uploads/header_logo/' . @$website_data->logo_background) }}')">
                 <!-- Header Logo Start  -->
                 <div id="my-carousel" class="carousel face" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <a href="{{ route('index') }}">
-                                <img class="d-block img-fluid" src="{{ asset('img/' . @$website_data->logo_bangla) }}"
+                                <img class="d-block img-fluid" src="{{ asset('uploads/header_logo/' . @$website_data->logo_bangla) }}"
                                     alt="">
                             </a>
                         </div>
                         <div class="carousel-item">
                             <a href="{{ route('index') }}">
                                 <img class="d-block img-fluid"
-                                    src="{{ asset('img/' . @$website_data->logo_english) }}" alt="">
+                                    src="{{ asset('uploads/header_logo/' . @$website_data->logo_english) }}" alt="">
                             </a>
                         </div>
                     </div>

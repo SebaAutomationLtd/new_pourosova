@@ -5,7 +5,7 @@
                         <div>
 
                             <div class="add">
-                                <img src="{{ asset('rightside/img/'. ($right_top_banner ? $right_top_banner->photo : '')) }}" alt="">
+                                <img src="{{ asset('uploads/rightside/'. ($right_top_banner ? $right_top_banner->photo : '')) }}" alt="">
                             </div>
 
 
@@ -74,7 +74,7 @@
                                     <div class="app-links ">
                                         <div>
                                             <div>
-                                                <img class="d-block w-100" src="{{ asset('rightside/img/'.$right_banner->photo ?? '') }}" alt="">
+                                                <img class="d-block w-100" src="{{ asset('uploads/rightside/'.$right_banner->photo ?? '') }}" alt="">
                                             </div>
                                         </div>
                                     </div>

@@ -71,7 +71,7 @@ class LeftSidebarController extends Controller
     	if($request->hasFile('photo')){
             $image = $request->file('photo');
             $imageName = time().'_'.$image->getClientOriginalName();
-            $image->move(public_path('leftside/img'), $imageName);
+            $image->move(public_path('uploads/leftside/'), $imageName);
 
             $data = LeftSideBanner::create([
                 'title'           	=> $request->title,
@@ -87,8 +87,8 @@ class LeftSidebarController extends Controller
     public function banner_delete($id){
 
         $old = DB::table('left_side_banners')->where('id',$id)->first();
-            if (file_exists(public_path('leftside/img/'.$old->photo))) {
-                unlink(public_path('leftside/img/'.$old->photo));
+            if (file_exists(public_path('uploads/leftside/'.$old->photo))) {
+                unlink(public_path('uploads/leftside/'.$old->photo));
             }
 
         $delete = DB::table('left_side_banners')->where('id',$id)->delete();
@@ -116,13 +116,13 @@ class LeftSidebarController extends Controller
         if($request->hasFile('photo')) {
             $image = $request->file('photo');
             $imageName = time().'_'.$image->getClientOriginalName();
-            $image->move(public_path('img'), $imageName);
+            $image->move(public_path('uploads/leftside'), $imageName);
             
             $data['photo']=$imageName;
 
             $old = DB::table('left_side_banners')->where('id',$id)->first();
-            if (file_exists(public_path('img/'.$old->image))) {
-                unlink(public_path('img/'.$old->image));
+            if (file_exists(public_path('uploads/leftside/'.$old->image))) {
+                unlink(public_path('uploads/leftside/'.$old->image));
             }
 
         }

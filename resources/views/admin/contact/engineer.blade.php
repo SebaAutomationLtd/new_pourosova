@@ -99,7 +99,7 @@
                 <div class="card-body">
                     <div class="text-center">
                         <div>
-                             <img src="{{ asset('engineer/img') }}/{{ $engineer->photo ?? ''}}" width="200"
+                             <img src="{{ asset('uploads/engineer') }}/{{ $engineer->photo ?? ''}}" width="200"
                                 alt="Photo">
                         </div>
                         <div class="h5">

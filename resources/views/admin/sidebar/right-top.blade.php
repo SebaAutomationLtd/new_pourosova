@@ -24,7 +24,7 @@
                     <h5>উপরের ব্যানার</h5>
                 </div>
                 <div class="card-body">
-                    <img class="rounded d-block w-100" src="{{ asset('rightside/img/') }}/{{$top_banner ? $top_banner->photo : ''}}" alt="">
+                    <img class="rounded d-block w-100" src="{{ asset('uploads/rightside/') }}/{{$top_banner ? $top_banner->photo : ''}}" alt="">
                     <a href="{{route('admin.web.right.top.edit',$top_banner->id)}}" class="btn btn-info btn-lg">এডিট করুন</a>
                 </div>
             </div>
