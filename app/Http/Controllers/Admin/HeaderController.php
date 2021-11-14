@@ -23,18 +23,23 @@ class HeaderController extends Controller
 
 
     public function marquee_store(Request $request) {
+
+        $request->validate([
+            'title'=> 'required|max:255',
+        ]);
+
         Marquee::create([
             'title' => $request->title,
             'link' => $request->link,
             'created_by' => 1
         ]);
-        return redirect(route('admin.header.marquee'));
+        return redirect(route('admin.header.marquee'))->with('message','Marquee Added');
     }
 
 
     public function marquee_delete($id) {
         $marquee_delete = Marquee::find($id)->delete();
-        return redirect(route('admin.header.marquee'));
+        return redirect(route('admin.header.marquee'))->with('error','Marquee Delete');
     }
 
 
@@ -44,6 +49,10 @@ class HeaderController extends Controller
     }
 
     public function logo_store(Request $request) {
+
+        $request->validate([
+            'logo_background'=> 'mimes:jpeg,jpg,png|required|max:10000',
+        ]);
 
         if($request->file()) {
             foreach ($request->file() as $name => $image) {

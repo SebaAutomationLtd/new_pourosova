@@ -109,6 +109,16 @@ Route::middleware('auth')->group(function () {
         Route::post('/khosora-report', [PdfReportController::class, 'khosora_report_download'])->name('khosora-report');
     });
 
+    Route::name('admin.setting.')->prefix('admin/setting')->namespace('App\Http\Controllers\Admin')->group(function () {
+        Route::get('/change_password', 'AdminController@change_password')->name('change_password');
+        Route::post('/update_password', 'AdminController@update_password')->name('update_password');
+
+        Route::get('/change_email', 'AdminController@change_email')->name('change_email');
+        Route::post('/update_email', 'AdminController@update_email')->name('update_email');
+
+
+    });
+
     Route::name('admin.header.')->prefix('admin/header')->namespace('App\Http\Controllers\Admin')->group(function () {
         Route::get('/logo', 'HeaderController@logo')->name('logo');
         Route::post('/logo', 'HeaderController@logo_store')->name('logo');

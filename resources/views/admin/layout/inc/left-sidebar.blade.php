@@ -6,7 +6,7 @@
                 <div class="media profile-left">
                     <a class="float-left profile-thumb" href="#">
                         @if(isset(auth()->user()->photo))
-                        <img src="{{ asset('img/users/'. auth()->user()->photo ?? '') }}" class="rounded-circle"
+                        <img src="{{ asset(Auth::user()->photo ?? 'uploads/users/user.jpg') }}" class="rounded-circle"
                              alt="User Image">
                              @endif
 

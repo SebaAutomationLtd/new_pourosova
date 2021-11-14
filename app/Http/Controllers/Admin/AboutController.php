@@ -15,7 +15,7 @@ class AboutController extends Controller
 
     public function update(Request $request, $id){
     	$request->validate([
-            'title'=> 'required',
+            'title'=> 'required|max:255',
             'description'=> 'required',
         ]);
 

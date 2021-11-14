@@ -19,6 +19,7 @@ class BosotBariHoldingFactory extends Factory
             'mother' => $this->faker->name(),
             'spouse' => $this->faker->name(),
             'gender' => rand(1,3),
+            'marital_status' => rand(1,3),
             'dob' => $this->faker->dateTime(),
             'nid' => 534534534545,
             'birth_certificate' => $this->faker->name(),

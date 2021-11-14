@@ -21,7 +21,7 @@ class BusinessFactory extends Factory
             'nid'       => 534534534545,
             'birth_certificate' => $this->faker->name(),
             'mobile'    => $this->faker->phoneNumber(),
-            'photo'     => $this->faker->image(public_path('upload/bunisess')),
+            'photo'     => $this->faker->image(public_path('uploads/bunisess')),
             'road_moholla' => 5,
             'holding_no'   => 568,
             'shopno'       => $this->faker->name(),

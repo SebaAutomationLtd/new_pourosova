@@ -5,8 +5,8 @@
         <!-- User Account: style can be found in dropdown-->
         <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle padding-user d-block" data-toggle="dropdown">
-                <img src="{{ asset('Admin') }}/img/authors/avatar1.jpg" width="35"
-                    class="rounded-circle img-fluid float-left" height="35" alt="User Image">
+                <img src="{{ asset(Auth::user()->photo ?? 'uploads/users/user.jpg') }}" width="28"
+                    class="rounded-circle img-fluid float-left" height="20" alt="User Image">
                 <div class="riot">
                     <div>
                         {{ auth()->user()->name ?? '' }}
@@ -17,7 +17,7 @@
             <ul class="dropdown-menu">
                 <!-- User image -->
                 <li class="user-header">
-                    <img src="{{ asset('Admin') }}/img/authors/avatar1.jpg" class="rounded-circle" alt="User Image">
+                    <img src="{{ asset(Auth::user()->photo ?? 'uploads/users/user.jpg') }}" class="rounded-circle" alt="User Image">
                     <p> {{ auth()->user()->name ?? '' }}</p>
                 </li>
                 <!-- Menu Body -->
@@ -25,8 +25,12 @@
                         Profile </a>
                 </li>
                 <li role="presentation"></li>
-                <li><a href="edit_user.html" class="dropdown-item"><i class="fa fa-fw ti-settings"></i>
-                        Account Settings </a></li>
+
+                <li><a href="{{ route('admin.setting.change_email') }}" class="dropdown-item"><i class="fa fa-fw ti-settings"></i>
+                        Email Change </a></li>
+
+                <li><a href="{{ route('admin.setting.change_password') }}" class="dropdown-item"><i class="fa fa-fw ti-settings"></i>
+                        Password Change </a></li>
                 <li role="presentation" class="dropdown-divider"></li>
                 <!-- Menu Footer-->
                 <li class="user-footer">
