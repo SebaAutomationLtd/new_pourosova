@@ -295,6 +295,8 @@ Route::name('admin.web.village.')->prefix('admin/web/village')->namespace('App\H
     Route::get('/ward/edit/{$id}', 'VillageController@ward_edit')->name('ward.edit');
     Route::post('/ward/store', 'VillageController@ward_store')->name('ward.store');
     Route::post('/ward/update/{id}', 'WardController@ward_update')->name('ward.update');
+    Route::post('/ward/delete/{id}', 'WardController@ward_delete')->name('ward.delete');
+
     Route::get('/village', 'VillageController@village')->name('village');
     Route::post('/village/add', 'VillageController@village_store')->name('village.store');
     Route::get('/village/delete/{name}', 'VillageController@village_delete')->name('village.delete');
@@ -302,7 +304,10 @@ Route::name('admin.web.village.')->prefix('admin/web/village')->namespace('App\H
     Route::post('/village/update/{id}', 'VillageController@village_update')->name('village.update');
 
     Route::get('/house_type', 'VillageController@house_type')->name('house_type');
-    Route::get('/house_type/store', 'VillageController@house_type_store')->name('house_type.store');
+    Route::post('/house_type/store', 'VillageController@house_type_store')->name('house_type.store');
+    Route::get('/house_type/edit/{id}', 'VillageController@house_type_edit')->name('house_type.edit');
+    Route::post('/house_type/update/{id}', 'VillageController@house_type_update')->name('house_type.update');
+    Route::get('/house_type/delete/{id}', 'VillageController@house_type_delete')->name('house_type.delete');
 
 
     Route::get('/post_office', 'VillageController@post_office')->name('post_office');
@@ -327,6 +332,14 @@ Route::name('admin.web.religion.')->prefix('admin/web/village')->namespace('App\
     Route::get('/gender/delete/{id}', 'ReligionController@gender_delete')->name('gender.delete');
     Route::get('/gender/edit/{id}', 'ReligionController@gender_edit')->name('gender.edit');
     Route::post('/gender/update/{id}', 'ReligionController@gender_update')->name('gender.update');
+
+    Route::get('/merital_status', 'ReligionController@merital_status')->name('merital_status');
+    Route::post('/merital_status/store', 'ReligionController@merital_status_store')->name('merital_status.store');
+    Route::get('/merital_status/edit/{id}', 'ReligionController@merital_status_edit')->name('merital_status.edit');
+    Route::post('/merital_status/update/{id}', 'ReligionController@merital_status_update')->name('merital_status.update');
+    Route::get('/merital_status/delete/{id}', 'ReligionController@merital_status_delete')->name('merital_status.delete');
+
+
 
 });
 

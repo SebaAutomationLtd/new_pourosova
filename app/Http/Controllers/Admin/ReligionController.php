@@ -93,5 +93,39 @@ class ReligionController extends Controller
             $update = DB::table('genders')->where('id',$id)->update($data);
             return redirect(route('admin.web.religion.gender'))->with('message','Gender Updated');
     }
+     public function merital_status(){
+        $meritals =  DB::table('marital_statuses')->where('status',1)->get();
+        return view('admin.merital_status.merital_status-view',compact('meritals'));
+    }
 
+    public function merital_status_store(Request $request){
+          $request->validate([
+            'name'=> 'required|max:100',
+        ]);
+
+        $data =array();
+        $data['name']= $request->name;
+        $data['status']= 1;
+        $store = DB::table('marital_statuses')->insert($data);
+        return redirect()->back()->with('message','House Type Added');
+    }
+    public function merital_status_edit($id){
+        $update = DB::table('marital_statuses')->where('id',$id)->first();
+        return view('admin.merital_status.merital_status-edit',compact('update'));
+    }
+   public function merital_status_update(Request $request, $id){
+        $request->validate([
+            'name'=> 'required|max:100',
+        ]);
+
+        $data =array();
+        $data['name']= $request->name;
+
+        $update = DB::table('marital_statuses')->where('id',$id)->update($data);
+        return redirect()->back()->with('message','Merital Status Updated');
+    }
+    public function merital_status_delete($id){
+        $delete = DB::table('marital_statuses')->where('id',$id)->delete();
+        return redirect()->back()->with('error','Merital Status Deleted');
+    }
 }
