@@ -60,15 +60,13 @@ Route::namespace('App\Http\Controllers\Frontend')->group(function () {
     Route::get('osthai-nagorik-registration', [FrontController::class, 'osthai_nagor_create'])->name('reg.osthai-nagorik');
 
      //member login
-    Route::get('/login', function () {
-        return view('frontend.member.member_login_page');
-    });
+    Route::get('/login', [MemberAccessController::class, 'login_page'])->name('member.login');
+    Route::post('/login', [MemberAccessController::class, 'login'])->name('member.login');
 
     Route::get('/member-dashboard', [MemberAccessController::class, 'MemberDashboard'])->name('member.dashboard');
-
     Route::get('/member_change_password', [MemberAccessController::class, 'member_change_password'])->name('member.change_password');
-    Route::post('/member_update_password', [MemberAccessController::class, 'member_update_password'])->name('member.update_password'); 
-    Route::post('/member_photo_update', [MemberAccessController::class, 'member_photo_update'])->name('member.photo_update'); 
+    Route::post('/member_update_password', [MemberAccessController::class, 'member_update_password'])->name('member.update_password');
+    Route::post('/member_photo_update', [MemberAccessController::class, 'member_photo_update'])->name('member.photo_update');
 
 });
 
@@ -402,7 +400,7 @@ Route::get('/update-business_info', [BusinessController::class, 'UpdateBusinessI
 Route::get('/delete-business/{id}', [BusinessController::class, 'DeleteBusiness'])->name('delete.business');
 
 
-// Report 
+// Report
  Route::get('/puno-bibaho-report', [PdfReportController::class, 'punobibaho']);
  Route::get('/warish-report', [PdfReportController::class, 'warish']);
  Route::get('/new-report', [PdfReportController::class, 'newreport']);
