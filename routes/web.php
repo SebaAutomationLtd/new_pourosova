@@ -59,18 +59,19 @@ Route::namespace('App\Http\Controllers\Frontend')->group(function () {
 
     Route::get('osthai-nagorik-registration', [FrontController::class, 'osthai_nagor_create'])->name('reg.osthai-nagorik');
 
-     //member login
-    Route::get('/login', function () {
-        return view('frontend.member.member_login_page');
-    });
+    //member login
+    Route::get('/login', [MemberAccessController::class, 'login_page'])->name('member.login');
+    Route::post('/login', [MemberAccessController::class, 'login'])->name('member.login');
 
     Route::get('/member-dashboard', [MemberAccessController::class, 'MemberDashboard'])->name('member.dashboard');
+
     Route::get('/seba-apply', [MemberAccessController::class, 'MemberSebaApply'])->name('member.seba-apply');
-Route::get('user_panel/sonod_create/{id}/{title}', [MemberAccessController::class, 'sonod_create'])->name('sonod.create');
-Route::post('user_panel/sonod_store', [MemberAccessController::class, 'sonod_store'])->name('sonod.store');
+    Route::get('user_panel/sonod_create/{id}/{title}', [MemberAccessController::class, 'sonod_create'])->name('sonod.create');
+    Route::post('user_panel/sonod_store', [MemberAccessController::class, 'sonod_store'])->name('sonod.store');
+
     Route::get('/member_change_password', [MemberAccessController::class, 'member_change_password'])->name('member.change_password');
-    Route::post('/member_update_password', [MemberAccessController::class, 'member_update_password'])->name('member.update_password'); 
-    Route::post('/member_photo_update', [MemberAccessController::class, 'member_photo_update'])->name('member.photo_update'); 
+    Route::post('/member_update_password', [MemberAccessController::class, 'member_update_password'])->name('member.update_password');
+    Route::post('/member_photo_update', [MemberAccessController::class, 'member_photo_update'])->name('member.photo_update');
 
 });
 
@@ -93,7 +94,7 @@ Route::post('/admin/login', [Controllers\Admin\AdminController::class, 'admin_lo
 
 Route::middleware('auth')->group(function () {
 
-    Route::prefix('/admin')->group(function() {
+    Route::prefix('/admin')->group(function () {
 
         Route::get('dashboard', [Controllers\Admin\AdminController::class, 'admin_dashboard'])->name('admin.dashboard');
         Route::get('logout', [Controllers\Admin\AdminController::class, 'admin_logout'])->name('admin.logout');
@@ -342,7 +343,6 @@ Route::name('admin.web.religion.')->prefix('admin/web/village')->namespace('App\
     Route::get('/merital_status/delete/{id}', 'ReligionController@merital_status_delete')->name('merital_status.delete');
 
 
-
 });
 
 
@@ -404,10 +404,10 @@ Route::get('/update-business_info', [BusinessController::class, 'UpdateBusinessI
 Route::get('/delete-business/{id}', [BusinessController::class, 'DeleteBusiness'])->name('delete.business');
 
 
-// Report 
- Route::get('/puno-bibaho-report', [PdfReportController::class, 'punobibaho']);
- Route::get('/warish-report', [PdfReportController::class, 'warish']);
- Route::get('/new-report', [PdfReportController::class, 'newreport']);
+// Report
+Route::get('/puno-bibaho-report', [PdfReportController::class, 'punobibaho']);
+Route::get('/warish-report', [PdfReportController::class, 'warish']);
+Route::get('/new-report', [PdfReportController::class, 'newreport']);
 
 
 //Admin Daynamic End

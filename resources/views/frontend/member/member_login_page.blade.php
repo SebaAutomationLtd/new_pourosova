@@ -14,7 +14,7 @@
     <script src="{{asset('user/user-login/js/jquery-3.5.1.slim.min.js')}}"></script>
     <script src="{{asset('user/user-login/js/custom.js')}}"></script>
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>  
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
 </head>
 
 <body>
@@ -24,9 +24,9 @@
                 <div class="" style="margin-bottom: 10px;">
                     <img width="80" src="{{asset('img/logo.svg')}}" alt="">
                 </div>
-                <form class="login-form" method="post" action="{{URL::to('/member-login')}}" method="post">
+                <form class="login-form" method="post" action="{{route('member.login')}}" method="post">
                   @csrf
-                    <input class="bn-font" type="text" name="user_id" placeholder="কার্ড নম্বর"
+                    <input class="bn-font" type="text" name="username" placeholder="কার্ড নম্বর"
                         autocomplete="off" required="required" />
                     <div class="relative">
                         <input class="bn-font" name="password" type="password" name="password" placeholder="পিন"
@@ -35,7 +35,7 @@
                     </div>
                     <button class="bn-font font-16" type="submit">লগইন </button>
                 </form>
-                
+
 
             </div>
             <div class="thanksto">
@@ -60,12 +60,12 @@
             <li></li>
         </ul>
     </div>
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 
-    
+
 
 <script>
       @if(Session::has('messege'))

@@ -11,9 +11,29 @@ use DB;
 
 class MemberAccessController extends Controller
 {
+    public function login_page()
+    {
+        return view('frontend.member.member_login_page');
+    }
+
+    public function login(Request $request)
+    {
+        $data = $request->all();
+        if(\Illuminate\Support\Facades\Auth::attempt(['username'=> $data['username'], 'password'=>$data['password']])){
+            return redirect()->route('member.dashboard');
+        }else{
+            $notification=array(
+                'message'=>'Email Or Password Invalid',
+                'alert-type'=>'error'
+            );
+            return Redirect()->back()->with($notification);
+        }
+    }
+
     public function MemberDashboard()
-    {	
-    	$user =User::with(['bosotbariholding','businessholding'])->where('id',auth()->id())->first();
+    {
+    	$user =User::with(['bosotbariholding','businessholding', 'gender'])->where('id',auth()->id())->first();
+    	dd($user);
         return view('frontend.member.member_dashboard',compact('user'));
     }
 
@@ -73,7 +93,7 @@ class MemberAccessController extends Controller
             $image = $request->file('photo');
             $imageName = time().'_'.$image->getClientOriginalName();
             $image->move(public_path('uploads/users'), $imageName);
-            
+
             $data =array();
             $data['photo']='uploads/users/'.$imageName;
 
@@ -87,10 +107,10 @@ class MemberAccessController extends Controller
 
         }
 
-        
+
 
     }
 
 
-    
+
 }
