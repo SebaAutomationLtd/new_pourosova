@@ -95,7 +95,8 @@ a:hover {
 }
 
 #banner {
-  background: url("../img/background.jpg");
+  background: url("../../logo/header-background.svg");
+  background-size: cover;
 }
 
 #banner .overlay {
