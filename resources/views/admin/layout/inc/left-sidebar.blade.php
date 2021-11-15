@@ -264,6 +264,13 @@
                                 জেন্ডার
                             </a>
                         </li>
+
+                        <li><a href="{{ route('admin.web.religion.merital_status') }}"> <i
+                                    class="fa fa-fw ti-cup"></i>
+                                বৈবাহিক অবস্থা
+                            </a>
+                        </li>
+                        
                         <li><a href="{{ route('admin.web.village.ward') }}"> <i
                                     class="fa fa-fw ti-cup"></i>
                                 ওয়ার্ড

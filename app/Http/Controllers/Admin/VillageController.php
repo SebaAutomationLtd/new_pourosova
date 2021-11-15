@@ -77,10 +77,42 @@ class VillageController extends Controller
             return redirect(route('admin.web.village.village'))->with('message','Village Updated');
 
     }
+    public function house_type(){
+        $house_types =  DB::table('house_types')->where('status',1)->get();
+        return view('admin.house_type.house_type-view',compact('house_types'));
+    }
 
+    public function house_type_store(Request $request){
+          $request->validate([
+            'name'=> 'required|max:100',
+        ]);
 
+        $data =array();
+        $data['name']= $request->name;
+        $data['status']= 1;
+        $store = DB::table('house_types')->insert($data);
+        return redirect()->back()->with('message','House Type Added');
+    } 
+    public function house_type_edit($id){
+        $update =  DB::table('house_types')->where('id',$id)->first();
+        return view('admin.house_type.house_type-edit',compact('update'));
+    }
 
+    public function house_type_update(Request $request,$id){
+          $request->validate([
+            'name'=> 'required|max:100',
+        ]);
 
+        $data =array();
+        $data['name']= $request->name;
+        $data['status']= 1;
+        $store = DB::table('house_types')->where('id',$id)->update($data);
+        return redirect()->back()->with('message','House Type Updated');
+    } 
+    public function house_type_delete($id){
+        $delete =  DB::table('house_types')->where('id',$id)->delete();
+            return redirect()->back()->with('error','House Type Deleted');
+    }
     /*----------------Post Office------------*/
 
      public function post_office(){
