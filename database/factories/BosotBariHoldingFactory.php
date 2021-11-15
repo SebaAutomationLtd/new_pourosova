@@ -24,7 +24,7 @@ class BosotBariHoldingFactory extends Factory
             'nid' => 534534534545,
             'birth_certificate' => $this->faker->name(),
             'religion' => $this->faker->name(),
-            'photo' => $this->faker->image(public_path('uploads/users')),
+            'photo' => $this->faker->image('public/storage/images',400,300),
             'family_class_id' => rand(1,3),
             'ward_id' => rand(1,9),
             'village_id' => rand(1,100),
