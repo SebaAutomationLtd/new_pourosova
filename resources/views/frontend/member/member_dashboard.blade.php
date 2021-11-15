@@ -1,8 +1,6 @@
 @extends('frontend.member.member_master')
 @section('member_content')
-  @php
-  $data = $user->bosotbariholding ?? $user->businessholding 
-  @endphp
+
 
   
                   <div class="col-lg-9 mt-4 mt-lg-0">
@@ -27,141 +25,141 @@
                                 </tr>
                                 <tr>
                                     <th>নাম</th>
-                                    <td>{{Auth::user()->name}}</td>
+                                    <td>{{Auth::user()->name??''}}</td>
                                 </tr>
                                 <tr>
                                     <th>পিতার নাম</th>
-                                    <td>{{$data->father}}</td>
+                                    <td>{{$data->father??''}}</td>
                                 </tr>
 
                                 <tr>
                                     <th>মাতার নাম</th>
-                                    <td>{{$data->mother}}</td>
+                                    <td>{{$data->mother??''}}</td>
                                 </tr>
 
                                 <tr>
                                     <th>স্পস</th>
-                                    <td>{{$data->spouse}}</td>
+                                    <td>{{$data->spouse??''}}</td>
                                 </tr>
 
                                 <tr>
                                     <th>লিঙ্গ</th>
-                                    <td>{{$data->gender}}</td>
+                                    <td>{{$data->gender??''}}</td>
                                 </tr>
 
                                 <tr>
                                     <th>বৈবাহিক অবস্তা</th>
-                                    <td>{{$data->marital_status}}</td>
+                                    <td>{{$data->marital_status??''}}</td>
                                 </tr>
 
                                  <tr>
                                     <th>বার্থডে</th>
-                                    <td>{{$data->dob}}</td>
+                                    <td>{{$data->dob??''}}</td>
                                 </tr>
 
                                 <tr>
                                     <th>জাতীয় পরিচয় পত্র</th>
-                                    <td>{{$data->nid}}</td>
+                                    <td>{{$data->nid??''}}</td>
                                 </tr>
 
                                 <tr>
                                     <th>বার্থডে সার্টিফিকেট</th>
-                                    <td>{{$data->birth_certificate}}</td>
+                                    <td>{{$data->birth_certificate??''}}</td>
                                 </tr>
 
                                 <tr>
                                     <th>ধর্ম</th>
-                                    <td>{{$data->religion}}</td>
+                                    <td>{{$data->religion??''}}</td>
                                 </tr>
 
                                 <tr>
                                     <th>পরিবারের অবস্তা</th>
-                                    <td>{{$data->family_class_id}}</td>
+                                    <td>{{$data->family_class_id??''}}</td>
                                 </tr>                                                          
 
                                 <tr>
                                     <th>ওয়ার্ড </th>
-                                    <td>{{$data->ward_id}}</td>
+                                    <td>{{$data->ward_id??''}}</td>
                                 </tr>
 
                                 <tr>
                                     <th>গ্রাম</th>
-                                    <td>{{$data->village_id}}</td>
+                                    <td>{{$data->village_id??''}}</td>
                                 </tr>
 
                                 <tr>
                                     <th>পোস্ট অফিস</th>
-                                    <td>{{$data->post_office_id}}</td>
+                                    <td>{{$data->post_office_id??''}}</td>
                                 </tr>
 
                                 <tr>
                                     <th>বাড়ির ধরন</th>
-                                    <td>{{$data->house_type_id}}</td>
+                                    <td>{{$data->house_type_id??''}}</td>
                                 </tr>
 
                                 <tr>
                                     <th>হোল্ডিং নং</th>
-                                    <td>{{$data->holding_no}}</td>
+                                    <td>{{$data->holding_no??''}}</td>
                                 </tr>
 
                                 <tr>
                                     <th>পেমেন্ট মেথড</th>
-                                    <td>{{$data->payment_method_id}}</td>
+                                    <td>{{$data->payment_method_id??''}}</td>
                                 </tr>
 
                                 <tr>
                                     <th>পেশা</th>
-                                    <td>{{$data->occupation_id}}</td>
+                                    <td>{{$data->occupation_id??''}}</td>
                                 </tr>
 
                                 <tr>
                                     <th>বাতরুম</th>
-                                    <td>{{$data->sanitation_id}}</td>
+                                    <td>{{$data->sanitation_id??''}}</td>
                                 </tr>
 
                                 <tr>
                                     <th>মোট রুম</th>
-                                    <td>{{$data->total_room}}</td>
+                                    <td>{{$data->total_room??''}}</td>
                                 </tr>
 
                                 <tr>
                                     <th>দৈর্ঘ্য</th>
-                                    <td>{{$data->height}}</td>
+                                    <td>{{$data->height??''}}</td>
                                 </tr>
 
                                 <tr>
                                     <th>প্রস্থ</th>
-                                    <td>{{$data->width}}</td>
+                                    <td>{{$data->width??''}}</td>
                                 </tr>
 
                                 <tr>
                                     <th>মোট ছেলে</th>
-                                    <td>{{$data->total_male}}</td>
+                                    <td>{{$data->total_male??''}}</td>
                                 </tr>
 
                                 <tr>
                                     <th>মোট মেয়ে</th>
-                                    <td>{{$data->total_female}}</td>
+                                    <td>{{$data->total_female??''}}</td>
                                 </tr>
 
                                 <tr>
                                     <th>মাসিক আয়</th>
-                                    <td>{{$data->monthly_income}}</td>
+                                    <td>{{$data->monthly_income??''}}</td>
                                 </tr>
 
                                 <tr>
                                     <th>বার্ষিক কর</th>
-                                    <td>{{$data->yearly_vat}}</td>
+                                    <td>{{$data->yearly_vat??''}}</td>
                                 </tr>
 
                                 <tr>
                                     <th>সার্ভিস চার্জ</th>
-                                    <td>{{$data->service_charge}}</td>
+                                    <td>{{$data->service_charge??''}}</td>
                                 </tr>
 
                                 <tr>
                                     <th>শেষ কর প্রধান</th>
-                                    <td>{{$data->last_tax_year}}</td>
+                                    <td>{{$data->last_tax_year??''}}</td>
                                 </tr>
 
                             </table>

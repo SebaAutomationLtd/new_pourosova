@@ -22,6 +22,18 @@ class MemberAccessController extends Controller
         return view('frontend.member.member_change_password');
     }
 
+    public function MemberSebaApply(){
+         $data['sonods'] = DB::table('sonod_setting')->get();
+        return view('frontend.member.sebaapply', $data);
+    }
+    public function sonod_create($id, $title){
+        $data = [
+            'id'=>$id,
+            'title'=>$title
+        ];
+        return view('frontend.member.sonod_create', $data);
+    }
+
     public function member_update_password(Request $request)
     {
         $request->validate([

@@ -32,7 +32,7 @@
                         <div class="user-info-right">
                             <a href="">
                                 <img src="{{ asset(Auth::user()->photo ?? 'uploads/users/user.jpg')  }} " alt="">
-                            <span class="ml-2 d-none d-sm-inline">{{Auth::user()->name}}<i class="fas fa-caret-down"></i> <span
+                            <span class="ml-2 d-none d-sm-inline">{{Auth::user()->name??''}}<i class="fas fa-caret-down"></i> <span
                                 class="caret"></span></span>
                             </a>
                             <div class="dropdownmenu">
@@ -80,14 +80,14 @@
                                     <img src="{{ asset(Auth::user()->photo ?? 'uploads/users/user.jpg')  }} " alt="">
                                 </div>
                                 <div class="name">
-                                    <h5>{{Auth::user()->name}}</h5>
+                                    <h5>{{Auth::user()->name??''}}</h5>
                                 </div>
                             </div>
                         </div>
                         <div class="items">
                             <a href="{{ route('member.dashboard') }}" ><i class="fa fa-bars"></i>প্রোফাইল</a>
-                            <a href="#" class="active"><i class="fa fa-bars"></i>মাই এ‌সেস‌মেন্ট</a>
-                            <a href="#" ><i class="fa fa-bars"></i>নাগ‌রিক সেবার আ‌বেদন</a>
+                            <a href="#" class=""><i class="fa fa-bars"></i>মাই এ‌সেস‌মেন্ট</a>
+                            <a href="{{route('member.seba-apply')}}" class="{{ Request::path() == 'seba-apply' ? 'active' : '' }}" ><i class="fa fa-bars"></i>নাগ‌রিক সেবার আ‌বেদন</a>
                             <a href="#"><i class="fa fa-bars"></i>আ‌বেদনের অবস্থা</a>
                             <a href="#"><i class="fa fa-bars"></i>সনদ ডাউন‌লোড</a>
                             <a href="#"><i class="fa fa-bars"></i>ব‌কেয়া কর প‌রি‌শোধ</a>
