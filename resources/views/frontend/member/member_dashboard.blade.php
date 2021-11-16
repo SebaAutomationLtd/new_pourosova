@@ -49,7 +49,7 @@
 
                                 <tr>
                                     <th>বৈবাহিক অবস্তা</th>
-                                    <td>{{$data->marital_status->name??''}}</td>
+                                    <td>{{$data->marital_status_data->name??''}}</td>
                                 </tr>
 
                                  <tr>

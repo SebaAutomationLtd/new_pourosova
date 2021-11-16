@@ -76,7 +76,7 @@ class BosotBariHolding extends Model
         return $this->belongsTo(Gender::class, 'gender');
     }
 
-    public function marital_status()
+    public function marital_status_data()
     {
         return $this->belongsTo(MaritalStatus::class, 'marital_status');
     }
