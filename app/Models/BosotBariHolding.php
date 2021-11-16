@@ -71,4 +71,44 @@ class BosotBariHolding extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function gender_data()
+    {
+        return $this->belongsTo(Gender::class, 'gender');
+    }
+
+    public function marital_status()
+    {
+        return $this->belongsTo(MaritalStatus::class, 'marital_status');
+    }
+
+    public function religion_data()
+    {
+        return $this->belongsTo(religion::class, 'religion');
+    }
+
+    public function family_class()
+    {
+        return $this->belongsTo(FamilyClass::class);
+    }
+
+    public function post_office()
+    {
+        return $this->belongsTo(PostOffice::class);
+    }
+
+    public function payment_method()
+    {
+        return $this->belongsTo(PaymentMethod::class);
+    }
+
+    public function occupation()
+    {
+        return $this->belongsTo(Occupation::class);
+    }
+
+    public function sanitation()
+    {
+        return $this->belongsTo(Sanitation::class);
+    }
+
 }

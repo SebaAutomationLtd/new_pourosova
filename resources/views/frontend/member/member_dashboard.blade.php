@@ -2,7 +2,7 @@
 @section('member_content')
 
 
-  
+
                   <div class="col-lg-9 mt-4 mt-lg-0">
                     <div class="dashboard-body">
                         <div class="content-header">
@@ -13,14 +13,14 @@
                                 <tr>
                                     <th>ছবি</th>
                                     <td>
-                                     <form action="{{ route('member.photo_update') }}" method="post" enctype="multipart/form-data">   
-                                      @csrf  
+                                     <form action="{{ route('member.photo_update') }}" method="post" enctype="multipart/form-data">
+                                      @csrf
                                         <img src="{{ asset(Auth::user()->photo ?? 'uploads/users/user.jpg')  }} " alt="" style="width: 100px; height: 100px;">
 
                                         <input type="file" name="photo" required >
                                         <button class="btn btn-info">পরিবর্তন </button>
 
-                                       </form>  
+                                       </form>
                                     </td>
                                 </tr>
                                 <tr>
@@ -44,12 +44,12 @@
 
                                 <tr>
                                     <th>লিঙ্গ</th>
-                                    <td>{{$data->gender??''}}</td>
+                                    <td>{{$data->gender_data->name ??''}}</td>
                                 </tr>
 
                                 <tr>
                                     <th>বৈবাহিক অবস্তা</th>
-                                    <td>{{$data->marital_status??''}}</td>
+                                    <td>{{$data->marital_status->name??''}}</td>
                                 </tr>
 
                                  <tr>
@@ -69,32 +69,32 @@
 
                                 <tr>
                                     <th>ধর্ম</th>
-                                    <td>{{$data->religion??''}}</td>
+                                    <td>{{$data->religion_data->name??''}}</td>
                                 </tr>
 
                                 <tr>
                                     <th>পরিবারের অবস্তা</th>
-                                    <td>{{$data->family_class_id??''}}</td>
-                                </tr>                                                          
+                                    <td>{{$data->family_class->name ??''}}</td>
+                                </tr>
 
                                 <tr>
                                     <th>ওয়ার্ড </th>
-                                    <td>{{$data->ward_id??''}}</td>
+                                    <td>{{$data->ward->ward_no ??''}}</td>
                                 </tr>
 
                                 <tr>
                                     <th>গ্রাম</th>
-                                    <td>{{$data->village_id??''}}</td>
+                                    <td>{{$data->village->name ??''}}</td>
                                 </tr>
 
                                 <tr>
                                     <th>পোস্ট অফিস</th>
-                                    <td>{{$data->post_office_id??''}}</td>
+                                    <td>{{$data->post_office->name ??''}}</td>
                                 </tr>
 
                                 <tr>
                                     <th>বাড়ির ধরন</th>
-                                    <td>{{$data->house_type_id??''}}</td>
+                                    <td>{{$data->house_type->name??''}}</td>
                                 </tr>
 
                                 <tr>
@@ -104,17 +104,17 @@
 
                                 <tr>
                                     <th>পেমেন্ট মেথড</th>
-                                    <td>{{$data->payment_method_id??''}}</td>
+                                    <td>{{$data->payment_method->name??''}}</td>
                                 </tr>
 
                                 <tr>
                                     <th>পেশা</th>
-                                    <td>{{$data->occupation_id??''}}</td>
+                                    <td>{{$data->occupation->name??''}}</td>
                                 </tr>
 
                                 <tr>
                                     <th>বাতরুম</th>
-                                    <td>{{$data->sanitation_id??''}}</td>
+                                    <td>{{$data->sanitation->name??''}}</td>
                                 </tr>
 
                                 <tr>
