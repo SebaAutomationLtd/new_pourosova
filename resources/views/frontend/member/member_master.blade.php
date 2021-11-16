@@ -16,6 +16,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('user/css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('user/css/responsive.css') }}">
 
+    <script src="{{ asset('user/js/jquery-3.5.1.slim.min.js') }}" type="text/javascript"></script>
+
 </head>
 
 <body>
@@ -121,12 +123,12 @@
         </div>
     </footer>
 
-    
-<script src="js/jquery-3.5.1.slim.min.js" type="text/javascript"></script>
+
+
 <script src="{{ asset('user/js/popper.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('user/js/bootstrap.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('user/js/custom.js') }}" type="text/javascript"></script>
-    
+
     <!-- Toaster -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-
      alpha/css/bootstrap.css" rel="stylesheet">
@@ -152,6 +154,14 @@
             "progressBar" : true
         }
     toastr.error("{{ session('error') }}");
+    @endif
+        @if(Session::has('success'))
+        toastr.options =
+        {
+            "closeButton" : true,
+            "progressBar" : true
+        }
+    toastr.success("{{ session('success') }}");
     @endif
         @if(Session::has('info'))
         toastr.options =

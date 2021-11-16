@@ -66,8 +66,8 @@ Route::namespace('App\Http\Controllers\Frontend')->group(function () {
     Route::get('/member-dashboard', [MemberAccessController::class, 'MemberDashboard'])->name('member.dashboard');
 
     Route::get('/seba-apply', [MemberAccessController::class, 'MemberSebaApply'])->name('member.seba-apply');
-    Route::get('user_panel/sonod_create/{id}/{title}', [MemberAccessController::class, 'sonod_create'])->name('sonod.create');
-    Route::post('user_panel/sonod_store', [MemberAccessController::class, 'sonod_store'])->name('sonod.store');
+    Route::get('/sonod_create/{id}/{title}', [MemberAccessController::class, 'sonod_create'])->name('sonod.create');
+    Route::post('/sonod_store', [MemberAccessController::class, 'sonod_store'])->name('sonod.store');
 
     Route::get('/member_change_password', [MemberAccessController::class, 'member_change_password'])->name('member.change_password');
     Route::post('/member_update_password', [MemberAccessController::class, 'member_update_password'])->name('member.update_password');

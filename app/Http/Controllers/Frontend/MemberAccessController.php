@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\SonodApply;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Auth;
@@ -109,6 +110,29 @@ class MemberAccessController extends Controller
 
 
 
+    }
+
+    public function sonod_store(Request $request)
+    {
+
+        try {
+            $validated = $request->validate([
+                'name' => 'required|max:150|min:2',
+                'mother' => 'required|max:150|min:2',
+                'nid' => 'max:20|min:2',
+                'dob' => 'required|date',
+            ]);
+
+            SonodApply::create($request->all());
+
+            return redirect()->back()->with('success','সনদ আবেদন গৃহীত হয়েছে।');
+
+
+        } catch (\Exception $e) {
+            $err_message = \Lang::get($e->getMessage());
+            dd($err_message);
+            return redirect()->back()->withInput()->with('error','দুঃখিত... সনদ আবেদন গৃহীত হয়নি ।');
+        }
     }
 
 
