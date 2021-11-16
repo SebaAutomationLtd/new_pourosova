@@ -14,6 +14,8 @@
                 <form action="{{ route('sonod.store') }}" method="post">
                     @csrf
 
+                    <input type="hidden" name="sonod_setting_id" value="{{ $id }}">
+
                     <div class="form-row">
                         <div class="col-md-6">
                             <div class="mb-3">

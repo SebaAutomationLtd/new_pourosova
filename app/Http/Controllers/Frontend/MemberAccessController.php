@@ -123,14 +123,16 @@ class MemberAccessController extends Controller
                 'dob' => 'required|date',
             ]);
 
-            SonodApply::create($request->all());
+            $sonod = SonodApply::create($request->all());
+            $sonod->applied_by = auth()->id();
+            $sonod->save();
 
             return redirect()->back()->with('success','সনদ আবেদন গৃহীত হয়েছে।');
 
 
         } catch (\Exception $e) {
             $err_message = \Lang::get($e->getMessage());
-            dd($err_message);
+//            dd($err_message);
             return redirect()->back()->withInput()->with('error','দুঃখিত... সনদ আবেদন গৃহীত হয়নি ।');
         }
     }

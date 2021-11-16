@@ -409,6 +409,11 @@ Route::get('/puno-bibaho-report', [PdfReportController::class, 'punobibaho']);
 Route::get('/warish-report', [PdfReportController::class, 'warish']);
 Route::get('/new-report', [PdfReportController::class, 'newreport']);
 
+//Sonod Application
+Route::get('/sonod-application', [Controllers\Admin\SonodController::class, 'index'])->name('sonod.list');
+Route::get('/sonod-application/{id}/approve', [Controllers\Admin\SonodController::class, 'approve'])->name('sonod.approve');
+Route::get('/sonod-application/{id}/pending', [Controllers\Admin\SonodController::class, 'pending'])->name('sonod.pending');
+
 
 //Admin Daynamic End
 

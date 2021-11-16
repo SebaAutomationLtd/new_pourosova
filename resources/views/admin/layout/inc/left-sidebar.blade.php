@@ -270,7 +270,7 @@
                                 বৈবাহিক অবস্থা
                             </a>
                         </li>
-                        
+
                         <li><a href="{{ route('admin.web.village.ward') }}"> <i
                                     class="fa fa-fw ti-cup"></i>
                                 ওয়ার্ড
@@ -282,7 +282,7 @@
                                 গ্রাম
                             </a>
                         </li>
-           
+
                         <li><a href="{{ route('admin.web.village.house_type') }}"> <i
                                     class="fa fa-fw ti-cup"></i>
                                 বাড়ির ধরন
@@ -451,7 +451,7 @@
                         <li class="menu-dropdown">
                             <a href="{{url('puno-bibaho-report')}}"> <i class="fa fa-fw ti-receipt"></i> পুন বিবাহ না হওয়ার সনদ  </a>
 
-                        </li> 
+                        </li>
                         <li class="menu-dropdown">
                             <a href="{{url('warish-report')}}"> <i class="fa fa-fw ti-receipt"></i> ওয়ারিশ সনদ </a>
 
@@ -464,6 +464,13 @@
 
 
                     </ul>
+                </li>
+
+                <li>
+                    <a href="{{ route('sonod.list') }}"> <i class="fa fa-fw ti-receipt"></i>
+                        সনদ আবেদন
+
+                    </a>
                 </li>
 
             </ul>
