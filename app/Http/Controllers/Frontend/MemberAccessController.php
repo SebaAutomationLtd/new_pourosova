@@ -32,9 +32,9 @@ class MemberAccessController extends Controller
 
     public function MemberDashboard()
     {
-    	$user =User::with(['bosotbariholding','businessholding', 'gender'])->where('id',auth()->id())->first();
-    	dd($user);
-        return view('frontend.member.member_dashboard',compact('user'));
+    	$user =User::with(['bosotbariholding','businessholding'])->where('id',auth()->id())->first();
+    	$data = $user->bosotbariholding ?? $user->businessholding;
+        return view('frontend.member.member_dashboard',compact('user', 'data'));
     }
 
     public function member_change_password()
