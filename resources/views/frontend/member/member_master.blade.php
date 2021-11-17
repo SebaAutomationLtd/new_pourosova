@@ -101,6 +101,7 @@
 
                             @endif
 
+                            <a href="{{url('trade')}}"><i class="fa fa-bars"></i>ট্রেড লাইসেন্স</a>
                             <a href="#"><i class="fa fa-bars"></i>আ‌বেদনের অবস্থা</a>
                             <a href="#"><i class="fa fa-bars"></i>সনদ ডাউন‌লোড</a>
                             <a href="#"><i class="fa fa-bars"></i>ব‌কেয়া কর প‌রি‌শোধ</a>

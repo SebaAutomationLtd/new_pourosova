@@ -72,6 +72,8 @@ Route::namespace('App\Http\Controllers\Frontend')->group(function () {
 Route::get('sonod-request/{id}', [MemberAccessController::class, 'SonodRequest'])->name('sonod-request');
 Route::get('sonod-download/{id}/{id2}', [MemberAccessController::class, 'SonodDownload'])->name('sonod-download');
 
+Route::get('trade', [MemberAccessController::class, 'trade']);
+
 
 
 
