@@ -11,7 +11,7 @@ class SonodController extends Controller
     //
     public function index()
     {
-        $all = SonodApply::latest()->get();
+        $all = SonodApply::where('status',0)->latest()->get();
         return view('admin.sonod.index', compact('all'));
     }
 

@@ -9,7 +9,8 @@ use App\Models\User;
 use Auth;
 use Hash;
 use DB;
-
+use PDF;
+use Config;
 class MemberAccessController extends Controller
 {
     public function login_page()
@@ -124,7 +125,7 @@ class MemberAccessController extends Controller
             ]);
 
             $sonod = SonodApply::create($request->all());
-            $sonod->applied_by = auth()->id();
+            $sonod->applied_by = Auth::user()->id;
             $sonod->save();
 
             return redirect()->back()->with('success','সনদ আবেদন গৃহীত হয়েছে।');
@@ -135,6 +136,95 @@ class MemberAccessController extends Controller
 //            dd($err_message);
             return redirect()->back()->withInput()->with('error','দুঃখিত... সনদ আবেদন গৃহীত হয়নি ।');
         }
+    }
+
+    public function TotalNagorikSonod(){
+        $all = DB::table('sonod_apply')->where('applied_by', Auth::user()->id)->where('sonod_setting_id',3)->orderBy('id', 'DESC')->get();
+        return view('frontend.member.my_nagorik_sonod', compact('all'));
+    }
+
+    public function NagorikSonodDownload($id){
+
+            Config::set('pdf.orientation', 'P');
+            $data= DB::table('sonod_apply')->where('id',$id)->first();
+            $headings = DB::table('sonod_setting')->where('id',3)->first();
+            $pdf = PDF::loadView('report.nagorik_sonod',compact('data','headings'));
+            return $pdf->download('Nagorik-Sonod.pdf');
+
+
+    
+    }
+
+        public function TotalCharacterSonod(){
+        $all = DB::table('sonod_apply')->where('applied_by', Auth::user()->id)->where('sonod_setting_id',2)->orderBy('id', 'DESC')->get();
+        return view('frontend.member.my_charac_sonod', compact('all'));
+    }
+
+    public function CharacterSonodDownload($id){
+
+            Config::set('pdf.orientation', 'P');
+            $data= DB::table('sonod_apply')->where('id',$id)->first();
+            $headings = DB::table('sonod_setting')->where('id',2)->first();
+            $pdf = PDF::loadView('report.chac_sonod',compact('data','headings'));
+            return $pdf->download('Character-Sonod.pdf');
+
+
+    
+    }
+
+        public function TotalDeathSonod(){
+        $all = DB::table('sonod_apply')->where('applied_by', Auth::user()->id)->where('sonod_setting_id',1)->orderBy('id', 'DESC')->get();
+        return view('frontend.member.my_death_sonod', compact('all'));
+    }
+
+    public function DeathSonodDownload($id){
+
+            Config::set('pdf.orientation', 'P');
+            $data= DB::table('sonod_apply')->where('id',$id)->first();
+            $headings = DB::table('sonod_setting')->where('id',2)->first();
+            $pdf = PDF::loadView('report.death_sonod',compact('data','headings'));
+            return $pdf->download('Death-Sonod.pdf');
+
+
+    
+    }
+
+         public function TotalOrphanSonod(){
+        $all = DB::table('sonod_apply')->where('applied_by', Auth::user()->id)->where('sonod_setting_id',4)->orderBy('id', 'DESC')->get();
+        return view('frontend.member.my_orphan_sonod', compact('all'));
+    }
+
+    public function OrphanSonodDownload($id){
+
+            Config::set('pdf.orientation', 'P');
+            $data= DB::table('sonod_apply')->where('id',$id)->first();
+            $headings = DB::table('sonod_setting')->where('id',4)->first();
+            $pdf = PDF::loadView('report.orphan_sonod',compact('data','headings'));
+            return $pdf->download('Orphan-Sonod.pdf');
+
+
+    
+    }
+
+    public function SonodRequest($id){
+      $all = DB::table('sonod_apply')->where('applied_by', Auth::user()->id)->where('sonod_setting_id',$id)->orderBy('id', 'DESC')->get();
+      $headings = DB::table('sonod_setting')->where('id',$id)->first();
+        return view('frontend.member.sonod', compact('all','headings'));   
+    }
+
+    public function SonodDownload($id,$id2){
+
+            Config::set('pdf.orientation', 'P');
+            $data= DB::table('sonod_apply')->where('id',$id)->first();
+            $headings = DB::table('sonod_setting')->where('id',$id2)->first();
+            if($id2=='5'){
+                $members = DB::table('warish_members')->where('sonod_apply_id',$data->id)->get();
+            $pdf = PDF::loadView('report.sonod',compact('data','headings','members'));
+            }else {
+                $pdf = PDF::loadView('report.sonod',compact('data','headings'));
+            }
+            return $pdf->download($headings->title.'.pdf');
+
     }
 
 

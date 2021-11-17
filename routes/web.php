@@ -69,6 +69,13 @@ Route::namespace('App\Http\Controllers\Frontend')->group(function () {
     Route::get('/sonod_create/{id}/{title}', [MemberAccessController::class, 'sonod_create'])->name('sonod.create');
     Route::post('/sonod_store', [MemberAccessController::class, 'sonod_store'])->name('sonod.store');
 
+Route::get('sonod-request/{id}', [MemberAccessController::class, 'SonodRequest'])->name('sonod-request');
+Route::get('sonod-download/{id}/{id2}', [MemberAccessController::class, 'SonodDownload'])->name('sonod-download');
+
+
+
+
+
     Route::get('/member_change_password', [MemberAccessController::class, 'member_change_password'])->name('member.change_password');
     Route::post('/member_update_password', [MemberAccessController::class, 'member_update_password'])->name('member.update_password');
     Route::post('/member_photo_update', [MemberAccessController::class, 'member_photo_update'])->name('member.photo_update');
