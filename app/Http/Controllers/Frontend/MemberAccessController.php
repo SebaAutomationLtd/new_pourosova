@@ -34,9 +34,24 @@ class MemberAccessController extends Controller
 
     public function MemberDashboard()
     {
+        $data = null;
+        $user_type = null;
+
     	$user =User::with(['bosotbariholding','businessholding'])->where('id',auth()->id())->first();
-    	$data = $user->bosotbariholding ?? $user->businessholding;
-        return view('frontend.member.member_dashboard',compact('user', 'data'));
+    	if ($user->business) {
+    	    $data = $user->business;
+    	    $user_type = 'business';
+        }
+    	elseif ($user->businessholding) {
+            $data = $user->businessholding;
+            $user_type = 'business_holding';
+        }
+    	elseif ($user->bosotbariholding) {
+    	    $data = $user->bosotbariholding;
+    	    $user_type = 'bosot_bari';
+        }
+
+        return view('frontend.member.member_dashboard',compact('user', 'data', 'user_type'));
     }
 
     public function member_change_password()
@@ -142,7 +157,7 @@ class MemberAccessController extends Controller
     public function SonodRequest($id){
       $all = DB::table('sonod_apply')->where('applied_by', Auth::user()->id)->where('sonod_setting_id',$id)->orderBy('id', 'DESC')->get();
       $headings = DB::table('sonod_setting')->where('id',$id)->first();
-        return view('frontend.member.sonod', compact('all','headings'));   
+        return view('frontend.member.sonod', compact('all','headings'));
     }
 
     public function SonodDownload($id,$id2){
