@@ -86,6 +86,7 @@
                                 </div>
                             </div>
                         </div>
+<<<<<<< HEAD
                         @php
                         $sonods=DB::table('sonod_setting')->where('status',1)->get();
                         @endphp
@@ -106,6 +107,21 @@
                             <a href="#"><i class="fa fa-bars"></i>সকল লেন‌দেন</a>
                             <a href="#"><i class="fa fa-bars"></i>অন্যান্য সেবা</a>
                         </div>
+=======
+
+
+                        @if($user_type == 'bosot_bari')
+
+                            @include('frontend.member.bosot_bari_sidebar')
+
+                        @elseif($user_type == 'business')
+
+                            @include('frontend.member.business_sidebar')
+
+                        @endif
+
+
+>>>>>>> 5ac8c1d2f6aba8b1a242f5c41a4ebd6d3eea92a0
                     </div>
                 </div>
 
