@@ -68,14 +68,11 @@ Route::namespace('App\Http\Controllers\Frontend')->group(function () {
     Route::get('/seba-apply', [MemberAccessController::class, 'MemberSebaApply'])->name('member.seba-apply');
     Route::get('/sonod_create/{id}/{title}', [MemberAccessController::class, 'sonod_create'])->name('sonod.create');
     Route::post('/sonod_store', [MemberAccessController::class, 'sonod_store'])->name('sonod.store');
+    Route::post('/trade_store', [MemberAccessController::class, 'trade_store'])->name('trade.store');
 
-Route::get('sonod-request/{id}', [MemberAccessController::class, 'SonodRequest'])->name('sonod-request');
-Route::get('sonod-download/{id}/{id2}', [MemberAccessController::class, 'SonodDownload'])->name('sonod-download');
-
-Route::get('trade', [MemberAccessController::class, 'trade']);
-
-
-
+    Route::get('sonod-request/{id}', [MemberAccessController::class, 'SonodRequest'])->name('sonod-request');
+    Route::get('sonod-download/{id}/{id2}', [MemberAccessController::class, 'SonodDownload'])->name('sonod-download');
+    Route::get('trade-download/{id}/{id2}', [MemberAccessController::class, 'TradeDownload'])->name('trade-download');
 
 
     Route::get('/member_change_password', [MemberAccessController::class, 'member_change_password'])->name('member.change_password');

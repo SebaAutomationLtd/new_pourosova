@@ -49,7 +49,7 @@
                             <!-- <div class="card-header">
                                 <h3 class="card-title"> বসতবাড়ী হোল্ডিং আপডেট করুন</h3>
                             </div> -->
-                            <form role="form" action="{{ route('update.business', $user->id) }}" method="post"
+                            <form role="form" action="{{  route('update.business', $user->id) }}" method="post"
                                 enctype="multipart/form-data">
                                 @csrf
                                  @php
