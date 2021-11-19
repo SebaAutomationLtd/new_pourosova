@@ -34,12 +34,7 @@
                 <li role="presentation" class="dropdown-divider"></li>
                 <!-- Menu Footer-->
                 <li class="user-footer">
-                    <div class="float-left">
-                        <a href="lockscreen.html">
-                            <i class="fa fa-fw ti-lock"></i>
-                            Lock
-                        </a>
-                    </div>
+
                     <div class="float-right">
                         <a href="{{ route('admin.logout') }}">
                             <i class="fa fa-fw ti-shift-right"></i>
