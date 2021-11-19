@@ -33,7 +33,7 @@
             <td>
              @if($row->status == '1')
              
-             <a class="btn btn-success btn-sm" href="{{route('sonod-download',[$row->id,$headings->id])}}">Download
+             <a class="btn btn-success btn-sm" href="{{$headings->id=='8' ? route('trade-download',[$row->id,$headings->id]) : route('sonod-download',[$row->id,$headings->id])}}">Download
                 </a>
             
              @else

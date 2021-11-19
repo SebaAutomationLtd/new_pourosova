@@ -9,7 +9,7 @@ use DB;
 use Illuminate\Http\Request;
 use App\Models\BusinessStall;
 use Validator;
- use URL;
+use URL;
 class ActiveController extends Controller
 {
 
@@ -24,29 +24,29 @@ class ActiveController extends Controller
         $data = [];
         if ($request->type == 1) {
             $data['users'] = DB::table('bosot_bari')
-                ->where('ward_id', $request->ward_id)
-                ->where('mobile', $request->contact)
-                ->orWhere('nid', $request->contact)
-                ->orWhere('birth_certificate', $request->contact)->get();
+            ->where('ward_id', $request->ward_id)
+            ->where('mobile', $request->contact)
+            ->orWhere('nid', $request->contact)
+            ->orWhere('birth_certificate', $request->contact)->get();
             $data['type'] = 1;
 
         } else if ($request->type == 2) {
 
             $data['users'] = DB::table('business_holdings')
-                ->where('ward_id', $request->ward_id)
-                ->where('mobile', $request->contact)
-                ->orWhere('nid', $request->contact)
-                ->orWhere('birth_certificate', $request->contact)->get();
+            ->where('ward_id', $request->ward_id)
+            ->where('mobile', $request->contact)
+            ->orWhere('nid', $request->contact)
+            ->orWhere('birth_certificate', $request->contact)->get();
 
             $data['type'] = 2;
 
         }else if ($request->type == 3) {
 
             $data['users'] = DB::table('business')
-                ->where('ward_id', $request->ward_id)
-                ->where('mobile', $request->contact)
-                ->orWhere('nid', $request->contact)
-                ->orWhere('birth_certificate', $request->contact)->get();
+            ->where('ward_id', $request->ward_id)
+            ->where('mobile', $request->contact)
+            ->orWhere('nid', $request->contact)
+            ->orWhere('birth_certificate', $request->contact)->get();
 
             $data['type'] = 3;
 
@@ -61,28 +61,28 @@ class ActiveController extends Controller
         $current_date_time = Carbon::now()->toDateTimeString();
         if ($type == 1) {
             DB::table('bosot_bari')
-                ->where('id', $id)
-                ->update([
-                    'status' => 0,
-                    'deactivated_by' => Auth::user()->id??'0',
-                    'deactivated_at' => $current_date_time
-                ]);
+            ->where('id', $id)
+            ->update([
+                'status' => 0,
+                'deactivated_by' => Auth::user()->id??'0',
+                'deactivated_at' => $current_date_time
+            ]);
         } else if($type == 2) {
             DB::table('business_holdings')
-                ->where('id', $id)
-                ->update([
-                    'status' => 0,
-                    'deactivated_by' => Auth::user()->id??'0',
-                    'deactivated_at' => $current_date_time
-                ]);
+            ->where('id', $id)
+            ->update([
+                'status' => 0,
+                'deactivated_by' => Auth::user()->id??'0',
+                'deactivated_at' => $current_date_time
+            ]);
         }else if($type == 3) {
             DB::table('business')
-                ->where('id', $id)
-                ->update([
-                    'status' => 0,
-                    'deactivated_by' => Auth::user()->id??'0',
-                    'deactivated_at' => $current_date_time
-                ]);
+            ->where('id', $id)
+            ->update([
+                'status' => 0,
+                'deactivated_by' => Auth::user()->id??'0',
+                'deactivated_at' => $current_date_time
+            ]);
         }
         $notification = array(
             'message' => "Deactivated Successfully",
@@ -113,13 +113,13 @@ class ActiveController extends Controller
 
         if ($type == 1) {
             $data['user'] = DB::table('bosot_bari')->where('id', $id)
-                ->first();
+            ->first();
         } else if ($type == 2) {
             $data['user'] = DB::table('business_holdings')->where('id', $id)
-                ->first();
+            ->first();
         }else if ($type == 3) {
             $data['user'] = DB::table('business')->where('id', $id)
-                ->first();
+            ->first();
         }
 
 
@@ -131,127 +131,39 @@ class ActiveController extends Controller
 
     public function active(Request $request)
     {
-        //  if(!($request->isMethod('post'))){
-        //     return view('admin.index');
-        // }
-        // else{
-        //     return view('admin.index');
-        //     return 0;
-        // }
         $current_date_time = Carbon::now()->toDateTimeString();
 
         if ($request->type == 1) {
-            // $a = DB::table('bosot_bari')->where('id', $request->id)->first();
-            //  return $a->name;
             DB::table('bosot_bari')
-                ->where('id', $request->id)
-                ->update([
-                    'user_id' => $request->user_id,
-                    'status' => $request->status,
-                    'payment_method_id' => $request->payment_type,
-                    'activated_by' => Auth::user()->id ?? '0',
-                    'activated_at' => $current_date_time
-                ]);
-            // DB::table('users')
-            //     ->where('user_id', $request->user_id_old)
-            //     ->updateOrInsert(
-            //         [
-            //             'user_id' => $request->user_id
-            //         ],
-            //         [
-            //             'show_password' => $request->password,
-            //             'password' => bcrypt($request->password),
-
-            //             'name' => $a->name
-            //         ]
-            //     );
+            ->where('id', $request->id)
+            ->update([
+                'user_id' => $request->user_id,
+                'status' => $request->status,
+                'payment_method_id' => $request->payment_type,
+                'activated_by' => Auth::user()->id ?? '0',
+                'activated_at' => $current_date_time
+            ]);
         } else if(($request->type == 2)) {
-            // $a = DB::table('business_holdings')->where('id', $request->id)->first();
             DB::table('business_holdings')
-                ->where('id', $request->id)
-                ->update([
-                    'user_id' => $request->user_id,
-                    'status' => $request->status,
-                    'payment_method_id' => $request->payment_type,
-                    'activated_by' => Auth::user()->id ?? '0',
-                    'activated_at' => $current_date_time
-                ]);
-            // DB::table('users')
-            //     ->where('user_id', $request->user_id_old)
-            //     ->updateOrInsert(
-            //         [
-            //             'user_id' => $request->user_id
-            //         ],
-
-            //         [
-            //             'show_password' => $request->password,
-            //             'password' => bcrypt($request->password),
-
-            //             'name' => $a->owner_name
-            //         ]);
+            ->where('id', $request->id)
+            ->update([
+                'user_id' => $request->user_id,
+                'status' => $request->status,
+                'payment_method_id' => $request->payment_type,
+                'activated_by' => Auth::user()->id ?? '0',
+                'activated_at' => $current_date_time
+            ]);
         }else if(($request->type == 3)) {
-            // $a = DB::table('business')->where('id', $request->id)->first();
             DB::table('business')
-                ->where('id', $request->id)
-                ->update([
-                    'user_id' => $request->user_id,
-                    'status' => $request->status,
-                    'payment_method_id' => $request->payment_type,
-                    'activated_by' => Auth::user()->id ?? '0',
-                    'activated_at' => $current_date_time
-                ]);
-            // DB::table('users')
-            //     ->where('user_id', $request->user_id_old)
-            //     ->updateOrInsert(
-            //         [
-            //             'user_id' => $request->user_id
-            //         ],
-
-            //         [
-            //             'show_password' => $request->password,
-            //             'password' => bcrypt($request->password),
-
-            //             'name' => $a->owner_name
-            //         ]);
+            ->where('id', $request->id)
+            ->update([
+                'user_id' => $request->user_id,
+                'status' => $request->status,
+                'payment_method_id' => $request->payment_type,
+                'activated_by' => Auth::user()->id ?? '0',
+                'activated_at' => $current_date_time
+            ]);
         }
-
-
-
-        // $url = "http://premium.mdlsms.com/smsapi";
-        // $data = [
-        //     "api_key" => "C2000808603de7bf6e9249.14298062",
-        //     "type" => "text",
-        //     "contacts" => $request->mobile,
-        //     "senderid" => "8809612440735",
-        //     "msg" => "অভিনন্দন,আপনার নাগরিক সেবা কার্ড নং  " . $request->user_id . "  সফল ভাবে চালু হয়েছে .সেবা গ্রহনের জন্য আপনার কার্ডের QR কোড স্ক্যান করে লগইন করুন \n\nমাদারগঞ্জ পৌরসভা",
-        // ];
-        // $ch = curl_init();
-        // curl_setopt($ch, CURLOPT_URL, $url);
-        // curl_setopt($ch, CURLOPT_POST, 1);
-        // curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        // $response = curl_exec($ch);
-        // curl_close($ch);
-
-
-        // $url = "http://premium.mdlsms.com/smsapi";
-        // $data = [
-        //     "api_key" => "C2000808603de7bf6e9249.14298062",
-        //     "type" => "text",
-        //     "contacts" => $request->mobile,
-        //     "senderid" => "8809612440735",
-        //     "msg" => "নাগরিক সেবা কার্ড চার্জ ১৫০টাকা সফল ভাবে পরিশোধ হয়েছে,কার্ড নং  " . $request->user_id . "\n\n লাল্মনিরহাট পৌরসভা **",
-        // ];
-        // $ch = curl_init();
-        // curl_setopt($ch, CURLOPT_URL, $url);
-        // curl_setopt($ch, CURLOPT_POST, 1);
-        // curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        // $response = curl_exec($ch);
-        // curl_close($ch);
-
 
         $notification = array(
             'message' => "Activated Successfully",
@@ -260,30 +172,30 @@ class ActiveController extends Controller
         return Redirect()->route('action.search')->with($notification);
     }
 
-     public function edit($id, $type)
+    public function edit($id, $type)
     {
         $genders= DB::table('genders')->where('status',1)->get();
         $marital_statuses= DB::table('marital_statuses')->where('status',1)->get();
         $religions= DB::table('religions')->where('status',1)->get();
         $family_classes= DB::table('family_classes')->where('status',1)->get();
-         $wards = DB::table('wards')->where('status',1)->get();
-          $villages = DB::table('villages')->where('status',1)->get();
-         $post_offices = DB::table('post_offices')->where('status',1)->get();
-         $sanitations = DB::table('sanitations')->where('status',1)->get();
-         $house_types = DB::table('house_types')->where('status',1)->get();
-          $occupations = DB::table('occupations')->where('status', 1)->get();
-          $payment_methods = DB::table('payment_methods')->where('status', 1)->get();
-          $business_types = DB::table('business_types')->where('status', 1)->get();
+        $wards = DB::table('wards')->where('status',1)->get();
+        $villages = DB::table('villages')->where('status',1)->get();
+        $post_offices = DB::table('post_offices')->where('status',1)->get();
+        $sanitations = DB::table('sanitations')->where('status',1)->get();
+        $house_types = DB::table('house_types')->where('status',1)->get();
+        $occupations = DB::table('occupations')->where('status', 1)->get();
+        $payment_methods = DB::table('payment_methods')->where('status', 1)->get();
+        $business_types = DB::table('business_types')->where('status', 1)->get();
 
         if ($type == 1) {
             $user = DB::table('bosot_bari')->where('id', $id)->first();
-        return view('admin.active_members.bosotedit', compact('user','type','genders','marital_statuses','religions','family_classes','wards','villages','post_offices','sanitations','house_types','occupations','payment_methods'));
+            return view('admin.active_members.bosotedit', compact('user','type','genders','marital_statuses','religions','family_classes','wards','villages','post_offices','sanitations','house_types','occupations','payment_methods'));
         } else if($type == 2) {
             $user = DB::table('business_holdings')->where('id', $id)->first();
-        return view('admin.active_members.holdingedit', compact('user','type','genders','marital_statuses','religions','family_classes','wards','villages','post_offices','sanitations','house_types','occupations','payment_methods'));
+            return view('admin.active_members.holdingedit', compact('user','type','genders','marital_statuses','religions','family_classes','wards','villages','post_offices','sanitations','house_types','occupations','payment_methods'));
         }else if($type == 3) {
             $user = DB::table('business')->where('id', $id)->first();
-        return view('admin.active_members.businessedit', compact('user','type','genders','marital_statuses','religions','family_classes','wards','villages','post_offices','sanitations','house_types','occupations','payment_methods','business_types'));
+            return view('admin.active_members.businessedit', compact('user','type','genders','marital_statuses','religions','family_classes','wards','villages','post_offices','sanitations','house_types','occupations','payment_methods','business_types'));
         }
 
 
@@ -293,120 +205,120 @@ class ActiveController extends Controller
     public function UpdateBosotBari(Request $request,$id){
 
         try {
-                    $get_data = DB::table('bosot_bari')->where('id', $id)->first();
+            $get_data = DB::table('bosot_bari')->where('id', $id)->first();
 
-        $rules = $request->validate([
-            'name' => 'required',
-            'father_name' => 'required',
-            'mother_name' => 'required',
-            'gender' => 'required',
-            'martial' => 'required',
-            'dob' => 'required',
-            'nid' => 'required',
-            'family_class' => 'required',
-            'mobilenumber' => 'required',
-            'religion_id' => 'required',
-            'ward_id' => 'required',
-            'village_id' => 'required',
-            'holding_no' => 'required',
-            'post_office_id' => 'required',
-            'type_house' => 'required',
-            'monthly_income' => 'required',
-            'house_year_value' => 'required',
-            'yearly_vat' => 'required',
-            'occupation_id' => 'required',
-            'last_tax_year' => 'required',
-            'service_charge' => 'required',
-            'payment_type' => 'required',
-            'member_male' => 'required',
-            'member_female' => 'required',
-            'biddut' => 'required',
-            'sanitation' => 'required',
-            'height' => 'required',
-            'width' => 'required',
-            'number_room' => 'required',
+            $rules = $request->validate([
+                'name' => 'required',
+                'father_name' => 'required',
+                'mother_name' => 'required',
+                'gender' => 'required',
+                'martial' => 'required',
+                'dob' => 'required',
+                'nid' => 'required',
+                'family_class' => 'required',
+                'mobilenumber' => 'required',
+                'religion_id' => 'required',
+                'ward_id' => 'required',
+                'village_id' => 'required',
+                'holding_no' => 'required',
+                'post_office_id' => 'required',
+                'type_house' => 'required',
+                'monthly_income' => 'required',
+                'house_year_value' => 'required',
+                'yearly_vat' => 'required',
+                'occupation_id' => 'required',
+                'last_tax_year' => 'required',
+                'service_charge' => 'required',
+                'payment_type' => 'required',
+                'member_male' => 'required',
+                'member_female' => 'required',
+                'biddut' => 'required',
+                'sanitation' => 'required',
+                'height' => 'required',
+                'width' => 'required',
+                'number_room' => 'required',
 
-        ]);
+            ]);
 
-        $data2=array();
-        $data2['name'] = $request->name;
-        $data2['contact'] = $request->mobile;
-        DB::table('users')->where('id',$get_data->user_id)->update($data2);
+            $data2=array();
+            $data2['name'] = $request->name;
+            $data2['contact'] = $request->mobile;
+            DB::table('users')->where('id',$get_data->user_id)->update($data2);
 
-        $data = array();
-if($request->gurdian_status == "father")
-        {
-            $data['father'] = $request->father_name;
+            $data = array();
+            if($request->gurdian_status == "father")
+            {
+                $data['father'] = $request->father_name;
 
-        }else if($request->gurdian_status == "husband")
-        {
-            $data['spouse'] = $request->father_name;
+            }else if($request->gurdian_status == "husband")
+            {
+                $data['spouse'] = $request->father_name;
 
-        }
-
-        if($request->birth_nid == "nid")
-        {
-            $data['nid'] = $request->nid;
-
-        }else if($request->birth_nid == "birth_id_no")
-        {
-            $data['birth_certificate'] = $request->nid;
-
-        }
-        $data['mother'] = $request->mother_name;
-        $data['gender'] = $request->gender;
-        $data['marital_status'] = $request->martial;
-        $data['dob'] = $request->dob;
-        $data['family_class_id'] = $request->family_class;
-        $data['mobile'] = $request->mobilenumber;
-        $data['religion'] = $request->religion_id;
-        $data['ward_id'] = $request->ward_id;
-        $data['village_id'] = $request->village_id;
-        $data['holding_no'] = $request->holding_no;
-        $data['post_office_id'] = $request->post_office_id;
-        $data['total_male'] = $request->member_male;
-        $data['total_female'] = $request->member_female;
-        $data['biddut'] = $request->biddut;
-        $data['sanitation_id'] = $request->sanitation;
-        $data['house_type_id'] = $request->type_house;
-        $data['monthly_income'] = $request->monthly_income;
-        $data['total_room'] = $request->number_room;
-        $data['height'] = $request->height;
-        $data['width'] = $request->width;
-        $data['yearly_value'] = $request->house_year_value;
-        $data['yearly_vat'] = $request->yearly_vat;
-        $data['occupation_id'] = $request->occupation_id;
-        $data['last_tax_year'] = $request->last_tax_year;
-        $data['service_charge'] = $request->service_charge;
-        $data['payment_method_id'] = $request->payment_type;
-        $data['status'] = $request->status;
-
-        if($request->hasFile('photo')) {
-            $image = $request->file('photo');
-            $imageName = time().'_'.$image->getClientOriginalName();
-            $image->move(public_path('img'), $imageName);
-            if($get_data->photo){
-                $file_path = public_path().'/img/'.$get_data->photo;
-                unlink($file_path);
             }
-            $data['photo']   =  $imageName;
-        }
-        DB::table('bosot_bari')->where('id', $id)->update($data);
 
-        return Redirect()->back()->with('message','বসত বাড়ী আপডেট হয়েছে');
+            if($request->birth_nid == "nid")
+            {
+                $data['nid'] = $request->nid;
+
+            }else if($request->birth_nid == "birth_id_no")
+            {
+                $data['birth_certificate'] = $request->nid;
+
+            }
+            $data['mother'] = $request->mother_name;
+            $data['gender'] = $request->gender;
+            $data['marital_status'] = $request->martial;
+            $data['dob'] = $request->dob;
+            $data['family_class_id'] = $request->family_class;
+            $data['mobile'] = $request->mobilenumber;
+            $data['religion'] = $request->religion_id;
+            $data['ward_id'] = $request->ward_id;
+            $data['village_id'] = $request->village_id;
+            $data['holding_no'] = $request->holding_no;
+            $data['post_office_id'] = $request->post_office_id;
+            $data['total_male'] = $request->member_male;
+            $data['total_female'] = $request->member_female;
+            $data['biddut'] = $request->biddut;
+            $data['sanitation_id'] = $request->sanitation;
+            $data['house_type_id'] = $request->type_house;
+            $data['monthly_income'] = $request->monthly_income;
+            $data['total_room'] = $request->number_room;
+            $data['height'] = $request->height;
+            $data['width'] = $request->width;
+            $data['yearly_value'] = $request->house_year_value;
+            $data['yearly_vat'] = $request->yearly_vat;
+            $data['occupation_id'] = $request->occupation_id;
+            $data['last_tax_year'] = $request->last_tax_year;
+            $data['service_charge'] = $request->service_charge;
+            $data['payment_method_id'] = $request->payment_type;
+            $data['status'] = $request->status;
+
+            if($request->hasFile('photo')) {
+                $image = $request->file('photo');
+                $imageName = time().'_'.$image->getClientOriginalName();
+                $image->move(public_path('img'), $imageName);
+                if($get_data->photo){
+                    $file_path = public_path().'/img/'.$get_data->photo;
+                    unlink($file_path);
+                }
+                $data['photo']   =  $imageName;
+            }
+            DB::table('bosot_bari')->where('id', $id)->update($data);
+
+            return Redirect()->back()->with('message','বসত বাড়ী আপডেট হয়েছে');
             
         } catch (Exception $e) {
-             $err_message = \Lang::get($e->getMessage());
-            return redirect()->back()->withErrors()->withInput()->with('error','বসত বাড়ী আপডেট হয়নি '); 
-        }
-        
-        
-    }
+           $err_message = \Lang::get($e->getMessage());
+           return redirect()->back()->withErrors()->withInput()->with('error','বসত বাড়ী আপডেট হয়নি '); 
+       }
 
-    public function UpdateBusinessHolding(Request $request,$id)
-    {
-        try {
-                    $get_data = DB::table('business_holdings')->where('id', $id)->first();
+
+   }
+
+   public function UpdateBusinessHolding(Request $request,$id)
+   {
+    try {
+        $get_data = DB::table('business_holdings')->where('id', $id)->first();
 
         $rules = $request->validate([
             'name' => 'required',
@@ -447,7 +359,7 @@ if($request->gurdian_status == "father")
         DB::table('users')->where('id',$get_data->user_id)->update($data2);
 
         $data = array();
-if($request->gurdian_status == "father")
+        if($request->gurdian_status == "father")
         {
             $data['father'] = $request->father_name;
 
@@ -507,31 +419,31 @@ if($request->gurdian_status == "father")
         DB::table('business_holdings')->where('id', $id)->update($data);
 
         for ($i=0; $i <= count($request->stall_id)-1 ; $i++) { 
-           BusinessStall::where('id',$request->stall_id[$i])->update([
-              'business_holding_id' => $id,
-              'stall_no' =>  $request->stall_no[$i],
-              'ownership' =>  $request->ownership[$i],
-              'stall_nid' =>  $request->stall_nid[$i],
-              'stall_date' =>  $request->stall_date[$i],
-              'stall_phone' =>  $request->stall_phone[$i],
-              'stall_rent' =>  $request->stall_rent[$i],
-              'stall_tax' =>  $request->stall_tax[$i],
-            ]);
-            
-        }
+         BusinessStall::where('id',$request->stall_id[$i])->update([
+          'business_holding_id' => $id,
+          'stall_no' =>  $request->stall_no[$i],
+          'ownership' =>  $request->ownership[$i],
+          'stall_nid' =>  $request->stall_nid[$i],
+          'stall_date' =>  $request->stall_date[$i],
+          'stall_phone' =>  $request->stall_phone[$i],
+          'stall_rent' =>  $request->stall_rent[$i],
+          'stall_tax' =>  $request->stall_tax[$i],
+      ]);
 
-        return Redirect()->back()->with('message','বাণিজ্যিক হোল্ডিং আপডেট হয়েছে');
-            
-        } catch (Exception $e) {
-             $err_message = \Lang::get($e->getMessage());
-            return redirect()->back()->withErrors()->withInput()->with('error','বাণিজ্যিক হোল্ডিং আপডেট হয়নি '); 
-        } 
-    }
+     }
 
-    public function UpdateBusiness(Request $request,$id)
-    {
-        try {
-                    $get_data = DB::table('business')->where('id', $id)->first();
+     return Redirect()->back()->with('message','বাণিজ্যিক হোল্ডিং আপডেট হয়েছে');
+
+ } catch (Exception $e) {
+   $err_message = \Lang::get($e->getMessage());
+   return redirect()->back()->withErrors()->withInput()->with('error','বাণিজ্যিক হোল্ডিং আপডেট হয়নি '); 
+} 
+}
+
+public function UpdateBusiness(Request $request,$id)
+{
+    try {
+        $get_data = DB::table('business')->where('id', $id)->first();
 
         $rules = $request->validate([
             'name' => 'required',
@@ -567,7 +479,7 @@ if($request->gurdian_status == "father")
         DB::table('users')->where('id',$get_data->user_id)->update($data2);
 
         $data = array();
-if($request->gurdian_status == "father")
+        if($request->gurdian_status == "father")
         {
             $data['father'] = $request->father_name;
 
@@ -621,11 +533,11 @@ if($request->gurdian_status == "father")
         DB::table('business')->where('id', $id)->update($data);
 
         return redirect()->back()->with('message','ব্যাবসা প্রতিষ্ঠান আপডেট হয়েছে');
-            
-        } catch (Exception $e) {
-             $err_message = \Lang::get($e->getMessage());
-            return redirect()->back()->withErrors()->withInput()->with('error','ব্যাবসা প্রতিষ্ঠান আপডেট হয়নি '); 
-        }
 
-    }
+    } catch (Exception $e) {
+       $err_message = \Lang::get($e->getMessage());
+       return redirect()->back()->withErrors()->withInput()->with('error','ব্যাবসা প্রতিষ্ঠান আপডেট হয়নি '); 
+   }
+
+}
 }
