@@ -5,13 +5,13 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\SonodApply;
 use App\Models\TradeLicence;
-use Illuminate\Http\Request;
 use App\Models\User;
 use Auth;
-use Hash;
-use DB;
-use PDF;
 use Config;
+use DB;
+use Hash;
+use Illuminate\Http\Request;
+use PDF;
 
 class MemberAccessController extends Controller
 {
@@ -27,8 +27,8 @@ class MemberAccessController extends Controller
             return redirect()->route('member.dashboard');
         } else {
             $notification = array(
-                'message' => 'Email Or Password Invalid',
-                'alert-type' => 'error'
+                'message'    => 'Email Or Password Invalid',
+                'alert-type' => 'error',
             );
             return Redirect()->back()->with($notification);
         }
@@ -36,18 +36,18 @@ class MemberAccessController extends Controller
 
     public function MemberDashboard()
     {
-        $data = null;
+        $data      = null;
         $user_type = null;
 
         $user = User::with(['bosotbariholding', 'businessholding'])->where('id', auth()->id())->first();
         if ($user->business) {
-            $data = $user->business;
+            $data      = $user->business;
             $user_type = 'business';
         } elseif ($user->businessholding) {
-            $data = $user->businessholding;
+            $data      = $user->businessholding;
             $user_type = 'business_holding';
         } elseif ($user->bosotbariholding) {
-            $data = $user->bosotbariholding;
+            $data      = $user->bosotbariholding;
             $user_type = 'bosot_bari';
         }
 
@@ -68,8 +68,8 @@ class MemberAccessController extends Controller
     public function sonod_create($id, $title)
     {
         $data = [
-            'id' => $id,
-            'title' => $title
+            'id'    => $id,
+            'title' => $title,
         ];
         return view('frontend.member.sonod_create', $data);
     }
@@ -77,8 +77,8 @@ class MemberAccessController extends Controller
     public function member_update_password(Request $request)
     {
         $request->validate([
-            'old_password' => 'required|min:3|max:100',
-            'new_password' => 'required|min:3|max:100',
+            'old_password'     => 'required|min:3|max:100',
+            'new_password'     => 'required|min:3|max:100',
             'confirm_password' => 'required|min:3|max:100',
         ]);
 
@@ -89,7 +89,7 @@ class MemberAccessController extends Controller
             if ($request->new_password == $request->confirm_password) {
 
                 User::find($current_user->id)->update([
-                    'password' => Hash::make($request->new_password)
+                    'password' => Hash::make($request->new_password),
                 ]);
 
                 return redirect(route('member.dashboard'))->with('message', 'Password Successfully Changes');
@@ -104,23 +104,21 @@ class MemberAccessController extends Controller
 
     }
 
-
     public function member_photo_update(Request $request)
     {
         $id = Auth()->user()->id;
 
         if ($request->hasFile('photo')) {
-            $image = $request->file('photo');
+            $image     = $request->file('photo');
             $imageName = time() . '_' . $image->getClientOriginalName();
             $image->move(public_path('uploads/users'), $imageName);
 
-            $data = array();
+            $data          = array();
             $data['photo'] = 'uploads/users/' . $imageName;
-            $update = DB::table('users')->where('id', $id)->update($data);
+            $update        = DB::table('users')->where('id', $id)->update($data);
             return redirect(route('member.dashboard'))->with('message', 'Profile Picture Updated');
 
         }
-
 
     }
 
@@ -129,18 +127,17 @@ class MemberAccessController extends Controller
 
         try {
             $validated = $request->validate([
-                'name' => 'required|max:150|min:2',
+                'name'   => 'required|max:150|min:2',
                 'mother' => 'required|max:150|min:2',
-                'nid' => 'required|max:20|min:2',
-                'dob' => 'required|date',
+                'nid'    => 'required|max:20|min:2',
+                'dob'    => 'required|date',
             ]);
 
-            $sonod = SonodApply::create($request->all());
+            $sonod             = SonodApply::create($request->all());
             $sonod->applied_by = Auth::user()->id;
             $sonod->save();
 
             return redirect()->back()->with('success', 'সনদ আবেদন গৃহীত হয়েছে।');
-
 
         } catch (\Exception $e) {
             $err_message = \Lang::get($e->getMessage());
@@ -152,21 +149,21 @@ class MemberAccessController extends Controller
     {
         try {
             $this->validate($request, [
-                'business_name' => 'required|max:150|min:2',
-                'business_type_id' => 'required|max:150',
-                'father_name' => 'required|max:150|min:2',
-                'mother' => 'required|max:150|min:2',
-                'nid' => 'required|max:20|min:2',
-                'mobile' => 'required|min:2|max:11',
-                'ward_id' => 'required|max:150',
-                'road_moholla' => 'required|max:150|min:2',
-                'address' => 'required|max:650|min:2',
-                'current_address' => 'required|max:650|min:2',
+                'business_name'     => 'required|max:150|min:2',
+                'business_type_id'  => 'required|max:150',
+                'father_name'       => 'required|max:150|min:2',
+                'mother'            => 'required|max:150|min:2',
+                'nid'               => 'required|max:20|min:2',
+                'mobile'            => 'required|min:2|max:11',
+                'ward_id'           => 'required|max:150',
+                'road_moholla'      => 'required|max:150|min:2',
+                'address'           => 'required|max:650|min:2',
+                'current_address'   => 'required|max:650|min:2',
                 'permanent_address' => 'required|max:650|min:2',
-                'photo' => 'required|mimes:jpeg,png,jpg|max:1024',
+                'photo'             => 'required|mimes:jpeg,png,jpg|max:1024',
             ]);
-            $sonod = new SonodApply();
-            $sonod->name = $request->name;
+            $sonod                   = new SonodApply();
+            $sonod->name             = $request->name;
             $sonod->sonod_setting_id = $request->sonod_setting_id;
             if ($request->gurdian_status == "father") {
                 $sonod->father = $request->father_name;
@@ -183,31 +180,30 @@ class MemberAccessController extends Controller
                 $sonod->birth_certificate = $request->nid;
 
             }
-            $sonod->mother = $request->mother;
-            $sonod->address = $request->address;
+            $sonod->mother     = $request->mother;
+            $sonod->address    = $request->address;
             $sonod->applied_by = Auth::user()->id;
             $sonod->save();
 
-            $trade_licence = new TradeLicence();
-            $trade_licence->sonod_apply_id = $sonod->id;
-            $trade_licence->business_name = $request->business_name;
-            $trade_licence->business_type_id = $request->business_type_id;
-            $trade_licence->mobile = $request->mobile;
-            $trade_licence->ward_id = $request->ward_id;
-            $trade_licence->road_moholla = $request->road_moholla;
-            $trade_licence->current_address = $request->current_address;
+            $trade_licence                    = new TradeLicence();
+            $trade_licence->sonod_apply_id    = $sonod->id;
+            $trade_licence->business_name     = $request->business_name;
+            $trade_licence->business_type_id  = $request->business_type_id;
+            $trade_licence->mobile            = $request->mobile;
+            $trade_licence->ward_id           = $request->ward_id;
+            $trade_licence->road_moholla      = $request->road_moholla;
+            $trade_licence->current_address   = $request->current_address;
             $trade_licence->permanent_address = $request->permanent_address;
-            $trade_licence->applied_by = Auth::user()->id;
+            $trade_licence->applied_by        = Auth::user()->id;
             if ($request->hasFile('photo')) {
-                $image = $request->file('photo');
+                $image     = $request->file('photo');
                 $imageName = time() . '_' . $image->getClientOriginalName();
-                $image->move(public_path('trade_licence/trade_licence'), $imageName);
-                $trade_licence->photo = 'trade_licence/trade_licence/' . $imageName;
+                $image->move(public_path('uploads/trade_licence'), $imageName);
+                $trade_licence->photo = 'uploads/trade_licence/' . $imageName;
             }
             $trade_licence->save();
 
             return redirect()->back()->with('success', 'সনদ আবেদন গৃহীত হয়েছে।');
-
 
         } catch (\Exception $e) {
             $err_message = \Lang::get($e->getMessage());
@@ -217,7 +213,7 @@ class MemberAccessController extends Controller
 
     public function SonodRequest($id)
     {
-        $all = DB::table('sonod_apply')->where('applied_by', Auth::user()->id)->where('sonod_setting_id', $id)->orderBy('id', 'DESC')->get();
+        $all      = DB::table('sonod_apply')->where('applied_by', Auth::user()->id)->where('sonod_setting_id', $id)->orderBy('id', 'DESC')->get();
         $headings = DB::table('sonod_setting')->where('id', $id)->first();
         return view('frontend.member.sonod', compact('all', 'headings'));
     }
@@ -226,11 +222,11 @@ class MemberAccessController extends Controller
     {
 
         Config::set('pdf.orientation', 'P');
-        $data = DB::table('sonod_apply')->where('id', $id)->first();
+        $data     = DB::table('sonod_apply')->where('id', $id)->first();
         $headings = DB::table('sonod_setting')->where('id', $id2)->first();
         if ($id2 == '5') {
             $members = DB::table('warish_members')->where('sonod_apply_id', $data->id)->get();
-            $pdf = PDF::loadView('report.sonod', compact('data', 'headings', 'members'));
+            $pdf     = PDF::loadView('report.sonod', compact('data', 'headings', 'members'));
         } else {
             $pdf = PDF::loadView('report.sonod', compact('data', 'headings'));
         }
@@ -242,13 +238,13 @@ class MemberAccessController extends Controller
     {
 
         Config::set('pdf.orientation', 'P');
-        $data = DB::table('sonod_apply')->where('id', $id)->first();
-        $tradeinfo = DB::table('trade_licence')->where('sonod_apply_id', $data->id)->first();
-        $headings = DB::table('sonod_setting')->where('id', $id2)->first();
+        $data          = DB::table('sonod_apply')->where('id', $id)->first();
+        $tradeinfo     = DB::table('trade_licence')->where('sonod_apply_id', $data->id)->first();
+        $headings      = DB::table('sonod_setting')->where('id', $id2)->first();
         $business_type = DB::table('business_types')->where('id', $tradeinfo->business_type_id)->first();
 
         $timestamp = strtotime($data->created_at);
-        $month = date('m', $timestamp);
+        $month     = date('m', $timestamp);
         if ($month < '7') {
             $businessyear = date('Y', strtotime('-1 year')) . '-' . date('Y');
         } else {
@@ -266,6 +262,5 @@ class MemberAccessController extends Controller
         $pdf = PDF::loadView('report.trade');
         return $pdf->download('trade.pdf');
     }
-
 
 }

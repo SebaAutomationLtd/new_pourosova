@@ -3,13 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Auth;
-use Carbon\Carbon;
+use DataTables;
 use DB;
 use Illuminate\Http\Request;
-use Validator;
- use URL;
- use DataTables;
+use URL;
 
 class BosotBariController extends Controller
 {
@@ -17,519 +14,227 @@ class BosotBariController extends Controller
     {
         return view('admin.bosotbari.index');
     }
-  //    public function BosotSearchResult(Request $request)
-  //   {
 
-  //       if ($request->nid && $request->mobile) {
-  //            if ($request->ajax()) {
-  //           $data = DB::table('bosot_bari')
-  //               ->join('users', 'bosot_bari.user_id', 'users.id')
-  //               ->select('users.show_password', 'bosot_bari.*')
-  //               ->where('bosot_bari.mobile', $request->mobile)
-  //               ->where('bosot_bari.nid', $request->nid)
-  //               ->orderBy('bosot_bari.id', 'DESC')
-  //               ->get();
-                
-  //          return Datatables::of($data)
-  //           ->addIndexColumn()
-  //           ->addColumn('name', function($data) {
-  //               $useri=DB::table('users')->where('id',$data->user_id)->first();
-  //               return $useri->name;
-  //           })
-  //           ->addColumn('father', function($data) {
-  //               if(isset($data->father)){
-  //                   return $data->father;
-  //               }else {
-  //                   return $data->spouse;
-  //               }
-  //           })
-            
-  //           ->addColumn('status', function($data) {
-  //               if($data->status == '1'){
-  //                   return 'একটিভ ';
-  //               }else{
-  //                   return 'পেন্ডিং ';
-  //               }
-  //           })
-  //           ->addColumn('nid', function($data) {
-  //               if($data->nid == null){
-  //                   return $data->birth_certificate;
-  //               }else{
-  //                   return $data->nid;
-  //               }
-  //           })
+    public function BosotSearchResult2(Request $request)
+    {
 
-  //           ->addColumn('action', function($row){
-  // $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="'. $row->id .'"><i class="fa fa-wrench"></i></a> 
-  // <a data-toggle="tooltip" title="" href="#" class="btn btn-success btn-sm quick-edit" data-original-title="এডিট করুন"><i class="fa fa-edit"></i></a>
-  // <a data-toggle="tooltip" title="" href="'.route('delete.general_member', $row->id).'" class="btn btn-danger btn-sm" data-original-title="ডিলেট করুন"><i class="fa fa-trash"></i></a>';
-     
-  //                           return $btn;
-               
-  //                   })
-  //                   ->rawColumns(['action'])
-  //           ->make(true);
-  //       }
-            
+        if ($request->ajax()) {
+            $query = DB::table('bosot_bari');
 
-  //       } elseif ($request->nid) {
-  //            if ($request->ajax()) {
-  //           $data = DB::table('bosot_bari')
-  //               ->join('users', 'bosot_bari.user_id', 'users.id')
-  //               ->select('users.show_password', 'bosot_bari.*')
-  //               ->where('bosot_bari.nid', $request->nid)
-  //               ->orderBy('bosot_bari.id', 'DESC')
-  //               ->get();
-                
-  //          return Datatables::of($data)
-  //           ->addIndexColumn()
-  //           ->addColumn('name', function($data) {
-  //               $useri=DB::table('users')->where('id',$data->user_id)->first();
-  //               return $useri->name;
-  //           })
-  //           ->addColumn('father', function($data) {
-  //               if(isset($data->father)){
-  //                   return $data->father;
-  //               }else {
-  //                   return $data->spouse;
-  //               }
-  //           })
-            
-  //           ->addColumn('status', function($data) {
-  //               if($data->status == '1'){
-  //                   return 'একটিভ ';
-  //               }else{
-  //                   return 'পেন্ডিং ';
-  //               }
-  //           })
-  //           ->addColumn('nid', function($data) {
-  //               if($data->nid == null){
-  //                   return $data->birth_certificate;
-  //               }else{
-  //                   return $data->nid;
-  //               }
-  //           })
+            if (!empty($request->get('ward_id'))) {
+                $query->where('ward_id', '=', $request->get('ward_id'));
+            }
 
-  //           ->addColumn('action', function($row){
-  // $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="'. $row->id .'"><i class="fa fa-wrench"></i></a> 
-  // <a data-toggle="tooltip" title="" href="#" class="btn btn-success btn-sm quick-edit" data-original-title="এডিট করুন"><i class="fa fa-edit"></i></a>
-  // <a data-toggle="tooltip" title="" href="'.route('delete.general_member', $row->id).'" class="btn btn-danger btn-sm" data-original-title="ডিলেট করুন"><i class="fa fa-trash"></i></a>';
-     
-  //                           return $btn;
-               
-  //                   })
-  //                   ->rawColumns(['action'])
-  //           ->make(true);
-  //       }
-            
-  //       } elseif ($request->mobile) {
-  //            if ($request->ajax()) {
-  //           $data = DB::table('bosot_bari')
-  //               ->join('users', 'bosot_bari.user_id', 'users.id')
-  //               ->select('users.show_password', 'bosot_bari.*')
-  //               ->where('bosot_bari.mobile', $request->mobile)
-  //               ->orderBy('bosot_bari.id', 'DESC')
-  //               ->get();
-                
-  //          return Datatables::of($data)
-  //           ->addIndexColumn()
-  //           ->addColumn('name', function($data) {
-  //               $useri=DB::table('users')->where('id',$data->user_id)->first();
-  //               return $useri->name;
-  //           })
-  //           ->addColumn('father', function($data) {
-  //               if(isset($data->father)){
-  //                   return $data->father;
-  //               }else {
-  //                   return $data->spouse;
-  //               }
-  //           })
-            
-  //           ->addColumn('status', function($data) {
-  //               if($data->status == '1'){
-  //                   return 'একটিভ ';
-  //               }else{
-  //                   return 'পেন্ডিং ';
-  //               }
-  //           })
-  //           ->addColumn('nid', function($data) {
-  //               if($data->nid == null){
-  //                   return $data->birth_certificate;
-  //               }else{
-  //                   return $data->nid;
-  //               }
-  //           })
+            if (!empty($request->get('village_id'))) {
+                $query->where('village_id', '=', $request->get('village_id'));
+            }
 
-  //           ->addColumn('action', function($row){
-  // $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="'. $row->id .'"><i class="fa fa-wrench"></i></a> 
-  // <a data-toggle="tooltip" title="" href="#" class="btn btn-success btn-sm quick-edit" data-original-title="এডিট করুন"><i class="fa fa-edit"></i></a>
-  // <a data-toggle="tooltip" title="" href="'.route('delete.general_member', $row->id).'" class="btn btn-danger btn-sm" data-original-title="ডিলেট করুন"><i class="fa fa-trash"></i></a>';
-     
-  //                           return $btn;
-               
-  //                   })
-  //                   ->rawColumns(['action'])
-  //           ->make(true);
-  //       }
-        
-  //       } elseif ($request->ward_id && $request->village_id) {
-  //            if ($request->ajax()) {
-  //           $data = DB::table('bosot_bari')
-  //               ->join('users', 'bosot_bari.user_id', 'users.id')
-  //               ->select('users.show_password', 'bosot_bari.*')
-  //               ->where('bosot_bari.ward_id', $request->ward_id)
-  //               ->where('bosot_bari.village_id', $request->village_id)
-  //               ->orderBy('bosot_bari.id', 'DESC')
-  //               ->get();
-                
-  //          return Datatables::of($data)
-  //           ->addIndexColumn()
-  //           ->addColumn('name', function($data) {
-  //               $useri=DB::table('users')->where('id',$data->user_id)->first();
-  //               return $useri->name;
-  //           })
-  //           ->addColumn('father', function($data) {
-  //               if(isset($data->father)){
-  //                   return $data->father;
-  //               }else {
-  //                   return $data->spouse;
-  //               }
-  //           })
-            
-  //           ->addColumn('status', function($data) {
-  //               if($data->status == '1'){
-  //                   return 'একটিভ ';
-  //               }else{
-  //                   return 'পেন্ডিং ';
-  //               }
-  //           })
-  //           ->addColumn('nid', function($data) {
-  //               if($data->nid == null){
-  //                   return $data->birth_certificate;
-  //               }else{
-  //                   return $data->nid;
-  //               }
-  //           })
+            if (!empty($request->get('nid'))) {
+                $query->orWhere('nid', '=', $request->get('nid'));
+            }
 
-  //            ->addColumn('action', function($row){
-  //                  $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="'. $row->id .'"><i class="fa fa-wrench"></i></a> 
-  //                  <a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit" datsuccessiginal-title="কুইক এডিট"><i class="fa fa-wrench"></i></a>
-  //                  <a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit" datdangeriginal-title="কুইক এডিট"><i class="fa fa-wrench"></i></a>';
-     
-  //                           return $btn;
-  //               })
+            if (!empty($request->get('holding_no'))) {
+                $query->orWhere('holding_no', '=', $request->get('holding_no'));
+            }
 
-            
-  //           ->rawColumns(['action'])
-  //           ->make(true);
-  //       }
-            
-  //       } elseif ($request->ward_id) {
-  //            if ($request->ajax()) {
-  //           $data = DB::table('bosot_bari')
-  //               ->join('users', 'bosot_bari.user_id', 'users.id')
-  //               ->select('users.show_password', 'bosot_bari.*')
-  //               ->where('bosot_bari.ward_id', $request->ward_id)
-  //               ->orderBy('bosot_bari.id', 'DESC')
-  //               ->get();
-                
-  //          return Datatables::of($data)
-  //           ->addIndexColumn()
-  //           ->addColumn('name', function($data) {
-  //               $useri=DB::table('users')->where('id',$data->user_id)->first();
-  //               return $useri->name;
-  //           })
-  //           ->addColumn('father', function($data) {
-  //               if(isset($data->father)){
-  //                   return $data->father;
-  //               }else {
-  //                   return $data->spouse;
-  //               }
-  //           })
-            
-  //           ->addColumn('status', function($data) {
-  //               if($data->status == '1'){
-  //                   return 'একটিভ ';
-  //               }else{
-  //                   return 'পেন্ডিং ';
-  //               }
-  //           })
-  //           ->addColumn('nid', function($data) {
-  //               if($data->nid == null){
-  //                   return $data->birth_certificate;
-  //               }else{
-  //                   return $data->nid;
-  //               }
-  //           })
+            if (!empty($request->get('mobile'))) {
+                $query->orWhere('mobile', '=', $request->get('mobile'));
+            }
 
-  //           ->addColumn('action', function($row){
-  // $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="'. $row->id .'"><i class="fa fa-wrench"></i></a> 
-  // <a data-toggle="tooltip" title="" href="#" class="btn btn-success btn-sm quick-edit" data-original-title="এডিট করুন"><i class="fa fa-edit"></i></a>
-  // <a data-toggle="tooltip" title="" href="'.route('delete.general_member', $row->id).'" class="btn btn-danger btn-sm" data-original-title="ডিলেট করুন"><i class="fa fa-trash"></i></a>';
-     
-  //                           return $btn;
-               
-  //                   })
-  //                   ->rawColumns(['action'])
-  //           ->make(true);
-  //       }
-            
-  //       } else {
-  //            if ($request->ajax()) {
-  //           $data = DB::table('bosot_bari')->where('ward_id', $request->ward_id)
-  //               ->orWhere('village_id', $request->village_id)
-  //               ->orWhere('mobile', $request->mobile)
-  //               ->orWhere('nid', $request->birth_nid)
-  //               ->orWhere('holding_no', $request->holding_no)
-  //               ->orderBy('id', 'DESC')
-  //               ->get();
-                
-  //          return Datatables::of($data)
-  //           ->addIndexColumn()
-  //           ->addColumn('name', function($data) {
-  //               $useri=DB::table('users')->where('id',$data->user_id)->first();
-  //               return $useri->name;
-  //           })
-  //           ->addColumn('father', function($data) {
-  //               if(isset($data->father)){
-  //                   return $data->father;
-  //               }else {
-  //                   return $data->spouse;
-  //               }
-  //           })
-            
-  //           ->addColumn('status', function($data) {
-  //               if($data->status == '1'){
-  //                   return 'একটিভ ';
-  //               }else{
-  //                   return 'পেন্ডিং ';
-  //               }
-  //           })
-  //           ->addColumn('nid', function($data) {
-  //               if($data->nid == null){
-  //                   return $data->birth_certificate;
-  //               }else{
-  //                   return $data->nid;
-  //               }
-  //           })
+            $data = $query->orderBy('id', 'DESC')->get();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('name', function ($data) {
+                    $useri = DB::table('users')->where('id', $data->user_id)->first();
+                    return $useri->name;
+                })
+                ->addColumn('father', function ($data) {
+                    if (isset($data->father)) {
+                        return $data->father;
+                    } else {
+                        return $data->spouse;
+                    }
+                })
+                ->addColumn('nid', function ($data) {
+                    if ($data->nid == null) {
+                        return $data->birth_certificate;
+                    } else {
+                        return $data->nid;
+                    }
+                })
 
-  //           ->addColumn('action', function($row){
-  // $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="'. $row->id .'"><i class="fa fa-wrench"></i></a> 
-  // <a data-toggle="tooltip" title="" href="#" class="btn btn-success btn-sm quick-edit" data-original-title="এডিট করুন"><i class="fa fa-edit"></i></a>
-  // <a data-toggle="tooltip" title="" href="'.route('delete.general_member', $row->id).'" class="btn btn-danger btn-sm" data-original-title="ডিলেট করুন"><i class="fa fa-trash"></i></a>';
-     
-  //                           return $btn;
-               
-  //                   })
-  //                   ->rawColumns(['action'])
-  //           ->make(true);
-  //       }
-            
-  //       }
-  //       return view('admin.bosotbari.bosot_search_result');
-  //   }
+                ->addColumn('action', function ($row) {
+                    $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="' . $row->id . '"><i class="fa fa-wrench"></i></a>
+  <a data-toggle="tooltip" title="" href="' . url('take_action_edit/' . $row->id . '/' . '1') . '" class="btn btn-success btn-sm " data-original-title="এডিট করুন"><i class="fa fa-edit"></i></a>
+  <a data-toggle="tooltip" onclick="return confirm("Are you sure?")"  title="" href="' . route('delete.general_member', $row->id) . '" class="btn btn-danger btn-sm" data-original-title="ডিলেট করুন"><i class="fa fa-trash"></i></a>';
 
-public function BosotSearchResult2(Request $request)
-{
+                    return $btn;
 
-if ($request->ajax()) {    
-$query = DB::table('bosot_bari');
-
-if (!empty($request->get('ward_id')))
-    $query->where('ward_id','=',$request->get('ward_id'));
-if (!empty($request->get('village_id')))
-    $query->where('village_id','=',$request->get('village_id'));
-if (!empty($request->get('nid')))
-    $query->orWhere('nid','=',$request->get('nid'));
-if (!empty($request->get('holding_no')))
-    $query->orWhere('holding_no','=',$request->get('holding_no'));
-if (!empty($request->get('mobile')))
-    $query->orWhere('mobile','=',$request->get('mobile'));
-
-$data = $query->orderBy('id', 'DESC')->get(); 
-           return Datatables::of($data)
-            ->addIndexColumn()
-            ->addColumn('name', function($data) {
-                $useri=DB::table('users')->where('id',$data->user_id)->first();
-                return $useri->name;
-            })
-            ->addColumn('father', function($data) {
-                if(isset($data->father)){
-                    return $data->father;
-                }else {
-                    return $data->spouse;
-                }
-            })
-            ->addColumn('nid', function($data) {
-                if($data->nid == null){
-                    return $data->birth_certificate;
-                }else{
-                    return $data->nid;
-                }
-            })
-
-            ->addColumn('action', function($row){
-  $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="'. $row->id .'"><i class="fa fa-wrench"></i></a> 
-  <a data-toggle="tooltip" title="" href="'.url('take_action_edit/'.$row->id.'/'.'1').'" class="btn btn-success btn-sm " data-original-title="এডিট করুন"><i class="fa fa-edit"></i></a>
-  <a data-toggle="tooltip" onclick="return confirm("Are you sure?")"  title="" href="'.route('delete.general_member', $row->id).'" class="btn btn-danger btn-sm" data-original-title="ডিলেট করুন"><i class="fa fa-trash"></i></a>';
-     
-                            return $btn;
-               
-                    })
-                    ->rawColumns(['action'])
-            ->make(true);
+                })
+                ->rawColumns(['action'])
+                ->make(true);
         }
         return view('admin.bosotbari.bosot_search_result');
-}
+    }
 
+    public function BosotSearchResult3(Request $request)
+    {
 
-public function BosotSearchResult3(Request $request)
-{
+        if ($request->ajax()) {
+            $query = DB::table('bosot_bari')->where('status', 1);
 
-if ($request->ajax()) {    
-$query = DB::table('bosot_bari')->where('status',1);
+            if (!empty($request->get('ward_id'))) {
+                $query->where('ward_id', '=', $request->get('ward_id'));
+            }
 
-if (!empty($request->get('ward_id')))
-    $query->where('ward_id','=',$request->get('ward_id'));
-if (!empty($request->get('village_id')))
-    $query->where('village_id','=',$request->get('village_id'));
-if (!empty($request->get('mobile')))
-    $query->where('nid','=',$request->get('mobile'))->orWhere('holding_no','=',$request->get('mobile'))->orWhere('mobile','=',$request->get('mobile'));
-$data = $query->orderBy('id', 'DESC')->get(); 
-           return Datatables::of($data)
-            ->addIndexColumn()
-            ->addColumn('name', function($data) {
-                $useri=DB::table('users')->where('id',$data->user_id)->first();
-                return $useri->name;
-            })
-            ->addColumn('father', function($data) {
-                if(isset($data->father)){
-                    return $data->father;
-                }else {
-                    return $data->spouse;
-                }
-            })
-            ->addColumn('nid', function($data) {
-                if($data->nid == null){
-                    return $data->birth_certificate;
-                }else{
-                    return $data->nid;
-                }
-            })
+            if (!empty($request->get('village_id'))) {
+                $query->where('village_id', '=', $request->get('village_id'));
+            }
 
-            ->addColumn('action', function($row){
-  $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="'. $row->id .'"><i class="fa fa-wrench"></i></a> 
-  <a data-toggle="tooltip" title="" href="'.url('take_action_edit/'.$row->id.'/'.'1').'" class="btn btn-success btn-sm " data-original-title="এডিট করুন"><i class="fa fa-edit"></i></a>
-  <a data-toggle="tooltip" onclick="return confirm("Are you sure?")"  title="" href="'.route('delete.general_member', $row->id).'" class="btn btn-danger btn-sm" data-original-title="ডিলেট করুন"><i class="fa fa-trash"></i></a>';
-     
-                            return $btn;
-               
-                    })
-                    ->rawColumns(['action'])
-            ->make(true);
+            if (!empty($request->get('mobile'))) {
+                $query->where('nid', '=', $request->get('mobile'))->orWhere('holding_no', '=', $request->get('mobile'))->orWhere('mobile', '=', $request->get('mobile'));
+            }
+
+            $data = $query->orderBy('id', 'DESC')->get();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('name', function ($data) {
+                    $useri = DB::table('users')->where('id', $data->user_id)->first();
+                    return $useri->name;
+                })
+                ->addColumn('father', function ($data) {
+                    if (isset($data->father)) {
+                        return $data->father;
+                    } else {
+                        return $data->spouse;
+                    }
+                })
+                ->addColumn('nid', function ($data) {
+                    if ($data->nid == null) {
+                        return $data->birth_certificate;
+                    } else {
+                        return $data->nid;
+                    }
+                })
+
+                ->addColumn('action', function ($row) {
+                    $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="' . $row->id . '"><i class="fa fa-wrench"></i></a>
+  <a data-toggle="tooltip" title="" href="' . url('take_action_edit/' . $row->id . '/' . '1') . '" class="btn btn-success btn-sm " data-original-title="এডিট করুন"><i class="fa fa-edit"></i></a>
+  <a data-toggle="tooltip" onclick="return confirm("Are you sure?")"  title="" href="' . route('delete.general_member', $row->id) . '" class="btn btn-danger btn-sm" data-original-title="ডিলেট করুন"><i class="fa fa-trash"></i></a>';
+
+                    return $btn;
+
+                })
+                ->rawColumns(['action'])
+                ->make(true);
         }
         return view('admin.bosotbari.bosot_search_result_active');
-}
+    }
 
-public function BosotSearchResult4(Request $request)
-{
+    public function BosotSearchResult4(Request $request)
+    {
 
-if ($request->ajax()) {    
-$query = DB::table('bosot_bari')->where('status',0);
+        if ($request->ajax()) {
+            $query = DB::table('bosot_bari')->where('status', 0);
 
-if (!empty($request->get('ward_id')))
-    $query->where('ward_id','=',$request->get('ward_id'));
-if (!empty($request->get('village_id')))
-    $query->where('village_id','=',$request->get('village_id'));
-if (!empty($request->get('mobile')))
-    $query->where('nid','=',$request->get('mobile'))->orWhere('holding_no','=',$request->get('mobile'))->orWhere('mobile','=',$request->get('mobile'));
-$data = $query->orderBy('id', 'DESC')->get(); 
-           return Datatables::of($data)
-            ->addIndexColumn()
-            ->addColumn('name', function($data) {
-                $useri=DB::table('users')->where('id',$data->user_id)->first();
-                return $useri->name;
-            })
-            ->addColumn('father', function($data) {
-                if(isset($data->father)){
-                    return $data->father;
-                }else {
-                    return $data->spouse;
-                }
-            })
-            ->addColumn('nid', function($data) {
-                if($data->nid == null){
-                    return $data->birth_certificate;
-                }else{
-                    return $data->nid;
-                }
-            })
+            if (!empty($request->get('ward_id'))) {
+                $query->where('ward_id', '=', $request->get('ward_id'));
+            }
 
-            ->addColumn('action', function($row){
-  $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="'. $row->id .'"><i class="fa fa-wrench"></i></a> 
-  <a data-toggle="tooltip" title="" href="'.url('take_action_edit/'.$row->id.'/'.'1').'" class="btn btn-success btn-sm " data-original-title="এডিট করুন"><i class="fa fa-edit"></i></a>
-  <a data-toggle="tooltip" onclick="return confirm("Are you sure?")"  title="" href="'.route('delete.general_member', $row->id).'" class="btn btn-danger btn-sm" data-original-title="ডিলেট করুন"><i class="fa fa-trash"></i></a>';
-     
-                            return $btn;
-               
-                    })
-                    ->rawColumns(['action'])
-            ->make(true);
+            if (!empty($request->get('village_id'))) {
+                $query->where('village_id', '=', $request->get('village_id'));
+            }
+
+            if (!empty($request->get('mobile'))) {
+                $query->where('nid', '=', $request->get('mobile'))->orWhere('holding_no', '=', $request->get('mobile'))->orWhere('mobile', '=', $request->get('mobile'));
+            }
+
+            $data = $query->orderBy('id', 'DESC')->get();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('name', function ($data) {
+                    $useri = DB::table('users')->where('id', $data->user_id)->first();
+                    return $useri->name;
+                })
+                ->addColumn('father', function ($data) {
+                    if (isset($data->father)) {
+                        return $data->father;
+                    } else {
+                        return $data->spouse;
+                    }
+                })
+                ->addColumn('nid', function ($data) {
+                    if ($data->nid == null) {
+                        return $data->birth_certificate;
+                    } else {
+                        return $data->nid;
+                    }
+                })
+
+                ->addColumn('action', function ($row) {
+                    $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="' . $row->id . '"><i class="fa fa-wrench"></i></a>
+  <a data-toggle="tooltip" title="" href="' . url('take_action_edit/' . $row->id . '/' . '1') . '" class="btn btn-success btn-sm " data-original-title="এডিট করুন"><i class="fa fa-edit"></i></a>
+  <a data-toggle="tooltip" onclick="return confirm("Are you sure?")"  title="" href="' . route('delete.general_member', $row->id) . '" class="btn btn-danger btn-sm" data-original-title="ডিলেট করুন"><i class="fa fa-trash"></i></a>';
+
+                    return $btn;
+
+                })
+                ->rawColumns(['action'])
+                ->make(true);
         }
         return view('admin.bosotbari.bosot_search_result_inactive');
-}
+    }
 
-public function BosotSearchResult5(Request $request)
-{
+    public function BosotSearchResult5(Request $request)
+    {
 
-if ($request->ajax()) {    
-$query = DB::table('bosot_bari');
+        if ($request->ajax()) {
+            $query = DB::table('bosot_bari');
 
-if (!empty($request->get('ward_id')))
-    $query->where('ward_id','=',$request->get('ward_id'));
-if (!empty($request->get('village_id')))
-    $query->where('village_id','=',$request->get('village_id'));
-if (!empty($request->get('family_class_id')))
-    $query->where('family_class_id','=',$request->get('family_class_id'));
-$data = $query->orderBy('id', 'DESC')->get(); 
-           return Datatables::of($data)
-            ->addIndexColumn()
-            ->addColumn('name', function($data) {
-                $useri=DB::table('users')->where('id',$data->user_id)->first();
-                return $useri->name;
-            })
-             ->addColumn('nid', function($data) {
-                if($data->nid == null){
-                    return $data->birth_certificate;
-                }else{
-                    return $data->nid;
-                }
-            })
-            ->addColumn('family_class_id', function($data) {
-                 $family=DB::table('family_classes')->where('id',$data->family_class_id)->first();
-                return $family->name ?? '';
-            })
-           
+            if (!empty($request->get('ward_id'))) {
+                $query->where('ward_id', '=', $request->get('ward_id'));
+            }
 
-            ->addColumn('action', function($row){
-  $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="'. $row->id .'"><i class="fa fa-wrench"></i></a> 
-  <a data-toggle="tooltip" title="" href="'.url('take_action_edit/'.$row->id.'/'.'1').'" class="btn btn-success btn-sm " data-original-title="এডিট করুন"><i class="fa fa-edit"></i></a>
-  <a data-toggle="tooltip" onclick="return confirm("Are you sure?")"  title="" href="'.route('delete.general_member', $row->id).'" class="btn btn-danger btn-sm" data-original-title="ডিলেট করুন"><i class="fa fa-trash"></i></a>';
-     
-                            return $btn;
-               
-                    })
-                    ->rawColumns(['action'])
-            ->make(true);
+            if (!empty($request->get('village_id'))) {
+                $query->where('village_id', '=', $request->get('village_id'));
+            }
+
+            if (!empty($request->get('family_class_id'))) {
+                $query->where('family_class_id', '=', $request->get('family_class_id'));
+            }
+
+            $data = $query->orderBy('id', 'DESC')->get();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('name', function ($data) {
+                    $useri = DB::table('users')->where('id', $data->user_id)->first();
+                    return $useri->name;
+                })
+                ->addColumn('nid', function ($data) {
+                    if ($data->nid == null) {
+                        return $data->birth_certificate;
+                    } else {
+                        return $data->nid;
+                    }
+                })
+                ->addColumn('family_class_id', function ($data) {
+                    $family = DB::table('family_classes')->where('id', $data->family_class_id)->first();
+                    return $family->name ?? '';
+                })
+
+                ->addColumn('action', function ($row) {
+                    $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="' . $row->id . '"><i class="fa fa-wrench"></i></a>
+  <a data-toggle="tooltip" title="" href="' . url('take_action_edit/' . $row->id . '/' . '1') . '" class="btn btn-success btn-sm " data-original-title="এডিট করুন"><i class="fa fa-edit"></i></a>
+  <a data-toggle="tooltip" onclick="return confirm("Are you sure?")"  title="" href="' . route('delete.general_member', $row->id) . '" class="btn btn-danger btn-sm" data-original-title="ডিলেট করুন"><i class="fa fa-trash"></i></a>';
+
+                    return $btn;
+
+                })
+                ->rawColumns(['action'])
+                ->make(true);
         }
         return view('admin.bosotbari.bosot_search_result_family');
-}
-
-
-
-
-
-
+    }
 
     public function GetInfo($id)
     {
@@ -538,58 +243,57 @@ $data = $query->orderBy('id', 'DESC')->get();
             ->select('users.show_password', 'bosot_bari.*')
             ->where('bosot_bari.id', $id)
             ->first();
-        $user = DB::table('users')->where('id',$member->user_id)->first();
+        $user = DB::table('users')->where('id', $member->user_id)->first();
 
-            echo '<div class="row">
+        echo '<div class="row">
             <div class="col-sm-6">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" name="name" id="name" class="form-control name" placeholder="Name"
-                           value="'. $user->name.'">
+                           value="' . $user->name . '">
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
                     <label for="user_id">User ID</label>
                     <input type="text" name="user_id" id="user_id" class="form-control user_id" placeholder="User ID"
-                           value="'. $user->id.'" readonly>
+                           value="' . $user->id . '" readonly>
                 </div>
             </div>
-            <input type="hidden" name="member_id" class="member_id" value="'. $id.'">
+            <input type="hidden" name="member_id" class="member_id" value="' . $id . '">
             <div class="form-group col-md-6">
                 <label for="password">password</label>
                 <input type="text" name="password" id="password" class="form-control password" placeholder="Password"
-                       value="'. $user->show_password.'">
+                       value="' . $user->show_password . '">
             </div>
         </div>';
 
     }
 
-        public function UpdateMemberInfo(Request $request)
+    public function UpdateMemberInfo(Request $request)
     {
-
 
         $get_data = DB::table('bosot_bari')->where('id', $request->id)->first();
 
-        $name = $request->name;
+        $name     = $request->name;
         $password = $request->password;
-        $user_id = $get_data->user_id;
+        $user_id  = $get_data->user_id;
         DB::table('users')
             ->where('id', $get_data->user_id)
             ->update([
-                'name' => $name,
+                'name'          => $name,
                 'show_password' => $password,
-                'password' => bcrypt($password),
+                'password'      => bcrypt($password),
             ]);
 
     }
 
-        public function DeleteMember($id)
+    public function DeleteMember($id)
     {
         $get_data = DB::table('bosot_bari')->where('id', $id)->first();
         DB::table('bosot_bari')->where('id', $id)->delete();
         DB::table('users')->where('id', $get_data->user_id)->delete();
 
-        return Redirect()->back()->with('message','বসত বাড়ী ইউজার ডিলিট হয়েছে ');
+        return Redirect()->back()->with('message', 'বসত বাড়ী ইউজার ডিলিট হয়েছে ');
     }
 }

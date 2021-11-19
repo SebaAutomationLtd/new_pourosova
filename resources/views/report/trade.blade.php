@@ -62,7 +62,7 @@
 .main-title{
 font-size: 36px;
 font-weight: 900;
-} 
+}
 .sub-title {
 font-size: 26px;
 font-weight: 900;
@@ -70,7 +70,7 @@ font-weight: 900;
 
 .sonod-title {
   width: 160px;
-  text-align: center;  
+  text-align: center;
   font-size: 16px;
   background-color: #000;
   color: #fff;
@@ -91,7 +91,7 @@ font-weight: normal;
 }
 .sub tr td {
    padding: 2px 5px;
-  font-weight: normal;   
+  font-weight: normal;
 }
 
 
@@ -104,16 +104,16 @@ font-weight: normal;
 <section>
   <div class="container">
     <div class="certificate">
-      
+
       <div class="border-1">
         <div class="border-2">
-          
+
           <div class="row" style="margin-bottom: 15px;">
             <div class="column25">
                  <img src="{{asset('logo/govt.png')}}" width="90" alt="">
             </div>
             <div class="column50" style="text-align: center;">
-                     
+
 
                                             <h2 class="main-title" style="margin-bottom: 0px !important;margin-top: 0px; !important">{{ @$website_data->title_bangla }} পৌরসভা</h2>
                                             <h2 class="sub-title" style="margin-bottom: 0px !important;margin-top: 0px; !important">{{ @$website_data->title_bangla }}, ময়মনসিংহ</h2>
@@ -125,7 +125,7 @@ font-weight: normal;
           </div>
 
           <div class="row" style="margin-bottom: 5px;">
-            
+
             <div class="column75">
                <table>
                                             <tr width="">
@@ -166,17 +166,17 @@ font-weight: normal;
                                                 <td>{{date("d/m/Y", strtotime($data->approved_date))}}</td>
                                             </tr>
                                         </table>
-                
+
             </div>
             <div class="column25" style="text-align: right;">
                   <img src="@if($tradeinfo->photo) {{asset('uploads/trade_licence/'.$tradeinfo->photo)}} @else https://via.placeholder.com/150 @endif" width="150" height="150" alt="" style="margin-top: 0.153in;border: 1px solid #c7c7c7;">
-                
+
             </div>
 
             <div style="width: 100%;font-size: 14px;margin: 5px 0px;">
                   {{$headings->desc ?? ''}}
             </div>
-            
+
           </div>
           <div class="row" style="width: 100%;">
              <table class="main">
@@ -269,9 +269,9 @@ font-weight: normal;
                                             লাইসেন্স ধারীর নিকট হইতে সকল পাওনা বাবদ মোট ৫৮২২.০০ টাকা আদায় হইল।
                                         </div>
                                     </td>
-                                </tr>                                
+                                </tr>
                             </table>
-              
+
           </div>
 
              <!-- Footer Section Start -->
@@ -294,16 +294,14 @@ font-weight: normal;
                                 </tr>
                             </table>
                 </div>
-                 
+
              </div>
-                            
+
 
                                 <div class="row" style="font-size: 16px;text-align: center;width: 100%;margin-top: 40px;">
                                   কারিগরি সহযোগিতায়: Tech Path Limited
                                 </div>
-                                
 
-          
         </div>
       </div>
     </div>
