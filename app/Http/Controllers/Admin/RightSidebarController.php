@@ -27,7 +27,7 @@ class RightSidebarController extends Controller
 
             RightTopBanner::create([
                 'photo'             => $imageName,
-                'created_by'        => 1
+                'created_by'        => auth()->id()
             ]);
             return redirect()->back();
         }
@@ -64,7 +64,7 @@ class RightSidebarController extends Controller
 
         }
 
-        
+
 
     }
 
@@ -83,10 +83,10 @@ class RightSidebarController extends Controller
  		RightSideApplication::create([
             'title' 		=> $request->title,
             'link'  		=> $request->link,
-            'created_by' 	=> 1
+            'created_by' 	=> auth()->id()
         ]);
        return redirect()->back();
-    }	
+    }
 
 
     public function link_delete($id){
@@ -126,13 +126,13 @@ class RightSidebarController extends Controller
             $image = $request->file('photo');
             $imageName = time().'_'.$image->getClientOriginalName();
             $image->move(public_path('uploads/rightside'), $imageName);
-        
+
             RightSideBanner::create([
                 'title'           	=> $request->title,
                 'information_type'  => $request->information_type,
                 'description'       => $request->description,
                 'photo'				=> $imageName,
-                'created_by' 		=> 1
+                'created_by' 		=> auth()->id()
             ]);
             return redirect()->back();
         }
@@ -159,7 +159,7 @@ class RightSidebarController extends Controller
 
         $update_banner = RightSideBanner::find($id);
 
-            if(!$request->hasFile('photo')) {            
+            if(!$request->hasFile('photo')) {
                 $update_banner->update([
                     'title'             => $request->title,
                     'information_type'  => $request->information_type,

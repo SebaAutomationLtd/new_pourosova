@@ -51,7 +51,7 @@ class ContactController extends Controller
             'marital_status'=>$request->marital_status,
             'latest_degree' =>$request->latest_degree,
             'blood_group'   =>$request->blood_group,
-            'created_by'    =>1, 
+            'created_by'    =>1,
         ]);
         return redirect()->back()->with('message','মেয়রের তথ্য অ্যাড করা হয়েছে');
     }
@@ -63,7 +63,7 @@ class ContactController extends Controller
         ProfessionalMayor::create([
             'designation'    => $request->designation,
             'institute_name' => $request->institute_name,
-            'created_by'     =>1 
+            'created_by'     =>1
         ]);
         return redirect()->back();
     }
@@ -97,11 +97,11 @@ class ContactController extends Controller
                 'contact'       => $request->contact,
                 'telephone'     => $request->telephone,
                 'photo'         => $imageName,
-                'created_by'    => 1
-            ]);  
+                'created_by'    => auth()->id()
+            ]);
             return redirect()->back()->with(['message'=>'উপজেলা নির্বাহী কর্মকর্তা অ্যাড করা হয়েছে']);
         }
-      
+
     }
     public function admin(){
         $admin = Admin::first();
@@ -129,11 +129,11 @@ class ContactController extends Controller
                 'contact'       => $request->contact,
                 'telephone'     => $request->telephone,
                 'photo'         => $imageName,
-                'created_by'    => 1
-            ]);  
+                'created_by'    => auth()->id()
+            ]);
             return redirect()->back();
         }
-      
+
     }
     public function admin_other_employee(Request $request){
            $request->validate([
@@ -145,7 +145,7 @@ class ContactController extends Controller
                 'name'          => $request->name,
                 'designation'   => $request->designation,
                 'contact'       => $request->contact,
-                'created_by'    => 1
+                'created_by'    => auth()->id()
             ]);
            return redirect()->back();
     }
@@ -180,7 +180,7 @@ class ContactController extends Controller
             'telephone'   => 'required',
             'photo'       => 'mimes:jpeg,jpg,png|required|max:10000'
         ]);
-       
+
         if($request->hasFile('photo')) {
             $image = $request->file('photo');
             $imageName = time().'_'.$image->getClientOriginalName();
@@ -193,8 +193,8 @@ class ContactController extends Controller
                 'contact'       => $request->contact,
                 'telephone'     => $request->telephone,
                 'photo'         => $imageName,
-                'created_by'    => 1
-            ]);  
+                'created_by'    => auth()->id()
+            ]);
 
             return redirect()->back()->with('message','প্রকৌশল বিভাগ অ্যাড করা হয়েছে');
         }
@@ -209,14 +209,14 @@ class ContactController extends Controller
             'name'          => $request->name,
             'designation'   => $request->designation,
             'contact'       => $request->contact,
-            'created_by'    => 1
+            'created_by'    => auth()->id()
         ]);
         return redirect()->back()->with('message','প্রকৌশল অন্যান্য কর্মকর্তা অ্যাড করা হয়েছে');
     }
     public function others_employee_edit($id){
         $other_employee_edit = OtherEmployee::find($id);
         return view('admin.contact.engineer_other_edit',compact('other_employee_edit'));
-    }  
+    }
     public function others_employee_update(Request $request,$id){
         $other_employee_edit = OtherEmployee::find($id);
             $other_employee_edit->update([
@@ -251,10 +251,10 @@ class ContactController extends Controller
                 'info_type'     => $request->info_type,
                 'description'   => $request->description,
                 'photo'         => $imageName,
-                'created_by'    => 1
-            ]);  
+                'created_by'    => auth()->id()
+            ]);
             return redirect()->back()->with(['message'=>'তথ্য ও পরিষেবা অ্যাড করা হয়েছে']);
-        }      
+        }
     }
     public function info_edit($id){
         $info_edit = Info::find($id);
@@ -267,7 +267,7 @@ class ContactController extends Controller
                 'title'         => $request->title,
                 'info_type'     => $request->info_type,
                 'description'   => $request->description,
-                ]); 
+                ]);
             }else{
                 $image = $request->file('photo');
                 $imageName = time().'_'.$image->getClientOriginalName();
@@ -277,7 +277,7 @@ class ContactController extends Controller
                 'info_type'     => $request->info_type,
                 'description'   => $request->description,
                 'photo'         => $imageName
-                ]); 
+                ]);
                 return redirect()->back()->with(['message'=>'তথ্য ও পরিষেবা আপডেট করা হয়েছে']);
             }
     }

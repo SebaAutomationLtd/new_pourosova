@@ -26,12 +26,13 @@ class HeaderController extends Controller
 
         $request->validate([
             'title'=> 'required|max:255',
+            'link' => 'url'
         ]);
 
         Marquee::create([
             'title' => $request->title,
             'link' => $request->link,
-            'created_by' => 1
+            'created_by' => auth()->id()
         ]);
         return redirect(route('admin.header.marquee'))->with('message','Marquee Added');
     }
@@ -61,7 +62,7 @@ class HeaderController extends Controller
                 DB::table('website_settings')->insert([
                     'name' => $name,
                     'value' => $imageName,
-                    'created_by' => 1
+                    'created_by' => auth()->id()
                 ]);
             }
             return redirect()->back();

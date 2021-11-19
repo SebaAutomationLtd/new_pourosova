@@ -38,7 +38,7 @@ class CouncilorController extends Controller
             $image = $request->file('photo');
             $imageName = time().'_'.$image->getClientOriginalName();
             $image->move(public_path('uploads/councilor'), $imageName);
-        
+
             Councilor::create([
                 'name'          => $request->name,
                 'place'         => $request->place,
@@ -47,7 +47,7 @@ class CouncilorController extends Controller
                 'photo'         => $imageName,
                 'description'   => $request->description,
                 'councilor_type'=> 'male',
-                'created_by'    => 1
+                'created_by'    => auth()->id()
             ]);
             return redirect(route('admin.web.councilor'))->with(['message'=>'নতুন কাউন্সিলর অ্যাড করা হয়েছে']);
         }
@@ -78,7 +78,7 @@ class CouncilorController extends Controller
                     'ward_no'       => $request->ward_no,
                     'contact'       => $request->contact,
                     'description'   => $request->description,
-                ]); 
+                ]);
             }else{
                 $image = $request->file('photo');
                 $imageName = time().'_'.$image->getClientOriginalName();
@@ -120,7 +120,7 @@ class CouncilorController extends Controller
             $image = $request->file('photo');
             $imageName = time().'_'.$image->getClientOriginalName();
             $image->move(public_path('uploads/councilor'), $imageName);
-    
+
             Councilor::create([
                 'name'          => $request->name,
                 'place'         => $request->place,
@@ -129,7 +129,7 @@ class CouncilorController extends Controller
                 'photo'         => $imageName,
                 'description'   => $request->description,
                 'councilor_type'=> 'female',
-                'created_by'    => 1
+                'created_by'    => auth()->id()
             ]);
 
             return redirect(route('admin.web.councilor.female'))->with(['message'=>' নতুন (সংরক্ষিত) কাউন্সিলর অ্যাড করা হয়েছে']);
@@ -154,7 +154,7 @@ class CouncilorController extends Controller
         return view('admin.councilor-female.councilor-edit',compact('female_councilor'));
     }
     public function female_update(Request $request,$id){
-        
+
         $update_female = Councilor::find($id);
             if(!$request->hasFile('photo')) {
                 $update_female->update([
@@ -163,7 +163,7 @@ class CouncilorController extends Controller
                     'ward_no'       => $request->ward_no,
                     'contact'       => $request->contact,
                     'description'   => $request->description,
-                ]); 
+                ]);
             }else{
                 $image = $request->file('photo');
                 $imageName = time().'_'.$image->getClientOriginalName();

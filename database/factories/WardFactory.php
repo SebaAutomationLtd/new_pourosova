@@ -15,7 +15,7 @@ class WardFactory extends Factory
     {
         return [
             'ward_no' => $this->faker->state(),
-            'status' => 1,
+            'status' => auth()->id(),
         ];
     }
 }

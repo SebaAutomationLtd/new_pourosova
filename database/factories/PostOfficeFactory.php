@@ -16,7 +16,7 @@ class PostOfficeFactory extends Factory
         return [
             'code'    => 1234,
             'name'    => $this->faker->name(),
-            'status'    => 1,
+            'status'    => auth()->id(),
         ];
     }
 }

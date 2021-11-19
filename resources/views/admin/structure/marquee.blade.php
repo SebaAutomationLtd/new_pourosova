@@ -8,7 +8,7 @@
                     <i class="fa fa-fw ti-home"></i> হেডার
                 </a>
             </li>
-            <li> লোগো</li>
+            <li> নিউজ স্ক্রোল</li>
 
         </ol>
     </section>
@@ -31,7 +31,7 @@
                         </div>
                         <div class="form-group">
                             <label for="">নিউজ লিংক (যদি থাকে)</label>
-                            <input type="text" name="link" value="{{ old('link') }}" class="form-control" placeholder="">
+                            <input type="url" name="link" value="{{ old('link') }}" class="form-control" placeholder="">
                         </div>
                         <button class="btn btn-primary">সাবমিট</button>
                     </form>
@@ -46,33 +46,39 @@
                 </div>
                 <div class="card-body">
 
-                    @forelse($marquees as $marquee)
-                        <div class="previous-notice mb-2">
-                            <div class="d-flex">
-                                <div class="mr-3">
-                                    <i class="fa fa-fw fa-check-circle-o"></i>
-                                </div>
-                                <div>
-                                    {{ $marquee->title }}
-                                    <div>
-                                        <small>{{ date('d-m-Y', strtotime($marquee->created_at)) }}</small>
-                                    </div>
-                                </div>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>নিউজ</th>
+                            <td>একশন</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @forelse($marquees as $marquee)
+                           <tr>
+                               <td>
+                                   <div class="d-flex align-items-center">
+                                       <i class="fa fa-fw fa-check-circle-o mr-3"></i>
+                                       <div class="d-flex flex-column">
+                                           <a target="_blank" href="{{ $marquee->link }}">{{ $marquee->title }}</a>
+                                           <small>{{ date('d-m-Y', strtotime($marquee->created_at)) }}</small>
+                                       </div>
 
-                                <div class="float-right">
-                                     <a data-placement="left" title="ডিলেট করুন" data="tooltip"
-                                        class="text-danger dropdown-item" href="{{ route('admin.header.marquee.delete',$marquee->id) }}">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    @empty
-                    @endforelse
+                                   </div>
 
+                               </td>
+                               <td>
+                                   <a data-placement="left" title="ডিলেট করুন" data="tooltip"
+                                      class="text-danger dropdown-item" href="{{ route('admin.header.marquee.delete',$marquee->id) }}">
+                                       <i class="fa fa-trash"></i>
+                                   </a>
+                               </td>
+                           </tr>
 
-
-
+                        @empty
+                        @endforelse
+                        </tbody>
+                    </table>
 
                 </div>
             </div>

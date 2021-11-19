@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
-{   
+{
     public function slider(){
         $sliders = DB::table('sliders')->get();
         return view('admin.index.slider',compact('sliders'));
@@ -33,7 +33,7 @@ class IndexController extends Controller
                 'title' => $request->title,
                 'serial' => $request->serial,
                 'image' => $imageName,
-                'created_by' => 1
+                'created_by' => auth()->id()
             ]);
             return redirect(route('admin.index.slider'))->with('message','Slider Added');
         }
@@ -46,7 +46,7 @@ class IndexController extends Controller
             $image = $request->file('image');
             $imageName = time().'_'.$image->getClientOriginalName();
             $image->move(public_path('uploads/slider'), $imageName);
-            
+
             $data['image']=$imageName;
 
             $old = DB::table('sliders')->where('serial',$request->serial)->first();

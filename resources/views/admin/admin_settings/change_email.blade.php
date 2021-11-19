@@ -26,15 +26,31 @@
                         @csrf
                         <div class="form-row">
 
-                            <div class="form-group col-md-8">
-                                <label for="">আগের পাসওয়ার্ড</label>
-                                <input name="email" type="email" value="{{$admin->email}}" required class="form-control">
-                                @error('email')
+                            <div class="form-group col-md-4">
+                                <label for="">আগের ইমেইল</label>
+                                <input name="old_email" type="email" value="{{ old('old_email') }}" required class="form-control">
+                                @error('old_email')
                                     <span class=text-danger>{{$message}}</span>
                                 @enderror
                             </div>
 
-                          </div>  
+                            <div class="form-group col-md-4">
+                                <label for="">নতুন ইমেইল</label>
+                                <input name="new_email" type="email" value="{{ old('new_email') }}" required class="form-control">
+                                @error('new_email')
+                                <span class=text-danger>{{$message}}</span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="">পাসওয়ার্ড</label>
+                                <input name="password" type="password" value="" required class="form-control">
+                                @error('password')
+                                <span class=text-danger>{{$message}}</span>
+                                @enderror
+                            </div>
+
+                          </div>
 
                         <button class="btn btn-primary">সাবমিট</button>
                     </form>

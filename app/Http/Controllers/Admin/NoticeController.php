@@ -26,7 +26,7 @@ class NoticeController extends Controller
             $file = $request->file('file');
             $fileName = $file->getClientOriginalName();
             $file->move(public_path('uploads/notice'), $fileName);
-            
+
             $data =array();
             $data['title']= $request->title;
             $data['type']= $request->type;
@@ -76,8 +76,8 @@ class NoticeController extends Controller
                 'notice_type'   => $request->notice_type,
                 'publication'   => $request->publication,
                 'file'         => $imageName,
-                'created_by'    => 1
-            ]);  
+                'created_by'    => auth()->id()
+            ]);
             return redirect(route('admin.web.notice.download'))->with('message','Download Added');
         }
     }

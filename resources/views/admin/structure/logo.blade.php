@@ -14,7 +14,6 @@
     </section>
 @stop
 
-
 @section('content')
     <div class="card main-chart">
         <div class="card-header panel-tabs">
@@ -29,9 +28,12 @@
                 <div>
                     <div class="row advanced_select2">
                         <div class="col-sm-8 ">
-                            <img src="{{ asset('uploads/header_logo/'. (isset($website_data->logo_background) ? $website_data->logo_background : '')) }}" style="height: 90px; width: 100%;">
+                            @if(isset($website_data->logo_background))
+                                <img src="{{ asset('uploads/header_logo/'. $website_data->logo_background) }}" style="height: 90px; width: 100%;">
+                            @endif
+
                             <label class="control-label txt_media">
-                                ছবি সিলেক্ট করুন
+                                লোগো ব্যাকগ্রাউন্ড
                             </label>
                             <input type="file" name="logo_background" class="image-file-upload file-loading"
                                 data-show-preview="false">
@@ -45,19 +47,16 @@
                     </div>
                 </div>
             </form>
-
-
             <form action="{{ route('admin.header.logo') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="form-group">
-                    <div class="logo-upload-preview py-0 py-md-2">
-                        <img class="img-fluid" id="logo_bangla" src="{{ asset('Front') }}/images/logo-bn.png" alt="">
-                    </div>
-                </div>
+
                 <div>
                     <div class="row advanced_select2">
                         <div class="col-sm-8 ">
-                             <img src="{{ asset('uploads/header_logo/'.(isset($website_data->logo_bangla) ? $website_data->logo_bangla : '')) }}" style="height: 90px; width: 100%;">
+                            @if(isset($website_data->logo_bangla))
+                                <img src="{{ asset('uploads/header_logo/'. $website_data->logo_bangla) }}" style="height: 90px; width: 100%;">
+                            @endif
+
                             <label class="control-label txt_media">
                                 লোগো এবং বাংলা টাইটেল
                             </label>
@@ -72,20 +71,18 @@
                     </div>
                 </div>
             </form>
-
-
+            <br>
             <form action="{{ route('admin.header.logo') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="form-group">
-                    <div class="logo-upload-preview py-0 py-md-2">
-                        <img class="img-fluid" id="logo_english" src="{{ asset('Front') }}/images/logo-en.png" alt="">
-                    </div>
-                </div>
+
                 <div>
 
                     <div class="row advanced_select2">
                         <div class="col-sm-8 ">
-                             <img src="{{ asset('uploads/header_logo/'.(isset($website_data->logo_english) ? $website_data->logo_english : '')) }}" style="height: 90px; width: 100%;">
+                            @if(isset($website_data->logo_english))
+                                <img src="{{ asset('uploads/header_logo/'. $website_data->logo_english) }}" style="height: 90px; width: 100%;">
+                            @endif
+
                             <label class="control-label txt_media">
                                 লোগো এবং ইংরেজি টাইটেল
                             </label>
@@ -100,16 +97,8 @@
                     </div>
                 </div>
             </form>
-
-
-
-
         </div>
     </div>
-
-
-
-
 @stop
 
 

@@ -23,7 +23,7 @@ class LeftSidebarController extends Controller
     	LeftSideApplication::create([
             'title' 		=> $request->title,
             'link'  		=> $request->link,
-            'created_by' 	=> 1
+            'created_by' 	=> auth()->id()
         ]);
        return redirect()->back()->with('success','Application Information Added Successfull');;
     }
@@ -56,7 +56,7 @@ class LeftSidebarController extends Controller
 
 
 
-    
+
     public function bannerView(){
     	$left_banners = LeftSideBanner::all()->sortByDesc('created_at');
         return view('admin.sidebar.left-banner',compact('left_banners'));
@@ -78,7 +78,7 @@ class LeftSidebarController extends Controller
                 'information_type'  => $request->information_type,
                 'description'       => $request->description,
                 'photo'				=> $imageName,
-                'created_by' 		=> 1
+                'created_by' 		=> auth()->id()
             ]);
             return redirect()->back()->with('success','Banner Information Added Successfull');
         }
@@ -117,7 +117,7 @@ class LeftSidebarController extends Controller
             $image = $request->file('photo');
             $imageName = time().'_'.$image->getClientOriginalName();
             $image->move(public_path('uploads/leftside'), $imageName);
-            
+
             $data['photo']=$imageName;
 
             $old = DB::table('left_side_banners')->where('id',$id)->first();

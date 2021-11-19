@@ -44,10 +44,10 @@ class BosotBariHoldingFactory extends Factory
             'yearly_vat' => 220,
             'service_charge' => 120,
             'last_tax_year' => $this->faker->dateTime(),
-            'activated_by' => 1,
-            'deactivated_by' => 1,
-            'biddut' => 1,
-            'status' => 1,
+            'activated_by' => auth()->id(),
+            'deactivated_by' => auth()->id(),
+            'biddut' => auth()->id(),
+            'status' => auth()->id(),
 
         ];
     }

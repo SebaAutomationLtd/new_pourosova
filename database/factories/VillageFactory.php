@@ -16,7 +16,7 @@ class VillageFactory extends Factory
         return [
             'ward_id' => rand(1,9),
             'name' => $this->faker->state(),
-            'status' => 1,
+            'status' => auth()->id(),
         ];
     }
 }

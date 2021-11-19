@@ -36,24 +36,24 @@
 
                             <div class="form-group col-md-4">
                                 <label for="">নতুন পাসওয়ার্ড</label>
-                                <input name="new_password" type="password" value="{{ old('new_password') }}" required class="form-control" placeholder="নতুন পাসওয়ার্ড">
-                                @error('new_password')
+                                <input name="new_password" type="password" value="{{ old('password') }}" required class="form-control" placeholder="নতুন পাসওয়ার্ড">
+                                @error('password')
                                     <span class=text-danger>{{$message}}</span>
                                 @enderror
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="">পাসওয়ার্ড নিশ্চিত করুন</label>
-                                <input name="confirm_password" type="password" value="{{ old('confirm_password') }}" required class="form-control" placeholder="পাসওয়ার্ড নিশ্চিত করুন">
-                                @error('confirm_password')
+                                <input name="password_confirmation" type="password" value="{{ old('password_confirmation') }}" required class="form-control" placeholder="পাসওয়ার্ড নিশ্চিত করুন">
+                                @error('password_confirmation')
                                     <span class=text-danger>{{$message}}</span>
                                 @enderror
                             </div>
 
-                          </div>  
+                          </div>
 
-                        
-                        
+
+
 
 
                         <button class="btn btn-primary">সাবমিট</button>

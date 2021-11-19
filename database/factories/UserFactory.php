@@ -24,8 +24,8 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => Hash::make('123456'),
             'show_password' => Hash::make('123456'),
-            'status' => 1,
-            'added_by' => 1,
+            'status' => auth()->id(),
+            'added_by' => auth()->id(),
             'remember_token' => Str::random(10),
         ];
     }

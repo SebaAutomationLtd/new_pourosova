@@ -21,10 +21,8 @@
                     <p> {{ auth()->user()->name ?? '' }}</p>
                 </li>
                 <!-- Menu Body -->
-                <li class="p-t-3"><a href="user_profile.html" class="dropdown-item"> <i class="fa fa-fw ti-user"></i> My
-                        Profile </a>
-                </li>
-                <li role="presentation"></li>
+
+
 
                 <li><a href="{{ route('admin.setting.change_email') }}" class="dropdown-item"><i class="fa fa-fw ti-settings"></i>
                         Email Change </a></li>

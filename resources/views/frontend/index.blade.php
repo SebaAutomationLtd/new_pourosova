@@ -8,12 +8,10 @@
                             <!--Main Slider Start-->
                             <div id="main-slider" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
-                                    <li class="active" data-target="#main-slider" data-slide-to="0"
-                                        aria-current="location"></li>
-                                    <li data-target="#main-slider" data-slide-to="1"></li>
-                                    <li data-target="#main-slider" data-slide-to="2"></li>
-                                    <li data-target="#main-slider" data-slide-to="3"></li>
-                                    <li data-target="#main-slider" data-slide-to="4"></li>
+                                    @forelse($sliders as $index => $slider)
+                                    <li data-target="#main-slider" data-slide-to="{{ $index }}"></li>
+                                    @empty
+                                    @endforelse
                                 </ol>
                                 <div class="carousel-inner">
                                     @forelse($sliders as $slider)

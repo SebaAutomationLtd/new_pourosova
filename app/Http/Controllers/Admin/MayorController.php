@@ -38,7 +38,7 @@ class MayorController extends Controller
                 'mobile' => $request->mobile,
                 'serial' => $request->serial,
                 'image' => $imageName,
-                'created_by' => 1
+                'created_by' => auth()->id()
             ]);
             return redirect(route('admin.web.mayor'))->with('message','Mayor Added');
         }
@@ -80,7 +80,7 @@ class MayorController extends Controller
             $image = $request->file('image');
             $imageName = time().'_'.$image->getClientOriginalName();
             $image->move(public_path('uploads/mayor'), $imageName);
-           	
+
 	        $data['image']=$imageName;
 
             $old = DB::table('mayors')->where('id',$id)->first();

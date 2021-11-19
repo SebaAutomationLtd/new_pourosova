@@ -120,10 +120,10 @@ Route::middleware('auth')->group(function () {
 
     Route::name('admin.setting.')->prefix('admin/setting')->namespace('App\Http\Controllers\Admin')->group(function () {
         Route::get('/change_password', 'AdminController@change_password')->name('change_password');
-        Route::post('/update_password', 'AdminController@update_password')->name('update_password');
+        Route::post('/change_password', 'AdminController@update_password')->name('update_password');
 
         Route::get('/change_email', 'AdminController@change_email')->name('change_email');
-        Route::post('/update_email', 'AdminController@update_email')->name('update_email');
+        Route::post('/change_email', 'AdminController@update_email')->name('update_email');
 
 
     });
@@ -208,7 +208,7 @@ Route::middleware('auth')->group(function () {
 
 
         Route::get('/about_paurosova', 'AboutController@index')->name('about_paurosova');
-        Route::post('/about_paurosova/update/{id}', 'AboutController@update')->name('about_paurosova.update');
+        Route::post('/about_paurosova/update', 'AboutController@update')->name('about_paurosova.update');
     });
 
     Route::name('admin.web.info.')->prefix('admin/web/info')->namespace('App\Http\Controllers\Admin')->group(function () {
