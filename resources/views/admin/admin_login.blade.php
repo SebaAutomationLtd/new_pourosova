@@ -23,7 +23,11 @@
         <div class="container">
             <div class="d-flex flex-row align-items-center">
                 <div>
-                    <img src="{{ asset("img/".@$website_data->logo_bangla) }}" alt="">
+                    @if(isset($website_data->logo_bangla) || isset($website_data->logo_english))
+                    <img src="{{ asset("img/".@$website_data->logo_bangla ?? @$website_data->logo_english) }}" alt="" width="50">
+                    @else
+                        <img src="{{ asset("img/govt.png") }}" alt="" width="50">
+                    @endif
                 </div>
                 <div class="ml-4">
                     <h6 class="m-0 subtitle">Department of ICT</h6>
@@ -81,8 +85,8 @@
                     </div>
                 </div>
 
-                <div class="footer-image">
-                    <img class="w-100 d-block" src="{{ asset('img/login.svg') }}" alt="">
+                <div class="footer-image d-flex justify-content-center">
+                    <img class="w-25 d-block" src="{{ asset('img/login.svg') }}" alt="">
                 </div>
 
             </div>
