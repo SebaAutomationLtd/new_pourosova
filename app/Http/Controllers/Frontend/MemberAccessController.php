@@ -185,7 +185,6 @@ public function member_photo_update(Request $request)
         {
             $sonod->birth_certificate = $request->nid;
 
-<<<<<<< HEAD
         }
         $sonod->mother = $request->mother;
         $sonod->address = $request->address;
@@ -216,12 +215,11 @@ public function member_photo_update(Request $request)
     }  catch (\Exception $e) {
         $err_message = \Lang::get($e->getMessage());
         return redirect()->back()->withInput()->with('error','দুঃখিত... সনদ আবেদন গৃহীত হয়নি ।');
-=======
+}
     public function SonodRequest($id){
       $all = DB::table('sonod_apply')->where('applied_by', Auth::user()->id)->where('sonod_setting_id',$id)->orderBy('id', 'DESC')->get();
       $headings = DB::table('sonod_setting')->where('id',$id)->first();
         return view('frontend.member.sonod', compact('all','headings'));
->>>>>>> 5ac8c1d2f6aba8b1a242f5c41a4ebd6d3eea92a0
     }
 }
 
