@@ -17,7 +17,7 @@ class CreateVillagesTable extends Migration
             $table->id();
             $table->foreignId('ward_id')->constrained();
             $table->string('name');
-            $table->tinyInteger('status')->default(0);
+            $table->tinyInteger('status')->default(1);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });

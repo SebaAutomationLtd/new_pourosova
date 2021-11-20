@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Ward;
+use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -17,6 +19,11 @@ class VillageSeeder extends Seeder
      */
     public function run()
     {
-        Village::factory()->count(100)->create();
+        Village::factory()
+            ->count(100)
+            ->state(new Sequence(
+                fn($sequence) => ['ward_id' => Ward::all()->random()],
+            ))
+            ->create();
     }
 }

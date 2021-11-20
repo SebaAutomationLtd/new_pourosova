@@ -14,9 +14,8 @@ class PostOfficeFactory extends Factory
     public function definition()
     {
         return [
-            'code'    => 1234,
-            'name'    => $this->faker->name(),
-            'status'    => auth()->id(),
+            'code'    => $this->faker->postcode,
+            'name'    => $this->faker->streetAddress,
         ];
     }
 }

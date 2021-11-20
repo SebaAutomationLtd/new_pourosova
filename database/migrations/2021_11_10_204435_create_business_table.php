@@ -41,7 +41,7 @@ class CreateBusinessTable extends Migration
             $table->unsignedFloat('other_tax')->nullable();
             $table->unsignedFloat('trade_total')->nullable();
             $table->unsignedFloat('service_charge')->nullable();
-            $table->string('last_license_issue_year')->nullable();
+            $table->year('last_license_issue_year')->nullable();
             $table->unsignedBigInteger('activated_by')->nullable();
             $table->unsignedBigInteger('deactivated_by')->nullable();
             $table->timestamp('activated_at')->nullable();

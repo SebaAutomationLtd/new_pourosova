@@ -17,7 +17,7 @@ class CreatePostOfficesTable extends Migration
             $table->id();
             $table->string('code')->nullable()->unique();
             $table->string('name')->nullable();
-            $table->tinyInteger('status')->default(0);
+            $table->tinyInteger('status')->default(1);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });

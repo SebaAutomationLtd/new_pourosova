@@ -14,7 +14,7 @@ class AdminController extends Controller
 {
     function __construct()
     {
-        $this->middleware(['permission:user-management']);
+
     }
 
     public function admin_login_form()
@@ -31,7 +31,7 @@ class AdminController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'username' => 'required|max:99',
-            'password' => 'required|min:8|max|99'
+            'password' => 'required|min:8|max:99'
         ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
