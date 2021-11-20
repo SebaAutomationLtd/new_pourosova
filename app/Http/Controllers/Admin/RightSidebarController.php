@@ -8,175 +8,218 @@ use App\Models\RightSideApplication;
 use App\Models\RightSideBanner;
 use App\Models\RightTopBanner;
 use DB;
+use Illuminate\Support\Facades\Validator;
 
 class RightSidebarController extends Controller
 {
-
-    public function topView(){
-        $top_banner = RightTopBanner::first();
-        return view('admin.sidebar.right-top',compact('top_banner'));
+    function __construct()
+    {
+        $this->middleware(['permission:website-settings']);
     }
-    public function top_store(Request $request){
+
+    public function topView()
+    {
+        $top_banner = RightTopBanner::first();
+        return view('admin.sidebar.right-top', compact('top_banner'));
+    }
+
+    public function top_store(Request $request)
+    {
         $request->validate([
-            'photo'      => 'mimes:jpeg,jpg,png|required|max:10000'
+            'photo' => 'mimes:jpeg,jpg,png|required|max:10000'
         ]);
-        if($request->hasFile('photo')) {
+        if ($request->hasFile('photo')) {
             $image = $request->file('photo');
-            $imageName = time().'_'.$image->getClientOriginalName();
+            $imageName = time() . '_' . $image->getClientOriginalName();
             $image->move(public_path('uploads/rightside'), $imageName);
 
             RightTopBanner::create([
-                'photo'             => $imageName,
-                'created_by'        => auth()->id()
+                'photo' => $imageName,
+                'created_by' => auth()->id()
             ]);
             return redirect()->back();
         }
     }
 
 
-    public function top_edit($id){
-        $top_banner = DB::table('right_top_banners')->where('id',$id)->first();
-        return view('admin.sidebar.right_top_edit',compact('top_banner'));
+    public function top_edit($id)
+    {
+        $top_banner = DB::table('right_top_banners')->where('id', $id)->first();
+        return view('admin.sidebar.right_top_edit', compact('top_banner'));
     }
 
 
-    public function top_update(Request $request, $id){
+    public function top_update(Request $request, $id)
+    {
 
         $request->validate([
-            'image'      => 'mimes:jpeg,jpg,png|required|max:10000'
+            'image' => 'mimes:jpeg,jpg,png|required|max:10000'
         ]);
 
-        if($request->hasFile('image')) {
+        if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $imageName = time().'_'.$image->getClientOriginalName();
+            $imageName = time() . '_' . $image->getClientOriginalName();
             $image->move(public_path('uploads/rightside'), $imageName);
 
-            $data =array();
-            $data['photo']=$imageName;
+            $data = array();
+            $data['photo'] = $imageName;
 
-            $old = DB::table('right_top_banners')->where('id',$id)->first();
-            if (file_exists(public_path('uploads/rightside/'.$old->photo))) {
-                unlink(public_path('uploads/rightside/'.$old->photo));
+            $old = DB::table('right_top_banners')->where('id', $id)->first();
+            if (file_exists(public_path('uploads/rightside/' . $old->photo))) {
+                unlink(public_path('uploads/rightside/' . $old->photo));
             }
 
-            $update = DB::table('right_top_banners')->where('id',$id)->update($data);
+            $update = DB::table('right_top_banners')->where('id', $id)->update($data);
             return redirect(route('admin.web.right.top'));
 
         }
 
 
-
     }
 
 
-
-
-    public function linkView(){
+    public function linkView()
+    {
         $right_links = RightSideApplication::all()->sortByDesc('created_at');
-        return view('admin.sidebar.right-links',compact('right_links'));
-    }
-    public function link_store(Request $request){
-        $request->validate([
-            'title'      => 'required',
-            'link'       => 'required',
-        ]);
- 		RightSideApplication::create([
-            'title' 		=> $request->title,
-            'link'  		=> $request->link,
-            'created_by' 	=> auth()->id()
-        ]);
-       return redirect()->back();
+        return view('admin.sidebar.right-links', compact('right_links'));
     }
 
+    public function link_store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|max:255',
+            'link' => 'required|max:255|url',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        RightSideApplication::create([
+            'title' => $request->title,
+            'link' => $request->link,
+            'created_by' => auth()->id()
+        ]);
+        return redirect()->back();
+    }
 
-    public function link_delete($id){
 
-        $delete = DB::table('right_side_applications')->where('id',$id)->delete();
+    public function link_delete($id)
+    {
+
+        $delete = DB::table('right_side_applications')->where('id', $id)->delete();
         return redirect(route('admin.web.right.links'));
     }
 
 
-    public function link_edit($id){
+    public function link_edit($id)
+    {
         $right_link = RightSideApplication::find($id);
-        return view('admin.sidebar.right-links-edit',compact('right_link'));
-    }
-    public function link_update(Request $request,$id){
-        $update_link = RightSideApplication::find($id);
-            $update_link->update([
-                'title'      => $request->title,
-                'link'       => $request->link
-            ]);
-            return redirect(route('admin.web.right.links'));
+        return view('admin.sidebar.right-links-edit', compact('right_link'));
     }
 
-
-
-    public function bannerView(){
-        $right_banners = RightSideBanner::all()->sortByDesc('created_at');
-        return view('admin.sidebar.right-banner',compact('right_banners'));
-    }
-    public function banner_store(Request $request){
-        $request->validate([
-            'title'             => 'required',
-            'information_type'  => 'required',
-            'description'       => 'required',
-            'photo'             => 'mimes:jpeg,jpg,png|required|max:10000'
+    public function link_update(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|max:255',
+            'link' => 'required|max:255|url',
         ]);
-    	if($request->hasFile('photo')) {
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $update_link = RightSideApplication::find($id);
+        $update_link->update([
+            'title' => $request->title,
+            'link' => $request->link
+        ]);
+        return redirect(route('admin.web.right.links'));
+    }
+
+
+    public function bannerView()
+    {
+        $right_banners = RightSideBanner::all()->sortByDesc('created_at');
+        return view('admin.sidebar.right-banner', compact('right_banners'));
+    }
+
+    public function banner_store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|max:255',
+            'information_type' => 'required',
+            'description' => 'required',
+            'photo' => 'mimes:jpeg,jpg,png|required|max:10000'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        if ($request->hasFile('photo')) {
             $image = $request->file('photo');
-            $imageName = time().'_'.$image->getClientOriginalName();
+            $imageName = time() . '_' . $image->getClientOriginalName();
             $image->move(public_path('uploads/rightside'), $imageName);
 
             RightSideBanner::create([
-                'title'           	=> $request->title,
-                'information_type'  => $request->information_type,
-                'description'       => $request->description,
-                'photo'				=> $imageName,
-                'created_by' 		=> auth()->id()
+                'title' => $request->title,
+                'information_type' => $request->information_type,
+                'description' => $request->description,
+                'photo' => $imageName,
+                'created_by' => auth()->id()
             ]);
             return redirect()->back();
         }
 
     }
 
-    public function banner_delete($id){
+    public function banner_delete($id)
+    {
 
-        $old = DB::table('right_side_banners')->where('id',$id)->first();
-            if (file_exists(public_path('uploads/rightside/'.$old->photo))) {
-                unlink(public_path('uploads/rightside/'.$old->photo));
-            }
+        $old = DB::table('right_side_banners')->where('id', $id)->first();
+        if (file_exists(public_path('uploads/rightside/' . $old->photo))) {
+            unlink(public_path('uploads/rightside/' . $old->photo));
+        }
 
-        $delete = DB::table('right_side_banners')->where('id',$id)->delete();
+        $delete = DB::table('right_side_banners')->where('id', $id)->delete();
         return redirect(route('admin.web.right.banner'));
     }
 
 
-    public function banner_edit($id){
+    public function banner_edit($id)
+    {
         $right_banner = RightSideBanner::find($id);
-        return view('admin.sidebar.right-banner-edit',compact('right_banner'));
+        return view('admin.sidebar.right-banner-edit', compact('right_banner'));
     }
-    public function banner_update(Request $request,$id){
+
+    public function banner_update(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|max:255',
+            'information_type' => 'required',
+            'description' => 'required',
+            'photo' => 'sometimes|mimes:jpeg,jpg,png|required|max:10000'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         $update_banner = RightSideBanner::find($id);
 
-            if(!$request->hasFile('photo')) {
-                $update_banner->update([
-                    'title'             => $request->title,
-                    'information_type'  => $request->information_type,
-                    'description'       => $request->description,
-                ]);
-            }else{
-                $image = $request->file('photo');
-                $imageName = time().'_'.$image->getClientOriginalName();
-                $image->move(public_path('uploads/rightside'), $imageName);
+        if (!$request->hasFile('photo')) {
+            $update_banner->update([
+                'title' => $request->title,
+                'information_type' => $request->information_type,
+                'description' => $request->description,
+            ]);
+        } else {
+            $image = $request->file('photo');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->move(public_path('uploads/rightside'), $imageName);
 
-                $update_banner->update([
-                    'title'             => $request->title,
-                    'information_type'  => $request->information_type,
-                    'description'       => $request->description,
-                    'photo'             => $imageName
-                ]);
-            }
-            return redirect(route('admin.web.right.banner'));
+            $update_banner->update([
+                'title' => $request->title,
+                'information_type' => $request->information_type,
+                'description' => $request->description,
+                'photo' => $imageName
+            ]);
         }
+        return redirect(route('admin.web.right.banner'));
+    }
 }

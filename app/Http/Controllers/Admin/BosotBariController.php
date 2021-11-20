@@ -13,6 +13,10 @@ use Validator;
 
 class BosotBariController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware(['permission:bosot-bari-list']);
+    }
     public function NewBosotIndex()
     {
         return view('admin.bosotbari.index');
@@ -29,7 +33,7 @@ class BosotBariController extends Controller
   //               ->where('bosot_bari.nid', $request->nid)
   //               ->orderBy('bosot_bari.id', 'DESC')
   //               ->get();
-                
+
   //          return Datatables::of($data)
   //           ->addIndexColumn()
   //           ->addColumn('name', function($data) {
@@ -43,7 +47,7 @@ class BosotBariController extends Controller
   //                   return $data->spouse;
   //               }
   //           })
-            
+
   //           ->addColumn('status', function($data) {
   //               if($data->status == '1'){
   //                   return 'একটিভ ';
@@ -60,17 +64,17 @@ class BosotBariController extends Controller
   //           })
 
   //           ->addColumn('action', function($row){
-  // $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="'. $row->id .'"><i class="fa fa-wrench"></i></a> 
+  // $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="'. $row->id .'"><i class="fa fa-wrench"></i></a>
   // <a data-toggle="tooltip" title="" href="#" class="btn btn-success btn-sm quick-edit" data-original-title="এডিট করুন"><i class="fa fa-edit"></i></a>
   // <a data-toggle="tooltip" title="" href="'.route('delete.general_member', $row->id).'" class="btn btn-danger btn-sm" data-original-title="ডিলেট করুন"><i class="fa fa-trash"></i></a>';
-     
+
   //                           return $btn;
-               
+
   //                   })
   //                   ->rawColumns(['action'])
   //           ->make(true);
   //       }
-            
+
 
   //       } elseif ($request->nid) {
   //            if ($request->ajax()) {
@@ -80,7 +84,7 @@ class BosotBariController extends Controller
   //               ->where('bosot_bari.nid', $request->nid)
   //               ->orderBy('bosot_bari.id', 'DESC')
   //               ->get();
-                
+
   //          return Datatables::of($data)
   //           ->addIndexColumn()
   //           ->addColumn('name', function($data) {
@@ -94,7 +98,7 @@ class BosotBariController extends Controller
   //                   return $data->spouse;
   //               }
   //           })
-            
+
   //           ->addColumn('status', function($data) {
   //               if($data->status == '1'){
   //                   return 'একটিভ ';
@@ -111,17 +115,17 @@ class BosotBariController extends Controller
   //           })
 
   //           ->addColumn('action', function($row){
-  // $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="'. $row->id .'"><i class="fa fa-wrench"></i></a> 
+  // $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="'. $row->id .'"><i class="fa fa-wrench"></i></a>
   // <a data-toggle="tooltip" title="" href="#" class="btn btn-success btn-sm quick-edit" data-original-title="এডিট করুন"><i class="fa fa-edit"></i></a>
   // <a data-toggle="tooltip" title="" href="'.route('delete.general_member', $row->id).'" class="btn btn-danger btn-sm" data-original-title="ডিলেট করুন"><i class="fa fa-trash"></i></a>';
-     
+
   //                           return $btn;
-               
+
   //                   })
   //                   ->rawColumns(['action'])
   //           ->make(true);
   //       }
-            
+
   //       } elseif ($request->mobile) {
   //            if ($request->ajax()) {
   //           $data = DB::table('bosot_bari')
@@ -130,7 +134,7 @@ class BosotBariController extends Controller
   //               ->where('bosot_bari.mobile', $request->mobile)
   //               ->orderBy('bosot_bari.id', 'DESC')
   //               ->get();
-                
+
   //          return Datatables::of($data)
   //           ->addIndexColumn()
   //           ->addColumn('name', function($data) {
@@ -144,7 +148,7 @@ class BosotBariController extends Controller
   //                   return $data->spouse;
   //               }
   //           })
-            
+
   //           ->addColumn('status', function($data) {
   //               if($data->status == '1'){
   //                   return 'একটিভ ';
@@ -161,17 +165,17 @@ class BosotBariController extends Controller
   //           })
 
   //           ->addColumn('action', function($row){
-  // $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="'. $row->id .'"><i class="fa fa-wrench"></i></a> 
+  // $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="'. $row->id .'"><i class="fa fa-wrench"></i></a>
   // <a data-toggle="tooltip" title="" href="#" class="btn btn-success btn-sm quick-edit" data-original-title="এডিট করুন"><i class="fa fa-edit"></i></a>
   // <a data-toggle="tooltip" title="" href="'.route('delete.general_member', $row->id).'" class="btn btn-danger btn-sm" data-original-title="ডিলেট করুন"><i class="fa fa-trash"></i></a>';
-     
+
   //                           return $btn;
-               
+
   //                   })
   //                   ->rawColumns(['action'])
   //           ->make(true);
   //       }
-        
+
   //       } elseif ($request->ward_id && $request->village_id) {
   //            if ($request->ajax()) {
   //           $data = DB::table('bosot_bari')
@@ -181,7 +185,7 @@ class BosotBariController extends Controller
   //               ->where('bosot_bari.village_id', $request->village_id)
   //               ->orderBy('bosot_bari.id', 'DESC')
   //               ->get();
-                
+
   //          return Datatables::of($data)
   //           ->addIndexColumn()
   //           ->addColumn('name', function($data) {
@@ -195,7 +199,7 @@ class BosotBariController extends Controller
   //                   return $data->spouse;
   //               }
   //           })
-            
+
   //           ->addColumn('status', function($data) {
   //               if($data->status == '1'){
   //                   return 'একটিভ ';
@@ -212,18 +216,18 @@ class BosotBariController extends Controller
   //           })
 
   //            ->addColumn('action', function($row){
-  //                  $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="'. $row->id .'"><i class="fa fa-wrench"></i></a> 
+  //                  $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="'. $row->id .'"><i class="fa fa-wrench"></i></a>
   //                  <a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit" datsuccessiginal-title="কুইক এডিট"><i class="fa fa-wrench"></i></a>
   //                  <a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit" datdangeriginal-title="কুইক এডিট"><i class="fa fa-wrench"></i></a>';
-     
+
   //                           return $btn;
   //               })
 
-            
+
   //           ->rawColumns(['action'])
   //           ->make(true);
   //       }
-            
+
   //       } elseif ($request->ward_id) {
   //            if ($request->ajax()) {
   //           $data = DB::table('bosot_bari')
@@ -232,7 +236,7 @@ class BosotBariController extends Controller
   //               ->where('bosot_bari.ward_id', $request->ward_id)
   //               ->orderBy('bosot_bari.id', 'DESC')
   //               ->get();
-                
+
   //          return Datatables::of($data)
   //           ->addIndexColumn()
   //           ->addColumn('name', function($data) {
@@ -246,7 +250,7 @@ class BosotBariController extends Controller
   //                   return $data->spouse;
   //               }
   //           })
-            
+
   //           ->addColumn('status', function($data) {
   //               if($data->status == '1'){
   //                   return 'একটিভ ';
@@ -263,17 +267,17 @@ class BosotBariController extends Controller
   //           })
 
   //           ->addColumn('action', function($row){
-  // $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="'. $row->id .'"><i class="fa fa-wrench"></i></a> 
+  // $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="'. $row->id .'"><i class="fa fa-wrench"></i></a>
   // <a data-toggle="tooltip" title="" href="#" class="btn btn-success btn-sm quick-edit" data-original-title="এডিট করুন"><i class="fa fa-edit"></i></a>
   // <a data-toggle="tooltip" title="" href="'.route('delete.general_member', $row->id).'" class="btn btn-danger btn-sm" data-original-title="ডিলেট করুন"><i class="fa fa-trash"></i></a>';
-     
+
   //                           return $btn;
-               
+
   //                   })
   //                   ->rawColumns(['action'])
   //           ->make(true);
   //       }
-            
+
   //       } else {
   //            if ($request->ajax()) {
   //           $data = DB::table('bosot_bari')->where('ward_id', $request->ward_id)
@@ -283,7 +287,7 @@ class BosotBariController extends Controller
   //               ->orWhere('holding_no', $request->holding_no)
   //               ->orderBy('id', 'DESC')
   //               ->get();
-                
+
   //          return Datatables::of($data)
   //           ->addIndexColumn()
   //           ->addColumn('name', function($data) {
@@ -297,7 +301,7 @@ class BosotBariController extends Controller
   //                   return $data->spouse;
   //               }
   //           })
-            
+
   //           ->addColumn('status', function($data) {
   //               if($data->status == '1'){
   //                   return 'একটিভ ';
@@ -314,17 +318,17 @@ class BosotBariController extends Controller
   //           })
 
   //           ->addColumn('action', function($row){
-  // $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="'. $row->id .'"><i class="fa fa-wrench"></i></a> 
+  // $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="'. $row->id .'"><i class="fa fa-wrench"></i></a>
   // <a data-toggle="tooltip" title="" href="#" class="btn btn-success btn-sm quick-edit" data-original-title="এডিট করুন"><i class="fa fa-edit"></i></a>
   // <a data-toggle="tooltip" title="" href="'.route('delete.general_member', $row->id).'" class="btn btn-danger btn-sm" data-original-title="ডিলেট করুন"><i class="fa fa-trash"></i></a>';
-     
+
   //                           return $btn;
-               
+
   //                   })
   //                   ->rawColumns(['action'])
   //           ->make(true);
   //       }
-            
+
   //       }
   //       return view('admin.bosotbari.bosot_search_result');
   //   }
@@ -332,7 +336,7 @@ class BosotBariController extends Controller
 public function BosotSearchResult2(Request $request)
 {
 
-if ($request->ajax()) {    
+if ($request->ajax()) {
 $query = DB::table('bosot_bari');
 
 if (!empty($request->get('ward_id')))
@@ -346,7 +350,7 @@ if (!empty($request->get('holding_no')))
 if (!empty($request->get('mobile')))
     $query->orWhere('mobile','=',$request->get('mobile'));
 
-$data = $query->orderBy('id', 'DESC')->get(); 
+$data = $query->orderBy('id', 'DESC')->get();
            return Datatables::of($data)
             ->addIndexColumn()
             ->addColumn('name', function($data) {
@@ -369,12 +373,12 @@ $data = $query->orderBy('id', 'DESC')->get();
             })
 
             ->addColumn('action', function($row){
-  $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="'. $row->id .'"><i class="fa fa-wrench"></i></a> 
+  $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="'. $row->id .'"><i class="fa fa-wrench"></i></a>
   <a data-toggle="tooltip" title="" href="'.url('take_action_edit/'.$row->id.'/'.'1').'" class="btn btn-success btn-sm " data-original-title="এডিট করুন"><i class="fa fa-edit"></i></a>
   <a data-toggle="tooltip" onclick="return confirm("Are you sure?")"  title="" href="'.route('delete.general_member', $row->id).'" class="btn btn-danger btn-sm" data-original-title="ডিলেট করুন"><i class="fa fa-trash"></i></a>';
-     
+
                             return $btn;
-               
+
                     })
                     ->rawColumns(['action'])
             ->make(true);
@@ -386,7 +390,7 @@ $data = $query->orderBy('id', 'DESC')->get();
 public function BosotSearchResult3(Request $request)
 {
 
-if ($request->ajax()) {    
+if ($request->ajax()) {
 $query = DB::table('bosot_bari')->where('status',1);
 
 if (!empty($request->get('ward_id')))
@@ -395,7 +399,7 @@ if (!empty($request->get('village_id')))
     $query->where('village_id','=',$request->get('village_id'));
 if (!empty($request->get('mobile')))
     $query->where('nid','=',$request->get('mobile'))->orWhere('holding_no','=',$request->get('mobile'))->orWhere('mobile','=',$request->get('mobile'));
-$data = $query->orderBy('id', 'DESC')->get(); 
+$data = $query->orderBy('id', 'DESC')->get();
            return Datatables::of($data)
             ->addIndexColumn()
             ->addColumn('name', function($data) {
@@ -418,12 +422,12 @@ $data = $query->orderBy('id', 'DESC')->get();
             })
 
             ->addColumn('action', function($row){
-  $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="'. $row->id .'"><i class="fa fa-wrench"></i></a> 
+  $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="'. $row->id .'"><i class="fa fa-wrench"></i></a>
   <a data-toggle="tooltip" title="" href="'.url('take_action_edit/'.$row->id.'/'.'1').'" class="btn btn-success btn-sm " data-original-title="এডিট করুন"><i class="fa fa-edit"></i></a>
   <a data-toggle="tooltip" onclick="return confirm("Are you sure?")"  title="" href="'.route('delete.general_member', $row->id).'" class="btn btn-danger btn-sm" data-original-title="ডিলেট করুন"><i class="fa fa-trash"></i></a>';
-     
+
                             return $btn;
-               
+
                     })
                     ->rawColumns(['action'])
             ->make(true);
@@ -434,7 +438,7 @@ $data = $query->orderBy('id', 'DESC')->get();
 public function BosotSearchResult4(Request $request)
 {
 
-if ($request->ajax()) {    
+if ($request->ajax()) {
 $query = DB::table('bosot_bari')->where('status',0);
 
 if (!empty($request->get('ward_id')))
@@ -443,7 +447,7 @@ if (!empty($request->get('village_id')))
     $query->where('village_id','=',$request->get('village_id'));
 if (!empty($request->get('mobile')))
     $query->where('nid','=',$request->get('mobile'))->orWhere('holding_no','=',$request->get('mobile'))->orWhere('mobile','=',$request->get('mobile'));
-$data = $query->orderBy('id', 'DESC')->get(); 
+$data = $query->orderBy('id', 'DESC')->get();
            return Datatables::of($data)
             ->addIndexColumn()
             ->addColumn('name', function($data) {
@@ -466,12 +470,12 @@ $data = $query->orderBy('id', 'DESC')->get();
             })
 
             ->addColumn('action', function($row){
-  $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="'. $row->id .'"><i class="fa fa-wrench"></i></a> 
+  $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="'. $row->id .'"><i class="fa fa-wrench"></i></a>
   <a data-toggle="tooltip" title="" href="'.url('take_action_edit/'.$row->id.'/'.'1').'" class="btn btn-success btn-sm " data-original-title="এডিট করুন"><i class="fa fa-edit"></i></a>
   <a data-toggle="tooltip" onclick="return confirm("Are you sure?")"  title="" href="'.route('delete.general_member', $row->id).'" class="btn btn-danger btn-sm" data-original-title="ডিলেট করুন"><i class="fa fa-trash"></i></a>';
-     
+
                             return $btn;
-               
+
                     })
                     ->rawColumns(['action'])
             ->make(true);
@@ -482,7 +486,7 @@ $data = $query->orderBy('id', 'DESC')->get();
 public function BosotSearchResult5(Request $request)
 {
 
-if ($request->ajax()) {    
+if ($request->ajax()) {
 $query = DB::table('bosot_bari');
 
 if (!empty($request->get('ward_id')))
@@ -491,7 +495,7 @@ if (!empty($request->get('village_id')))
     $query->where('village_id','=',$request->get('village_id'));
 if (!empty($request->get('family_class_id')))
     $query->where('family_class_id','=',$request->get('family_class_id'));
-$data = $query->orderBy('id', 'DESC')->get(); 
+$data = $query->orderBy('id', 'DESC')->get();
            return Datatables::of($data)
             ->addIndexColumn()
             ->addColumn('name', function($data) {
@@ -509,15 +513,15 @@ $data = $query->orderBy('id', 'DESC')->get();
                  $family=DB::table('family_classes')->where('id',$data->family_class_id)->first();
                 return $family->name ?? '';
             })
-           
+
 
             ->addColumn('action', function($row){
-  $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="'. $row->id .'"><i class="fa fa-wrench"></i></a> 
+  $btn = '<a data-toggle="tooltip" title="" href="#" class="btn btn-info btn-sm quick-edit"  data-original-title="কুইক এডিট" data-id="'. $row->id .'"><i class="fa fa-wrench"></i></a>
   <a data-toggle="tooltip" title="" href="'.url('take_action_edit/'.$row->id.'/'.'1').'" class="btn btn-success btn-sm " data-original-title="এডিট করুন"><i class="fa fa-edit"></i></a>
   <a data-toggle="tooltip" onclick="return confirm("Are you sure?")"  title="" href="'.route('delete.general_member', $row->id).'" class="btn btn-danger btn-sm" data-original-title="ডিলেট করুন"><i class="fa fa-trash"></i></a>';
-     
+
                             return $btn;
-               
+
                     })
                     ->rawColumns(['action'])
             ->make(true);

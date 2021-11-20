@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Validator;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -19,7 +20,7 @@ class RoleController extends Controller
      */
     function __construct()
     {
-
+        $this->middleware(['permission:role-management']);
     }
 
 
@@ -39,17 +40,20 @@ class RoleController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required|unique:roles,name',
-            'bangla_name' => 'required',
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'max:255|required|unique:roles,name',
             'permission' => 'required',
         ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
-        $role = Role::create(['name' => $request->input('name'), 'bangla_name' => $request->bangla_name]);
+        $role = Role::create(['name' => $request->input('name')]);
         $role->syncPermissions($request->input('permission'));
 
         $notification = array(
-            'messege' => 'Role created successfully',
+            'message' => 'Role created successfully',
             'alert-type' => 'success'
         );
 
@@ -72,10 +76,13 @@ class RoleController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'name' => 'required',
+        $validator = Validator::make($request->all(), [
+            'name' => 'max:255|required|unique:roles,name',
             'permission' => 'required',
         ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         $role = Role::find($id);
         $role->name = $request->input('name');
@@ -91,7 +98,7 @@ class RoleController extends Controller
     {
         DB::table("roles")->where('id', $id)->delete();
         $notification = array(
-            'messege' => 'Role deleted successfully',
+            'message' => 'Role deleted successfully',
             'alert-type' => 'success'
         );
         return redirect()->route('roles.index')

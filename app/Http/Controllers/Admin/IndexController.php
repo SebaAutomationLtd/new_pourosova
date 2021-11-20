@@ -6,9 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class IndexController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware(['permission:website-settings']);
+    }
+
     public function slider(){
         $sliders = DB::table('sliders')->get();
         return view('admin.index.slider',compact('sliders'));
@@ -16,10 +22,13 @@ class IndexController extends Controller
 
     public function slider_store(Request $request){
 
-        $request->validate([
-            'serial'=> 'required',
+        $validator = Validator::make($request->all(), [
+            'serial'=> 'required|max:2|numeric',
             'image'=> 'mimes:jpeg,jpg,png|required|max:10000',
         ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         $serial_check =DB::table('sliders')->where('serial',$request->serial)->first();
 

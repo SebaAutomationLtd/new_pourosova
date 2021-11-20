@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware(['permission:user-management']);
+    }
+
     public function admin_login_form()
     {
         return view('admin.admin_login');
@@ -24,8 +29,14 @@ class AdminController extends Controller
 
     public function admin_login(Request $request)
     {
-        $data = $request->all();
-        if (Auth::attempt(['username' => $data['username'], 'password' => $data['password']])) {
+        $validator = Validator::make($request->all(), [
+            'username' => 'required|max:99',
+            'password' => 'required|min:8|max|99'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
             return redirect()->route('admin.dashboard');
         } else {
             $notification = array(

@@ -34,9 +34,9 @@
                                     <div class="col-sm-6 col-md-4">
                                         <label for="inputName" class="col-form-label">ইউজার আইডি</label>
                                         <input type="text" class="form-control @error('user_id') is-invalid @enderror"
-                                            name="user_id" placeholder="ইউজার আইডি" value="{{ old('user_id') }}">
+                                            name="username" placeholder="ইউজার আইডি" value="{{ old('username') }}">
 
-                                        @error('user_id')
+                                        @error('username')
                                             <small class="text-danger">
                                                 <strong>{{ $message }}</strong>
                                             </small>
@@ -48,14 +48,10 @@
                                         <select id="userRole" class="form-control @error('role') is-invalid @enderror"
                                             name="role">
                                             <option value="">ইউজার রোল নির্বাচন করুন</option>
-                                            <option value="Super Admin">সুপারএডমিন</option>
-                                            <option value="Support Admin">সাপোর্ট এডমিন</option>
-                                            <option value="Mayor">মেয়র</option>
-                                            <option value="Secretary">সচিব/প্রধান নির্বাহী কর্মকতা</option>
-                                            <option value="License">লাইসেন্স শাখা</option>
-                                            <option value="Tax">কর শাখা</option>
-                                            <option value="Certificate">সনদ শাখা</option>
-                                            <option value="Councillor">কাউন্সিলর</option>
+                                            @forelse($roles as $role)
+                                                <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                            @empty
+                                            @endforelse
                                         </select>
                                         @error('role')
                                             <small class="text-danger">
@@ -64,25 +60,6 @@
                                         @enderror
                                     </div>
 
-                                    <div class="col-sm-6 d-none col-md-4" id="wardSection">
-                                        <label for="inputName" class="col-form-label">কাউন্সিলর ওয়ার্ড</label>
-                                        <select class="form-control @error('ward') is-invalid @enderror" name="ward">
-                                            <option value="">ওয়ার্ড নির্বাচন করুন</option>
-                                            @php
-                                                $wards = DB::table('wards')
-                                                    ->orderBy('id', 'DESC')
-                                                    ->get();
-                                            @endphp
-                                            @foreach ($wards as $row)
-                                                <option value="{{ $row->id }}">{{ $row->ward_no }}</option>
-                                            @endforeach
-                                        </select>
-                                        @error('ward')
-                                            <small class="text-danger">
-                                                <strong>{{ $message }}</strong>
-                                            </small>
-                                        @enderror
-                                    </div>
 
                                     <div class="col-sm-6 col-md-4">
                                         <label for="inputName" class="col-form-label">ইউজার নাম </label>

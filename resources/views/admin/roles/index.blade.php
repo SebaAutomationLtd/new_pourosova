@@ -27,38 +27,38 @@
             <div class="">
                 <div class="table-data">
                     <table class="table table-striped table-bordered datatable responsive nowrap table-hover"
-                        style="width:100%">
+                           style="width:100%">
                         <thead>
-                            <tr>
-                                <th>সিরিয়াল</th>
-                                <th>রোলের নাম</th>
-                                <th>একশন</th>
-                            </tr>
+                        <tr>
+                            <th>সিরিয়াল</th>
+                            <th>রোলের নাম</th>
+                            <th>একশন</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            @foreach ($roles as $key => $role)
+                        @foreach ($roles as $key => $role)
 
-                                <tr>
-                                    <td>{{ $key + 1 }}</td>
+                            <tr>
+                                <td>{{ $key + 1 }}</td>
 
-                                    <td>{{ $role->bangla_name }}</td>
+                                <td>{{ $role->name }}</td>
 
-                                    <td>
+                                <td>
 
-                                        @can('role-edit')
-                                            <a class="btn btn-primary" href="{{ route('roles.edit', $role->id) }}">Edit</a>
-                                        @endcan
-                                        @can('role-delete')
-                                            <form class="d-inline" action="{{ route('roles.destroy', $role->id) }}"
-                                                method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger">Delete</button>
-                                            </form>
-                                        @endcan
-                                    </td>
-                                </tr>
-                            @endforeach
+
+                                    <a class="btn btn-primary" href="{{ route('roles.edit', $role->id) }}">Edit</a>
+
+
+                                    <form class="d-inline" action="{{ route('roles.destroy', $role->id) }}"
+                                          method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
 

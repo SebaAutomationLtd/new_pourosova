@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class SonodController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware(['permission:certificate-list']);
+    }
     //
     public function index()
     {

@@ -43,19 +43,6 @@
                                         @enderror
                                     </div>
 
-                                    <div class="col-sm-6 col-md-4">
-                                        <label for="inputName" class="col-form-label">বাংলা নাম</label>
-                                        <input type="text" class="form-control @error('bangla_name') is-invalid @enderror"
-                                            name="bangla_name" placeholder="বাংলা রোল নাম"
-                                            value="{{ $role->bangla_name }}">
-
-                                        @error('bangla_name')
-                                            <small class="text-danger">
-                                                <strong>{{ $message }}</strong>
-                                            </small>
-                                        @enderror
-                                    </div>
-
 
                                 </div>
 

@@ -6,39 +6,20 @@
                 <div class="media profile-left">
                     <a class="float-left profile-thumb" href="#">
                         @if(isset(auth()->user()->photo))
-                        <img src="{{ asset(Auth::user()->photo ?? 'uploads/users/user.jpg') }}" class="rounded-circle"
-                             alt="User Image">
-                             @endif
+                            <img src="{{ asset(Auth::user()->photo ?? 'uploads/users/user.jpg') }}"
+                                 class="rounded-circle"
+                                 alt="User Image">
+                        @endif
 
-                         </a>
+                    </a>
                     <div class="content-profile">
                         <h4 class="media-heading">{{ auth()->user()->name ?? '' }}</h4>
-                        <ul class="icon-list">
-                            <li>
-                                <a href="#" title="user">
-                                    <i class="fa fa-fw ti-user"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="lock">
-                                    <i class="fa fa-fw ti-lock"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="settings">
-                                    <i class="fa fa-fw ti-settings"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="Login">
-                                    <i class="fa fa-fw ti-shift-right"></i>
-                                </a>
-                            </li>
-                        </ul>
+
                     </div>
                 </div>
             </div>
             <ul class="navigation">
+                @can('website-settings')
                 <li class="menu-dropdown">
                     <a href="javascript:void(0)">
                         <i class="menu-icon ti-check-box"></i>
@@ -246,6 +227,8 @@
 
                     </ul>
                 </li>
+                @endcan
+                @can('other-setup')
                 <li class="menu-dropdown">
                     <a href="javascript:void(0)">
                         <i class="fa fa-fw ti-receipt"></i> সাধারন তথ্য
@@ -296,182 +279,207 @@
                         </li>
                     </ul>
                 </li>
-                <li
-                    class="menu-dropdown">
-                    <a href="#">
-                        <i class="fa fa-fw ti-receipt"></i> রোল পারমিশন ম্যানেজমেন্ট
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="sub-menu ">
-                        <li class="menu-dropdown">
-                            <a href="{{ route('roles.create') }}"> <i class="fa fa-plus"></i> এড </a>
+                @endcan
+                @can('role-management')
+                    <li
+                        class="menu-dropdown">
+                        <a href="#">
+                            <i class="fa fa-fw ti-receipt"></i> রোল পারমিশন ম্যানেজমেন্ট
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="sub-menu ">
+                            <li class="menu-dropdown">
+                                <a href="{{ route('roles.create') }}"> <i class="fa fa-plus"></i> এড </a>
 
-                        </li>
+                            </li>
 
-                        <li class="menu-dropdown">
-                            <a href="{{ route('roles.index') }}"> <i class="fa fa-list"></i> রোল তালিকা </a>
+                            <li class="menu-dropdown">
+                                <a href="{{ route('roles.index') }}"> <i class="fa fa-list"></i> রোল তালিকা </a>
 
-                        </li>
+                            </li>
 
-                    </ul>
-                </li>
-                <li class="menu-dropdown">
-                    <a href="#">
-                        <i class="fa fa-fw ti-receipt"></i> ইউজার নিবন্ধন
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="sub-menu ">
-                        <li class="menu-dropdown">
-                            <a href="{{route('user.create')}}"> <i class="fa fa-fw ti-receipt"></i> এড <span
-                                    class="fa fa-plus"></span></a>
+                        </ul>
+                    </li>
+                @endcan
+                @can('user-management')
+                    <li class="menu-dropdown">
+                        <a href="#">
+                            <i class="fa fa-fw ti-receipt"></i> ইউজার নিবন্ধন
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="sub-menu ">
+                            <li class="menu-dropdown">
+                                <a href="{{route('user.create')}}"> <i class="fa fa-fw ti-receipt"></i> এড <span
+                                        class="fa fa-plus"></span></a>
 
-                        </li>
+                            </li>
 
-                        <li class="menu-dropdown">
-                            <a href="{{route('user.index')}}"> <i class="fa fa-fw ti-receipt"></i> ইউজার তালিকা <span
-                                    class="fa fa-list"></span></a>
+                            <li class="menu-dropdown">
+                                <a href="{{route('user.index')}}"> <i class="fa fa-fw ti-receipt"></i> ইউজার তালিকা
+                                    <span
+                                        class="fa fa-list"></span></a>
 
-                        </li>
-
-
-                    </ul>
-                </li>
-
-                <li class="menu-dropdown">
-                    <a href="javascript:void(0)">
-                        <i class="fa fa-fw ti-receipt"></i>এসেসমেন্ট নিবন্ধন
-
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="{{ route('action.search') }}"> <i class="fa fa-fw ti-receipt"></i>
-                                একটিভ / ডিএকটিভ
-
-                            </a>
-                        </li>
-                         <li class="menu-dropdown">
-                    <a href="#">
-                        <i class="fa fa-fw ti-receipt"></i> বসত বাড়ী হোল্ডিং
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                           <li>
-                                <a href="{{url('new-bosot-index')}}" id="all_bosot_bari"> <i class="fa fa-fw ti-receipt"></i> মোট ইউজার
-                                </a>
                             </li>
 
 
-                            <li>
-                                <a href="{{url('new-bosot-index-active')}}" id="all_bosot_bari_active">
-                                    <i class="fa fa-fw ti-receipt"></i> একটিভ ইউজার
-                                </a>
+                        </ul>
+                    </li>
+                @endcan
+                @canany(['bosot-bari-list', 'business-hold-list', 'commercial-hold-list'])
+                    <li class="menu-dropdown">
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-fw ti-receipt"></i>এসেসমেন্ট নিবন্ধন
+
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            @can('active-deactive-panel')
+                                <li>
+                                    <a href="{{ route('action.search') }}"> <i class="fa fa-fw ti-receipt"></i>
+                                        একটিভ / ডিএকটিভ
+
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('bosot-bari-list')
+                                <li class="menu-dropdown">
+                                    <a href="#">
+                                        <i class="fa fa-fw ti-receipt"></i> বসত বাড়ী হোল্ডিং
+                                        <span class="fa arrow"></span>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li>
+                                            <a href="{{url('new-bosot-index')}}" id="all_bosot_bari"> <i
+                                                    class="fa fa-fw ti-receipt"></i> মোট ইউজার
+                                            </a>
+                                        </li>
+
+
+                                        <li>
+                                            <a href="{{url('new-bosot-index-active')}}" id="all_bosot_bari_active">
+                                                <i class="fa fa-fw ti-receipt"></i> একটিভ ইউজার
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{url('new-bosot-index-inactive')}}" id="all_bosot_bari_inactive">
+                                                <i class="fa fa-fw ti-receipt"></i> পেন্ডিং ইউজার
+                                            </a>
+                                        </li>
+
+
+                                        <li>
+                                            <a href="{{url('new-bosot-index-family')}}">
+                                                <i class="fa fa-fw ti-receipt"></i> পরিবারের শ্রেণীবিন্যাস
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                            @endcan
+                            @can('business-hold-list')
+                                <li class="menu-dropdown">
+                                    <a href="#">
+                                        <i class="fa fa-fw ti-receipt"></i> বানিজ্যিক হোল্ডিং
+                                        <span class="fa arrow"></span>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li>
+                                            <a href="{{url('new-business-holding-index')}}" id="all_bosot_bari"> <i
+                                                    class="fa fa-fw ti-receipt"></i> মোট ইউজার
+                                            </a>
+                                        </li>
+
+
+                                        <li>
+                                            <a href="{{url('new-business-holding-index-active')}}"
+                                               id="all_bosot_bari_active">
+                                                <i class="fa fa-fw ti-receipt"></i> একটিভ ইউজার
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{url('new-business-holding-index-inactive')}}"
+                                               id="all_bosot_bari_inactive">
+                                                <i class="fa fa-fw ti-receipt"></i> পেন্ডিং ইউজার
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                            @endcan
+                            @can('commercial-hold-list')
+                                <li class="menu-dropdown">
+                                    <a href="#">
+                                        <i class="fa fa-fw ti-receipt"></i> ব্যাবসা প্রতিষ্ঠান
+                                        <span class="fa arrow"></span>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li>
+                                            <a href="{{url('new-business-index')}}" id="all_bosot_bari"> <i
+                                                    class="fa fa-fw ti-receipt"></i> মোট ইউজার
+                                            </a>
+                                        </li>
+
+
+                                        <li>
+                                            <a href="{{url('new-business-index-active')}}" id="all_bosot_bari_active">
+                                                <i class="fa fa-fw ti-receipt"></i> একটিভ ইউজার
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{url('new-business-index-inactive')}}"
+                                               id="all_bosot_bari_inactive">
+                                                <i class="fa fa-fw ti-receipt"></i> পেন্ডিং ইউজার
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                            @endcan
+                        </ul>
+                    </li>
+
+                @endcanany
+                @can('reports')
+                    <li>
+                        <a href="{{ route('khosora-report') }}"> <i class="fa fa-fw ti-receipt"></i>
+                            খসড়া রিপোর্ট
+
+                        </a>
+                    </li>
+                @endcan
+                @can('certificate-list')
+                    <li class="menu-dropdown">
+
+                        <a href="#">
+                            <i class="fa fa-fw ti-receipt"></i>রিপোর্ট
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="sub-menu ">
+                            <li class="menu-dropdown">
+                                <a href="{{url('puno-bibaho-report')}}"> <i class="fa fa-fw ti-receipt"></i> পুন বিবাহ
+                                    না হওয়ার সনদ </a>
+
                             </li>
-                            <li>
-                                <a href="{{url('new-bosot-index-inactive')}}" id="all_bosot_bari_inactive">
-                                    <i class="fa fa-fw ti-receipt"></i> পেন্ডিং ইউজার
-                                </a>
+                            <li class="menu-dropdown">
+                                <a href="{{url('warish-report')}}"> <i class="fa fa-fw ti-receipt"></i> ওয়ারিশ সনদ </a>
+
+                            </li>
+                            <li class="menu-dropdown">
+                                <a href="{{url('new-report')}}"> <i class="fa fa-fw ti-receipt"></i> নতুন সনদ </a>
+
                             </li>
 
 
-                            <li>
-                                <a href="{{url('new-bosot-index-family')}}">
-                                    <i class="fa fa-fw ti-receipt"></i> পরিবারের শ্রেণীবিন্যাস
-                                </a>
-                            </li>
+                        </ul>
+                    </li>
 
-                    </ul>
-                </li>
-                <li class="menu-dropdown">
-                    <a href="#">
-                        <i class="fa fa-fw ti-receipt"></i>  বানিজ্যিক হোল্ডিং
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                           <li>
-                                <a href="{{url('new-business-holding-index')}}" id="all_bosot_bari"> <i class="fa fa-fw ti-receipt"></i> মোট ইউজার
-                                </a>
-                            </li>
+                    <li>
+                        <a href="{{ route('sonod.list') }}"> <i class="fa fa-fw ti-receipt"></i>
+                            সনদ আবেদন
 
-
-                            <li>
-                                <a href="{{url('new-business-holding-index-active')}}" id="all_bosot_bari_active">
-                                    <i class="fa fa-fw ti-receipt"></i> একটিভ ইউজার
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{url('new-business-holding-index-inactive')}}" id="all_bosot_bari_inactive">
-                                    <i class="fa fa-fw ti-receipt"></i> পেন্ডিং ইউজার
-                                </a>
-                            </li>
-
-                    </ul>
-                </li>
-
-                <li class="menu-dropdown">
-                    <a href="#">
-                        <i class="fa fa-fw ti-receipt"></i> ব্যাবসা প্রতিষ্ঠান
-                        <span class="fa arrow"></span>
-                    </a>
-                     <ul class="sub-menu">
-                           <li>
-                                <a href="{{url('new-business-index')}}" id="all_bosot_bari"> <i class="fa fa-fw ti-receipt"></i> মোট ইউজার
-                                </a>
-                            </li>
-
-
-                            <li>
-                                <a href="{{url('new-business-index-active')}}" id="all_bosot_bari_active">
-                                    <i class="fa fa-fw ti-receipt"></i> একটিভ ইউজার
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{url('new-business-index-inactive')}}" id="all_bosot_bari_inactive">
-                                    <i class="fa fa-fw ti-receipt"></i> পেন্ডিং ইউজার
-                                </a>
-                            </li>
-
-                    </ul>
-                </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="{{ route('khosora-report') }}"> <i class="fa fa-fw ti-receipt"></i>
-                        খসড়া রিপোর্ট
-
-                    </a>
-                </li>
-                <li class="menu-dropdown">
-                    <a href="#">
-                        <i class="fa fa-fw ti-receipt"></i>রিপোর্ট
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="sub-menu ">
-                        <li class="menu-dropdown">
-                            <a href="{{url('puno-bibaho-report')}}"> <i class="fa fa-fw ti-receipt"></i> পুন বিবাহ না হওয়ার সনদ  </a>
-
-                        </li>
-                        <li class="menu-dropdown">
-                            <a href="{{url('warish-report')}}"> <i class="fa fa-fw ti-receipt"></i> ওয়ারিশ সনদ </a>
-
-                        </li>
-                        <li class="menu-dropdown">
-                            <a href="{{url('new-report')}}"> <i class="fa fa-fw ti-receipt"></i> নতুন সনদ </a>
-
-                        </li>
-
-
-
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="{{ route('sonod.list') }}"> <i class="fa fa-fw ti-receipt"></i>
-                        সনদ আবেদন
-
-                    </a>
-                </li>
+                        </a>
+                    </li>
+                @endcan
 
             </ul>
             <!-- / .navigation -->

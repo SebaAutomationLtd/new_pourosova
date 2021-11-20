@@ -12,6 +12,10 @@ use Validator;
 use URL;
 class ActiveController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware(['permission:active-deactive-panel']);
+    }
 
     public function search()
     {
@@ -306,10 +310,10 @@ class ActiveController extends Controller
             DB::table('bosot_bari')->where('id', $id)->update($data);
 
             return Redirect()->back()->with('message','বসত বাড়ী আপডেট হয়েছে');
-            
+
         } catch (Exception $e) {
            $err_message = \Lang::get($e->getMessage());
-           return redirect()->back()->withErrors()->withInput()->with('error','বসত বাড়ী আপডেট হয়নি '); 
+           return redirect()->back()->withErrors()->withInput()->with('error','বসত বাড়ী আপডেট হয়নি ');
        }
 
 
@@ -418,7 +422,7 @@ class ActiveController extends Controller
         }
         DB::table('business_holdings')->where('id', $id)->update($data);
 
-        for ($i=0; $i <= count($request->stall_id)-1 ; $i++) { 
+        for ($i=0; $i <= count($request->stall_id)-1 ; $i++) {
          BusinessStall::where('id',$request->stall_id[$i])->update([
           'business_holding_id' => $id,
           'stall_no' =>  $request->stall_no[$i],
@@ -436,8 +440,8 @@ class ActiveController extends Controller
 
  } catch (Exception $e) {
    $err_message = \Lang::get($e->getMessage());
-   return redirect()->back()->withErrors()->withInput()->with('error','বাণিজ্যিক হোল্ডিং আপডেট হয়নি '); 
-} 
+   return redirect()->back()->withErrors()->withInput()->with('error','বাণিজ্যিক হোল্ডিং আপডেট হয়নি ');
+}
 }
 
 public function UpdateBusiness(Request $request,$id)
@@ -536,7 +540,7 @@ public function UpdateBusiness(Request $request,$id)
 
     } catch (Exception $e) {
        $err_message = \Lang::get($e->getMessage());
-       return redirect()->back()->withErrors()->withInput()->with('error','ব্যাবসা প্রতিষ্ঠান আপডেট হয়নি '); 
+       return redirect()->back()->withErrors()->withInput()->with('error','ব্যাবসা প্রতিষ্ঠান আপডেট হয়নি ');
    }
 
 }

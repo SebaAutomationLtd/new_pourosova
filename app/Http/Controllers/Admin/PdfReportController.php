@@ -14,6 +14,10 @@ use Config;
 
 class PdfReportController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware(['permission:reports']);
+    }
     //
     public function khosora_report()
     {
@@ -71,7 +75,7 @@ class PdfReportController extends Controller
             return $pdf->download('বানিজ্যিক ভবন খসড়া রিপোর্ট.pdf');
         } else {
             $notification=array(
-                'messege'=>'অনুগ্রহ পূর্বক রিপোর্টের ধরন সিলেক্ট করুন',
+                'message'=>'অনুগ্রহ পূর্বক রিপোর্টের ধরন সিলেক্ট করুন',
                 'alert-type'=>'error'
             );
             return back()->with($notification);

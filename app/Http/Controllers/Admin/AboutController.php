@@ -9,6 +9,11 @@ use DB;
 
 class AboutController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware(['permission:website-settings']);
+    }
+
     public function index()
     {
         $about_puaro = DB::table('about_paurosovas')->first();
