@@ -1,17 +1,17 @@
 <?php
 
 use App\Http\Controllers;
+use App\Http\Controllers\Admin\ActiveController;
+use App\Http\Controllers\Admin\BosotBariController;
+use App\Http\Controllers\Admin\BusinessController;
+use App\Http\Controllers\Admin\BusinessHoldingController;
 use App\Http\Controllers\Admin\PdfReportController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Frontend\FrontController;
-use App\Http\Controllers\Frontend\RegistrationController;
 use App\Http\Controllers\Frontend\AjaxController;
+use App\Http\Controllers\Frontend\FrontController;
 use App\Http\Controllers\Frontend\MemberAccessController;
-use App\Http\Controllers\Admin\ActiveController;
-use App\Http\Controllers\Admin\BosotBariController;
-use App\Http\Controllers\Admin\BusinessHoldingController;
-use App\Http\Controllers\Admin\BusinessController;
+use App\Http\Controllers\Frontend\RegistrationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,11 +23,11 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 //FRONTEND ROUTES
 
-Route::namespace('App\Http\Controllers\Frontend')->group(function () {
+Route::namespace ('App\Http\Controllers\Frontend')->group(function () {
 
     Route::get('/', [FrontController::class, 'index'])->name('index');
     Route::get('administration', [FrontController::class, 'administration'])->name('administration');
@@ -48,7 +48,6 @@ Route::namespace('App\Http\Controllers\Frontend')->group(function () {
     Route::get('pourosova_info', [FrontController::class, 'pourosova_info'])->name('pouro.info');
     Route::get('role_of_honour', [FrontController::class, 'role_of_honour'])->name('role.honour');
     Route::get('uno', [FrontController::class, 'uno'])->name('uno');
-
 
     Route::get('bosot-bari-registration', [FrontController::class, 'bosot_bari_create'])->name('reg.bosot-bari');
     Route::post('bosot-bari-store', [RegistrationController::class, 'bosot_bari_store'])->name('bosot-bari-store');
@@ -74,7 +73,6 @@ Route::namespace('App\Http\Controllers\Frontend')->group(function () {
     Route::get('sonod-download/{id}/{id2}', [MemberAccessController::class, 'SonodDownload'])->name('sonod-download');
     Route::get('trade-download/{id}/{id2}', [MemberAccessController::class, 'TradeDownload'])->name('trade-download');
 
-
     Route::get('/member_change_password', [MemberAccessController::class, 'member_change_password'])->name('member.change_password');
     Route::post('/member_update_password', [MemberAccessController::class, 'member_update_password'])->name('member.update_password');
     Route::post('/member_photo_update', [MemberAccessController::class, 'member_photo_update'])->name('member.photo_update');
@@ -91,7 +89,6 @@ Route::get('/getdistrictinfo/{id}', [AjaxController::class, 'getdistrictinfo']);
 Route::get('/getupazilainfo/{id}', [AjaxController::class, 'getupazilainfo']);
 
 //FRONTEND ROUTES END
-
 
 //Admin Daynamic Start
 
@@ -124,7 +121,6 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/change_email', 'AdminController@change_email')->name('change_email');
         Route::post('/change_email', 'AdminController@update_email')->name('update_email');
-
 
     });
 
@@ -173,7 +169,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/application/edit/{id}', 'LeftSidebarController@left_app_edit')->name('left_app.edit');
         Route::post('/application/update/{id}', 'LeftSidebarController@app_update')->name('app.update');
 
-
         Route::get('/banner/view', 'LeftSidebarController@bannerView')->name('banner');
         Route::post('/banner/store', 'LeftSidebarController@banner_store')->name('banner.store');
         Route::get('/banner/delete/{id}', 'LeftSidebarController@banner_delete')->name('banner.delete');
@@ -206,7 +201,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/service/edit/{id}', 'ServiceController@edit')->name('service.edit');
         Route::post('/service/update/{id}', 'ServiceController@update')->name('service.update');
 
-
         Route::get('/about_paurosova', 'AboutController@index')->name('about_paurosova');
         Route::post('/about_paurosova/update', 'AboutController@update')->name('about_paurosova.update');
     });
@@ -224,13 +218,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/organogram/edit/{id}', 'InfoController@organogram_edit')->name('organogram.edit');
         Route::post('/organogram/update/{id}', 'InfoController@organogram_update')->name('organogram.update');
 
-
         Route::get('/map', 'InfoController@map')->name('map');
         Route::post('/map/add', 'InfoController@map_store')->name('map.store');
         Route::get('/map/delete/{id}', 'InfoController@map_delete')->name('map.delete');
         Route::get('/map/edit/{id}', 'InfoController@map_edit')->name('map.edit');
         Route::post('/map/update/{id}', 'InfoController@map_update')->name('map.update');
-
 
         Route::get('/employee', 'InfoController@employee')->name('employee');
         Route::post('/employee/add', 'InfoController@employee_store')->name('employee.store');
@@ -238,13 +230,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/employee/edit/{id}', 'InfoController@employee_edit')->name('employee.edit');
         Route::post('/employee/update/{id}', 'InfoController@employee_update')->name('employee.update');
 
-
         Route::get('/education', 'InfoController@education')->name('education');
         Route::post('/education/add', 'InfoController@education_store')->name('education.store');
         Route::get('/education/delete/{id}', 'InfoController@education_delete')->name('education.delete');
         Route::get('/education/edit/{id}', 'InfoController@education_edit')->name('education.edit');
         Route::post('/education/update/{id}', 'InfoController@education_update')->name('education.update');
-
 
         Route::get('/contact', 'InfoController@contact')->name('contact');
         Route::post('/contact/add', 'InfoController@contact_store')->name('contact.store');
@@ -283,18 +273,15 @@ Route::middleware('auth')->group(function () {
         Route::post('/info_delete/{id}', 'ContactController@info_delete')->name('info.delete');
     });
 
-
     Route::name('admin.web.notice.')->prefix('admin/web/notice')->namespace('App\Http\Controllers\Admin')->group(function () {
         Route::get('/', 'NoticeController@notice')->name('notice');
         Route::post('/notice/add', 'NoticeController@notice_store')->name('notice.store');
         Route::get('/notice/delete/{id}', 'NoticeController@notice_delete')->name('notice.delete');
 
-
         Route::get('/download', 'NoticeController@download')->name('download');
         Route::post('/download_store', 'NoticeController@download_store')->name('download.store');
         Route::get('/download/delete/{id}', 'NoticeController@download_delete')->name('download.delete');
     });
-
 
 });
 
@@ -318,7 +305,6 @@ Route::name('admin.web.village.')->prefix('admin/web/village')->namespace('App\H
     Route::post('/house_type/update/{id}', 'VillageController@house_type_update')->name('house_type.update');
     Route::get('/house_type/delete/{id}', 'VillageController@house_type_delete')->name('house_type.delete');
 
-
     Route::get('/post_office', 'VillageController@post_office')->name('post_office');
     Route::post('/post_office/add', 'VillageController@post_office_store')->name('post_office.store');
     Route::get('/post_office/delete/{id}', 'VillageController@post_office_delete')->name('post_office.delete');
@@ -335,7 +321,6 @@ Route::name('admin.web.religion.')->prefix('admin/web/village')->namespace('App\
     Route::get('/religion/edit/{name}', 'ReligionController@religion_edit')->name('religion.edit');
     Route::post('/religion/update/{id}', 'ReligionController@religion_update')->name('religion.update');
 
-
     Route::get('/gender', 'ReligionController@gender')->name('gender');
     Route::post('/gender/add', 'ReligionController@gender_store')->name('gender.store');
     Route::get('/gender/delete/{id}', 'ReligionController@gender_delete')->name('gender.delete');
@@ -348,9 +333,7 @@ Route::name('admin.web.religion.')->prefix('admin/web/village')->namespace('App\
     Route::post('/merital_status/update/{id}', 'ReligionController@merital_status_update')->name('merital_status.update');
     Route::get('/merital_status/delete/{id}', 'ReligionController@merital_status_delete')->name('merital_status.delete');
 
-
 });
-
 
 // assesment nibondhon
 
@@ -409,7 +392,6 @@ Route::get('/get-businesss-info/{id}', [BusinessController::class, 'GetBusinessI
 Route::get('/update-business_info', [BusinessController::class, 'UpdateBusinessInfo']);
 Route::get('/delete-business/{id}', [BusinessController::class, 'DeleteBusiness'])->name('delete.business');
 
-
 // Report
 Route::get('/puno-bibaho-report', [PdfReportController::class, 'punobibaho']);
 Route::get('/warish-report', [PdfReportController::class, 'warish']);
@@ -420,6 +402,4 @@ Route::get('/sonod-application', [Controllers\Admin\SonodController::class, 'ind
 Route::get('/sonod-application/{id}/approve', [Controllers\Admin\SonodController::class, 'approve'])->name('sonod.approve');
 Route::get('/sonod-application/{id}/pending', [Controllers\Admin\SonodController::class, 'pending'])->name('sonod.pending');
 
-
 //Admin Daynamic End
-

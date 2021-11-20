@@ -3,21 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Auth;
-use Carbon\Carbon;
+use DataTables;
 use DB;
 use Illuminate\Http\Request;
-use Validator;
 use URL;
-use DataTables;
 
 class BusinessController extends Controller
 {
-    function __construct()
-    {
-        $this->middleware(['permission:business-list']);
-    }
-
     public function NewBosotIndex()
     {
         return view('admin.business.index');
@@ -29,12 +21,17 @@ class BusinessController extends Controller
         if ($request->ajax()) {
             $query = DB::table('business');
 
-            if (!empty($request->get('ward_id')))
+            if (!empty($request->get('ward_id'))) {
                 $query->where('ward_id', '=', $request->get('ward_id'));
-            if (!empty($request->get('mobile')))
+            }
+
+            if (!empty($request->get('mobile'))) {
                 $query->where('mobile', '=', $request->get('mobile'));
-            if (!empty($request->get('nid')))
+            }
+
+            if (!empty($request->get('nid'))) {
                 $query->where('nid', '=', $request->get('nid'))->orWhere('birth_certificate', '=', $request->get('nid'));
+            }
 
             $data = $query->orderBy('id', 'DESC')->get();
             return Datatables::of($data)
@@ -71,19 +68,23 @@ class BusinessController extends Controller
         return view('admin.business.bosot_search_result');
     }
 
-
     public function BusinessResult3(Request $request)
     {
 
         if ($request->ajax()) {
             $query = DB::table('business')->where('status', 1);
 
-            if (!empty($request->get('ward_id')))
+            if (!empty($request->get('ward_id'))) {
                 $query->where('ward_id', '=', $request->get('ward_id'));
-            if (!empty($request->get('mobile')))
+            }
+
+            if (!empty($request->get('mobile'))) {
                 $query->where('mobile', '=', $request->get('mobile'));
-            if (!empty($request->get('nid')))
+            }
+
+            if (!empty($request->get('nid'))) {
                 $query->where('nid', '=', $request->get('nid'))->orWhere('birth_certificate', '=', $request->get('nid'));
+            }
 
             $data = $query->orderBy('id', 'DESC')->get();
             return Datatables::of($data)
@@ -125,12 +126,17 @@ class BusinessController extends Controller
 
         if ($request->ajax()) {
             $query = DB::table('business')->where('status', 0);
-            if (!empty($request->get('ward_id')))
+            if (!empty($request->get('ward_id'))) {
                 $query->where('ward_id', '=', $request->get('ward_id'));
-            if (!empty($request->get('mobile')))
+            }
+
+            if (!empty($request->get('mobile'))) {
                 $query->where('mobile', '=', $request->get('mobile'));
-            if (!empty($request->get('nid')))
+            }
+
+            if (!empty($request->get('nid'))) {
                 $query->where('nid', '=', $request->get('nid'))->orWhere('birth_certificate', '=', $request->get('nid'));
+            }
 
             $data = $query->orderBy('id', 'DESC')->get();
             return Datatables::of($data)
@@ -204,18 +210,17 @@ class BusinessController extends Controller
     public function UpdateBusinessInfo(Request $request)
     {
 
-
         $get_data = DB::table('business')->where('id', $request->id)->first();
 
-        $name = $request->name;
+        $name     = $request->name;
         $password = $request->password;
-        $user_id = $get_data->user_id;
+        $user_id  = $get_data->user_id;
         DB::table('users')
             ->where('id', $get_data->user_id)
             ->update([
-                'name' => $name,
+                'name'          => $name,
                 'show_password' => $password,
-                'password' => bcrypt($password),
+                'password'      => bcrypt($password),
             ]);
 
     }

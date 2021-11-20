@@ -3,21 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Auth;
-use Carbon\Carbon;
+use DataTables;
 use DB;
 use Illuminate\Http\Request;
-use Validator;
 use URL;
-use DataTables;
 
 class BusinessHoldingController extends Controller
 {
-    function __construct()
-    {
-        $this->middleware(['permission:business-hold-list']);
-    }
-
     public function NewBosotIndex()
     {
         return view('admin.businessholding.index');
@@ -29,10 +21,13 @@ class BusinessHoldingController extends Controller
         if ($request->ajax()) {
             $query = DB::table('business_holdings');
 
-            if (!empty($request->get('ward_id')))
+            if (!empty($request->get('ward_id'))) {
                 $query->where('ward_id', '=', $request->get('ward_id'));
-            if (!empty($request->get('mobile')))
+            }
+
+            if (!empty($request->get('mobile'))) {
                 $query->where('mobile', '=', $request->get('mobile'))->orWhere('nid', '=', $request->get('mobile'));
+            }
 
             $data = $query->orderBy('id', 'DESC')->get();
             return Datatables::of($data)
@@ -69,17 +64,19 @@ class BusinessHoldingController extends Controller
         return view('admin.businessholding.bosot_search_result');
     }
 
-
     public function BusinessHoldingResult3(Request $request)
     {
 
         if ($request->ajax()) {
             $query = DB::table('business_holdings')->where('status', 1);
 
-            if (!empty($request->get('ward_id')))
+            if (!empty($request->get('ward_id'))) {
                 $query->where('ward_id', '=', $request->get('ward_id'));
-            if (!empty($request->get('mobile')))
+            }
+
+            if (!empty($request->get('mobile'))) {
                 $query->where('mobile', '=', $request->get('mobile'))->orWhere('nid', '=', $request->get('mobile'));
+            }
 
             $data = $query->orderBy('id', 'DESC')->get();
             return Datatables::of($data)
@@ -121,10 +118,13 @@ class BusinessHoldingController extends Controller
 
         if ($request->ajax()) {
             $query = DB::table('business_holdings')->where('status', 0);
-            if (!empty($request->get('ward_id')))
+            if (!empty($request->get('ward_id'))) {
                 $query->where('ward_id', '=', $request->get('ward_id'));
-            if (!empty($request->get('mobile')))
+            }
+
+            if (!empty($request->get('mobile'))) {
                 $query->where('mobile', '=', $request->get('mobile'))->orWhere('nid', '=', $request->get('mobile'));
+            }
 
             $data = $query->orderBy('id', 'DESC')->get();
             return Datatables::of($data)
@@ -198,18 +198,17 @@ class BusinessHoldingController extends Controller
     public function UpdateBusinessHoldingInfo(Request $request)
     {
 
-
         $get_data = DB::table('business_holdings')->where('id', $request->id)->first();
 
-        $name = $request->name;
+        $name     = $request->name;
         $password = $request->password;
-        $user_id = $get_data->user_id;
+        $user_id  = $get_data->user_id;
         DB::table('users')
             ->where('id', $get_data->user_id)
             ->update([
-                'name' => $name,
+                'name'          => $name,
                 'show_password' => $password,
-                'password' => bcrypt($password),
+                'password'      => bcrypt($password),
             ]);
 
     }
