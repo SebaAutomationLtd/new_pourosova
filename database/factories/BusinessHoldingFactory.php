@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class BosotBariHoldingFactory extends Factory
+class BusinessHoldingFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,9 +14,9 @@ class BosotBariHoldingFactory extends Factory
     public function definition()
     {
         return [
-            'father' => $this->faker->name(),
-            'mother' => $this->faker->name(),
-            'spouse' => $this->faker->name(),
+            'father'=>$this->faker->name(),
+            'mother'=>$this->faker->name(),
+            'spouse'=>$this->faker->name(),
             'dob' => $this->faker->date,
             'nid' => $this->faker->creditCardNumber,
             'birth_certificate' => $this->faker->creditCardNumber,

@@ -14,7 +14,9 @@ class AdminController extends Controller
 {
     function __construct()
     {
+
         // $this->middleware(['permission:user-management']);
+
     }
 
     public function admin_login_form()

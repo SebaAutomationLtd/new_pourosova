@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\PostOffice;
 use Illuminate\Database\Seeder;
 
 class PostOfficeSeeder extends Seeder

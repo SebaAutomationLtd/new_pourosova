@@ -17,6 +17,10 @@ class WardSeeder extends Seeder
      */
     public function run()
     {
-        Ward::factory()->count(9)->create();
+        for ($i=1; $i <= 9; $i++) {
+            Ward::create([
+               'ward_no' => $i
+            ]);
+        }
     }
 }
