@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 @section('header')
     <section class="content-header pl-3">
-        <h1>ওয়েবসাইট</h1>
+        <h1>এসেসমেন্ট নিবন্ধন</h1>
         <ol class="breadcrumb">
             <li>
                 <a href="">

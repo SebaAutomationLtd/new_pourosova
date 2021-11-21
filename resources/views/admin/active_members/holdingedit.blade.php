@@ -1,11 +1,11 @@
 @extends('admin.layout.master')
 @section('header')
     <section class="content-header pl-3">
-        <h1>ওয়েবসাইট</h1>
+        <h1>এসেসমেন্ট নিবন্ধন</h1>
         <ol class="breadcrumb">
             <li>
                 <a href="">
-                    <i class="fa fa-fw ti-home"></i> এসেসমেন্ট নিবন্ধন
+                    <i class="fa fa-fw ti-home"></i> বাণিজ্যিক হোল্ডিং আপডেট 
                 </a>
             </li>
             <!-- <li>সেবা কার্ড একটিভ প্যানেল</li> -->

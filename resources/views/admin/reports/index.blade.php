@@ -1,8 +1,8 @@
 @extends('admin.layout.master')
 
-@section('top-header')
+@section('header')
     <section class="content-header pl-3">
-        <h1>খসড়া রিপোর্ট ডাউনলোড</h1>
+        <h1>খসড়া রিপোর্ট</h1>
         <ol class="breadcrumb">
             <li>
                 <i class="fa fa-fw ti-home"></i> ড্যাশবোর্ড

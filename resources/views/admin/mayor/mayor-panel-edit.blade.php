@@ -4,11 +4,11 @@
         <h1>ওয়েবসাইট</h1>
         <ol class="breadcrumb">
             <li>
-                <a href="index.html">
-                    <i class="fa fa-fw ti-home"></i> হেডার
+                <a href="">
+                    <i class="fa fa-fw ti-home"></i> সকল মেয়র 
                 </a>
             </li>
-            <li> লোগো</li>
+            <li> মেয়র এডিট</li>
 
         </ol>
     </section>

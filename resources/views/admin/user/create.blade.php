@@ -1,4 +1,15 @@
 @extends('admin.layout.master')
+@section('header')
+    <section class="content-header pl-3">
+        <h1> ইউজার নিবন্ধন</h1>
+        <ol class="breadcrumb">
+            <li>
+                <i class="fa fa-fw ti-home"></i> ড্যাশবোর্ড
+            </li>
+            <li>নতুন ইউজার নিবন্ধন </li>
+        </ol>
+    </section>
+@stop
 @section('content')
 
 

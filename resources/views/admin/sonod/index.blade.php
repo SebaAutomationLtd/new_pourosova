@@ -1,26 +1,16 @@
 @extends('admin.layout.master')
+@section('header')
+    <section class="content-header pl-3">
+        <h1>সনদ আবেদন </h1>
+        <ol class="breadcrumb">
+            <li>
+                <i class="fa fa-fw ti-home"></i> ড্যাশবোর্ড
+            </li>
+            <li>সনদ আবেদনের তালিকা</li>
+        </ol>
+    </section>
+@stop
 @section('content')
-
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h4> সনদ আবেদনের তালিকা</h4>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">হোম</a></li>
-                            <li class="breadcrumb-item active"> সনদ আবেদনের তালিকা</li>
-                        </ol>
-                    </div>
-                </div>
-            </div><!-- /.container-fluid -->
-        </section>
-
-
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">

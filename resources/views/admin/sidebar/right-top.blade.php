@@ -4,11 +4,11 @@
         <h1>ওয়েবসাইট</h1>
         <ol class="breadcrumb">
             <li>
-                <a href="index.html">
-                    <i class="fa fa-fw ti-home"></i> হেডার
+                <a href="">
+                    <i class="fa fa-fw ti-home"></i> ডান সাইডবার
                 </a>
             </li>
-            <li> লোগো</li>
+            <li> ব্যানার</li>
 
         </ol>
     </section>
@@ -25,7 +25,7 @@
                 </div>
                 <div class="card-body">
                     <img class="rounded d-block w-100" src="{{ asset('uploads/rightside/') }}/{{$top_banner ? $top_banner->photo : ''}}" alt="">
-                    <a href="{{route('admin.web.right.top.edit',$top_banner->id)}}" class="btn btn-info btn-lg">এডিট করুন</a>
+                    <a href="{{route('admin.web.right.top.edit',$top_banner->id??'')}}" class="btn btn-info btn-lg">এডিট করুন</a>
                 </div>
             </div>
         </div>

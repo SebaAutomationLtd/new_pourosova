@@ -4,11 +4,11 @@
         <h1>ওয়েবসাইট</h1>
         <ol class="breadcrumb">
             <li>
-                <a href="index.html">
-                    <i class="fa fa-fw ti-home"></i> হেডার
+                <a href="">
+                    <i class="fa fa-fw ti-home"></i> ডান সাইডবার
                 </a>
             </li>
-            <li> লোগো</li>
+            <li> ব্যানার সমূহ</li>
 
         </ol>
     </section>

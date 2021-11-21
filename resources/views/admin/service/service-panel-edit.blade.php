@@ -1,14 +1,14 @@
 @extends('admin.layout.master')
 @section('header')
-    <section class="content-header pl-3">
+ <section class="content-header pl-3">
         <h1>ওয়েবসাইট</h1>
         <ol class="breadcrumb">
             <li>
-                <a href="index.html">
-                    <i class="fa fa-fw ti-home"></i> হেডার
+                <a href="">
+                    <i class="fa fa-fw ti-home"></i> হোমপেইজ
                 </a>
             </li>
-            <li> লোগো</li>
+            <li> সেবাসমূহ</li>
 
         </ol>
     </section>

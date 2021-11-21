@@ -1,6 +1,6 @@
 @extends('admin.layout.master')
 
-@section('top-header')
+@section('header')
     <section class="content-header pl-3">
         <h1>
             রোল পারমিশন তালিকা

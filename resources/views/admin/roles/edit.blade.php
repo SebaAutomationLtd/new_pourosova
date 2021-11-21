@@ -1,5 +1,15 @@
 @extends('admin.layout.master')
-
+@section('header')
+    <section class="content-header pl-3">
+        <h1>রোল পারমিশন</h1>
+        <ol class="breadcrumb">
+            <li>
+                <i class="fa fa-fw ti-home"></i> ড্যাশবোর্ড
+            </li>
+            <li>রোল ম্যানেজমেন্ট</li>
+        </ol>
+    </section>
+@stop
 
 @section('content')
 
