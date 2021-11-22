@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="shortcut icon" href="images/svg/logo-white-background.svg" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/all.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/frontend/styles.css') }}">
@@ -24,20 +23,20 @@
 
         <div class="container">
             <div class="header-section"
-                style="background-image: url('{{ asset('uploads/header_logo/' . @$website_data->logo_background) }}')">
+                style="background-image: url('{{ asset('img/logo-background.svg') }}')">
                 <!-- Header Logo Start  -->
                 <div id="my-carousel" class="carousel face" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <a href="{{ route('index') }}">
-                                <img class="d-block img-fluid" src="{{ asset('uploads/header_logo/' . @$website_data->logo_bangla) }}"
+                                <img class="d-block img-fluid" src="{{ asset('img/logo-bn.png') }}"
                                     alt="">
                             </a>
                         </div>
                         <div class="carousel-item">
                             <a href="{{ route('index') }}">
                                 <img class="d-block img-fluid"
-                                    src="{{ asset('uploads/header_logo/' . @$website_data->logo_english) }}" alt="">
+                                    src="{{ asset('img/logo-en.png') }}" alt="">
                             </a>
                         </div>
                     </div>

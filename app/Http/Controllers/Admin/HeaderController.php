@@ -68,24 +68,41 @@ class HeaderController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'logo_background' => 'mimes:jpeg,jpg,png|required|max:10000',
+            'logo_background' => 'sometimes|mimes:svg|max:10000',
+            'logo_en' => 'sometimes|mimes:png|max:5000',
+            'logo_bn' => 'sometimes|mimes:png|max:5000',
         ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        if ($request->file()) {
-            foreach ($request->file() as $name => $image) {
-                $imageName = time() . '_' . $image->getClientOriginalName();
-                $image->move(public_path('uploads/header_logo'), $imageName);
-                DB::table('website_settings')->insert([
-                    'name' => $name,
-                    'value' => $imageName,
-                    'created_by' => auth()->id()
-                ]);
-            }
-            return redirect()->back();
+        $image = null;
+        $name = "";
+
+        if ($request->hasFile('logo_background')) {
+            $image = $request->file('logo_background');
+            $name = 'logo-background.svg';
+        } elseif ($request->hasFile('logo_bn')) {
+            $image = $request->file('logo_bn');
+            $name = 'logo-bn.png';
+        } elseif ($request->hasFile('logo_en')) {
+            $image = $request->file('logo_en');
+            $name = 'logo-en.png';
         }
+
+        if ($image && $name) {
+            if (file_exists(public_path('img/'.$name))) {
+                unlink(public_path('img/'.$name));
+            }
+            $image->move(public_path('img/'), $name);
+            $notification = array(
+                'message' => 'Uploaded successfully',
+                'alert-type' => 'success'
+            );
+
+            return redirect()->back()->with($notification);
+        }
+
     }
 
 

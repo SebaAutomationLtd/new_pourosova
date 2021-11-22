@@ -5,7 +5,7 @@
         <!-- User Account: style can be found in dropdown-->
         <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle padding-user d-block" data-toggle="dropdown">
-                <img src="{{ asset(Auth::user()->photo ?? 'uploads/users/user.jpg') }}" width="28"
+                <img src="{{ asset(Auth::user()->photo) }}" onerror="this.src='{{ asset("img/avatar.png") }}'" width="28"
                     class="rounded-circle img-fluid float-left" height="20" alt="User Image">
                 <div class="riot">
                     <div>

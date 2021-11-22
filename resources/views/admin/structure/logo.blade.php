@@ -22,21 +22,24 @@
         <div class="card-body">
             <form action="{{ route('admin.header.logo') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="form-group">
-                    <img class="w-100 d-block" id="logo_background" src="{{ asset('Front') }}/images/header.jpg" alt="">
-                </div>
+
                 <div>
                     <div class="row advanced_select2">
                         <div class="col-sm-8 ">
-                            @if(isset($website_data->logo_background))
-                                <img src="{{ asset('uploads/header_logo/'. $website_data->logo_background) }}" style="height: 90px; width: 100%;">
+                            @if(file_exists(public_path('img/logo-background.svg')))
+                                <img src="{{ asset('img/logo-background.svg') }}" style="height: 90px; width: 100%;">
                             @endif
 
                             <label class="control-label txt_media">
                                 লোগো ব্যাকগ্রাউন্ড
                             </label>
                             <input type="file" name="logo_background" class="image-file-upload file-loading"
-                                data-show-preview="false">
+                                   data-show-preview="false">
+                            @error('logo_background')
+                            <small class="text-danger">
+                                <strong>{{ $message }}</strong>
+                            </small>
+                            @enderror
                         </div>
                         <div class="col-sm-4">
                             <div class="alert alert-info small m-t-10">
@@ -52,16 +55,21 @@
 
                 <div>
                     <div class="row advanced_select2">
-                        <div class="col-sm-8 ">
-                            @if(isset($website_data->logo_bangla))
-                                <img src="{{ asset('uploads/header_logo/'. $website_data->logo_bangla) }}" style="height: 90px; width: 100%;">
+                        <div class="col-sm-8 mt-2">
+                            @if(file_exists(public_path('img/logo-bn.png')))
+                                <img src="{{ asset('img/logo-bn.png') }}" style="height: 90px; width: 100%;">
                             @endif
 
                             <label class="control-label txt_media">
                                 লোগো এবং বাংলা টাইটেল
                             </label>
-                            <input type="file" name="logo_bangla" class="image-file-upload file-loading"
-                                data-show-preview="false">
+                            <input type="file" name="logo_bn" class="image-file-upload file-loading"
+                                   data-show-preview="false">
+                            @error('logo_bn')
+                            <small class="text-danger">
+                                <strong>{{ $message }}</strong>
+                            </small>
+                            @enderror
                         </div>
                         <div class="col-sm-4">
                             <div class="alert alert-info small m-t-10">
@@ -78,16 +86,21 @@
                 <div>
 
                     <div class="row advanced_select2">
-                        <div class="col-sm-8 ">
-                            @if(isset($website_data->logo_english))
-                                <img src="{{ asset('uploads/header_logo/'. $website_data->logo_english) }}" style="height: 90px; width: 100%;">
+                        <div class="col-sm-8 mt-2">
+                            @if(file_exists(public_path('img/logo-en.png')))
+                                <img src="{{ asset('img/logo-en.png') }}" style="height: 90px; width: 100%;">
                             @endif
 
                             <label class="control-label txt_media">
                                 লোগো এবং ইংরেজি টাইটেল
                             </label>
-                            <input type="file" name="logo_english" class="image-file-upload file-loading"
-                                data-show-preview="false">
+                            <input type="file" name="logo_en" class="image-file-upload file-loading"
+                                   data-show-preview="false">
+                            @error('logo_en')
+                            <small class="text-danger">
+                                <strong>{{ $message }}</strong>
+                            </small>
+                            @enderror
                         </div>
                         <div class="col-sm-4">
                             <div class="alert alert-info small m-t-10">
