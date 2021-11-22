@@ -402,4 +402,6 @@ Route::get('/sonod-application', [Controllers\Admin\SonodController::class, 'ind
 Route::get('/sonod-application/{id}/approve', [Controllers\Admin\SonodController::class, 'approve'])->name('sonod.approve');
 Route::get('/sonod-application/{id}/pending', [Controllers\Admin\SonodController::class, 'pending'])->name('sonod.pending');
 
+Route::resource('/log-activity', Controllers\Admin\LogActivityController::class);
+
 //Admin Daynamic End
