@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\ActiveController;
 use App\Http\Controllers\Admin\BosotBariController;
 use App\Http\Controllers\Admin\BusinessController;
 use App\Http\Controllers\Admin\BusinessHoldingController;
+use App\Http\Controllers\Admin\OtherSettingController;
 use App\Http\Controllers\Admin\PdfReportController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
@@ -110,9 +111,12 @@ Route::middleware('auth')->group(function () {
         Route::get('delete-user/{id}', [UserController::class, 'delete_user'])->name('user.delete');
 
         Route::resource('roles', RoleController::class);
+        Route::get('other-settings/{slug}', [OtherSettingController::class, 'create'])->name('other-settings');
+        Route::post('other-settings/{slug}', [OtherSettingController::class, 'store'])->name('other-settings');
 
         Route::get('/khosora-report', [PdfReportController::class, 'khosora_report'])->name('khosora-report');
         Route::post('/khosora-report', [PdfReportController::class, 'khosora_report_download'])->name('khosora-report');
+
     });
 
     Route::name('admin.setting.')->prefix('admin/setting')->namespace('App\Http\Controllers\Admin')->group(function () {
@@ -283,57 +287,31 @@ Route::middleware('auth')->group(function () {
         Route::get('/download/delete/{id}', 'NoticeController@download_delete')->name('download.delete');
     });
 
-});
+    Route::name('admin.web.village.')->prefix('admin/web/village')->namespace('App\Http\Controllers\Admin')->group(function () {
 
-Route::name('admin.web.village.')->prefix('admin/web/village')->namespace('App\Http\Controllers\Admin')->group(function () {
+        Route::get('/ward', 'VillageController@ward')->name('ward');
+        Route::get('/ward/edit/{$id}', 'VillageController@ward_edit')->name('ward.edit');
+        Route::post('/ward/store', 'VillageController@ward_store')->name('ward.store');
+        Route::post('/ward/update/{id}', 'WardController@ward_update')->name('ward.update');
+        Route::post('/ward/delete/{id}', 'WardController@ward_delete')->name('ward.delete');
 
-    Route::get('/ward', 'VillageController@ward')->name('ward');
-    Route::get('/ward/edit/{$id}', 'VillageController@ward_edit')->name('ward.edit');
-    Route::post('/ward/store', 'VillageController@ward_store')->name('ward.store');
-    Route::post('/ward/update/{id}', 'WardController@ward_update')->name('ward.update');
-    Route::post('/ward/delete/{id}', 'WardController@ward_delete')->name('ward.delete');
+        Route::get('/village', 'VillageController@village')->name('village');
+        Route::post('/village/add', 'VillageController@village_store')->name('village.store');
+        Route::get('/village/delete/{name}', 'VillageController@village_delete')->name('village.delete');
+        Route::get('/village/edit/{name}', 'VillageController@village_edit')->name('village.edit');
+        Route::post('/village/update/{id}', 'VillageController@village_update')->name('village.update');
 
-    Route::get('/village', 'VillageController@village')->name('village');
-    Route::post('/village/add', 'VillageController@village_store')->name('village.store');
-    Route::get('/village/delete/{name}', 'VillageController@village_delete')->name('village.delete');
-    Route::get('/village/edit/{name}', 'VillageController@village_edit')->name('village.edit');
-    Route::post('/village/update/{id}', 'VillageController@village_update')->name('village.update');
+        Route::get('/post_office', 'VillageController@post_office')->name('post_office');
+        Route::post('/post_office/add', 'VillageController@post_office_store')->name('post_office.store');
+        Route::get('/post_office/delete/{id}', 'VillageController@post_office_delete')->name('post_office.delete');
+        Route::get('/post_office/edit/{id}', 'VillageController@post_office_edit')->name('post_office.edit');
+        Route::post('/post_office/update/{id}', 'VillageController@post_office_update')->name('post_office.update');
 
-    Route::get('/house_type', 'VillageController@house_type')->name('house_type');
-    Route::post('/house_type/store', 'VillageController@house_type_store')->name('house_type.store');
-    Route::get('/house_type/edit/{id}', 'VillageController@house_type_edit')->name('house_type.edit');
-    Route::post('/house_type/update/{id}', 'VillageController@house_type_update')->name('house_type.update');
-    Route::get('/house_type/delete/{id}', 'VillageController@house_type_delete')->name('house_type.delete');
-
-    Route::get('/post_office', 'VillageController@post_office')->name('post_office');
-    Route::post('/post_office/add', 'VillageController@post_office_store')->name('post_office.store');
-    Route::get('/post_office/delete/{id}', 'VillageController@post_office_delete')->name('post_office.delete');
-    Route::get('/post_office/edit/{id}', 'VillageController@post_office_edit')->name('post_office.edit');
-    Route::post('/post_office/update/{id}', 'VillageController@post_office_update')->name('post_office.update');
+    });
 
 });
 
-Route::name('admin.web.religion.')->prefix('admin/web/village')->namespace('App\Http\Controllers\Admin')->group(function () {
 
-    Route::get('/religion', 'ReligionController@religion')->name('religion');
-    Route::post('/religion/add', 'ReligionController@religion_store')->name('religion.store');
-    Route::get('/religion/delete/{name}', 'ReligionController@religion_delete')->name('religion.delete');
-    Route::get('/religion/edit/{name}', 'ReligionController@religion_edit')->name('religion.edit');
-    Route::post('/religion/update/{id}', 'ReligionController@religion_update')->name('religion.update');
-
-    Route::get('/gender', 'ReligionController@gender')->name('gender');
-    Route::post('/gender/add', 'ReligionController@gender_store')->name('gender.store');
-    Route::get('/gender/delete/{id}', 'ReligionController@gender_delete')->name('gender.delete');
-    Route::get('/gender/edit/{id}', 'ReligionController@gender_edit')->name('gender.edit');
-    Route::post('/gender/update/{id}', 'ReligionController@gender_update')->name('gender.update');
-
-    Route::get('/merital_status', 'ReligionController@merital_status')->name('merital_status');
-    Route::post('/merital_status/store', 'ReligionController@merital_status_store')->name('merital_status.store');
-    Route::get('/merital_status/edit/{id}', 'ReligionController@merital_status_edit')->name('merital_status.edit');
-    Route::post('/merital_status/update/{id}', 'ReligionController@merital_status_update')->name('merital_status.update');
-    Route::get('/merital_status/delete/{id}', 'ReligionController@merital_status_delete')->name('merital_status.delete');
-
-});
 
 // assesment nibondhon
 
