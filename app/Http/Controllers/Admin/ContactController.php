@@ -344,8 +344,8 @@ class ContactController extends Controller
 
     public function info_edit($id)
     {
-        $info_edit = Info::find($id);
-        return view('admin.contact.info_edit', compact('info_edit'));
+        $data['info_edit'] = Info::find($id);
+        return view('admin.contact.info_edit', $data);
     }
 
     public function info_update(Request $request, $id)
