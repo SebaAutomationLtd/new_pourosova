@@ -1,0 +1,122 @@
+@font-face {
+  font-family: customFont;
+  src: url("../../fonts/solaimanlipi.ttf");
+}
+
+#login-page {
+  background: url("../../img/admin_login_background.svg") no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  position: relative;
+}
+
+#login-page #top {
+  background: #f9f9fa;
+  border-bottom: 5px solid #33434b;
+}
+
+#login-page #top img {
+  width: 80px;
+}
+
+#login-page #top .title {
+  font-size: 25px;
+  font-weight: 900;
+  color: #34444c;
+  font-family: customFont;
+}
+
+#login-page #top .subtitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: #34444c;
+}
+
+#login-page #login-panel .panel {
+  margin-top: 100px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 350px;
+  height: 100%;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#login-page #login-panel .panel .title {
+  color: #33434b;
+}
+
+#login-page #login-panel .panel i {
+  font-family: "Font Awesome 5 Free";
+}
+
+#login-page #login-panel .panel .submit-btn {
+  background-color: #33434b;
+  color: #fff;
+  border-radius: 0;
+}
+
+#login-page #login-panel .panel .form-control:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: 0;
+}
+
+#login-page #login-panel .panel a:hover {
+  text-decoration: none;
+}
+
+#login-page #login-panel .footer-image {
+  position: absolute;
+  width: 400px;
+  right: 40px;
+  bottom: 40px;
+}
+/*# sourceMappingURL=style.css.map */
+
+@media only screen and (max-width: 1300px) {
+  #login-page #login-panel .panel {
+    margin-top: 80px;
+  }
+  #login-page #login-panel .footer-image {
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width: 1050px) {
+  #login-page #login-panel .panel {
+    margin-top: 60px;
+  }
+  #login-page #login-panel .footer-image {
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  #login-page #login-panel .panel {
+    margin-top: 50px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #login-page #top .title {
+    font-size: 20px;
+  }
+  #login-page #login-panel .footer-image {
+    left: 0;
+    right: 0%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  #login-page #login-panel .panel {
+    margin-top: 40px;
+  }
+  #login-page #login-panel .footer-image {
+    width: 270px;
+  }
+}
+/*# sourceMappingURL=responsive.css.map */
