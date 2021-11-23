@@ -38,7 +38,8 @@ class PermissionTableSeeder extends Seeder
             'certificate-approve',
             'bosot-bari-due',
             'support-admin-management',
-            'log-activity'
+            'log-activity',
+            'common-settings'
         ];
 
         foreach ($permissions as $permission) {

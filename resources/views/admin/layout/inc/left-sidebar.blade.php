@@ -251,7 +251,7 @@
                         </ul>
                     </li>
                 @endcan
-                @can('other-setup')
+                @can('common-settings')
                     <li class="menu-dropdown">
                         <a href="javascript:void(0)">
                             <i class="fa fa-book" aria-hidden="true"></i> সাধারন তথ্য
@@ -259,55 +259,55 @@
                             <span class="fa arrow"></span>
                         </a>
                         <ul class="sub-menu p-l-40">
-                            <li><a href="{{ route('other-settings', 'religion') }}"> <i class="fa fa-dot-circle-o"
+                            <li><a href="{{ route('common-settings', 'religion') }}"> <i class="fa fa-dot-circle-o"
                                                                                         aria-hidden="true"></i>
                                     ধর্ম
                                 </a>
                             </li>
 
-                            <li><a href="{{ route('other-settings', 'gender') }}"> <i class="fa fa-dot-circle-o"
+                            <li><a href="{{ route('common-settings', 'gender') }}"> <i class="fa fa-dot-circle-o"
                                                                                       aria-hidden="true"></i>
                                     জেন্ডার
                                 </a>
                             </li>
 
-                            <li><a href="{{ route('other-settings', 'marital_status') }}"> <i
+                            <li><a href="{{ route('common-settings', 'marital_status') }}"> <i
                                         class="fa fa-dot-circle-o" aria-hidden="true"></i>
                                     বৈবাহিক অবস্থা
                                 </a>
                             </li>
 
-                            <li><a href="{{ route('other-settings', 'house_type') }}"> <i class="fa fa-dot-circle-o"
+                            <li><a href="{{ route('common-settings', 'house_type') }}"> <i class="fa fa-dot-circle-o"
                                                                                           aria-hidden="true"></i>
                                     বাড়ির ধরন
                                 </a>
                             </li>
 
-                            <li><a href="{{ route('other-settings', 'business_type') }}"> <i class="fa fa-dot-circle-o"
+                            <li><a href="{{ route('common-settings', 'business_type') }}"> <i class="fa fa-dot-circle-o"
                                                                                           aria-hidden="true"></i>
                                     ব্যাবসার ধরন
                                 </a>
                             </li>
 
-                            <li><a href="{{ route('other-settings', 'family_class') }}"> <i class="fa fa-dot-circle-o"
+                            <li><a href="{{ route('common-settings', 'family_class') }}"> <i class="fa fa-dot-circle-o"
                                                                                              aria-hidden="true"></i>
                                     পারিবারিক শ্রেনীবিন্যাস
                                 </a>
                             </li>
 
-                            <li><a href="{{ route('other-settings', 'relation') }}"> <i class="fa fa-dot-circle-o"
+                            <li><a href="{{ route('common-settings', 'relation') }}"> <i class="fa fa-dot-circle-o"
                                                                                              aria-hidden="true"></i>
                                    রিলেশনস
                                 </a>
                             </li>
 
-                            <li><a href="{{ route('other-settings', 'sanitation') }}"> <i class="fa fa-dot-circle-o"
+                            <li><a href="{{ route('common-settings', 'sanitation') }}"> <i class="fa fa-dot-circle-o"
                                                                                              aria-hidden="true"></i>
                                     স্যানিটেশন
                                 </a>
                             </li>
 
-                            <li><a href="{{ route('other-settings', 'payment_method') }}"> <i class="fa fa-dot-circle-o"
+                            <li><a href="{{ route('common-settings', 'payment_method') }}"> <i class="fa fa-dot-circle-o"
                                                                                              aria-hidden="true"></i>
                                     পেমেন্ট মেথড
                                 </a>
