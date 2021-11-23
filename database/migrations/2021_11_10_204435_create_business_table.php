@@ -57,9 +57,9 @@ class CreateBusinessTable extends Migration
             $table->foreign('village_id')->references('id')
                 ->on('villages')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('business_type_id')->references('id')
-                ->on('other_settings')->onDelete('cascade')->onUpdate('cascade');
+                ->on('common_settings')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('payment_method_id')->references('id')
-                ->on('other_settings')->onDelete('cascade')->onUpdate('cascade');
+                ->on('common_settings')->onDelete('cascade')->onUpdate('cascade');
 
         });
     }

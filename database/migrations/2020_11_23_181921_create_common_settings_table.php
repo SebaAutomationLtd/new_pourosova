@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOtherSettingsTable extends Migration
+class CreateCommonSettingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateOtherSettingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('other_settings', function (Blueprint $table) {
+        Schema::create('common_settings', function (Blueprint $table) {
             $table->id();
             $table->string('group')->index();
             $table->string('name');
@@ -31,6 +31,6 @@ class CreateOtherSettingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('other_settings');
+        Schema::dropIfExists('common_settings');
     }
 }
