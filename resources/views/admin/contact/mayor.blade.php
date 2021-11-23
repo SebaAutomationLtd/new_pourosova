@@ -20,7 +20,7 @@
         <div class="col-md-12">
             <div class="card main-chart">
                 <div class="card-header panel-tabs">
-                    <h5>মেয়রের তথ্য</h5>
+                    <h5 class="h5">মেয়রের তথ্য</h5>
                 </div>
                 <div class="card-body">
    
@@ -181,7 +181,7 @@
         <div class="col-md-12 mt-4">
             <div class="card main-chart mt-4 mt-md-0">
                 <div class="card-header panel-tabs">
-                    <h5>মেয়রের প্রফেশনাল অভিজ্ঞতা</h5>
+                    <h5 class="h5">মেয়রের প্রফেশনাল অভিজ্ঞতা</h5>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('admin.web.contact.mayor.professional_mayor') }}" method="POST">

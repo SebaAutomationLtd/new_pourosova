@@ -17,7 +17,7 @@
 @section('content')
     <div class="card main-chart">
         <div class="card-header panel-tabs">
-            <h5>হেডার লোগো পরিবর্তন</h5>
+            <h5 class="h5">হেডার লোগো পরিবর্তন</h5>
         </div>
         <div class="card-body">
             <form action="{{ route('admin.header.logo') }}" method="POST" enctype="multipart/form-data">

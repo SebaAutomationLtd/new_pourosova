@@ -19,7 +19,7 @@
         <div class="col-md-12">
             <div class="card main-chart">
                 <div class="card-header panel-tabs">
-                    <h5>হোম পেইজ স্লাইডার</h5>
+                    <h5 class="h5">হোম পেইজ স্লাইডার</h5>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('admin.index.slider') }}" method="POST" enctype="multipart/form-data">

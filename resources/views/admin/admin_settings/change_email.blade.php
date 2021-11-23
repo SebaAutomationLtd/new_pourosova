@@ -8,18 +8,14 @@
                     <i class="fa fa-fw ti-home"></i> ইমেইল পরিবর্তন 
                 </a>
             </li>
-     
-
         </ol>
     </section>
 @stop
 
 @section('content')
-    <div class="row">
-        <div class="col-md-12">
             <div class="card main-chart">
                 <div class="card-header panel-tabs">
-                    <h5>ইমেইল পরিবর্তন</h5>
+                    <h5 class="h5">ইমেইল পরিবর্তন</h5>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('admin.setting.update_email') }}" method="POST">
@@ -56,15 +52,6 @@
                     </form>
                 </div>
             </div>
-        </div>
-
-
-
-    </div>
-
-
-
-
 
 @stop
 

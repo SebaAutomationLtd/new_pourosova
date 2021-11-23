@@ -19,7 +19,7 @@
         <div class="col-md-6">
             <div class="card main-chart">
                 <div class="card-header panel-tabs">
-                    <h5>উপজেলা নির্বাহী কর্মকর্তা</h5>
+                    <h5 class="h5">উপজেলা নির্বাহী কর্মকর্তা</h5>
                 </div>
                 <div class="card-body">
                     @if(session()->has('success'))
@@ -99,7 +99,7 @@
         <div class="col-md-6">
             <div class="card main-chart">
                 <div class="card-header panel-tabs">
-                    <h5>উপজেলা নির্বাহী কর্মকর্তা</h5>
+                    <h5 class="h5">উপজেলা নির্বাহী কর্মকর্তা</h5>
                 </div>
                 <div class="card-body">
                     <div class="text-center">

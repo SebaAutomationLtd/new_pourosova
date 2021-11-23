@@ -20,7 +20,7 @@
         <div class="col-md-12">
             <div class="card main-chart">
                 <div class="card-header panel-tabs">
-                    <h5>যোগাযোগ<a href="{{route('admin.web.info.contact.edit',$contact->id ?? '')}}" id="update" class="float-right btn btn-success">আপডেট করুন</a>
+                    <h5 class="h5">যোগাযোগ<a href="{{route('admin.web.info.contact.edit',$contact->id ?? '')}}" id="update" class="float-right btn btn-success">আপডেট করুন</a>
                     </h5>
                 </div>
                 <div class="card-body">

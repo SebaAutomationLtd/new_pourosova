@@ -17,7 +17,7 @@
     <div class="content-wrapper">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="">খসড়া রিপোর্ট ডাউনলোড</h3>
+                <h3 class="h5">খসড়া রিপোর্ট ডাউনলোড</h3>
             </div>
             <div class="card-body">
                 <form class="needs-validation" action="{{ route('khosora-report') }}" method="post">

@@ -52,9 +52,9 @@
 
             @yield('header')
             <section class="content">
-                <div class="background-overlay waterMarkLogo d-flex justify-content-center">
+                {{-- <div class="background-overlay waterMarkLogo d-flex justify-content-center">
                     <img src="{{ asset('img/Digital Bangladesh.svg') }}" alt="">
-                </div>
+                </div> --}}
                 @yield('content')
 
             </section>

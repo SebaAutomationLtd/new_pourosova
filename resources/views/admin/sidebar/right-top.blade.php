@@ -21,7 +21,7 @@
         <div class="col-sm-6 col-md-4">
             <div class="card main-chart mt-4 mt-md-0">
                 <div class="card-header panel-tabs">
-                    <h5>উপরের ব্যানার</h5>
+                    <h5 class="h5">উপরের ব্যানার</h5>
                 </div>
                 <div class="card-body">
                     <img class="rounded d-block w-100" src="{{ asset('uploads/rightside/') }}/{{$top_banner ? $top_banner->photo : ''}}" alt="">

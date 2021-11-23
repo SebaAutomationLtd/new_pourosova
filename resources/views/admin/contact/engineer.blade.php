@@ -19,7 +19,7 @@
         <div class="col-md-6">
             <div class="card main-chart">
                 <div class="card-header panel-tabs">
-                    <h5>প্রকৌশল বিভাগ</h5>
+                    <h5 class="h5">প্রকৌশল বিভাগ</h5>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('admin.web.contact.engineer.store') }}" method="POST" enctype="multipart/form-data">
@@ -94,7 +94,7 @@
         <div class="col-md-6">
             <div class="card main-chart">
                 <div class="card-header panel-tabs">
-                    <h5>প্রকৌশল বিভাগ</h5>
+                    <h5 class="h5">প্রকৌশল বিভাগ</h5>
                 </div>
                 <div class="card-body">
                     <div class="text-center">
@@ -125,7 +125,7 @@
 
     <div class="card main-chart mt-4">
         <div class="card-header panel-tabs">
-            <h5>অন্যান্য কর্মকর্তা</h5>
+            <h5 class="h5">অন্যান্য কর্মকর্তা</h5>
         </div>
         <div class="card-body">
             <form action="{{ route('admin.web.contact.others_employee.store') }}" method="POST" >

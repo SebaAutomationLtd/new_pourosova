@@ -19,7 +19,7 @@
                                 <div class="col-md-12">
                                     <div class="card main-chart">
                                         <div class="card-header panel-tabs">
-                                            <h5>শিক্ষা প্রতিষ্ঠানের তথ্য এডিট</h5>
+                                            <h5 class="h5">শিক্ষা প্রতিষ্ঠানের তথ্য এডিট</h5>
                                         </div>
                                         <div class="card-body">
                                             <form action="{{route('admin.web.info.education.update',$education->id)}}" method="POST">

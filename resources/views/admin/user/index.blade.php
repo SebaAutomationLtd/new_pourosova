@@ -11,24 +11,9 @@
     </section>
 @stop
 @section('content')
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row mb-2" style="margin-top: 20px;">
-                <div class="col-sm-6">
-                    <h5>ইউজার তালিকা</h5>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">হোম</a></li>
-                        <li class="breadcrumb-item active">ইউজার তালিকা</li>
-                    </ol>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
                     <div class="card main-chart mt-4">
                         <div class="card-header panel-tabs">
-                            <h4 style="display: inline-block">ইউজার তালিকা তালিকা টেবিল</h4>
+                            <h4 style="display: inline-block" class="h5">ইউজার তালিকা তালিকা টেবিল</h4>
                             <a href="{{ route('user.create') }}" class="btn btn-primary" style="float: right">
                                 <i class="fas fa-store-alt"></i> নতুন ইউজার তৈরি করুন
                             </a>
@@ -83,8 +68,5 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
 @endsection

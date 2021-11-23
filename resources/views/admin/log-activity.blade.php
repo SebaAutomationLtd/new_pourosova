@@ -18,7 +18,7 @@
                 <div class="col-md-12">
                     <div class="card main-chart ">
                         <div class="card-header panel-tabs">
-                            <h4 style="display: inline-block">লগ একটিভিটি টেবিল</h4>
+                            <h4 style="display: inline-block" class="h5">লগ একটিভিটি টেবিল</h4>
                         </div>
                         <div class="card-body">
                             <div class="">

@@ -17,7 +17,7 @@
     <div class="content-wrapper">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="">নতুন তথ্য নিবন্ধন করুন</h3>
+                <h3 class="h5">নতুন তথ্য নিবন্ধন করুন</h3>
             </div>
             <div class="card-body">
                 <form class="needs-validation" action="{{ route('other-settings', $slug) }}" method="post">

@@ -18,7 +18,7 @@
 @section('content')
     <div class="card main-chart mt-4">
         <div class="card-header panel-tabs">
-            <h5>আপডেট অন্যান্য কর্মকর্তা</h5>
+            <h5 class="h5">আপডেট অন্যান্য কর্মকর্তা</h5>
         </div>
         <div class="card-body">
             <form action="{{ route('admin.web.contact.admin.other_employee.update',$other_edit->id)}}" method="POST">

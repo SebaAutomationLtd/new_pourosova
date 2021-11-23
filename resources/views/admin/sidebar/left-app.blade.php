@@ -19,7 +19,7 @@
         <div class="col-md-6">
             <div class="card main-chart">
                 <div class="card-header panel-tabs">
-                    <h5>গুরুত্বপূর্ণ আবেদনপত্র</h5>
+                    <h5 class="h5">গুরুত্বপূর্ণ আবেদনপত্র</h5>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('admin.web.left.app.store') }}" method="POST">

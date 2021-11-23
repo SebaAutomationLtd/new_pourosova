@@ -20,7 +20,7 @@
         <div class="col-md-12">
             <div class="card main-chart">
                 <div class="card-header panel-tabs">
-                    <h5>পোস্ট অফিস</h5>
+                    <h5 class="h5">পোস্ট অফিস</h5>
                 </div>
                 <div class="card-body">
                     <form action="{{route('admin.web.village.post_office.store')}}" method="POST">
@@ -54,7 +54,7 @@
         <div class="col-md-12 mt-4">
             <div class="card main-chart mt-4 mt-md-0">
                 <div class="card-header panel-tabs">
-                    <h5>পোস্ট অফিস</h5>
+                    <h5 class="h5">পোস্ট অফিস</h5>
                 </div>
                 <div class="card-body">
                     <div class="">

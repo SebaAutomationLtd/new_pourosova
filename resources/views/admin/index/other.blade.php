@@ -20,7 +20,7 @@
         <div class="col-md-12">
             <div class="card main-chart">
                 <div class="card-header panel-tabs">
-                    <h5>তথ্য ও পরিষেবা কেন্দ্র</h5>
+                    <h5 class="h5">তথ্য ও পরিষেবা কেন্দ্র</h5>
                 </div>
                 <div class="card-body">
                     <form action="" method="POST">

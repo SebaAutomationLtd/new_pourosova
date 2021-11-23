@@ -19,7 +19,7 @@
         <div class="col-md-12">
             <div class="card main-chart">
                 <div class="card-header panel-tabs">
-                    <h5>নোটিশ</h5>
+                    <h5 class="h5">নোটিশ</h5>
                 </div>
                 <div class="card-body">
                     <form action="{{route('admin.web.notice.notice.store')}}" method="POST" enctype="multipart/form-data">
@@ -81,7 +81,7 @@
         <div class="col-md-12 mt-4">
             <div class="card main-chart mt-4 mt-md-0">
                 <div class="card-header panel-tabs">
-                    <h5>প্রকাশিত নোটিশ</h5>
+                    <h5 class="h5">প্রকাশিত নোটিশ</h5>
                 </div>
                 <div class="card-body">
                     <div class="">
