@@ -20,7 +20,6 @@ class CreateMayorsTable extends Migration
             $table->string('mobile')->nullable();
             $table->string('serial')->nullable();
             $table->string('image')->nullable();
-            $table->foreignId('created_by')->references('id')->on('users');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });

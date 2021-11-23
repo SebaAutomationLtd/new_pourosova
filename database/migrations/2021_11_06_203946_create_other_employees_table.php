@@ -15,11 +15,11 @@ class CreateOtherEmployeesTable extends Migration
     {
         Schema::create('other_employees', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable(); 
+            $table->string('name')->nullable();
             $table->string('designation')->nullable();
             $table->string('contact')->nullable();
             $table->tinyInteger('status')->default(0);
-            $table->foreignId('created_by')->references('id')->on('users');
+
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });

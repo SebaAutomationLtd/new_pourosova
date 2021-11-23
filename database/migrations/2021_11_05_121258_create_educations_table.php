@@ -18,7 +18,7 @@ class CreateEducationsTable extends Migration
             $table->string('type');
             $table->string('total')->nullable();
             $table->string('type_of_organization')->nullable();
-            $table->foreignId('created_by')->references('id')->on('users');
+
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });

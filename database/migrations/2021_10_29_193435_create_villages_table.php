@@ -15,11 +15,13 @@ class CreateVillagesTable extends Migration
     {
         Schema::create('villages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('ward_id')->constrained();
+            $table->unsignedBigInteger('ward_id')->index();
             $table->string('name');
             $table->tinyInteger('status')->default(1);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
+            $table->foreign('ward_id')->references('id')
+                ->on('wards')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

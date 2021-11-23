@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWebsiteSettingsTable extends Migration
+class CreateOtherSettingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateWebsiteSettingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('website_settings', function (Blueprint $table) {
+        Schema::create('other_settings', function (Blueprint $table) {
             $table->id();
+            $table->string('group')->index();
             $table->string('name');
-            $table->text('value')->nullable();
-            $table->foreignId('created_by')->references('id')->on('users');
+            $table->unique(['group', 'name']);
+            $table->tinyInteger('status')->default(1);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
@@ -30,6 +31,6 @@ class CreateWebsiteSettingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('website_settings');
+        Schema::dropIfExists('other_settings');
     }
 }

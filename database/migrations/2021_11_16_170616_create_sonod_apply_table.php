@@ -15,7 +15,7 @@ class CreateSonodApplyTable extends Migration
     {
         Schema::create('sonod_apply', function (Blueprint $table) {
             $table->id();
-            $table->integer('sonod_setting_id')->nullable();
+            $table->unsignedBigInteger('sonod_setting_id')->index();
             $table->string('sonod_no')->nullable();
             $table->string('name')->nullable();
             $table->string('father')->nullable();
@@ -27,11 +27,18 @@ class CreateSonodApplyTable extends Migration
             $table->date('dod')->nullable();
             $table->text('address')->nullable();
             $table->tinyInteger('status')->default(0);
-            $table->unsignedBigInteger('approved_by')->nullable();
+            $table->unsignedBigInteger('approved_by')->index()->nullable();
             $table->timestamp('approved_date')->nullable();
-            $table->unsignedBigInteger('applied_by')->nullable();
+            $table->unsignedBigInteger('applied_by')->index()->nullable();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
+
+            $table->foreign('sonod_setting_id')->references('id')
+                ->on('sonod_setting')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('approved_by')->references('id')
+                ->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('applied_by')->references('id')
+                ->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

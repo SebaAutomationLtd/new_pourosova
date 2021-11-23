@@ -15,7 +15,7 @@ class CreateBusinessTable extends Migration
     {
         Schema::create('business', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('father')->nullable();
             $table->string('mother')->nullable();
             $table->string('spouse')->nullable();
@@ -30,10 +30,10 @@ class CreateBusinessTable extends Migration
             $table->text('business_address')->nullable();
             $table->text('current_address')->nullable();
             $table->text('permanent_address')->nullable();
-            $table->foreignId('ward_id')->nullable();
-            $table->foreignId('village_id')->nullable();
-            $table->foreignId('business_type_id')->nullable();
-            $table->foreignId('payment_method_id')->nullable();
+            $table->unsignedBigInteger('ward_id')->nullable();
+            $table->unsignedBigInteger('village_id')->nullable();
+            $table->unsignedBigInteger('business_type_id')->nullable();
+            $table->unsignedBigInteger('payment_method_id')->nullable();
             $table->unsignedFloat('trade_fee')->nullable();
             $table->unsignedFloat('vat')->nullable();
             $table->unsignedFloat('signboard_tax')->nullable();
@@ -49,6 +49,18 @@ class CreateBusinessTable extends Migration
             $table->tinyInteger('status')->default(0);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
+
+            $table->foreign('user_id')->references('id')
+                ->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('ward_id')->references('id')
+                ->on('wards')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('village_id')->references('id')
+                ->on('villages')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('business_type_id')->references('id')
+                ->on('other_settings')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('payment_method_id')->references('id')
+                ->on('other_settings')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 

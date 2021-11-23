@@ -15,7 +15,7 @@ class CreateBosotBariTable extends Migration
     {
         Schema::create('bosot_bari', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable();
+            $table->unsignedBigInteger('user_id')->index()->nullable();
             $table->string('father')->nullable();
             $table->string('mother')->nullable();
             $table->string('spouse')->nullable();
@@ -27,14 +27,14 @@ class CreateBosotBariTable extends Migration
             $table->string('birth_certificate')->nullable();
             $table->string('religion')->nullable();
             $table->string('photo')->nullable();
-            $table->foreignId('family_class_id')->nullable();
-            $table->foreignId('ward_id')->nullable();
-            $table->foreignId('village_id')->nullable();
-            $table->foreignId('post_office_id')->nullable();
-            $table->foreignId('house_type_id')->nullable();
-            $table->foreignId('occupation_id')->nullable();
-            $table->foreignId('payment_method_id')->nullable();
-            $table->foreignId('sanitation_id')->nullable();
+            $table->unsignedBigInteger('family_class_id')->index()->nullable();
+            $table->unsignedBigInteger('ward_id')->index()->nullable();
+            $table->unsignedBigInteger('village_id')->index()->nullable();
+            $table->unsignedBigInteger('post_office_id')->index()->nullable();
+            $table->unsignedBigInteger('house_type_id')->index()->nullable();
+            $table->unsignedBigInteger('occupation_id')->index()->nullable();
+            $table->unsignedBigInteger('payment_method_id')->index()->nullable();
+            $table->unsignedBigInteger('sanitation_id')->index()->nullable();
             $table->string('holding_no')->nullable();
             $table->unsignedInteger('total_room')->nullable();
             $table->unsignedFloat('height')->nullable();
@@ -54,6 +54,26 @@ class CreateBosotBariTable extends Migration
             $table->tinyInteger('status')->default(0);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
+
+            $table->foreign('user_id')->references('id')
+                ->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('ward_id')->references('id')
+                ->on('wards')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('village_id')->references('id')
+                ->on('villages')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('post_office_id')->references('id')
+                ->on('post_offices')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('family_class_id')->references('id')
+                ->on('other_settings')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('house_type_id')->references('id')
+                ->on('other_settings')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('occupation_id')->references('id')
+                ->on('other_settings')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('payment_method_id')->references('id')
+                ->on('other_settings')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('sanitation_id')->references('id')
+                ->on('other_settings')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 

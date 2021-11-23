@@ -18,7 +18,7 @@ class CreateProfessionalMayorsTable extends Migration
             $table->string('designation')->nullable();
             $table->string('institute_name')->nullable();
             $table->tinyInteger('status')->default(0);
-            $table->foreignId('created_by')->references('id')->on('users');
+
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });

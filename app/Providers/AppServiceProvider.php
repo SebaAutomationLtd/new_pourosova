@@ -26,12 +26,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot(){
         Schema::defaultStringLength(191);
 
-        $website_settings = DB::table('website_settings')->get();
-        foreach ($website_settings as $setting) {
-            $data[$setting->name] = $setting->value;
-        }
-        $object = isset($data) ? (object) $data : (object) [];
-
-        View::share('website_data', $object);
+//        $website_settings = DB::table('website_settings')->get();
+//        foreach ($website_settings as $setting) {
+//            $data[$setting->name] = $setting->value;
+//        }
+//        $object = isset($data) ? (object) $data : (object) [];
+//
+//        View::share('website_data', $object);
     }
 }
