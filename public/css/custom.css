@@ -2011,45 +2011,96 @@ select {
 }
 
 .previous-notice {
-    transition: .3px;
-    padding: 10px 0;
-    margin-bottom: 10px;
+  transition: 0.3px;
+  padding: 10px 0;
+  margin-bottom: 10px;
 }
 
 .previous-notice:hover {
-    color: #6699cc;
+  color: #6699cc;
 }
 
-
 .table-data img {
-    width: 100%;
-    max-width: 300px;
+  width: 100%;
+  max-width: 300px;
 }
 
 .previous-notice .action i {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .dropdown-menu {
-    transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important;
 }
 
 .btn:focus {
-    box-shadow: none !important;
-    outline: 0;
+  box-shadow: none !important;
+  outline: 0;
 }
 
 .logo-upload-preview {
-    background-size: 100%;
-    width: 100%;
-    padding-left: 15px;
+  background-size: 100%;
+  width: 100%;
+  padding-left: 15px;
 }
 
 .logo-upload-preview img {
-    max-width: 800px;
-    width: 85%;
+  max-width: 800px;
+  width: 85%;
 }
 
 .progress {
-    background-color: #fff;
+  background-color: #fff;
+}
+
+.card {
+  border: 1px solid #dcdcdc;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+  position: relative;
+}
+.waterMarkLogo img {
+  width: 100%;
+  opacity: 0.07;
+  opacity: 0.1;
+}
+.waterMarkLogo {
+  width: 80%;
+  height: 100vh;
+  padding: 100px;
+  position: fixed;
+  top: 0;
+  z-index: -5;
+  bottom: 0;
+}
+.card {
+  background: transparent;
+}
+.form-control,
+.custom-select {
+  background: transparent;
+}
+.card-box {
+  background-color: rgba(255, 255, 255, 0.5) !important;
+  box-shadow: 0 0 15px #dadada;
+}
+
+.custom-dashboard .dashboard-content {
+  box-shadow: 0 0 15px #dadada;
+  margin-top: 2rem;
+  border-radius: 7px;
+  overflow: hidden;
+  border: 1px solid #cecece;
+}
+
+.custom-dashboard .dashboard-content .db-link a {
+  padding: 9px 20px;
+  font-size: 15px;
+  display: block;
+  color: #fff;
+}
+body {
+  background-color: transparent;
 }

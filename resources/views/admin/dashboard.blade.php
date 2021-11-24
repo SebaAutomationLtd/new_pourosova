@@ -1,474 +1,254 @@
 @extends('admin.layout.master')
 @section('header')
-<section class="content-header pl-3">
-    <h1>ওয়েবসাইট</h1>
-    <ol class="breadcrumb">
-        <li>
-            <a href="{{ route('admin.dashboard') }}">
-                <i class="fa fa-fw ti-home"></i> ড্যাশবোর্ড
-            </a>
-        </li>
-
-
-    </ol>
-</section>
-<!-- First Row Content -->
-<div class="row">
-
-    <!--Item -->
-    <div class="col-sm-6 col-md-6 col-xl-3">
-        <div class="flip">
-            <div class="widget-bg-color-icon card-box front">
-                <div class="bg-icon float-left">
-                    <i class="ti-eye text-warning"></i>
-                </div>
-                <div class="text-right">
-                    <h3 class="text-dark"><b>3752</b></h3>
-                    <p>Daily Visits</p>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="widget-bg-color-icon card-box back">
-                <div class="text-center">
-                    <span id="loadspark-chart"></span>
-                    <hr>
-                    <p>Check summary</p>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-    </div>
-
-    <!---Item -->
-    <div class="col-sm-6 col-md-6 col-xl-3">
-        <div class="flip">
-            <div class="widget-bg-color-icon card-box front">
-                <div class="bg-icon float-left">
-                    <i class="ti-shopping-cart text-success"></i>
-                </div>
-                <div class="text-right">
-                    <h3><b id="widget_count3">3251</b></h3>
-                    <p>Sales status</p>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="widget-bg-color-icon card-box back">
-                <div class="text-center">
-                    <span class="linechart" id="salesspark-chart"></span>
-                    <hr>
-                    <p>Check summary</p>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-    </div>
-
-    <!--Item-->
-    <div class="col-sm-6 col-md-6 col-xl-3">
-        <div class="flip">
-            <div class="widget-bg-color-icon card-box front">
-                <div class="bg-icon float-left">
-                    <i class="ti-thumb-up text-danger"></i>
-                </div>
-                <div class="text-right">
-                    <h3 class="text-dark"><b>1532</b></h3>
-                    <p>Hits</p>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="widget-bg-color-icon card-box back">
-                <div class="text-center">
-                    <span id="visitsspark-chart"></span>
-                    <hr>
-                    <p>Check summary</p>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-    </div>
-
-    <!--Item-->
-    <div class="col-sm-6 col-md-6 col-xl-3">
-        <div class="flip">
-            <div class="widget-bg-color-icon card-box front">
-                <div class="bg-icon float-left">
-                    <i class="ti-user text-info"></i>
-                </div>
-                <div class="text-right">
-                    <h3 class="text-dark"><b>1252</b></h3>
-                    <p>Subscribers</p>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="widget-bg-color-icon card-box back">
-                <div class="text-center">
-                    <span id="subscribers-chart"></span>
-                    <hr>
-                    <p>Check summary</p>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-    </div>                  
-
-</div>
-<!--First Row End-->
-
-<!--Second Row Start-->
-<div class="row custom-dashboard">
-
-    <!--Item-->
-    <div class="col-md-3 col-sm-6">
-        <div class="dashboard-content">
-            <div class="d-flex justify-content-between p-3">
-                <div class="display-4">
-                    <i class="text-success fa fa-fw fa-bar-chart-o"></i>
-                </div>
-                <div>
-                    <div class="h2">5454.5</div>
-                    <span>Daily Visit</span>
-                </div>
-            </div>
-            <div class="db-link">
-                <a href="" class="bg-success">
-                    Click For Details
+    <section class="content-header pl-3">
+        <h1>ড্যাশবোর্ড</h1>
+        <ol class="breadcrumb">
+            <li>
+                <a href="{{ route('admin.dashboard') }}">
+                    <i class="fa fa-fw ti-home"></i> ড্যাশবোর্ড / হোম
                 </a>
+            </li>
+
+        </ol>
+    </section>
+
+
+    <!--Second Row Start-->
+    <div class="row custom-dashboard">
+
+        <!--Item-->
+        <div class="col-md-3 col-sm-6">
+            <div class="dashboard-content">
+                <div class="d-flex justify-content-between p-3">
+                    <div class="display-4">
+                        <i class="text-success fa fa-fw fa-bar-chart-o"></i>
+                    </div>
+                    <div class="text-right">
+                        <div class="h2">5454.5</div>
+                        <span>সর্বমোট রেজিষ্ট্রেশন</span>
+                    </div>
+                </div>
+                <div class="db-link">
+                    <a href="#" class="bg-success d-block">
+                        বিস্তারিত দেখুন
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!--Item-->
+        <div class="col-md-3 col-sm-6">
+            <div class="dashboard-content">
+                <div class="d-flex justify-content-between p-3">
+                    <div class="display-4">
+                        <i class="text-warning fa fa-fw fa-bars"></i>
+                    </div>
+                    <div class="text-right">
+                        <div class="h2">5454.5</div>
+                        <span>মোট বসতবাড়ি</span>
+                    </div>
+                </div>
+                <div class="db-link">
+                    <a href="#" class="bg-warning d-block">
+                        বিস্তারিত দেখুন
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!--Item-->
+        <div class="col-md-3 col-sm-6">
+            <div class="dashboard-content">
+                <div class="d-flex justify-content-between p-3">
+                    <div class="display-4">
+                        <i class="text-info fa fa-fw fa-bullhorn"></i>
+                    </div>
+                    <div class="text-right">
+                        <div class="h2">5454.5</div>
+                        <span>মোট বাণিজ্যিক হোল্ডিং</span>
+                    </div>
+                </div>
+                <div class="db-link">
+                    <a href="#" class="bg-info d-block">
+                        বিস্তারিত দেখুন
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!--Item-->
+        <div class="col-md-3 col-sm-6">
+            <div class="dashboard-content">
+                <div class="d-flex justify-content-between p-3">
+                    <div class="display-4">
+                        <i class="text-primary fa fa-fw fa-download"></i>
+                    </div>
+                    <div class="text-right">
+                        <div class="h2">5454.5</div>
+                        <span>মোট ব্যাবসা প্রতিষ্ঠান</span>
+                    </div>
+                </div>
+                <div class="db-link">
+                    <a href="#" class="bg-primary d-block">
+                        বিস্তারিত দেখুন
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!--Item-->
+        <div class="col-md-3 col-sm-6">
+            <div class="dashboard-content">
+                <div class="d-flex justify-content-between p-3">
+                    <div class="display-4">
+                        <i class="text-secondary fa fa-fw fa-tasks"></i>
+                    </div>
+                    <div class="text-right">
+                        <div class="h2">5454.5</div>
+                        <span>মোট সনদের আবেদন</span>
+                    </div>
+                </div>
+                <div class="db-link">
+                    <a href="#" class="bg-secondary d-block">
+                        বিস্তারিত দেখুন
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!--Item-->
+        <div class="col-md-3 col-sm-6">
+            <div class="dashboard-content">
+                <div class="d-flex justify-content-between p-3">
+                    <div class="display-4">
+                        <i class="text-danger fa fa-fw fa-sitemap"></i>
+                    </div>
+                    <div class="text-right">
+                        <div class="h2">5454.5</div>
+                        <span>মোট সনদ গ্রহীতা</span>
+                    </div>
+                </div>
+                <div class="db-link">
+                    <a href="#" class="bg-danger d-block">
+                        বিস্তারিত দেখুন
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!--Item-->
+        <div class="col-md-3 col-sm-6">
+            <div class="dashboard-content">
+                <div class="d-flex justify-content-between p-3">
+                    <div class="display-4">
+                        <i class="text-primary fa fa-fw fa-signal"></i>
+                    </div>
+                    <div class="text-right">
+                        <div class="h2">5454.5</div>
+                        <span>মোট আয়</span>
+                    </div>
+                </div>
+                <div class="db-link">
+                    <a href="#" class="bg-primary d-block">
+                        বিস্তারিত দেখুন
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!--Item-->
+        <div class="col-md-3 col-sm-6">
+            <div class="dashboard-content">
+                <div class="d-flex justify-content-between p-3">
+                    <div class="display-4">
+                        <i class="text-warning fa fa-fw fa-exclamation-triangle"></i>
+                    </div>
+                    <div>
+                        <div class="h2">5454.5</div>
+                        <span>মোট বকেয়া কর</span>
+                    </div>
+                </div>
+                <div class="db-link">
+                    <a href="#" class="bg-warning d-block">
+                        বিস্তারিত দেখুন
+                    </a>
+                </div>
             </div>
         </div>
     </div>
+    <!--Second Row Start-->
+    <div class="row">
+        <div class="col-md-6">
+            <canvas id="myChart" width="400" height="200"></canvas>
+        </div>
 
-    <!--Item-->
-    <div class="col-md-3 col-sm-6">
-        <div class="dashboard-content">
-            <div class="d-flex justify-content-between p-3">
-                <div class="display-4">
-                    <i class="text-warning fa fa-fw fa-bars"></i>
-                </div>
-                <div>
-                    <div class="h2">5454.5</div>
-                    <span>Daily Visit</span>
-                </div>
-            </div>
-            <div class="db-link">
-                <a href="" class="bg-warning">
-                    Click For Details
-                </a>
-            </div>
+        <div class="col-md-6">
+            <canvas id="myChart2" width="400" height="200"></canvas>
         </div>
     </div>
 
-    <!--Item-->
-    <div class="col-md-3 col-sm-6">
-        <div class="dashboard-content">
-            <div class="d-flex justify-content-between p-3">
-                <div class="display-4">
-                    <i class="text-info fa fa-fw fa-bullhorn"></i>
-                </div>
-                <div>
-                    <div class="h2">5454.5</div>
-                    <span>Daily Visit</span>
-                </div>
-            </div>
-            <div class="db-link">
-                <a href="" class="bg-info">
-                    Click For Details
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!--Item-->
-    <div class="col-md-3 col-sm-6">
-        <div class="dashboard-content">
-            <div class="d-flex justify-content-between p-3">
-                <div class="display-4">
-                    <i class="text-primary fa fa-fw fa-download"></i>
-                </div>
-                <div>
-                    <div class="h2">5454.5</div>
-                    <span>Daily Visit</span>
-                </div>
-            </div>
-            <div class="db-link">
-                <a href="" class="bg-primary">
-                    Click For Details
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!--Item-->
-    <div class="col-md-3 col-sm-6">
-        <div class="dashboard-content">
-            <div class="d-flex justify-content-between p-3">
-                <div class="display-4">
-                    <i class="text-secondary fa fa-fw fa-tasks"></i>
-                </div>
-                <div>
-                    <div class="h2">5454.5</div>
-                    <span>Daily Visit</span>
-                </div>
-            </div>
-            <div class="db-link">
-                <a href="" class="bg-secondary">
-                    Click For Details
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!--Item-->
-    <div class="col-md-3 col-sm-6">
-        <div class="dashboard-content">
-            <div class="d-flex justify-content-between p-3">
-                <div class="display-4">
-                    <i class="text-danger fa fa-fw fa-sitemap"></i>
-                </div>
-                <div>
-                    <div class="h2">5454.5</div>
-                    <span>Daily Visit</span>
-                </div>
-            </div>
-            <div class="db-link">
-                <a href="" class="bg-danger">
-                    Click For Details
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!--Item-->
-    <div class="col-md-3 col-sm-6">
-        <div class="dashboard-content">
-            <div class="d-flex justify-content-between p-3">
-                <div class="display-4">
-                    <i class="text-primary fa fa-fw fa-signal"></i>
-                </div>
-                <div>
-                    <div class="h2">5454.5</div>
-                    <span>Daily Visit</span>
-                </div>
-            </div>
-            <div class="db-link">
-                <a href="" class="bg-primary">
-                    Click For Details
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!--Item-->
-    <div class="col-md-3 col-sm-6">
-        <div class="dashboard-content">
-            <div class="d-flex justify-content-between p-3">
-                <div class="display-4">
-                    <i class="text-warning fa fa-fw fa-exclamation-triangle"></i>
-                </div>
-                <div>
-                    <div class="h2">5454.5</div>
-                    <span>Daily Visit</span>
-                </div>
-            </div>
-            <div class="db-link">
-                <a href="" class="bg-warning">
-                    Click For Details
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-<!--Second Row Start-->
-
-<div class="row">
-    <div class="col-sm-12 mt-3">
-        <h5>সর্বশেষ ইউজার</h5>
-        <hr>
-    </div>
-    <div class="col-sm-4">
-        <div class="card p-0">
-          <div class="card-body p-0">
-            <h5 class="card-title d-flex p-2">
-                <div><h5>বসত বাড়ী</h5></div>
-                <div class="ml-auto">
-                    <a href="" class="btn btn-sm btn-success">View All</a>
-                </div>
-            </h5>
-            <table class="table table-bordered mb-0">
-              <thead>
-                <tr>
-                  <th scope="col">নাম</th>
-                  <th scope="col">মোবাইল</th>
-                  <th scope="col">এন আই ডি / জন্ম নিবন্ধন </th>
-              </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-          </tr>
-
-      </tbody>
-  </table>
-</div>
-</div>
-</div>
-<div class="col-sm-4">
-                            <div class="card p-0">
-  <div class="card-body p-0">
-    <h5 class="card-title d-flex p-2">
-        <div><h5>বাণিজ্যিক হোল্ডিং</h5></div>
-        <div class="ml-auto">
-            <a href="" class="btn btn-sm btn-success">View All</a>
-        </div>
-    </h5>
-   <table class="table table-bordered mb-0">
-  <thead>
-    <tr>
-      <th scope="col">নাম</th>
-      <th scope="col">মোবাইল</th>
-      <th scope="col">এন আই ডি / জন্ম নিবন্ধন </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-
-  </tbody>
-</table>
-  </div>
-</div>
-</div>
-<div class="col-sm-4">
-                            <div class="card p-0">
-  <div class="card-body p-0">
-    <h5 class="card-title d-flex p-2">
-        <div><h5>ব্যাবসা প্রতিষ্ঠান</h5></div>
-        <div class="ml-auto">
-            <a href="" class="btn btn-sm btn-success">View All</a>
-        </div>
-    </h5>
-   <table class="table table-bordered mb-0">
-  <thead>
-    <tr>
-      <th scope="col">নাম</th>
-      <th scope="col">মোবাইল</th>
-      <th scope="col">এন আই ডি / জন্ম নিবন্ধন </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-
-  </tbody>
-</table>
-  </div>
-</div>
-</div>
-</div>
-
-<div class="row">
-    <div class="col-sm-12 mt-3">
-        <h5>সর্বশেষ সনদ গ্রহিতা </h5>
-        <hr>
-    </div>
-    <div class="col-sm-4">
-        <div class="card p-0">
-          <div class="card-body p-0">
-            <h5 class="card-title d-flex p-2">
-                <div><h5>বসত বাড়ী</h5></div>
-                <div class="ml-auto">
-                    <a href="" class="btn btn-sm btn-success">View All</a>
-                </div>
-            </h5>
-            <table class="table table-bordered mb-0">
-              <thead>
-                <tr>
-                  <th scope="col">নাম</th>
-                  <th scope="col">মোবাইল</th>
-                  <th scope="col">এন আই ডি / জন্ম নিবন্ধন </th>
-              </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-          </tr>
-
-      </tbody>
-  </table>
-</div>
-</div>
-</div>
-<div class="col-sm-4">
-                            <div class="card p-0">
-  <div class="card-body p-0">
-    <h5 class="card-title d-flex p-2">
-        <div><h5>বাণিজ্যিক হোল্ডিং</h5></div>
-        <div class="ml-auto">
-            <a href="" class="btn btn-sm btn-success">View All</a>
-        </div>
-    </h5>
-   <table class="table table-bordered mb-0">
-  <thead>
-    <tr>
-      <th scope="col">নাম</th>
-      <th scope="col">মোবাইল</th>
-      <th scope="col">এন আই ডি / জন্ম নিবন্ধন </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-
-  </tbody>
-</table>
-  </div>
-</div>
-</div>
-<div class="col-sm-4">
-                            <div class="card p-0">
-  <div class="card-body p-0">
-    <h5 class="card-title d-flex p-2">
-        <div><h5>ব্যাবসা প্রতিষ্ঠান</h5></div>
-        <div class="ml-auto">
-            <a href="" class="btn btn-sm btn-success">View All</a>
-        </div>
-    </h5>
-   <table class="table table-bordered mb-0">
-  <thead>
-    <tr>
-      <th scope="col">নাম</th>
-      <th scope="col">মোবাইল</th>
-      <th scope="col">এন আই ডি / জন্ম নিবন্ধন </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-
-  </tbody>
-</table>
-  </div>
-</div>
-</div>
-</div>
 @stop
 
+@push('js')
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('myChart');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
 
 
-
-
+        const ctx = document.getElementById('myChart2');
+        const myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    'Red',
+                    'Blue',
+                    'Yellow'
+                ],
+                datasets: [{
+                    label: 'My First Dataset',
+                    data: [300, 50, 100],
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)'
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+        });
+    </script>
+@endpush

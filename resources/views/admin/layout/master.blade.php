@@ -53,7 +53,7 @@
             @yield('header')
             <section class="content">
                 <div class="background-overlay waterMarkLogo d-flex justify-content-center">
-                    <img src="{{ asset('img/Digital Bangladesh.svg') }}" alt="">
+                    <img src="{{ asset('img/digital_bangladesh.svg') }}" alt="">
                 </div>
                 @yield('content')
 
@@ -122,20 +122,20 @@
             $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
         });
 
-        $("#summernote").summernote({
-            placeholder: 'কাউন্সিলরের বাণী ...',
-            tabsize: 2,
-            height: 300,
-            toolbar: [
-                ['style', ['style']],
-                ['font', ['bold', 'underline', 'clear']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph']],
-                ['table', ['table']],
-                ['insert', ['link']],
-                ['view', ['fullscreen', 'codeview']]
-            ]
-        });
+        // $("#summernote").summernote({
+        //     placeholder: 'কাউন্সিলরের বাণী ...',
+        //     tabsize: 2,
+        //     height: 300,
+        //     toolbar: [
+        //         ['style', ['style']],
+        //         ['font', ['bold', 'underline', 'clear']],
+        //         ['color', ['color']],
+        //         ['para', ['ul', 'ol', 'paragraph']],
+        //         ['table', ['table']],
+        //         ['insert', ['link']],
+        //         ['view', ['fullscreen', 'codeview']]
+        //     ]
+        // });
     </script>
 
     @stack('js')
