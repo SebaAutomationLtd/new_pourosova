@@ -15,27 +15,15 @@
 
     <div class="content-wrapper">
 
-        <section class="content  card card-primary">
-            <div class="container-fluid">
-                <div class="row mb-2" style="margin-top: 20px">
-                    <div class="col-sm-6">
-                        <h4> নতুন ইউজার নিবন্ধন করুন</h4>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">হোম</a></li>
-                            <li class="breadcrumb-item active"> নতুন ইউজার নিবন্ধন করুন</li>
-                        </ol>
-                    </div>
-                </div>
+        <section class="card card-primary">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="website-form form-group">
                             <div class="card-header">
-                                <h3 class="card-title"> নতুন ইউজার নিবন্ধন করুন</h3>
+                                <h3 class="h5"> নতুন ইউজার নিবন্ধন করুন</h3>
                             </div>
                             <br>
-                            <form class="needs-validation" action="{{ route('user.store') }}" method="post"
+                            <form class="needs-validation p-3" action="{{ route('user.store') }}" method="post"
                                 enctype="multipart/form-data">
                                 @csrf
 
@@ -144,8 +132,6 @@
 
                     </div>
                 </div>
-            </div>
-
         </section>
     </div>
 

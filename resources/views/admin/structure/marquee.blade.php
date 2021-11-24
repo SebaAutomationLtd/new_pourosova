@@ -20,7 +20,7 @@
         <div class="col-md-6">
             <div class="card main-chart">
                 <div class="card-header panel-tabs">
-                    <h5>নিউজ স্ক্রোল পরিবর্তন</h5>
+                    <h5 class="h5">নিউজ স্ক্রোল পরিবর্তন</h5>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('admin.header.marquee') }}" method="POST">
@@ -42,7 +42,7 @@
         <div class="col-md-6">
             <div class="card main-chart mt-4 mt-md-0">
                 <div class="card-header panel-tabs">
-                    <h5>নিউজ স্ক্রোল সমূহ</h5>
+                    <h5 class="h5">নিউজ স্ক্রোল সমূহ</h5>
                 </div>
                 <div class="card-body">
 

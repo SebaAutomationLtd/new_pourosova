@@ -5,7 +5,7 @@ use App\Http\Controllers\Admin\ActiveController;
 use App\Http\Controllers\Admin\BosotBariController;
 use App\Http\Controllers\Admin\BusinessController;
 use App\Http\Controllers\Admin\BusinessHoldingController;
-use App\Http\Controllers\Admin\OtherSettingController;
+use App\Http\Controllers\Admin\CommonSettingController;
 use App\Http\Controllers\Admin\PdfReportController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
@@ -111,8 +111,12 @@ Route::middleware('auth')->group(function () {
         Route::get('delete-user/{id}', [UserController::class, 'delete_user'])->name('user.delete');
 
         Route::resource('roles', RoleController::class);
-        Route::get('other-settings/{slug}', [OtherSettingController::class, 'create'])->name('other-settings');
-        Route::post('other-settings/{slug}', [OtherSettingController::class, 'store'])->name('other-settings');
+
+        Route::get('common-settings', [CommonSettingController::class, 'create'])->name('common-settings.create');
+        Route::post('common-settings', [CommonSettingController::class, 'store'])->name('common-settings.store');
+
+        Route::get('common-settings/data/{slug}', [CommonSettingController::class, 'common_settings'])->name('common-settings');
+        Route::post('common-settings/data/{slug}', [CommonSettingController::class, 'store_common_settings'])->name('common-settings');
 
         Route::get('/khosora-report', [PdfReportController::class, 'khosora_report'])->name('khosora-report');
         Route::post('/khosora-report', [PdfReportController::class, 'khosora_report_download'])->name('khosora-report');

@@ -8,42 +8,23 @@
                     <i class="fa fa-fw ti-home"></i> বসতবাড়ী হোল্ডিং
                 </a>
             </li>
-            <!-- <li>সেবা কার্ড একটিভ প্যানেল</li> -->
-
         </ol>
     </section>
 @stop
 @section('content')
 
-    <div class="content-wrapper">
-        <section class="content">
-            <div class="container-fluid">
-                <div class="row mb-2" style="margin-top: 20px;">
-                    <div class="col-sm-6">
-                        <h5>বসতবাড়ী হোল্ডিং নিবন্ধন পরিচালনা করুন </h5>
-                    </div>
-                   <!--  <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">হোম</a></li>
-                            <li class="breadcrumb-item active"> বসতবাড়ী হোল্ডিং নিবন্ধন পরিচালনা করুন</li>
-                        </ol>
-                    </div> -->
-                </div>
                 @php
                     $wards = DB::table('wards')->orderBy('id','DESC')->get();
                     $family_classes = DB::table('family_classes')->where('status','1')->get();
                     $latest_ward = DB::table('wards')->orderBy('id','DESC')->first();
                     $villages = DB::table('villages')
-                         ->where('ward_id', $latest_ward->id)
+                         ->where('ward_id', $latest_ward->id ?? '')
                          ->orderBy('villages.id', 'DESC')
                          ->get()
                 @endphp
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card card-warning">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title"> বসতবাড়ী হোল্ডিং নিবন্ধন <a href=""
+                                    <h3 class="h5"> বসতবাড়ী হোল্ডিং নিবন্ধন <a href=""
                                                                                         class="btn btn-primary float-right"><i
                                                 class="fa fa-download"></i> Download</a>
                                     </h3>
@@ -91,48 +72,7 @@
                                          <button  class="btn btn-success btn-sm member_search"><i
                                                         class="fa fa-search"></i></button>
                                     </div>
-                                   <!--  <div class="col-lg-12 col-md-12 col-sm-12">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <select style="width: 75px;" id="ward_id"
-                                                    style="border-radius: .25rem 0 0 .25rem;" name="ward_id"
-                                                    class="form-control form-control-sm">
-                                                    <option value="" disabled selected>ওয়ার্ড
-                                                    </option>
-                                                    @foreach ($wards as $ward)
-                                                        <option value="{{$ward->id}}">{{ $ward->ward_no }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="input-group-prepend">
-                                                <select style="width: 70px;" style="border-radius: 0;"
-                                                    name="village_id" id="village_id"
-                                                    class="form-control form-control-sm">
-                                                    <option value="" selected="" disabled="">গ্রাম
-                                                    </option>
-                                                    
-                                                </select>
-                                            </div>
-
-                                             <input style="width: 70px;" class="form-control form-control-sm" type="text"
-                                                name="mobile" id="mobile" placeholder="মোবাইল ..."
-                                                aria-label="Recipient's ">
-
-
-                                           <input style="width: 60px;" class="form-control form-control-sm" type="text"
-                                                name="nid" id="nid" placeholder="NID">
-
-
-                                            <input style="width: 50px;" class="form-control form-control-sm" type="text"
-                                                name="holding_no" id="holding_no" placeholder="হোল্ডিং নং ..."
-                                                aria-label="Recipient's ">
-
-                                            <div class="input-group-append">
-                                                <button  class="btn btn-success btn-sm member_search"><i
-                                                        class="fa fa-search"></i></button>
-                                            </div>
-                                        </div>
-                                    </div> -->
+                                  
                                 </div>
 
                           </form>
@@ -166,16 +106,6 @@
                               
                             </div>
                         </div>
-                    </div>
-
-                </div>
-
-            </div>
-    </div>
-    </section>
-
-    </div>
-
     <!-- Quick Edit Modal -->
     <div class="modal fade" id="quick-edit-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -295,25 +225,6 @@
                     },
                 });
             });
-
-
-            //  $(document).on('click', '.member_search', function(e){
-            //      e.preventDefault();
-            //      var ward_id = $("#ward_id").val();
-            //      var village_id = $("#village_id").val();
-            //      var nid = $("#nid").val();
-            //      var mobile = $("#mobile").val();
-            //      var holding_no = $("#holding_no").val();
-            //      $.ajax({
-            //                 url: "{{ url('/bosot-search-result') }}",
-            //                 type: "GET",
-            //                 data:{'ward_id':ward_id,'village_id':village_id, 'nid':nid, 'mobile':mobile,'holding_no':holding_no},
-            //                 dataType: "html",
-            //                 success: function(data) {
-            //                     alert(data);
-            //                 },
-            //             });
-            //  });
         });
     </script>
 
@@ -323,35 +234,6 @@
 
 @section('js')
 
-<!--     <script type="text/javascript">
-        $(function () {
-          
-          var table = $('.yajra-datatable').DataTable({
-              processing: true,
-              serverSide: true,
-              ajax: "{{ url('bosot-search-result') }}",
-              columns: [
-                  {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-                  {data: 'name', name: 'name'},
-                  {data: 'father', name: 'father'},
-                  {data: 'mobile', name: 'mobile'},
-                  {data: 'nid', name: 'nid'},
-                  {data: 'user_id', name: 'user_id'},
-                  {data: 'status', name: 'status'},
-                  {data: 'action', name: 'action', orderable: false, searchable: true},
-              ],
-               createdRow: function ( row, data, index ) {
-
-    if ( data['status'] == 'একটিভ' ) {
-        $('td', row).eq(6).html('<span class="badge badge-success">একটিভ</span>').css('text-align','center');
-    } else {
-        $('td', row).eq(6).html(' <span class="badge badge-danger">ডিএকটিভ</span>').css('text-align','center');
-    };
-},
-          });
-          
-        });
-           </script> -->
            <script>
 $(document).ready( function () {
 $.ajaxSetup({
@@ -382,9 +264,7 @@ columns: [
 
 });
 });
-// $('#btnFiterSubmitSearch').click(function(){
-// $('#laravel_datatable').DataTable().draw(true);
-// });
+
     $('#bosottablefamily').on('submit', function(e) {
         e.preventDefault();
         $('.yajra-datatable').DataTable().draw();

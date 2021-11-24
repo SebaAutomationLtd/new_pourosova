@@ -21,7 +21,7 @@
         <div class="col-md-12">
             <div class="card main-chart mt-4">
                 <div class="card-header panel-tabs">
-                    <h5>সেবাসমূহ</h5>
+                    <h5 class="h5">সেবাসমূহ</h5>
                 </div>
                 <div style="margin-left: 1180px; margin-top: 5px;">
                     <button class="btn btn-primary"><a style="color: white;" href="{{ route('admin.web.right.service.create') }}">সেবাসমূহ এড</a></button>

@@ -20,7 +20,7 @@
         <div class="col-md-12">
             <div class="card main-chart">
                 <div class="card-header panel-tabs">
-                    <h5>আপডেট ওয়ার্ড</h5>
+                    <h5 class="h5">আপডেট ওয়ার্ড</h5>
                 </div>
                 <div class="card-body">
                     <form action="{{route('admin.web.village.ward.update')}}" method="POST">

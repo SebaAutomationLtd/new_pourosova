@@ -15,11 +15,9 @@
 @stop
 
 @section('content')
-    <div class="row">
-        <div class="col-md-12">
             <div class="card main-chart">
                 <div class="card-header panel-tabs">
-                    <h5>পাসওয়ার্ড পরিবর্তন</h5>
+                    <h5 class="h5">পাসওয়ার্ড পরিবর্তন</h5>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('admin.setting.update_password') }}" method="POST">
@@ -51,25 +49,10 @@
                             </div>
 
                           </div>
-
-
-
-
-
                         <button class="btn btn-primary">সাবমিট</button>
                     </form>
                 </div>
             </div>
-        </div>
-
-
-
-    </div>
-
-
-
-
-
 @stop
 
 

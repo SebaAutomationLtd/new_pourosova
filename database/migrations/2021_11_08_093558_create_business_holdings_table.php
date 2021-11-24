@@ -64,13 +64,13 @@ class CreateBusinessHoldingsTable extends Migration
             $table->foreign('post_office_id')->references('id')
                 ->on('post_offices')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('house_type_id')->references('id')
-                ->on('other_settings')->onDelete('cascade')->onUpdate('cascade');
+                ->on('common_settings')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('occupation_id')->references('id')
-                ->on('other_settings')->onDelete('cascade')->onUpdate('cascade');
+                ->on('common_settings')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('payment_method_id')->references('id')
-                ->on('other_settings')->onDelete('cascade')->onUpdate('cascade');
+                ->on('common_settings')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('sanitation_id')->references('id')
-                ->on('other_settings')->onDelete('cascade')->onUpdate('cascade');
+                ->on('common_settings')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

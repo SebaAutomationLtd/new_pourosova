@@ -19,7 +19,7 @@
                                 <div class="col-md-12">
                                     <div class="card main-chart">
                                         <div class="card-header panel-tabs">
-                                            <h5>পেইজের তথ্যসমূহ এডিট</h5>
+                                            <h5 class="h5">পেইজের তথ্যসমূহ এডিট</h5>
                                         </div>
                                         <div class="card-body">
                                             <form action="{{route('admin.web.info.info.update',$info->id)}}" method="POST">

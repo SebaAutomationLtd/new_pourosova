@@ -15,11 +15,9 @@
 @stop
 
 @section('content')
-    <div class="row">
-        <div class="col-md-12">
             <div class="card main-chart">
                 <div class="card-header panel-tabs">
-                    <h5>পৌরসভার সম্পর্কে</h5>
+                    <h5 class="h5">পৌরসভার সম্পর্কে</h5>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('admin.web.right.about_paurosova.update') }}" method="POST">
@@ -40,16 +38,6 @@
                     </form>
                 </div>
             </div>
-        </div>
-
-
-
-    </div>
-
-
-
-
-
 @stop
 
 

@@ -18,7 +18,7 @@
 
     <div class="card main-chart mt-4">
         <div class="card-header panel-tabs">
-            <h4 style="display: inline-block">রোল তালিকা টেবিল</h4>
+            <h4 style="display: inline-block" class="h5">রোল তালিকা টেবিল</h4>
             <a href="{{ route('roles.create') }}" class="btn btn-primary" style="float: right">
                 <i class="fas fa-store-alt"></i> নতুন রোল তৈরি করুন
             </a>

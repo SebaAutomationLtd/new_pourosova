@@ -16,12 +16,10 @@
 
 @section('content')
     <div class="row">
-
-
         <div class="col-md-12">
             <div class="card main-chart mt-4">
                 <div class="card-header panel-tabs">
-                    <h5>কাউন্সিলর বৃন্দ</h5>
+                    <h5 class="h5">কাউন্সিলর বৃন্দ</h5>
                 </div>
                 <div class="card-body">
                     <div class="">

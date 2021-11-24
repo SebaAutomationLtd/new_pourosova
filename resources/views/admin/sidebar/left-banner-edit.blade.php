@@ -20,7 +20,7 @@
         <div class="col-md-12">
             <div class="card main-chart">
                 <div class="card-header panel-tabs">
-                    <h5>আপডেট বাম পাশের ব্যানার সমূহ</h5>
+                    <h5 class="h5">আপডেট বাম পাশের ব্যানার সমূহ</h5>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('admin.web.left.banner.update',$left_banner->id) }}" method="POST" enctype="multipart/form-data">
